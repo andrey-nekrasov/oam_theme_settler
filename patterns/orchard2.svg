@@ -1,0 +1,13 @@
+<svg version="1.1" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+ <g transform="translate(-343 -464)">
+  <rect x="340" y="461" width="106" height="106" enable-background="new" fill="#e9ffe5" fill-opacity=".733"/>
+  <g fill="#fc7070" fill-opacity=".659">
+   <circle transform="matrix(2.91 0 0 2.91 -543 -2774)" cx="309" cy="1141" r="3" enable-background="new"/>
+   <circle transform="matrix(2.91 0 0 2.91 -489 -2785)" cx="309" cy="1141" r="3" enable-background="new"/>
+   <circle transform="matrix(2.91 0 0 2.91 -531 -2844)" cx="309" cy="1141" r="3" enable-background="new"/>
+   <circle transform="matrix(2.91 0 0 2.91 -494 -2848)" cx="309" cy="1141" r="3" enable-background="new"/>
+   <circle transform="matrix(2.91 0 0 2.91 -472 -2823)" cx="309" cy="1141" r="3" enable-background="new"/>
+   <circle transform="matrix(2.91 0 0 2.91 -524 -2807)" cx="309" cy="1141" r="3" enable-background="new"/>
+  </g>
+ </g>
+</svg>
