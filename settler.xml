@@ -11,11 +11,13 @@
     v1.0.79
 
     ###
-    Когда то давно это была тема "active RT5 (active RenderTheme Version 5)" https://github.com/FrankSchoeneck/active_RT5
+    Когда то давно это была тема "active RT5 (active RenderTheme Version 5)"
+    https://github.com/FrankSchoeneck/active_RT5
 
     Многое подсмотрено в темах Elevate и TOTM.
     https://www.openandromaps.org/en/legend/elevate-mountain-hike-theme
     https://github.com/IgorMagellan/TOTM
+    ###
 -->
 
 	<stylemenu id="menu" defaultvalue="OSM_Summer" defaultlang="en">
