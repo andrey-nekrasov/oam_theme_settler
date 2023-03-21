@@ -9,7 +9,7 @@
     Contact: andrey.nekrasov@gmail.com		
 
     2023.mar.21
-    v1.7.1
+    v1.7.2
 
     ###
     Когда то давно это была тема "active RT5 (active RenderTheme Version 5)" https://github.com/FrankSchoeneck/active_RT5
@@ -246,9 +246,9 @@
 			<cat id="contourlines" />
 		</layer>
 		<layer id="OSM_Summer" visible="true">
-			<name lang="ru" value="V4+ 1.7.1" />
-			<name lang="de" value="V4+ 1.7.1" />
-			<name lang="en" value="V4+ 1.7.1" />
+			<name lang="ru" value="V4+ 1.7.2" />
+			<name lang="de" value="V4+ 1.7.2" />
+			<name lang="en" value="V4+ 1.7.2" />
 			<overlay id="L_hikingtrails" />
 			<overlay id="L_trail_markings" />
 			<overlay id="L_hikingnodes" />
@@ -708,17 +708,11 @@
 				<line stroke="#CBE0B3" stroke-width="0.7" stroke-linecap="round" />
 			</rule>
 		</rule>
-		<rule e="any" k="natural" v="valley|canyon|peninsula" zoom-min="11">
-			<rule e="any" k="*" v="*">
-				<caption k="name" font-style="italic" font-family="sans_serif" font-size="12" fill="#888888" stroke="#888888" stroke-width="0.8" text-wrap-width="120" />
-			</rule>
-			<rule e="way" k="*" v="*" zoom-max="13">
-				<caption k="name" font-style="bold_italic" font-family="sans_serif" font-size="12" fill="#333333" stroke="#FFFFFF" stroke-width="0.8" text-wrap-width="120" />
-			</rule>
-			<rule e="way" k="*" v="*" zoom-min="14">
-				<pathText k="name" font-style="bold_italic" font-family="sans_serif" font-size="12" fill="#333333" stroke="#FFFFFF" stroke-width="0.8" />
-			</rule>
+
+		<rule e="way" k="natural" v="valley|canyon|peninsula" zoom-min="14" zoom-max="17">
+			<pathText k="name" font-style="italic" font-family="default" font-size="17" fill="#494949" stroke="#ffffff" stroke-width="1.5"/>
 		</rule>
+
 		<rule e="any" k="natural" v="bay" zoom-min="12">
 			<caption k="name" font-style="normal" font-family="sans_serif" font-size="12" fill="#333333" stroke="#FFFFFF" stroke-width="1.5" text-wrap-width="120" />
 		</rule>
@@ -1764,25 +1758,30 @@
 				<!-- трекинг/хайкинг -->
 				<rule e="way" k="highway" v="path|footway" zoom-min="14">
 					<rule e="way" k="trail_visibility" v="~|excellent|good|intermediate">
+						<!-- белый фон + серые черточки -->
 						<rule e="way" k="sac_scale" v="~">
-							<line stroke="#ffffff" stroke-width="0.4" stroke-linecap="butt" scale="stroke" />
-							<line stroke="#505050" stroke-width="0.3" stroke-dasharray="8,6" stroke-linecap="butt" scale="stroke" />
+						 	<line stroke="#88ffffff" stroke-width="0.4" stroke-linecap="butt" scale="stroke" />
+							<line stroke="#505050" stroke-width="0.35" stroke-dasharray="8,6" stroke-linecap="butt" scale="stroke" />
 						</rule>
+						<!-- прозрачный фон + серые черточки -->
 						<rule e="way" k="sac_scale" v="T1|hiking|T2|mountain_hiking">
-							<line stroke="#EEEEEE" stroke-width="0.4" stroke-linecap="butt" scale="stroke" />
-							<line stroke="#606060" stroke-width="0.4" stroke-dasharray="8,6" stroke-linecap="butt" scale="stroke" />
+							<line stroke="#55EEEEEE" stroke-width="0.4" stroke-linecap="butt" scale="stroke" /> 
+							<line stroke="#606060" stroke-width="0.35" stroke-dasharray="8,6" stroke-linecap="butt" scale="stroke" />
 						</rule>
+						<!-- темно-серые -->
 						<rule e="way" k="sac_scale" v="T3|demanding_mountain_hiking">
-							<line stroke="#FF4C4C" stroke-width="0.4" stroke-linecap="butt" />
+							<line stroke="#101010" stroke-width="0.35" stroke-dasharray="8,6" stroke-linecap="butt" scale="stroke" />
+    						</rule>
+						<!-- черно-красные -->
+						<rule e="way" k="sac_scale" v="T4|alpine_hiking">
+							<line stroke="#88FF4C4C" stroke-width="0.4" stroke-linecap="butt" />
 							<line stroke="#53534e" stroke-width="0.4" stroke-dasharray="8,6" stroke-linecap="butt" scale="stroke" />
 						</rule>
-						<rule e="way" k="sac_scale" v="T4|alpine_hiking">
-							<line stroke="#000000" stroke-width="0.4" stroke-dasharray="4,5" stroke-linecap="butt" scale="stroke" />
-						</rule>
+						<!-- черно-желтые -->
 						<rule e="way" k="sac_scale" v="T5|demanding_alpine_hiking|T6|difficult_alpine_hiking">
-						    <!-- виа феррата рисуется отдельно ниже-->
+						    <!-- виа феррата рисуется отдельно ниже -->
 						    <rule e="way" k="via_ferrata_flag|via_ferrata_scale|via_ferrata" v="~">
-							<line stroke="#f0c002" stroke-width="0.40" stroke-linecap="butt" scale="stroke" />
+							<line stroke="#88f0c002" stroke-width="0.40" stroke-linecap="butt" scale="stroke" />
 							<line stroke="#606060" stroke-width="0.40" stroke-dasharray="8,8" stroke-linecap="butt" scale="stroke" />
 						    </rule>
 						</rule>
