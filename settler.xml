@@ -9,7 +9,7 @@
     Contact: andrey.nekrasov@gmail.com		
 
     2023.mar.21
-    v1.7.0
+    v1.7.1
 
     ###
     Когда то давно это была тема "active RT5 (active RenderTheme Version 5)" https://github.com/FrankSchoeneck/active_RT5
@@ -246,9 +246,9 @@
 			<cat id="contourlines" />
 		</layer>
 		<layer id="OSM_Summer" visible="true">
-			<name lang="ru" value="V4+ 1.7.0" />
-			<name lang="de" value="V4+ 1.7.0" />
-			<name lang="en" value="V4+ 1.7.0" />
+			<name lang="ru" value="V4+ 1.7.1" />
+			<name lang="de" value="V4+ 1.7.1" />
+			<name lang="en" value="V4+ 1.7.1" />
 			<overlay id="L_hikingtrails" />
 			<overlay id="L_trail_markings" />
 			<overlay id="L_hikingnodes" />
@@ -1555,10 +1555,9 @@
 				</rule>
 				<!-- vie ferrata мостики -->
 				<rule e="way" k="highway" v="via_ferrata" zoom-min="15">
-					<line stroke="#111111" stroke-width="1.1" stroke-linecap="butt"/>
-					<line stroke="#ffffff" stroke-width="0.9" stroke-linecap="butt"/>
+					<line stroke="#111111" stroke-width="1.0" stroke-linecap="butt"/>
+					<line stroke="#ffffff" stroke-width="0.7" stroke-linecap="butt"/>
 				</rule>
-
 				<rule e="way" k="highway" v="construction" zoom-min="11">
 					<line stroke="#666666" stroke-width="2.1" stroke-linecap="butt" />
 				</rule>
@@ -1781,8 +1780,11 @@
 							<line stroke="#000000" stroke-width="0.4" stroke-dasharray="4,5" stroke-linecap="butt" scale="stroke" />
 						</rule>
 						<rule e="way" k="sac_scale" v="T5|demanding_alpine_hiking|T6|difficult_alpine_hiking">
-						    <line stroke="#f0c002" stroke-width="0.40" stroke-linecap="butt" scale="stroke" />
-						    <line stroke="#606060" stroke-width="0.40" stroke-dasharray="8,8" stroke-linecap="butt" scale="stroke" />
+						    <!-- виа феррата рисуется отдельно ниже-->
+						    <rule e="way" k="via_ferrata_flag|via_ferrata_scale|via_ferrata" v="~">
+							<line stroke="#f0c002" stroke-width="0.40" stroke-linecap="butt" scale="stroke" />
+							<line stroke="#606060" stroke-width="0.40" stroke-dasharray="8,8" stroke-linecap="butt" scale="stroke" />
+						    </rule>
 						</rule>
 
 						<rule e="way" k="foot" v="ft_no">
@@ -1853,11 +1855,15 @@
 					</rule>
 				</rule>
 
-				<!-- via ferrata | #e6ab2e - оранжевый | #fff71c - желтый -->
+				<!-- via ferrata | #e6ab2e - оранжевый | #fff71c - желтый | #AA1718 - красный как на swisstopo -->
 				<rule e="way" k="via_ferrata_flag|via_ferrata_scale|via_ferrata" v="set|yes|*" zoom-min="14">
+					    <line stroke="#fff71c" stroke-width="0.42" stroke-linecap="butt" scale="stroke" />
+					    <line stroke="#AA1718" stroke-width="0.4" stroke-dasharray="15,6" stroke-linecap="butt" scale="stroke" />
+					    
+					<!--
 					<line stroke="#fff71c" stroke-width="0.45" stroke-linecap="butt" scale="stroke" />
 					<line stroke="#505050" stroke-width="0.45" stroke-dasharray="8,8" stroke-linecap="butt" scale="stroke" />
-
+					-->
 					<lineSymbol src="file:symbols/via_ferrata.svg" position="above" symbol-percent="80" dy="-1" repeat="true" repeat-start="5" repeat-gap="200" />
 					<rule e="any" k="*" v="*" zoom-min="15">
 						<caption k="name" position="above" font-family="sans_serif" font-style="normal" font-size="12" fill="#393935" stroke="#FFFFFF" stroke-width="3.0" />
