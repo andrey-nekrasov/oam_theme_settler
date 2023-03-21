@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rendertheme xmlns="http://mapsforge.org/renderTheme" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" map-background="#F8F8F8" map-background-outside="#EEEEEE" version="5" xsi:schemaLocation="http://mapsforge.org/renderTheme https://raw.githubusercontent.com/mapsforge/mapsforge/master/resources/renderTheme.xsd">
+<rendertheme xsi:schemaLocation="http://mapsforge.org/renderTheme https://raw.githubusercontent.com/mapsforge/mapsforge/dev/resources/renderTheme.xsd" version="4"
+ base-stroke-width="0.85" map-background="#ebeade" xmlns="http://mapsforge.org/renderTheme" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
 <!--
     Mapsforge Rendertheme for Apps with Mapsforge support and Openandromaps
@@ -7,8 +8,8 @@
     Andrey Nekrasov
     Contact: andrey.nekrasov@gmail.com		
 
-    2023.mar.20
-    v1.6.6
+    2023.mar.21
+    v1.7.0
 
     ###
     Когда то давно это была тема "active RT5 (active RenderTheme Version 5)" https://github.com/FrankSchoeneck/active_RT5
@@ -21,19 +22,20 @@
 
 -->
 	<stylemenu id="menu" defaultvalue="OSM_Summer" defaultlang="ru">
+
 		<layer id="L_hikingtrails" enabled="true" visible="false">
 			<name lang="ru" value="Пешеходные маршруты" />
 			<name lang="de" value="Wanderwege" />
 			<name lang="en" value="Waymarked Trails" />
 			<cat id="hikingtrails" />
 		</layer>
-		<layer id="L_trail_markings" enabled="true" visible="false">
+		<layer id="L_trail_markings" enabled="false" visible="false">
 			<name lang="ru" value="Разметка на маршрутах" />
 			<name lang="de" value="Wegemarkierungen" />
 			<name lang="en" value="Trail markings" />
 			<cat id="trail_markings" />
 		</layer>
-		<layer id="L_hikingnodes" enabled="true" visible="false">
+		<layer id="L_hikingnodes" enabled="false" visible="false">
 			<name lang="ru" value="Указатель номера маршрута" />
 			<name lang="de" value="Wanderwege Knotenpunkte" />
 			<name lang="en" value="Hiking Nodes" />
@@ -244,9 +246,9 @@
 			<cat id="contourlines" />
 		</layer>
 		<layer id="OSM_Summer" visible="true">
-			<name lang="ru" value="V4+ 1.6.6" />
-			<name lang="de" value="V4+ 1.6.6" />
-			<name lang="en" value="V4+ 1.6.6" />
+			<name lang="ru" value="V4+ 1.7.0" />
+			<name lang="de" value="V4+ 1.7.0" />
+			<name lang="en" value="V4+ 1.7.0" />
 			<overlay id="L_hikingtrails" />
 			<overlay id="L_trail_markings" />
 			<overlay id="L_hikingnodes" />
@@ -1139,6 +1141,7 @@
 		<line stroke="#A69D9D" stroke-width="0.4" stroke-linecap="square" />
 		<line stroke="#E6DFDF" stroke-width="0.2" stroke-dasharray="5,1" stroke-linecap="butt" />
 	</rule>
+
 	<!-- highway areas -->
 	<rule e="way" k="tunnel" v="~|no" zoom-min="13">
 		<rule e="way" k="highway" v="pedestrian" closed="no">
@@ -1186,6 +1189,7 @@
 			</rule>
 		</rule>
 	</rule>
+	
 	<rule e="way" k="tunnel" v="yes">
 		<rule e="way" k="railway" v="subway" zoom-min="13">
 			<!-- imho подземные линии метро не нужны на карте - поэтому сделано прозрачно -->
@@ -1204,6 +1208,8 @@
 			<line stroke="#50BF8F93" stroke-width="0.7" stroke-dasharray="12,8" stroke-linecap="butt" />
 		</rule>
 	</rule>
+
+	<!-- железные дороги в разных видах -->
 	<rule e="way" k="railway" v="*">
 		<rule e="way" k="tunnel" v="~|no">
 			<rule e="way" k="bridge" v="yes|movable|true">
@@ -1540,12 +1546,19 @@
 					<line stroke="#EEEEEE" stroke-width="0.6" stroke-linecap="butt" />
 				</rule>
 			</rule>
-			<!-- тропинки и прочее пешеходное через мосты и мостики -->
+
+			<!-- тропинки и прочее пешеходное через мосты и мостики --> 
 			<rule e="way" k="bridge" v="yes|movable|true">
 				<rule e="way" k="highway" v="steps|footway|path" zoom-min="14">
 					<line stroke="#666666" stroke-width="1.0" stroke-linecap="butt" />
 					<line stroke="#EEEEEE" stroke-width="0.6" stroke-linecap="butt" />
 				</rule>
+				<!-- vie ferrata мостики -->
+				<rule e="way" k="highway" v="via_ferrata" zoom-min="15">
+					<line stroke="#111111" stroke-width="1.1" stroke-linecap="butt"/>
+					<line stroke="#ffffff" stroke-width="0.9" stroke-linecap="butt"/>
+				</rule>
+
 				<rule e="way" k="highway" v="construction" zoom-min="11">
 					<line stroke="#666666" stroke-width="2.1" stroke-linecap="butt" />
 				</rule>
@@ -1590,6 +1603,7 @@
 					<line stroke="#FFFFFF" stroke-width="1.15" stroke-linecap="butt" />
 				</rule>
 			</rule>
+
 			<!-- в тоннелях -->
 			<rule e="way" k="tunnel" v="yes">
 				<rule e="way" k="highway" v="motorway" zoom-min="6">
@@ -1659,6 +1673,7 @@
 					<line stroke="#707070" dy="-0.35" stroke-width="0.1" stroke-dasharray="3,3" stroke-linecap="butt" />
 				</rule>
 			</rule>
+
 			<!-- не тоннель и не мост. то есть по земле -->
 			<rule e="any" k="tunnel" v="~|no|false">
 				<rule e="any" k="bridge" v="~|no|false">
@@ -1754,13 +1769,9 @@
 							<line stroke="#ffffff" stroke-width="0.4" stroke-linecap="butt" scale="stroke" />
 							<line stroke="#505050" stroke-width="0.3" stroke-dasharray="8,6" stroke-linecap="butt" scale="stroke" />
 						</rule>
-						<rule e="way" k="sac_scale" v="T1|hiking">
+						<rule e="way" k="sac_scale" v="T1|hiking|T2|mountain_hiking">
 							<line stroke="#EEEEEE" stroke-width="0.4" stroke-linecap="butt" scale="stroke" />
 							<line stroke="#606060" stroke-width="0.4" stroke-dasharray="8,6" stroke-linecap="butt" scale="stroke" />
-						</rule>
-						<rule e="way" k="sac_scale" v="T2|mountain_hiking">
-							<line stroke="#7bcaff" stroke-width="0.4" stroke-linecap="butt" />
-							<line stroke="#53534e" stroke-width="0.4" stroke-dasharray="8,6" stroke-linecap="butt" scale="stroke" />
 						</rule>
 						<rule e="way" k="sac_scale" v="T3|demanding_mountain_hiking">
 							<line stroke="#FF4C4C" stroke-width="0.4" stroke-linecap="butt" />
@@ -1770,8 +1781,10 @@
 							<line stroke="#000000" stroke-width="0.4" stroke-dasharray="4,5" stroke-linecap="butt" scale="stroke" />
 						</rule>
 						<rule e="way" k="sac_scale" v="T5|demanding_alpine_hiking|T6|difficult_alpine_hiking">
-							<line stroke="#000000" stroke-width="0.4" stroke-dasharray="4,1,0.5,1,0.5,1" stroke-linecap="butt" scale="stroke" />
+						    <line stroke="#f0c002" stroke-width="0.40" stroke-linecap="butt" scale="stroke" />
+						    <line stroke="#606060" stroke-width="0.40" stroke-dasharray="8,8" stroke-linecap="butt" scale="stroke" />
 						</rule>
+
 						<rule e="way" k="foot" v="ft_no">
 							<line stroke="#FF4000" stroke-width="0.4" stroke-dasharray="3,5" stroke-linecap="butt" scale="stroke" />
 						</rule>
@@ -1839,11 +1852,12 @@
 						<pathText k="name" font-family="sans_serif" font-style="normal" font-size="13" fill="#393935" stroke="#FFFFFF" stroke-width="3" />
 					</rule>
 				</rule>
-				<!-- via ferrata -->
-				<rule e="way" k="via_ferrata_flag|via_ferrata_scale" v="set|yes|*" zoom-min="14">
-					<line stroke="#333333" stroke-width="0.58" stroke-linecap="butt" />
-					<line stroke="#ff4c4d" stroke-width="0.32" stroke-linecap="butt" />
-					<line stroke="#ffff00" stroke-width="0.5" stroke-dasharray="0.7,1.1" scale="all" stroke-linecap="butt" />
+
+				<!-- via ferrata | #e6ab2e - оранжевый | #fff71c - желтый -->
+				<rule e="way" k="via_ferrata_flag|via_ferrata_scale|via_ferrata" v="set|yes|*" zoom-min="14">
+					<line stroke="#fff71c" stroke-width="0.45" stroke-linecap="butt" scale="stroke" />
+					<line stroke="#505050" stroke-width="0.45" stroke-dasharray="8,8" stroke-linecap="butt" scale="stroke" />
+
 					<lineSymbol src="file:symbols/via_ferrata.svg" position="above" symbol-percent="80" dy="-1" repeat="true" repeat-start="5" repeat-gap="200" />
 					<rule e="any" k="*" v="*" zoom-min="15">
 						<caption k="name" position="above" font-family="sans_serif" font-style="normal" font-size="12" fill="#393935" stroke="#FFFFFF" stroke-width="3.0" />
@@ -3504,7 +3518,7 @@
 		<rule e="way" k="*" v="*" zoom-min="15" zoom-max="15">
 			<!-- воздушный трамвай, большая кабина -->
 			<rule e="way" k="aerialway" v="cable_car">
-				<line stroke="#4d4d4d" stroke-width="0.42" stroke-linecap="butt"/>
+			   	<line stroke="#4d4d4d" stroke-width="0.42" stroke-linecap="butt"/>
 				<line stroke="#4d4d4d" stroke-width="2.1" stroke-dasharray="1,26"/>
 				<line stroke="#EDEDED" stroke-width="1.2" stroke-dasharray="1,26"/>
 				<lineSymbol src="file:symbols/cable_car.svg" symbol-percent="80" repeat="true" repeat-gap="150" priority="10" symbol-orientation="auto" display="always" />
@@ -3589,10 +3603,10 @@
 			</rule>
 		</rule>
 
-		<!-- строящиеся линии фуникулеров - в OAM нет -->
+		<!-- строящиеся линии фуникулеров - в OAM нет
 		<rule e="way" k="aerialway" v="construction" zoom-min="12">
 			<line stroke="#a81919" stroke-width="0.4" stroke-dasharray="15,3" stroke-linecap="butt" scale="stroke" />
-		</rule>
+		</rule> -->
 
 		<!-- название линий фуникулеров -->
 		<rule e="way" k="aerialway" v="cable_car|gondola|mixed_lift" zoom-min="14">
@@ -3602,7 +3616,7 @@
 		    <pathText k="name" dy="-2.3" font-style="bold" font-size="10" fill="#575757" stroke="#E5FFFFFF" stroke-width="1.0" priority="50" repeat-gap="500" />
 		</rule>
 		<rule e="way" k="aerialway" v="magic_carpet|zip_line|goods" zoom-min="15">
-		    <pathText k="name" dy="-1.1" font-style="bold" font-size="10" fill="#575757" stroke="#E5FFFFFF" stroke-width="1.0" priority="50" repeat-gap="500" />
+		    <pathText k="name" dy="-1.9" font-style="bold" font-size="10" fill="#575757" stroke="#E5FFFFFF" stroke-width="1.0" priority="50" repeat-gap="500" />
 		</rule>
 
 	</rule>
