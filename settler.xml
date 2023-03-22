@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rendertheme xsi:schemaLocation="http://mapsforge.org/renderTheme https://raw.githubusercontent.com/mapsforge/mapsforge/dev/resources/renderTheme.xsd" version="4"
- base-stroke-width="0.85" map-background="#ebeade" xmlns="http://mapsforge.org/renderTheme" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+ base-stroke-width="1.0" map-background="#ebeade" xmlns="http://mapsforge.org/renderTheme" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
 <!--
     Mapsforge Rendertheme for Apps with Mapsforge support and Openandromaps
@@ -8,8 +8,8 @@
     Andrey Nekrasov
     Contact: andrey.nekrasov@gmail.com		
 
-    2023.mar.21
-    v1.7.2
+    2023.mar.22
+    v1.7.4
 
     ###
     Когда то давно это была тема "active RT5 (active RenderTheme Version 5)" https://github.com/FrankSchoeneck/active_RT5
@@ -23,7 +23,7 @@
 -->
 	<stylemenu id="menu" defaultvalue="OSM_Summer" defaultlang="ru">
 
-		<layer id="L_hikingtrails" enabled="true" visible="false">
+		<layer id="L_hikingtrails" enabled="false" visible="false">
 			<name lang="ru" value="Пешеходные маршруты" />
 			<name lang="de" value="Wanderwege" />
 			<name lang="en" value="Waymarked Trails" />
@@ -246,9 +246,9 @@
 			<cat id="contourlines" />
 		</layer>
 		<layer id="OSM_Summer" visible="true">
-			<name lang="ru" value="V4+ 1.7.2" />
-			<name lang="de" value="V4+ 1.7.2" />
-			<name lang="en" value="V4+ 1.7.2" />
+			<name lang="ru" value="V4+ 1.7.4" />
+			<name lang="de" value="V4+ 1.7.4" />
+			<name lang="en" value="V4+ 1.7.4" />
 			<overlay id="L_hikingtrails" />
 			<overlay id="L_trail_markings" />
 			<overlay id="L_hikingnodes" />
@@ -468,9 +468,13 @@
 	<rule e="way" k="amenity" v="hospital" zoom-min="12">
 		<area fill="#EBE3E1" stroke="#DBBDBA" stroke-width="0.1" />
 	</rule>
-	<rule e="way" k="sport" v="*" zoom-min="12">
+
+	<!-- если так делать, рисуется заполнение например просто по линии скалолазного трека
+	<rule e="any" k="sport" v="*" zoom-min="12">
 		<area fill="#F0F7D2" />
 	</rule>
+	-->
+
 	<!-- пляж и песок -->
 	<rule e="way" k="natural" v="beach|sand" zoom-min="10">
 		<area fill="#BFFAEBB9" />
@@ -1757,15 +1761,15 @@
 
 				<!-- трекинг/хайкинг -->
 				<rule e="way" k="highway" v="path|footway" zoom-min="14">
-					<rule e="way" k="trail_visibility" v="~|excellent|good|intermediate">
+				  <!--	<rule e="way" k="trail_visibility" v="~|excellent|good|intermediate"> -->
 						<!-- белый фон + серые черточки -->
 						<rule e="way" k="sac_scale" v="~">
-						 	<line stroke="#88ffffff" stroke-width="0.4" stroke-linecap="butt" scale="stroke" />
+						 	<line stroke="#ffffff" stroke-width="0.4" stroke-linecap="butt" scale="stroke" />
 							<line stroke="#505050" stroke-width="0.35" stroke-dasharray="8,6" stroke-linecap="butt" scale="stroke" />
 						</rule>
 						<!-- прозрачный фон + серые черточки -->
 						<rule e="way" k="sac_scale" v="T1|hiking|T2|mountain_hiking">
-							<line stroke="#55EEEEEE" stroke-width="0.4" stroke-linecap="butt" scale="stroke" /> 
+							<line stroke="#EEEEEE" stroke-width="0.4" stroke-linecap="butt" scale="stroke" /> 
 							<line stroke="#606060" stroke-width="0.35" stroke-dasharray="8,6" stroke-linecap="butt" scale="stroke" />
 						</rule>
 						<!-- темно-серые -->
@@ -1774,14 +1778,14 @@
     						</rule>
 						<!-- черно-красные -->
 						<rule e="way" k="sac_scale" v="T4|alpine_hiking">
-							<line stroke="#88FF4C4C" stroke-width="0.4" stroke-linecap="butt" />
+							<line stroke="#FF4C4C" stroke-width="0.4" stroke-linecap="butt" />
 							<line stroke="#53534e" stroke-width="0.4" stroke-dasharray="8,6" stroke-linecap="butt" scale="stroke" />
 						</rule>
 						<!-- черно-желтые -->
 						<rule e="way" k="sac_scale" v="T5|demanding_alpine_hiking|T6|difficult_alpine_hiking">
 						    <!-- виа феррата рисуется отдельно ниже -->
 						    <rule e="way" k="via_ferrata_flag|via_ferrata_scale|via_ferrata" v="~">
-							<line stroke="#88f0c002" stroke-width="0.40" stroke-linecap="butt" scale="stroke" />
+							<line stroke="#f0c002" stroke-width="0.40" stroke-linecap="butt" scale="stroke" />
 							<line stroke="#606060" stroke-width="0.40" stroke-dasharray="8,8" stroke-linecap="butt" scale="stroke" />
 						    </rule>
 						</rule>
@@ -1795,11 +1799,12 @@
 						<rule e="way" k="*" v="*" zoom-min="17">
 							<pathText k="name" dy="-1.5" font-family="sans_serif" font-style="normal" font-size="13" fill="#000000" stroke="#FFFFFF" stroke-width="2.8" repeat-start="150" repeat-gap="400" />
 						</rule>
-					</rule>
+					<!-- </rule> -->
+					<!-- плохая видимость трека - пока считаю такую детализацию лишней, потом посмотрим
 					<rule e="way" k="trail_visibility" v="bad|horrible|no" zoom-min="13">
-						<line stroke="#44747474" stroke-width="0.3" />
-						<line stroke="#53534e" stroke-width="0.3" stroke-dasharray="2,6" stroke-linecap="butt" scale="stroke" />
-					</rule>
+						<line stroke="#FF4C4C" stroke-width="0.35" stroke-dasharray="0.6,0.6" scale="all" />
+					</rule> -->
+
 				</rule>
 				<!-- лесные дороги, неофициальные грунтовки, "козьи тропы" - старый вариант -->
 				<rule e="way" k="highway" v="track|byway" zoom-min="13">
@@ -1856,13 +1861,9 @@
 
 				<!-- via ferrata | #e6ab2e - оранжевый | #fff71c - желтый | #AA1718 - красный как на swisstopo -->
 				<rule e="way" k="via_ferrata_flag|via_ferrata_scale|via_ferrata" v="set|yes|*" zoom-min="14">
-					    <line stroke="#fff71c" stroke-width="0.42" stroke-linecap="butt" scale="stroke" />
-					    <line stroke="#AA1718" stroke-width="0.4" stroke-dasharray="15,6" stroke-linecap="butt" scale="stroke" />
+					<line stroke="#fff71c" stroke-width="0.4" stroke-linecap="butt" scale="stroke" />
+					<line stroke="#AA1718" stroke-width="0.4" stroke-dasharray="15,6" stroke-linecap="butt" scale="stroke" />
 					    
-					<!--
-					<line stroke="#fff71c" stroke-width="0.45" stroke-linecap="butt" scale="stroke" />
-					<line stroke="#505050" stroke-width="0.45" stroke-dasharray="8,8" stroke-linecap="butt" scale="stroke" />
-					-->
 					<lineSymbol src="file:symbols/via_ferrata.svg" position="above" symbol-percent="80" dy="-1" repeat="true" repeat-start="5" repeat-gap="200" />
 					<rule e="any" k="*" v="*" zoom-min="15">
 						<caption k="name" position="above" font-family="sans_serif" font-style="normal" font-size="12" fill="#393935" stroke="#FFFFFF" stroke-width="3.0" />
@@ -2746,10 +2747,21 @@
 				<caption k="name" symbol-id="s_swimming_area" font-style="bold" font-size="12" fill="#39AC39" stroke="#E5FFFFFF" stroke-width="2" />
 			</rule>
 		</rule>
+
+		<!-- альпинизм -->
 		<rule e="any" k="sport|climbing" v="climbing|cl_yes" zoom-min="15">
-			<symbol id="s_climbing" src="file:symbols/s_climbing.svg" symbol-height="16" />
+		    	<line stroke="#AA1718" stroke-width="0.4" stroke-dasharray="0.8,0.8" stroke-linecap="round" scale="all" />
+			<symbol id="s_climbing" src="file:symbols/s_climbing.svg" symbol-height="18" priority="50" />
 			<rule e="any" k="*" v="*" zoom-min="17">
 				<caption k="name" symbol-id="s_climbing" font-style="bold" font-size="12" fill="#39AC39" stroke="#E5FFFFFF" stroke-width="2" />
+			</rule>
+		</rule>
+
+		<!-- веревочный/панда парк -->
+		<rule e="any" k="sport" v="climbing_adventure" zoom-min="16">
+			<symbol id="s_climbing_adventure" src="file:symbols/s_climbing_adventure.svg" symbol-height="16" />
+			<rule e="any" k="*" v="*" zoom-min="17">
+				<caption k="name" symbol-id="s_climbing_adventure" font-style="bold" font-size="10" fill="#39AC39" stroke="#E5FFFFFF" stroke-width="2" />
 			</rule>
 		</rule>
 		<rule e="any" k="sport" v="soccer" zoom-min="16">
@@ -2795,13 +2807,7 @@
 				<caption k="name" symbol-id="s_roller_skating" font-style="bold" font-size="10" fill="#39AC39" stroke="#E5FFFFFF" stroke-width="2" />
 			</rule>
 		</rule>
-		<!-- веревочный/панда парк -->
-		<rule e="any" k="sport" v="climbing_adventure" zoom-min="16">
-			<symbol id="s_climbing_adventure" src="file:symbols/s_climbing_adventure.svg" symbol-height="16" />
-			<rule e="any" k="*" v="*" zoom-min="17">
-				<caption k="name" symbol-id="s_climbing_adventure" font-style="bold" font-size="10" fill="#39AC39" stroke="#E5FFFFFF" stroke-width="2" />
-			</rule>
-		</rule>
+
 		<!-- место для взлета и посадки парапланов и т.п. -->
 		<rule e="any" k="sport" v="free_flying" zoom-min="16">
 			<symbol id="s_free_flying" src="file:symbols/s_free_flying.svg" symbol-height="16" />
