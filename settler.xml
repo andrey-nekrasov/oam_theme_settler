@@ -9,7 +9,7 @@
     Contact: andrey.nekrasov@gmail.com		
 
     2023.mar.23
-    v1.7.5
+    v1.7.6
 
     ###
     Когда то давно это была тема "active RT5 (active RenderTheme Version 5)" https://github.com/FrankSchoeneck/active_RT5
@@ -246,9 +246,9 @@
 			<cat id="contourlines" />
 		</layer>
 		<layer id="OSM_Summer" visible="true">
-			<name lang="ru" value="V4+ 1.7.5" />
-			<name lang="de" value="V4+ 1.7.5" />
-			<name lang="en" value="V4+ 1.7.5" />
+			<name lang="ru" value="V4+ 1.7.6" />
+			<name lang="de" value="V4+ 1.7.6" />
+			<name lang="en" value="V4+ 1.7.6" />
 			<overlay id="L_hikingtrails" />
 			<overlay id="L_trail_markings" />
 			<overlay id="L_hikingnodes" />
@@ -570,6 +570,7 @@
 			<caption k="name" font-style="normal" font-family="sans_serif" font-size="12" fill="#333333" stroke="#ffffff" stroke-width="1.5" text-wrap-width="120" />
 		</rule>
 	</rule>
+
 	<!-- -->
 	<rule e="way" k="leisure" v="*" zoom-min="10">
 		<rule e="way" k="leisure" v="sports_centre">
@@ -608,7 +609,8 @@
 			<caption k="name" font-style="normal" font-family="sans_serif" font-size="10" fill="#333333" stroke="#ffffff" stroke-width="1.5" text-wrap-width="120" />
 		</rule>
 	</rule>
-	<rule e="way" k="natural" v="*">
+
+	<rule e="any" k="natural" v="*">
 		<rule e="way" k="natural" v="*" zoom-min="5">
 			<!-- пастбища, горные луга -->
 			<rule e="way" k="natural" v="grassland" closed="yes">
@@ -711,6 +713,17 @@
 			<rule e="way" k="natural" v="tree_row">
 				<line stroke="#CBE0B3" stroke-width="0.7" stroke-linecap="round" />
 			</rule>
+		</rule>
+
+		<!-- карстовая воронка -->
+		<rule e="node" k="natural" v="sinkhole" cat="landscapefeat" zoom-min="14" >
+			<rule e="any" k="*" v="*" zoom-max="15" >
+			    <symbol id="sinkhole" src="file:symbols/s_sinkhole.svg" display="always" symbol-percent="60" />
+			</rule>
+			<rule e="any" k="*" v="*" zoom-min="16" >
+			    <symbol id="sinkhole" src="file:symbols/s_sinkhole.svg" display="always" symbol-percent="90" />
+			</rule>
+			<caption k="name" symbol-id="sinkhole" position="below" font-style="bold_italic" font-family="serif" font-size="9" fill="#333333" stroke="#E5FFFFFF" stroke-width="2.00" text-wrap-width="120" />
 		</rule>
 
 		<rule e="way" k="natural" v="valley|canyon|peninsula" zoom-min="14" zoom-max="17">
@@ -2353,10 +2366,17 @@
 	<rule e="node" k="man_made" v="cross" zoom-min="12">
 		<symbol src="file:symbols/cross.svg" symbol-percent="70" />
 	</rule>
+
 	<!-- пирамида из камней -->
-	<rule e="node" k="man_made" v="cairn" zoom-min="13" cat="landscapefeat">
-		<symbol src="file:symbols/cairn.svg" symbol-percent="100" />
+	<rule e="node" k="man_made" v="cairn" zoom-min="14" cat="landscapefeat" >
+	    <rule e="node" k="*" v="*" zoom-min="13" zoom-max="15" > 
+		<symbol src="file:symbols/s_cairn.svg" symbol-percent="100" />
+	    </rule>
+	    <rule e="node" k="*" v="*" zoom-min="16" > 
+		<symbol src="file:symbols/s_cairn.svg" symbol-percent="120" />
+	    </rule>
 	</rule>
+
 	<!-- колодец -->
 	<rule cat="water" e="any" k="man_made" v="water_well" zoom-min="15">
 		<rule e="any" k="drinking_water" v="yes">
