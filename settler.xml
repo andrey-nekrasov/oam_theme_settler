@@ -8,8 +8,8 @@
     Andrey Nekrasov
     Contact: andrey.nekrasov@gmail.com		
 
-    2023.mar.22
-    v1.7.4
+    2023.mar.23
+    v1.7.5
 
     ###
     Когда то давно это была тема "active RT5 (active RenderTheme Version 5)" https://github.com/FrankSchoeneck/active_RT5
@@ -246,9 +246,9 @@
 			<cat id="contourlines" />
 		</layer>
 		<layer id="OSM_Summer" visible="true">
-			<name lang="ru" value="V4+ 1.7.4" />
-			<name lang="de" value="V4+ 1.7.4" />
-			<name lang="en" value="V4+ 1.7.4" />
+			<name lang="ru" value="V4+ 1.7.5" />
+			<name lang="de" value="V4+ 1.7.5" />
+			<name lang="en" value="V4+ 1.7.5" />
 			<overlay id="L_hikingtrails" />
 			<overlay id="L_trail_markings" />
 			<overlay id="L_hikingnodes" />
@@ -1774,19 +1774,19 @@
 						</rule>
 						<!-- темно-серые -->
 						<rule e="way" k="sac_scale" v="T3|demanding_mountain_hiking">
-							<line stroke="#101010" stroke-width="0.35" stroke-dasharray="8,6" stroke-linecap="butt" scale="stroke" />
+							<line stroke="#202020" stroke-width="0.35" stroke-dasharray="8,6" stroke-linecap="butt" scale="stroke" />
     						</rule>
-						<!-- черно-красные -->
-						<rule e="way" k="sac_scale" v="T4|alpine_hiking">
-							<line stroke="#FF4C4C" stroke-width="0.4" stroke-linecap="butt" />
-							<line stroke="#53534e" stroke-width="0.4" stroke-dasharray="8,6" stroke-linecap="butt" scale="stroke" />
-						</rule>
 						<!-- черно-желтые -->
+						<rule e="way" k="sac_scale" v="T4|alpine_hiking">
+							<line stroke="#f0c002" stroke-width="0.40" stroke-linecap="butt" scale="stroke" />
+							<line stroke="#606060" stroke-width="0.40" stroke-dasharray="8,8" stroke-linecap="butt" scale="stroke" />
+						</rule>
+						<!-- черно-красные -->
 						<rule e="way" k="sac_scale" v="T5|demanding_alpine_hiking|T6|difficult_alpine_hiking">
 						    <!-- виа феррата рисуется отдельно ниже -->
 						    <rule e="way" k="via_ferrata_flag|via_ferrata_scale|via_ferrata" v="~">
-							<line stroke="#f0c002" stroke-width="0.40" stroke-linecap="butt" scale="stroke" />
-							<line stroke="#606060" stroke-width="0.40" stroke-dasharray="8,8" stroke-linecap="butt" scale="stroke" />
+							<line stroke="#FF4C4C" stroke-width="0.4" stroke-linecap="butt" />
+							<line stroke="#53534e" stroke-width="0.4" stroke-dasharray="8,6" stroke-linecap="butt" scale="stroke" />
 						    </rule>
 						</rule>
 
