@@ -849,11 +849,11 @@
 			<line stroke="#80A2CBED" stroke-width="0.5" stroke-dasharray="20,2" stroke-linecap="butt" />
 		</rule>
 		<rule e="way" k="waterway" v="canal|river">
-		    <line stroke="#80A2CBED" stroke-width="0.9" stroke-dasharray="20,2" stroke-linecap="butt" /> -->
+		    <line stroke="#80A2CBED" stroke-width="0.9" stroke-dasharray="20,2" stroke-linecap="butt" />
 		    <!-- направление (стрелочки) - как бы это сделать более прозрачным? инонку делать отдельную?
 			<rule cat="water_flow_direction" e="way" k="*" v="*" zoom-min="13">
 			    <lineSymbol src="file:symbols/bluearrow.svg" dy="0" symbol-orientation="left" symbol-percent="100" position="center" repeat-gap="300" repeat="true" repeat-start="30" priority="389"/>
-			</rule>	
+			</rule>
 		    -->
 		</rule>
 	</rule>
