@@ -8,8 +8,8 @@
     Andrey Nekrasov
     Contact: andrey.nekrasov@gmail.com		
 
-    2023.mar.23
-    v1.7.6
+    2023.mar.24
+    v1.7.8
 
     ###
     Когда то давно это была тема "active RT5 (active RenderTheme Version 5)" https://github.com/FrankSchoeneck/active_RT5
@@ -246,9 +246,9 @@
 			<cat id="contourlines" />
 		</layer>
 		<layer id="OSM_Summer" visible="true">
-			<name lang="ru" value="V4+ 1.7.6" />
-			<name lang="de" value="V4+ 1.7.6" />
-			<name lang="en" value="V4+ 1.7.6" />
+			<name lang="ru" value="V4+ 1.7.8" />
+			<name lang="de" value="V4+ 1.7.8" />
+			<name lang="en" value="V4+ 1.7.8" />
 			<overlay id="L_hikingtrails" />
 			<overlay id="L_trail_markings" />
 			<overlay id="L_hikingnodes" />
@@ -305,6 +305,7 @@
 			<line stroke="#699FC4" stroke-width="0.3" />
 		</rule>
 	</rule>
+
 	<!-- парк -->
 	<!-- <rule e="way" k="boundary" v="~"> -->
 	<rule e="way" k="leisure" v="park" closed="yes" zoom-min="11">
@@ -312,6 +313,7 @@
 		<area fill="#4090d67e" />
 	</rule>
 	<!-- </rule> -->
+
 	<!-- лес - фон рисуется всегда -->
 	<rule e="way" k="natural|landuse" v="forest|wood">
 		<rule e="way" k="natural|landuse" v="forest|wood" zoom-min="9" zoom-max="13">
@@ -321,7 +323,8 @@
 			<area fill="#99a3cf69" />
 		</rule>
 	</rule>
-	<!-- лес - детали, можно отключаться -->
+
+	<!-- лес - детали, можно отключать -->
 	<rule cat="forest" e="way" k="natural|landuse" v="forest|wood" zoom-min="9">
 		<!-- обводка -->
 		<rule e="way" k="*" v="*" zoom-min="14" zoom-max="16">
@@ -837,22 +840,43 @@
 		</rule>
 	</rule>
 
-	<!-- Вода под землей (реки, ручьи и т.п.) - не уверен, что это правильно работает -->
-	<rule e="way" k="tunnel" v="yes" zoom-min="13">
+	<!-- Вода в тоннеле/под землей (реки, ручьи, каналы) -->
+	<rule e="way" k="tunnel|location" v="yes|underground" zoom-min="13">
 		<rule e="way" k="waterway" v="ditch|stream">
-			<line stroke="#40FFFFFF" stroke-width="0.4" stroke-dasharray="20,2" stroke-linecap="butt" />
+			<line stroke="#80A2CBED" stroke-width="0.4" stroke-dasharray="20,2" stroke-linecap="butt" />
 		</rule>
 		<rule e="way" k="waterway" v="drain">
-			<line stroke="#40FFFFFF" stroke-width="0.5" stroke-dasharray="20,2" stroke-linecap="butt" />
+			<line stroke="#80A2CBED" stroke-width="0.5" stroke-dasharray="20,2" stroke-linecap="butt" />
 		</rule>
 		<rule e="way" k="waterway" v="canal|river">
-			<line stroke="#40FFFFFF" stroke-width="0.9" stroke-dasharray="20,2" stroke-linecap="butt" />
+		    <line stroke="#80A2CBED" stroke-width="0.9" stroke-dasharray="20,2" stroke-linecap="butt" /> -->
+		    <!-- направление (стрелочки) - как бы это сделать более прозрачным? инонку делать отдельную?
+			<rule cat="water_flow_direction" e="way" k="*" v="*" zoom-min="13">
+			    <lineSymbol src="file:symbols/bluearrow.svg" dy="0" symbol-orientation="left" symbol-percent="100" position="center" repeat-gap="300" repeat="true" repeat-start="30" priority="389"/>
+			</rule>	
+		    -->
 		</rule>
+	</rule>
+
+	<!-- не в тоннеле -->
+	<rule e="way" k="tunnel" v="~|no">
+	    <!-- надземный -->
+	    <rule e="way" k="location" v="~|overground">
+		<!-- трубопровод -->
+		<rule e="way" k="man_made" v="pipeline">
+		    <line stroke="#CCCCCC" stroke-width="0.6" stroke-linecap="butt" />
+		    <line stroke="#9CA6BA" stroke-width="0.6" scale="all" stroke-dasharray="1.8,0.6" stroke-linecap="butt" />
+		    <line stroke="#FFFFFF" stroke-width="0.1" stroke-linecap="butt" />
+		    <pathText k="name" font-style="normal" font-size="9" fill="#9CA6BA" stroke="#FFFFFF" stroke-width="1" />
+		</rule>
+	    </rule>
 	</rule>
 
 	<!-- Вода на поверхности -->
 	<rule e="way" k="tunnel" v="~|no">
+	    <rule e="way" k="location" v="~|overground">
 		<rule e="way" k="waterway" v="*" zoom-min="8">
+			<!-- -->
 			<rule e="way" k="waterway" v="drain|ditch">
 				<rule e="way" k="intermittent|seasonal" v="~">
 					<line stroke="#59A0D8" stroke-width="0.4" />
@@ -861,7 +885,6 @@
 					<line stroke="#59A0D8" stroke-width="0.4" stroke-dasharray="3,6" />
 				</rule>
 			</rule>
-
 			<!-- ручей -->
 			<rule e="way" k="waterway" v="stream" zoom-min="11">
 				<rule e="way" k="*" v="*" zoom-max="13">
@@ -887,10 +910,7 @@
 				    <rule e="way" k="*" v="*" zoom-min="16" >
 					<lineSymbol src="file:symbols/bluearrow.svg" dy="-0.1" symbol-percent="80" repeat="true" repeat-gap="200" repeat-start="30" />
 				    </rule>
-
-
 				</rule>
-
 			</rule>
 
 			<!-- реки -->
@@ -983,6 +1003,7 @@
 			<area fill="#65adcfcc" />
 			<area src="file:patterns/marsh.svg" symbol-width="40" />
 		</rule>
+	    </rule>
 	</rule>
 
 	<!-- название озер и т.п. -->
@@ -2233,6 +2254,7 @@
 			<caption k="name" dy="15" priority="99" font-style="bold_italic" font-size="11" fill="#006600" stroke="#FFFFFF" stroke-width="2" text-wrap-width="120" />
 		</rule>
 	</rule>
+
 	<!-- набережная / укрепление берега и т.п. -->
 	<rule cat="landscapefeat" e="any" k="*" v="*">
 		<rule e="way" k="man_made" v="~">
@@ -2296,6 +2318,7 @@
 			<line stroke="#948e88" stroke-width="0.1" stroke-linecap="butt" />
 		</rule>
 	</rule>
+
 	<!-- вышка связи -->
 	<rule cat="mast_communication" e="node" k="tower" v="communication" zoom-min="15">
 		<rule e="node" k="*" v="*" zoom-min="15" zoom-max="16">
@@ -3293,7 +3316,7 @@
 		</rule>
 		<!-- Линия маршрута, сдвиг относительно самого трека -->
 		<rule e="way" k="hknetwork|network" v="iwn|nwn|rwn|lwn|own" zoom-min="12">
-			<line dy="0.9" stroke="#ee7700" stroke-width="0.5" stroke-linecap="butt" scale="stroke" />
+			<line dy="1.1" stroke="#ee7700" stroke-width="0.8" stroke-linecap="butt" scale="stroke" stroke-linecap="round" />
 		</rule>
 		<!-- Название маршрута -->
 		<rule e="any" k="*" v="*" zoom-min="13">
@@ -3652,20 +3675,7 @@
 
 	</rule>
 
-	<!-- не в тоннеле -->
-	<rule e="way" k="tunnel" v="~|no">
-		<!-- надземный -->
-		<rule e="way" k="location" v="~|overground">
-			<!-- трубопровод -->
-			<rule e="way" k="man_made" v="pipeline">
-				<line stroke="#CCCCCC" stroke-width="0.6" stroke-linecap="butt" />
-				<line stroke="#9CA6BA" stroke-width="0.6" scale="all" stroke-dasharray="1.8,0.6" stroke-linecap="butt" />
-				<line stroke="#FFFFFF" stroke-width="0.1" stroke-linecap="butt" />
-				<pathText k="name" font-style="normal" font-size="9" fill="#9CA6BA" stroke="#FFFFFF" stroke-width="1" />
-			</rule>
-		</rule>
-	</rule>
-	<!-- а вот это я не смотрел ни разу -->
+	<!-- -------------------------------------------------------------------------- -->
 	<rule e="any" k="osmc" v="osmc_yes" zoom-min="14" cat="trail_markings">
 		<rule e="any" k="osmc_background" v="wmbg_black">
 			<symbol src="file:/osmc/bcg_black.svg" display="always" priority="2" symbol-percent="55" />
