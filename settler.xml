@@ -6,8 +6,8 @@
     Andrey Nekrasov
     Contact: andrey.nekrasov@gmail.com		
 
-    2023.apr.06
-    v1.9.11
+    2023.apr.07
+    v1.9.12
 
     ###
     Когда то давно это была тема "active RT5 (active RenderTheme Version 5)" https://github.com/FrankSchoeneck/active_RT5
@@ -238,9 +238,9 @@
 			<cat id="contourlines" />
 		</layer>
 		<layer id="OSM_Summer" visible="true">
-			<name lang="ru" value="V4+ 1.9.11" />
-			<name lang="de" value="V4+ 1.9.11" />
-			<name lang="en" value="V4+ 1.9.11" />
+			<name lang="ru" value="V4+ 1.9.12" />
+			<name lang="de" value="V4+ 1.9.12" />
+			<name lang="en" value="V4+ 1.9.12" />
 			<overlay id="L_hikingtrails" />
 			<overlay id="L_trail_markings" />
 			<overlay id="L_hikingnodes" />
@@ -2369,50 +2369,86 @@
 		<symbol src="file:symbols/lift_gate.svg" symbol-height="16" />
 	</rule>
 
-
 	<rule e="node" k="natural" v="*">
-
-		<!-- вершина горы -->
-		<rule e="node" k="natural" v="peak">
+		<!-- вершина горы / вулкана -->
+		<rule e="node" k="natural" v="peak|volcano">
 			<!-- 1 -->
 			<rule e="any" k="peak_dist" v="pd_1" zoom-min="9">
 				<rule e="node" k="*" v="*" zoom-min="9" zoom-max="14">
+				    <!-- иконка вершины -->
+				    <rule e="node" k="natural" v="peak">
 					<symbol id="id_peak" src="file:symbols/s_peak.svg" symbol-percent="70" display="always" />
-					<caption display="always" symbol-id="id_peak" position="above" dy="3" k="name" font-family="sans_serif" font-style="bold_italic" font-size="12" fill="#303030" stroke="#ffffff" stroke-width="3" priority="415" text-transform="capitalize" text-wrap-width="120" />
-					<caption display="always" symbol-id="id_peak" k="ele" dy="-3" position="below" font-family="sans_serif" font-size="11" fill="#303030" stroke="#ffffff" stroke-width="3" priority="414" />
+				    </rule>
+				    <rule e="node" k="natural" v="volcano">
+					<symbol id="id_peak" src="file:symbols/volcano.svg" symbol-percent="70" display="always" />
+				    </rule>
+				    <!-- название и высота -->
+				    <caption display="always" symbol-id="id_peak" position="above" dy="3" k="name" font-family="sans_serif" font-style="bold_italic" font-size="12" fill="#303030" stroke="#ffffff" stroke-width="3" priority="415" text-transform="capitalize" text-wrap-width="120" />
+				    <caption display="always" symbol-id="id_peak" k="ele" dy="-3" position="below" font-family="sans_serif" font-size="11" fill="#303030" stroke="#ffffff" stroke-width="3" priority="414" />
 				</rule>
 				<rule e="node" k="*" v="*" zoom-min="15">
+				    <!-- иконка вершины -->
+				    <rule e="node" k="natural" v="peak">
 					<symbol id="id_peak" src="file:symbols/s_peak.svg" symbol-percent="85" display="always" />
-					<caption display="always" symbol-id="id_peak" position="above" dy="3" k="name" font-family="sans_serif" font-style="bold_italic" font-size="13" fill="#303030" stroke="#ffffff" stroke-width="3" priority="415" text-transform="capitalize" text-wrap-width="120" />
-					<caption display="always" symbol-id="id_peak" k="ele" dy="-3" position="below" font-family="sans_serif" font-size="11" fill="#303030" stroke="#ffffff" stroke-width="3" priority="414" />
+				    </rule>
+				    <rule e="node" k="natural" v="volcano">
+					<symbol id="id_peak" src="file:symbols/volcano.svg" symbol-percent="85" display="always" />
+				    </rule>
+				    <!-- название и высота -->
+				    <caption display="always" symbol-id="id_peak" position="above" dy="3" k="name" font-family="sans_serif" font-style="bold_italic" font-size="13" fill="#303030" stroke="#ffffff" stroke-width="3" priority="415" text-transform="capitalize" text-wrap-width="120" />
+				    <caption display="always" symbol-id="id_peak" k="ele" dy="-3" position="below" font-family="sans_serif" font-size="11" fill="#303030" stroke="#ffffff" stroke-width="3" priority="414" />
 				</rule>
 			</rule>
 			<!-- 2 -->
 			<rule e="any" k="peak_dist" v="pd_2" zoom-min="10">
 				<rule e="node" k="*" v="*" zoom-min="10" zoom-max="14">
+				    <!-- иконка вершины -->
+				    <rule e="node" k="natural" v="peak">
 					<symbol id="id_peak" src="file:symbols/s_peak.svg" symbol-percent="70" display="always" />
-					<caption display="always" symbol-id="id_peak" position="above" dy="3" k="name" font-family="sans_serif" font-style="bold_italic" font-size="12" fill="#303030" stroke="#ffffff" stroke-width="3" priority="415" text-transform="capitalize" text-wrap-width="120" />
-					<caption display="always" symbol-id="id_peak" k="ele" dy="-3" position="below" font-family="sans_serif" font-size="11" fill="#303030" stroke="#ffffff" stroke-width="3" priority="414" />
+				    </rule>
+				    <rule e="node" k="natural" v="volcano">
+					<symbol id="id_peak" src="file:symbols/volcano.svg" symbol-percent="70" display="always" />
+				    </rule>
+				    <!-- название и высота -->
+				    <caption display="always" symbol-id="id_peak" position="above" dy="3" k="name" font-family="sans_serif" font-style="bold_italic" font-size="12" fill="#303030" stroke="#ffffff" stroke-width="3" priority="415" text-transform="capitalize" text-wrap-width="120" />
+				    <caption display="always" symbol-id="id_peak" k="ele" dy="-3" position="below" font-family="sans_serif" font-size="11" fill="#303030" stroke="#ffffff" stroke-width="3" priority="414" />
 				</rule>
 				<rule e="node" k="*" v="*" zoom-min="15">
+				    <!-- иконка вершины -->
+				    <rule e="node" k="natural" v="peak">
 					<symbol id="id_peak" src="file:symbols/s_peak.svg" symbol-percent="85" display="always" />
-					<caption display="always" symbol-id="id_peak" position="above" dy="3" k="name" font-family="sans_serif" font-style="bold_italic" font-size="13" fill="#303030" stroke="#ffffff" stroke-width="3" priority="415" text-transform="capitalize" text-wrap-width="120" />
-					<caption display="always" symbol-id="id_peak" k="ele" dy="-3" position="below" font-family="sans_serif" font-size="11" fill="#303030" stroke="#ffffff" stroke-width="3" priority="414" />
+				    </rule>
+				    <rule e="node" k="natural" v="volcano">
+					<symbol id="id_peak" src="file:symbols/volcano.svg" symbol-percent="85" display="always" />
+				    </rule>
+				    <!-- название и высота -->
+				    <caption display="always" symbol-id="id_peak" position="above" dy="3" k="name" font-family="sans_serif" font-style="bold_italic" font-size="13" fill="#303030" stroke="#ffffff" stroke-width="3" priority="415" text-transform="capitalize" text-wrap-width="120" />
+				    <caption display="always" symbol-id="id_peak" k="ele" dy="-3" position="below" font-family="sans_serif" font-size="11" fill="#303030" stroke="#ffffff" stroke-width="3" priority="414" />
 				</rule>
 			</rule>
 			<!-- 3 например "Каменный столб" в Красной Поляне -->
 			<rule e="any" k="peak_dist" v="pd_3|~" zoom-min="11">
 				<!-- иконка вершины -->
 				<rule e="any" k="*" v="*" zoom-min="11" zoom-max="14">
+				    <rule e="node" k="natural" v="peak">
 					<symbol id="id_peak" src="file:symbols/s_peak.svg" symbol-percent="65" display="always" />
+				    </rule>
+				    <rule e="node" k="natural" v="volcano">
+					<symbol id="id_peak" src="file:symbols/volcano.svg" symbol-percent="65" display="always" />
+				    </rule>
 				</rule>
 				<rule e="any" k="*" v="*" zoom-min="15">
+				    <rule e="node" k="natural" v="peak">
 					<symbol id="id_peak" src="file:symbols/s_peak.svg" symbol-percent="80" display="always" />
+				    </rule>
+				    <rule e="node" k="natural" v="volcano">
+					<symbol id="id_peak" src="file:symbols/volcano.svg" symbol-percent="80" display="always" />
+				    </rule>
 				</rule>
 				<!-- название и высота -->
 				<rule e="node" k="*" v="*" zoom-min="12" zoom-max="14">
-					<caption symbol-id="id_peak" position="above" dy="3" k="name" font-family="sans_serif" font-style="bold_italic" font-size="12" fill="#303030" stroke="#ffffff" stroke-width="3" priority="415" text-transform="capitalize" text-wrap-width="120" />
-					<caption symbol-id="id_peak" k="ele" dy="-3" position="below" font-family="sans_serif" font-size="11" fill="#303030" stroke="#ffffff" stroke-width="3" priority="414" />
+					<caption display="always" symbol-id="id_peak" position="above" dy="3" k="name" font-family="sans_serif" font-style="bold_italic" font-size="12" fill="#303030" stroke="#ffffff" stroke-width="3" priority="415" text-transform="capitalize" text-wrap-width="120" />
+					<caption display="always" symbol-id="id_peak" k="ele" dy="-3" position="below" font-family="sans_serif" font-size="11" fill="#303030" stroke="#ffffff" stroke-width="3" priority="414" />
 				</rule>
 				<rule e="node" k="*" v="*" zoom-min="15">
 					<caption display="always" symbol-id="id_peak" position="above" dy="3" k="name" font-family="sans_serif" font-style="bold_italic" font-size="13" fill="#303030" stroke="#ffffff" stroke-width="3" priority="415" text-transform="capitalize" text-wrap-width="120" />
@@ -2423,87 +2459,31 @@
 			<rule e="any" k="peak_dist" v="pd_4|pd_5" zoom-min="12">
 				<!-- иконка вершины -->
 				<rule e="any" k="*" v="*" zoom-min="12" zoom-max="14">
+				    <rule e="node" k="natural" v="peak">
 					<symbol id="id_peak" src="file:symbols/s_peak.svg" symbol-percent="65" display="always" />
+				    </rule>
+				    <rule e="node" k="natural" v="volcano">
+					<symbol id="id_peak" src="file:symbols/volcano.svg" symbol-percent="65" display="always" />
+				    </rule>
 				</rule>
 				<rule e="any" k="*" v="*" zoom-min="15">
+				    <rule e="node" k="natural" v="peak">
 					<symbol id="id_peak" src="file:symbols/s_peak.svg" symbol-percent="80" display="always" />
+				    </rule>
+				    <rule e="node" k="natural" v="volcano">
+					<symbol id="id_peak" src="file:symbols/volcano.svg" symbol-percent="80" display="always" />
+				    </rule>
 				</rule>
 				<!-- название и высота -->
 				<rule e="any" k="*" v="*" zoom-min="13" zoom-max="14">
-					<caption symbol-id="id_peak" position="above" dy="3" k="name" font-family="sans_serif" font-style="bold_italic" font-size="12" fill="#303030" stroke="#ffffff" stroke-width="3" priority="415" text-transform="capitalize" text-wrap-width="120" />
+					<!-- На Кавказе перевалы начинают показываться всегда при display="always" - проверить это на LoMaps v4, когда они появятся
+					Может это связано с тегом rtsa_scale=* который применяется только в России, потому что в Альпах такого глюка вроде нет -->
+					<caption display="ifspace" symbol-id="id_peak" position="above" dy="3" k="name" font-family="sans_serif" font-style="bold_italic" font-size="12" fill="#303030" stroke="#ffffff" stroke-width="3" priority="415" text-transform="capitalize" text-wrap-width="120" />
 					<caption display="always" symbol-id="id_peak" k="ele" dy="-3" position="below" font-family="sans_serif" font-size="11" fill="#303030" stroke="#ffffff" stroke-width="3" priority="414" />
 				</rule>
 				<rule e="any" k="*" v="*" zoom-min="15">
 					<caption display="always" symbol-id="id_peak" position="above" dy="3" k="name" font-family="sans_serif" font-style="bold_italic" font-size="13" fill="#303030" stroke="#ffffff" stroke-width="3" priority="415" text-transform="capitalize" text-wrap-width="120" />
 					<caption display="always" symbol-id="id_peak" k="ele" dy="-3" position="below" font-family="sans_serif" font-size="11" fill="#303030" stroke="#ffffff" stroke-width="3" priority="414" />
-				</rule>
-			</rule>
-		</rule>
-
-		<!-- вулканы - например Эльбрус -->
-		<rule e="node" k="natural" v="volcano">
-			<!-- 1 -->
-			<rule e="any" k="peak_dist" v="pd_1" zoom-min="9">
-				<rule e="node" k="*" v="*" zoom-min="9" zoom-max="14">
-					<symbol id="id_volcano" src="file:symbols/volcano.svg" symbol-percent="70" display="always" />
-					<caption display="always" symbol-id="id_volcano" position="above" dy="3" k="name" font-family="sans_serif" font-style="bold_italic" font-size="12" fill="#303030" stroke="#ffffff" stroke-width="3" priority="415" text-transform="capitalize" text-wrap-width="120" />
-					<caption display="always" symbol-id="id_volcano" k="ele" dy="-3" position="below" font-family="sans_serif" font-size="11" fill="#303030" stroke="#ffffff" stroke-width="3" priority="414" />
-				</rule>
-				<rule e="node" k="*" v="*" zoom-min="15">
-					<symbol id="id_volcano" src="file:symbols/volcano.svg" symbol-percent="85" display="always" />
-					<caption display="always" symbol-id="id_volcano" position="above" dy="3" k="name" font-family="sans_serif" font-style="bold_italic" font-size="13" fill="#303030" stroke="#ffffff" stroke-width="3" priority="415" text-transform="capitalize" text-wrap-width="120" />
-					<caption display="always" symbol-id="id_volcano" k="ele" dy="-3" position="below" font-family="sans_serif" font-size="11" fill="#303030" stroke="#ffffff" stroke-width="3" priority="414" />
-				</rule>
-			</rule>
-			<!-- 2 -->
-			<rule e="any" k="peak_dist" v="pd_2" zoom-min="10">
-				<rule e="node" k="*" v="*" zoom-min="10" zoom-max="14">
-					<symbol id="id_volcano" src="file:symbols/volcano.svg" symbol-percent="70" display="always" />
-					<caption display="always" symbol-id="id_volcano" position="above" dy="3" k="name" font-family="sans_serif" font-style="bold_italic" font-size="12" fill="#303030" stroke="#ffffff" stroke-width="3" priority="415" text-transform="capitalize" text-wrap-width="120" />
-					<caption display="always" symbol-id="id_volcano" k="ele" dy="-3" position="below" font-family="sans_serif" font-size="11" fill="#303030" stroke="#ffffff" stroke-width="3" priority="414" />
-				</rule>
-				<rule e="node" k="*" v="*" zoom-min="15">
-					<symbol id="id_volcano" src="file:symbols/volcano.svg" symbol-percent="85" display="always" />
-					<caption display="always" symbol-id="id_volcano" position="above" dy="3" k="name" font-family="sans_serif" font-style="bold_italic" font-size="13" fill="#303030" stroke="#ffffff" stroke-width="3" priority="415" text-transform="capitalize" text-wrap-width="120" />
-					<caption display="always" symbol-id="id_volcano" k="ele" dy="-3" position="below" font-family="sans_serif" font-size="11" fill="#303030" stroke="#ffffff" stroke-width="3" priority="414" />
-				</rule>
-			</rule>
-			<!-- 3 -->
-			<rule e="any" k="peak_dist" v="pd_3|~" zoom-min="11">
-				<!-- иконка вершины -->
-				<rule e="any" k="*" v="*" zoom-min="11" zoom-max="14">
-					<symbol id="id_volcano" src="file:symbols/volcano.svg" symbol-percent="65" display="always" />
-				</rule>
-				<rule e="any" k="*" v="*" zoom-min="15">
-					<symbol id="id_volcano" src="file:symbols/volcano.svg" symbol-percent="80" display="always" />
-				</rule>
-				<!-- название и высота -->
-				<rule e="node" k="*" v="*" zoom-min="12" zoom-max="14">
-					<caption symbol-id="id_volcano" position="above" dy="3" k="name" font-family="sans_serif" font-style="bold_italic" font-size="12" fill="#303030" stroke="#ffffff" stroke-width="3" priority="415" text-transform="capitalize" text-wrap-width="120" />
-					<caption symbol-id="id_volcano" k="ele" dy="-3" position="below" font-family="sans_serif" font-size="11" fill="#303030" stroke="#ffffff" stroke-width="3" priority="414" />
-				</rule>
-				<rule e="node" k="*" v="*" zoom-min="15">
-					<caption display="always" symbol-id="id_volcano" position="above" dy="3" k="name" font-family="sans_serif" font-style="bold_italic" font-size="13" fill="#303030" stroke="#ffffff" stroke-width="3" priority="415" text-transform="capitalize" text-wrap-width="120" />
-					<caption display="always" symbol-id="id_volcano" k="ele" dy="-3" position="below" font-family="sans_serif" font-size="11" fill="#303030" stroke="#ffffff" stroke-width="3" priority="414" />
-				</rule>
-			</rule>
-			<!-- 4+5 -->
-			<rule e="any" k="peak_dist" v="pd_4|pd_5" zoom-min="12">
-				<!-- иконка вершины -->
-				<rule e="any" k="*" v="*" zoom-min="12" zoom-max="14">
-					<symbol id="id_volcano" src="file:symbols/volcano.svg" symbol-percent="65" display="always" />
-				</rule>
-				<rule e="any" k="*" v="*" zoom-min="15">
-					<symbol id="id_volcano" src="file:symbols/volcano.svg" symbol-percent="80" display="always" />
-				</rule>
-				<!-- название и высота -->
-				<rule e="any" k="*" v="*" zoom-min="13" zoom-max="14">
-					<caption display="always" symbol-id="id_volcano" position="above" dy="3" k="name" font-family="sans_serif" font-style="bold_italic" font-size="12" fill="#303030" stroke="#ffffff" stroke-width="3" priority="415" text-transform="capitalize" text-wrap-width="120" />
-					<caption display="always" symbol-id="id_volcano" k="ele" dy="-3" position="below" font-family="sans_serif" font-size="11" fill="#303030" stroke="#ffffff" stroke-width="3" priority="414" />
-				</rule>
-				<rule e="any" k="*" v="*" zoom-min="15">
-					<caption display="always" symbol-id="id_volcano" position="above" dy="3" k="name" font-family="sans_serif" font-style="bold_italic" font-size="13" fill="#303030" stroke="#ffffff" stroke-width="3" priority="415" text-transform="capitalize" text-wrap-width="120" />
-					<caption display="always" symbol-id="id_volcano" k="ele" dy="-3" position="below" font-family="sans_serif" font-size="11" fill="#303030" stroke="#ffffff" stroke-width="3" priority="414" />
 				</rule>
 			</rule>
 		</rule>
