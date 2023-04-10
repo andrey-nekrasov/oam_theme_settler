@@ -6,8 +6,8 @@
     Andrey Nekrasov
     Contact: andrey.nekrasov@gmail.com		
 
-    2023.apr.07
-    v1.9.12
+    2023.apr.10
+    v1.9.13
 
     ###
     Когда то давно это была тема "active RT5 (active RenderTheme Version 5)" https://github.com/FrankSchoeneck/active_RT5
@@ -18,7 +18,7 @@
     https://github.com/IgorMagellan/TOTM
     https://github.com/asamm/lomaps-mapsforge/tree/main/theme
 -->
-	<stylemenu id="menu" defaultvalue="OSM_Summer" defaultlang="ru">
+	<stylemenu id="menu" defaultvalue="OSM_Summer" defaultlang="en">
 		<layer id="L_hikingtrails" enabled="false" visible="false">
 			<name lang="ru" value="Пешеходные маршруты" />
 			<name lang="de" value="Wanderwege" />
@@ -238,9 +238,9 @@
 			<cat id="contourlines" />
 		</layer>
 		<layer id="OSM_Summer" visible="true">
-			<name lang="ru" value="V4+ 1.9.12" />
-			<name lang="de" value="V4+ 1.9.12" />
-			<name lang="en" value="V4+ 1.9.12" />
+			<name lang="ru" value="V4+ 1.9.13" />
+			<name lang="de" value="V4+ 1.9.13" />
+			<name lang="en" value="V4+ 1.9.13" />
 			<overlay id="L_hikingtrails" />
 			<overlay id="L_trail_markings" />
 			<overlay id="L_hikingnodes" />
@@ -2075,10 +2075,10 @@
 		<circle radius="1.8" fill="#8E8E8E" />
 	</rule>
 	<rule e="node" k="place" v="city" zoom-min="7" zoom-max="9">
-		<caption k="name" dy="15" font-family="sans_serif" font-style="bold" font-size="14" fill="#000000" stroke="#FFFFFF" stroke-width="2.0" text-wrap-width="140" />
+		<caption k="name" dy="15" font-family="sans_serif" font-style="bold" font-size="14" fill="#000000" stroke="#FFFFFF" stroke-width="2.0" text-wrap-width="170" />
 	</rule>
 	<rule e="node" k="place" v="city" zoom-min="10" zoom-max="12">
-		<caption k="name" dy="15" font-family="sans_serif" font-style="bold" font-size="20" fill="#000000" stroke="#FFFFFF" stroke-width="2.0" text-wrap-width="140" />
+		<caption k="name" dy="15" font-family="sans_serif" font-style="bold" font-size="20" fill="#000000" stroke="#FFFFFF" stroke-width="2.0" text-wrap-width="170" />
 	</rule>
 	<!-- деревня -->
 	<rule e="node" k="place" v="village" zoom-min="10" zoom-max="11">
