@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rendertheme xmlns="http://mapsforge.org/renderTheme" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://mapsforge.org/renderTheme https://raw.githubusercontent.com/mapsforge/mapsforge/dev/resources/renderTheme.xsd" version="4" base-stroke-width="0.85" map-background="#ebeade">
+<rendertheme xmlns="http://mapsforge.org/renderTheme" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://mapsforge.org/renderTheme https://raw.githubusercontent.com/mapsforge/mapsforge/dev/resources/renderTheme.xsd" version="4" base-stroke-width="0.9" map-background="#ebeade">
+
 <!--
     Mapsforge Rendertheme for Apps with Mapsforge support and Openandromaps
 	
     Andrey Nekrasov
     Contact: andrey.nekrasov@gmail.com		
 
-    2023.apr.10
-    v1.9.13
+    2023.apr.11
+    v2.0.0
 
     ###
     Когда то давно это была тема "active RT5 (active RenderTheme Version 5)" https://github.com/FrankSchoeneck/active_RT5
@@ -17,7 +18,9 @@
     https://www.openandromaps.org/en/legend/elevate-mountain-hike-theme
     https://github.com/IgorMagellan/TOTM
     https://github.com/asamm/lomaps-mapsforge/tree/main/theme
+
 -->
+
 	<stylemenu id="menu" defaultvalue="OSM_Summer" defaultlang="en">
 		<layer id="L_hikingtrails" enabled="false" visible="false">
 			<name lang="ru" value="Пешеходные маршруты" />
@@ -118,9 +121,9 @@
 			<cat id="pharmacies" />
 		</layer>
 		<layer id="L_emergency" enabled="true" visible="false">
-			<name lang="ru" value="Полиция/пожарные и т.п." />
-			<name lang="de" value="Polizei, Feuerwehr, ..." />
-			<name lang="en" value="Police, firemen, ..." />
+			<name lang="ru" value="Службы спасения (полиция/пожарные/дефибриллятор и т.п.)" />
+			<name lang="de" value="Notfall (polizei, feuerwehr, ...)" />
+			<name lang="en" value="Emergency (police, firemen, ...)" />
 			<cat id="emergency" />
 		</layer>
 		<layer id="L_monuments" enabled="true" visible="false">
@@ -153,12 +156,6 @@
 			<name lang="en" value="Churches" />
 			<cat id="churches" />
 		</layer>
-		<layer id="L_mast_communication" enabled="true" visible="false">
-			<name lang="ru" value="Мачта сотовой связи" />
-			<name lang="de" value="Mobilfunkmast" />
-			<name lang="en" value="Cellular tower" />
-			<cat id="mast_communication" />
-		</layer>
 		<layer id="L_playground" enabled="true" visible="false">
 			<name lang="ru" value="Детские игровые площадки" />
 			<name lang="de" value="Spielplatz" />
@@ -185,8 +182,8 @@
 		</layer>
 		<layer id="L_water" enabled="true" visible="false">
 			<name lang="ru" value="Родники, питьевая вода, колодцы" />
-			<name lang="de" value="Frühling" />
-			<name lang="en" value="Spring" />
+			<name lang="de" value="Frühling, trinkwasserstellen" />
+			<name lang="en" value="Spring, drinking water" />
 			<cat id="water" />
 		</layer>
 		<layer id="L_water_flow_direction" enabled="true" visible="false">
@@ -202,7 +199,7 @@
 			<cat id="forest" />
 		</layer>
 		<layer id="L_landscapefeat" enabled="true" visible="false">
-			<name lang="ru" value="Особенности ландшафта" />
+			<name lang="ru" value="Особенности ландшафта (овраги, обрывы, воронки, хребты, " />
 			<name lang="de" value="Landschaftsmerkmale" />
 			<name lang="en" value="landscape features" />
 			<cat id="landscapefeat" />
@@ -212,6 +209,18 @@
 			<name lang="de" value="Schranken und Tore" />
 			<name lang="en" value="Barriers and gates" />
 			<cat id="barriers" />
+		</layer>
+		<layer id="L_mast_communication" enabled="true" visible="false">
+			<name lang="ru" value="Мачта сотовой связи" />
+			<name lang="de" value="Mobilfunkmast" />
+			<name lang="en" value="Cellular tower" />
+			<cat id="mast_communication" />
+		</layer>
+		<layer id="L_power_line" enabled="true" visible="false">
+			<name lang="ru" value="Линии электропередач" />
+			<name lang="de" value="Energieleitung" />
+			<name lang="en" value="Power line" />
+			<cat id="power_line" />
 		</layer>
 		<layer id="L_locality" enabled="false" visible="false">
 			<name lang="ru" value="Показать place=locality" />
@@ -238,9 +247,9 @@
 			<cat id="contourlines" />
 		</layer>
 		<layer id="OSM_Summer" visible="true">
-			<name lang="ru" value="V4+ 1.9.13" />
-			<name lang="de" value="V4+ 1.9.13" />
-			<name lang="en" value="V4+ 1.9.13" />
+			<name lang="ru" value="V4+ 2.0.0" />
+			<name lang="de" value="V4+ 2.0.0" />
+			<name lang="en" value="V4+ 2.0.0" />
 			<overlay id="L_hikingtrails" />
 			<overlay id="L_trail_markings" />
 			<overlay id="L_hikingnodes" />
@@ -264,7 +273,6 @@
 			<overlay id="L_archaeological" />
 			<overlay id="L_ruins" />
 			<overlay id="L_churches" />
-			<overlay id="L_mast_communication" />
 			<overlay id="L_playground" />
 			<overlay id="L_benches" />
 			<overlay id="L_toilets" />
@@ -274,13 +282,14 @@
 			<overlay id="L_forest" />
 			<overlay id="L_landscapefeat" />
 			<overlay id="L_barriers" />
+			<overlay id="L_mast_communication" />
+			<overlay id="L_power_line" />
 			<overlay id="L_locality" />
 			<overlay id="L_underground_footway" />
 			<overlay id="L_highway_track_new_style" />
 			<overlay id="L_contourlines" />
 		</layer>
 	</stylemenu>
-
 	<!-- море -->
 	<rule e="way" k="natural" v="sea">
 		<area fill="#A2CBED" />
@@ -408,8 +417,9 @@
 		<rule e="way" k="landuse" v="retail|garages|greenfield">
 			<area fill="#FFFEFE" stroke="#e4e4e4" stroke-width="0.2" />
 		</rule>
+		<!-- #99D6C7B8 -->
 		<rule e="way" k="landuse" v="railway">
-			<area fill="#FFFEFE" stroke="#e4e4e4" stroke-width="0.2" />
+			<area fill="#77c9c9c9" stroke="#A8A08C" stroke-width="0.125" />
 		</rule>
 		<rule e="way" k="landuse" v="brownfield">
 			<area fill="#FFFEFE" stroke="#e4e4e4" stroke-width="0.2" />
@@ -726,7 +736,6 @@
 			<caption k="name" font-style="normal" font-family="sans_serif" font-size="12" fill="#333333" stroke="#FFFFFF" stroke-width="0.8" text-wrap-width="120" />
 		</rule>
 	</rule>
-
 	<!-- Изолинии / линии высот. Не рисуются поверх воды и зданий -->
 	<rule cat="contourlines" e="way" k="contour_ext" v="*">
 		<!-- contour lines level 13 -->
@@ -772,7 +781,6 @@
 			</rule>
 		</rule>
 	</rule>
-
 	<!-- Хребты -->
 	<rule cat="landscapefeat" e="way" k="*" v="ridge|arete" zoom-min="8">
 		<rule e="way" k="*" v="*" zoom-max="15">
@@ -796,7 +804,6 @@
 			<lineSymbol src="file:symbols/s_ridge2.svg" symbol-height="28" align-center="true" repeat="true" repeat-gap="295" repeat-start="10" priority="-20" />
 		</rule>
 	</rule>
-
 	<!-- Ледники - название -->
 	<rule e="node" k="natural" v="glacier" zoom-min="13">
 		<rule e="any" k="bBoxWeight" v="xxxlarge|xxlarge|xlarge|large" zoom-min="13">
@@ -815,7 +822,6 @@
 			<caption k="name" priority="10" font-style="bold_italic" font-size="12" fill="#035FBC" stroke="#ffffff" stroke-width="2.2" text-wrap-width="120" />
 		</rule>
 	</rule>
-
 	<!-- Вода в тоннеле/под землей (реки, ручьи, каналы) -->
 	<rule e="way" k="tunnel|location" v="yes|underground" zoom-min="13">
 		<rule e="way" k="waterway" v="ditch|stream">
@@ -833,7 +839,7 @@
 		    -->
 		</rule>
 	</rule>
-	<!-- не в тоннеле -->
+	<!-- -->
 	<rule e="way" k="tunnel" v="~|no">
 		<!-- надземный -->
 		<rule e="way" k="location" v="~|overground">
@@ -1019,6 +1025,37 @@
 		<symbol id="s_hot_spring" priority="63" src="file:symbols/s_hot_spring.svg" symbol-height="16" />
 		<caption k="name" symbol-id="s_hot_spring" font-style="bold" font-size="12" fill="#666666" stroke="#E5FFFFFF" stroke-width="2" />
 	</rule>
+	<!-- родник -->
+	<rule cat="water" e="node" k="amenity|natural" v="spring" zoom-min="16">
+		<rule e="node" k="drinking_water|amenity" v="yes|drinking_water">
+			<symbol display="always" priority="505" id="spring" src="file:/symbols/s_spring_d.svg" symbol-height="13" />
+		</rule>
+		<rule e="node" k="drinking_water" v="no">
+			<symbol display="always" priority="405" id="spring" src="file:/symbols/s_spring_nd.svg" symbol-height="13" />
+		</rule>
+		<rule e="node" k="drinking_water" v="~">
+			<symbol display="always" priority="505" id="spring" src="file:/symbols/s_spring.svg" symbol-height="13" />
+		</rule>
+		<rule e="any" k="*" v="*" zoom-min="17">
+			<caption symbol-id="spring" k="name" font-style="bold_italic" font-size="11" fill="#115DFF" stroke="#E5FFFFFF" stroke-width="2" priority="395" text-wrap-width="110" />
+		</rule>
+	</rule>
+	<!-- питьевая вода (не родники и не колодцы) -->
+	<rule cat="water" e="any" k="amenity|waterway" v="drinking_water|water_point" zoom-min="16">
+		<rule e="any" k="drinking_water" v="yes|~">
+			<rule e="any" k="natural" v="~">
+				<rule e="any" k="man_made" v="~">
+					<rule e="any" k="*" v="*" zoom-max="17">
+						<symbol id="drinking_water" display="always" src="file:symbols/drinking_water.svg" symbol-height="14" />
+					</rule>
+					<rule e="any" k="*" v="*" zoom-min="18">
+						<symbol id="drinking_water" display="always" src="file:symbols/drinking_water.svg" symbol-height="19" />
+					</rule>
+					<caption symbol-id="drinking_water" k="name" font-style="bold_italic" font-size="11" fill="#115DFF" stroke="#E5FFFFFF" stroke-width="2" priority="395" text-wrap-width="110" />
+				</rule>
+			</rule>
+		</rule>
+	</rule>
 	<!-- церкви и монастыри -->
 	<rule e="way" k="amenity" v="church|monastery" zoom-min="12">
 		<rule e="way" k="area" v="yes|true">
@@ -1129,12 +1166,86 @@
 			<caption k="name" font-style="bold" font-family="sans_serif" font-size="10" fill="#333333" stroke="#ffffff" stroke-width="0.5" text-wrap-width="120" />
 		</rule>
 	</rule>
+
 	<!-- стена при перепадах уровня земли (на карте это укрепления берегов, пешеходных переходов). должно рисоваться до дорог/дорожек -->
 	<rule e="way" k="barrier" v="retaining_wall">
 		<line stroke="#A69D9D" stroke-width="0.4" dy="0.2" stroke-dasharray="1,15" stroke-linecap="round" />
 		<line stroke="#A69D9D" stroke-width="0.4" stroke-linecap="square" />
 		<line stroke="#E6DFDF" stroke-width="0.2" stroke-dasharray="5,1" stroke-linecap="butt" />
 	</rule>
+
+	<!-- набережная / укрепление берега и т.п. -->
+	<rule cat="landscapefeat" e="any" k="*" v="*">
+
+		<rule e="way" k="man_made" v="~">
+			<rule e="way" k="embankment" v="emb_yes" closed="no">
+				<rule e="way" k="highway" v="motorway">
+					<line stroke="#948e88" stroke-width="2.8" stroke-dasharray="1,8" stroke-linecap="butt" />
+				</rule>
+				<rule e="way" k="highway" v="motorway_link|tertiary|tertiary_link|secondary_link|primary_link|trunk_link|secondary|primary|trunk">
+					<line stroke="#948e88" stroke-width="2.4" stroke-dasharray="1,8" stroke-linecap="butt" />
+				</rule>
+				<line stroke="#948e88" stroke-width="2.2" stroke-dasharray="1,8" stroke-linecap="butt" />
+				<line stroke="#948e88" stroke-width="1.2" stroke-linecap="butt" />
+				<line stroke="#F8F8F8" stroke-width="1" stroke-linecap="butt" />
+			</rule>
+		</rule>
+
+		<rule e="way" k="man_made" v="embankment" closed="no">
+			<line stroke="#948e88" stroke-width="0.6" dy="0.3" stroke-dasharray="1,8" stroke-linecap="butt" />
+			<line stroke="#948e88" stroke-width="0.1" stroke-linecap="butt" />
+		</rule>
+
+		<rule e="way" k="man_made|embankment" v="embankment|emb_yes" closed="yes">
+			<line stroke="#948e88" stroke-width="0.6" dy="-0.3" stroke-dasharray="1,8" stroke-linecap="butt" />
+			<line stroke="#948e88" stroke-width="0.1" stroke-linecap="butt" />
+		</rule>
+
+		<rule e="way" k="man_made" v="dyke" zoom-min="15">
+			<line stroke="#948e88" stroke-width="2.2" stroke-dasharray="1,8" stroke-linecap="butt" />
+			<line stroke="#948e88" stroke-width="1.1" stroke-linecap="butt" />
+			<line stroke="#F8F8F8" stroke-width="1" stroke-linecap="butt" />
+		</rule>
+
+		<rule e="way" k="man_made" v="groyne" closed="no" zoom-min="15">
+			<rule e="way" k="*" v="*" zoom-max="17">
+				<line stroke="#A69D9D" stroke-width="1" stroke-dasharray="1,8" />
+				<line stroke="#E6F0FF" stroke-width="0.8" stroke-dasharray="1,8" />
+			</rule>
+			<rule e="way" k="*" v="*" zoom-min="18">
+				<line stroke="#A69D9D" stroke-width="0.8" stroke-dasharray="1,18" />
+				<line stroke="#E6F0FF" stroke-width="0.6" stroke-dasharray="1,18" />
+			</rule>
+		</rule>
+
+		<rule e="way" k="man_made" v="breakwater" closed="no" zoom-min="15">
+			<rule e="way" k="*" v="*" zoom-max="17">
+				<line stroke="#A69D9D" stroke-width="1" />
+				<line stroke="#E6F0FF" stroke-width="0.8" />
+			</rule>
+			<rule e="way" k="*" v="*" zoom-min="18">
+				<line stroke="#A69D9D" stroke-width="0.8" />
+				<line stroke="#E6F0FF" stroke-width="0.6" />
+			</rule>
+		</rule>
+
+		<rule e="way" k="man_made" v="groyne|breakwater" closed="yes" zoom-min="15">
+			<line stroke="#A69D9D" stroke-width="0.1" />
+			<area fill="#E6F0FF" />
+		</rule>
+		<rule e="way" k="barrier" v="ditch" closed="no">
+			<line stroke="#948e88" dy="0.25" stroke-width="0.4" stroke-dasharray="1,8" stroke-linecap="butt" />
+			<line stroke="#948e88" dy="-0.25" stroke-width="0.4" stroke-dasharray="0,4,1,4" stroke-linecap="butt" />
+			<line stroke="#948e88" dy="0.4" stroke-width="0.1" stroke-linecap="butt" />
+			<line stroke="#948e88" dy="-0.4" stroke-width="0.1" stroke-linecap="butt" />
+		</rule>
+		<rule e="way" k="barrier" v="ditch" closed="yes">
+			<line stroke="#948e88" dy="0.2" stroke-width="0.4" stroke-dasharray="0,4,1,4" stroke-linecap="butt" />
+			<line stroke="#948e88" stroke-width="0.1" stroke-linecap="butt" />
+		</rule>
+	</rule>
+
+
 	<!-- highway areas -->
 	<rule e="way" k="tunnel" v="~|no" zoom-min="13">
 		<rule e="way" k="highway" v="pedestrian" closed="no">
@@ -1182,320 +1293,6 @@
 			</rule>
 		</rule>
 	</rule>
-	<rule e="way" k="tunnel" v="yes">
-		<rule e="way" k="railway" v="subway" zoom-min="13">
-			<!-- imho подземные линии метро не нужны на карте - поэтому сделано прозрачно -->
-			<line stroke="#00BF8F93" stroke-width="0.5" stroke-dasharray="8,6" stroke-linecap="butt" />
-		</rule>
-		<rule e="way" k="railway" v="tram|light_rail" zoom-min="13">
-			<line stroke="#50BF8F93" stroke-width="0.5" stroke-dasharray="8,6" stroke-linecap="butt" />
-		</rule>
-		<rule e="way" k="railway" v="narrow_gauge" zoom-min="13">
-			<line stroke="#90FC0101" stroke-width="0.3" stroke-dasharray="4,4" stroke-linecap="butt" />
-		</rule>
-		<rule e="way" k="railway" v="funicular|preserved" zoom-min="13">
-			<line stroke="#90FC0101" stroke-width="0.3" stroke-dasharray="4,4" stroke-linecap="butt" />
-		</rule>
-		<rule e="way" k="railway" v="rail" zoom-min="12">
-			<line stroke="#50BF8F93" stroke-width="0.7" stroke-dasharray="12,8" stroke-linecap="butt" />
-		</rule>
-	</rule>
-	<!-- железные дороги в разных видах -->
-	<rule e="way" k="railway" v="*">
-		<rule e="way" k="tunnel" v="~|no">
-			<rule e="way" k="bridge" v="yes|movable|true">
-				<rule e="way" k="railway" v="tram">
-					<line stroke="#FFFEFE" stroke-width="1.2" stroke-linecap="butt" />
-				</rule>
-				<rule e="way" k="railway" v="subway">
-					<line stroke="#FFFEFE" stroke-width="1.2" stroke-linecap="butt" />
-				</rule>
-				<rule e="way" k="railway" v="funicular" zoom-min="12">
-					<line stroke="#FFFEFE" stroke-width="2.0" stroke-linecap="butt" />
-				</rule>
-				<rule e="way" k="railway" v="preserved" zoom-min="11">
-					<line stroke="#FFFEFE" stroke-width="2.0" stroke-linecap="butt" />
-				</rule>
-				<rule e="way" k="railway" v="rail|light_rail|narrow_gauge">
-					<line stroke="#FFFEFE" stroke-width="2.0" stroke-linecap="butt" />
-				</rule>
-			</rule>
-			<rule e="way" k="railway|public_transport" v="platform" zoom-min="13">
-				<rule e="way" k="*" v="*" closed="yes">
-					<area fill="#CBCBCB" />
-				</rule>
-				<rule e="way" k="*" v="*" closed="no">
-					<line stroke="#CBCBCB" stroke-width="0.8" />
-				</rule>
-			</rule>
-			<rule e="way" k="railway" v="rail" zoom-min="12" zoom-max="15">
-				<line stroke="#BF8F93" stroke-width="0.4" stroke-linecap="butt" />
-			</rule>
-			<rule e="way" k="railway" v="rail" zoom-min="16">
-				<line stroke="#BF8F93" stroke-width="0.7" stroke-linecap="butt" />
-				<line stroke="#FFFFFF" stroke-width="0.5" stroke-dasharray="8,12" stroke-linecap="butt" />
-			</rule>
-			<rule e="way" k="railway" v="tram" zoom-min="13">
-				<line stroke="#BF8F93" stroke-width="0.5" stroke-linecap="butt" />
-				<line stroke="#FFFFFF" stroke-width="0.3" stroke-dasharray="6,8" stroke-linecap="butt" />
-			</rule>
-			<rule e="way" k="railway" v="subway" zoom-min="13">
-				<line stroke="#BF8F93" stroke-width="0.5" stroke-linecap="butt" />
-				<line stroke="#FFFFFF" stroke-width="0.3" stroke-dasharray="6,8" stroke-linecap="butt" />
-			</rule>
-			<rule e="way" k="railway" v="light_rail" zoom-min="13" zoom-max="15">
-				<line stroke="#BF8F93" stroke-width="0.3" stroke-linecap="butt" />
-			</rule>
-			<rule e="way" k="railway" v="light_rail" zoom-min="16">
-				<line stroke="#BF8F93" stroke-width="0.5" stroke-linecap="butt" />
-				<line stroke="#FFFFFF" stroke-width="0.3" stroke-dasharray="6,8" stroke-linecap="butt" />
-			</rule>
-			<rule e="way" k="railway" v="narrow_gauge" zoom-min="13" zoom-max="15">
-				<line stroke="#BF8F93" stroke-width="0.3" stroke-linecap="butt" />
-			</rule>
-			<rule e="way" k="railway" v="narrow_gauge" zoom-min="16">
-				<line stroke="#BF8F93" stroke-width="0.5" stroke-linecap="butt" />
-				<line stroke="#FFFFFF" stroke-width="0.3" stroke-dasharray="6,8" stroke-linecap="butt" />
-			</rule>
-			<rule e="way" k="railway" v="funicular" zoom-min="13" zoom-max="15">
-				<line stroke="#BF8F93" stroke-width="0.3" stroke-linecap="butt" />
-			</rule>
-			<rule e="way" k="railway" v="funicular" zoom-min="16">
-				<line stroke="#BF8F93" stroke-width="0.5" stroke-linecap="butt" />
-				<line stroke="#FFFFFF" stroke-width="0.3" stroke-dasharray="6,8" stroke-linecap="butt" />
-			</rule>
-			<rule e="way" k="railway" v="preserved" zoom-min="13" zoom-max="15">
-				<line stroke="#BF8F93" stroke-width="0.3" stroke-linecap="butt" />
-			</rule>
-			<rule e="way" k="railway" v="preserved" zoom-min="16">
-				<line stroke="#BF8F93" stroke-width="0.5" stroke-linecap="butt" />
-				<line stroke="#FFFFFF" stroke-width="0.3" stroke-dasharray="6,8" stroke-linecap="butt" />
-			</rule>
-		</rule>
-	</rule>
-	<!-- здания "кирпичные" #ffbbbb -->
-	<rule e="way" k="building" v="*" zoom-min="14">
-		<area fill="#ffbbbb" stroke="#444444" stroke-width="0.1" />
-		<rule e="way" k="building" v="*" zoom-min="14" zoom-max="15">
-			<area src="file:patterns/building.svg" symbol-height="5" />
-		</rule>
-		<rule e="way" k="building" v="*" zoom-min="16">
-			<area src="file:patterns/building.svg" symbol-height="7" />
-		</rule>
-	</rule>
-	<!-- магазины -->
-	<rule cat="shops" e="any" k="*" v="*" zoom-min="9">
-		<rule e="any" k="shop" v="supermarket" zoom-min="15">
-			<symbol id="s_supermarket" priority="69" src="file:symbols/s_supermarket.svg" symbol-height="15" />
-			<rule e="any" k="*" v="*" zoom-min="18">
-				<caption k="name" symbol-id="s_supermarket" position="above" font-style="bold" font-size="10" fill="#333333" stroke="#E5FFFFFF" stroke-width="2" text-wrap-width="120" />
-			</rule>
-		</rule>
-		<rule e="any" k="shop" v="convenience" zoom-min="15">
-			<symbol id="s_convenience" priority="69" src="file:symbols/s_convenience.svg" symbol-height="15" />
-			<rule e="any" k="*" v="*" zoom-min="18">
-				<caption k="name" symbol-id="s_convenience" position="above" font-style="bold" font-size="10" fill="#333333" stroke="#E5FFFFFF" stroke-width="2" text-wrap-width="120" />
-			</rule>
-		</rule>
-		<!-- торговые центры -->
-		<rule e="way" k="shop" v="mall" zoom-min="14">
-			<area fill="#c7c7ee" stroke="#b0b0b0" stroke-width="0.2" />
-			<rule e="way" k="shop" v="mall" zoom-min="15">
-				<symbol id="s_mall" src="file:symbols/s_mall.svg" symbol-height="15" />
-				<rule e="way" k="shop" v="*" zoom-min="16">
-					<caption k="name" symbol-id="s_mall" position="above" font-style="bold" font-family="sans_serif" font-size="11" fill="#333333" stroke="#E5FFFFFF" stroke-width="1.5" text-wrap-width="120" />
-				</rule>
-			</rule>
-		</rule>
-		<rule e="any" k="amenity" v="marketplace" zoom-min="15">
-			<symbol id="s_marketplace" priority="68" src="file:symbols/s_marketplace.svg" symbol-height="16" />
-			<rule e="any" k="*" v="*" zoom-min="18">
-				<caption k="name" symbol-id="s_marketplace" position="above" font-style="bold" font-size="10" fill="#333333" stroke="#E5FFFFFF" stroke-width="2" text-wrap-width="120" />
-			</rule>
-		</rule>
-		<rule e="any" k="shop" v="bakery" zoom-min="14">
-			<symbol id="s_bakery" priority="68" src="file:symbols/s_bakery.svg" symbol-height="16" />
-			<rule e="any" k="*" v="*" zoom-min="18">
-				<caption k="name" symbol-id="s_bakery" position="above" font-style="bold" font-size="10" fill="#333333" stroke="#E5FFFFFF" stroke-width="2" text-wrap-width="120" />
-			</rule>
-		</rule>
-		<rule e="any" k="amenity" v="fuel" zoom-min="14">
-			<symbol id="s_fuel" priority="68" src="file:symbols/s_fuel.svg" symbol-height="17" />
-			<rule e="any" k="*" v="*" zoom-min="18">
-				<caption k="name" symbol-id="s_fuel" position="below" display="always" priority="80" font-style="bold" font-size="10" fill="#333333" stroke="#E5FFFFFF" stroke-width="2" text-wrap-width="120" />
-			</rule>
-		</rule>
-		<rule e="any" k="shop" v="organic" zoom-min="17">
-			<symbol id="s_organic" priority="67" src="file:symbols/s_organic.svg" symbol-height="16" />
-			<rule e="any" k="*" v="*" zoom-min="18">
-				<caption k="name" symbol-id="s_organic" position="above" font-style="bold" font-size="10" fill="#333333" stroke="#E5FFFFFF" stroke-width="2" text-wrap-width="120" />
-			</rule>
-		</rule>
-		<rule e="any" k="shop" v="shop_farm" zoom-min="17">
-			<symbol id="s_farm_shop" priority="67" src="file:symbols/s_farm_shop.svg" symbol-height="16" />
-			<rule e="any" k="*" v="*" zoom-min="18">
-				<caption k="name" symbol-id="s_farm_shop" position="above" font-style="bold" font-size="10" fill="#333333" stroke="#E5FFFFFF" stroke-width="2" text-wrap-width="120" />
-			</rule>
-		</rule>
-		<rule e="any" k="shop" v="butcher" zoom-min="17">
-			<symbol id="s_butcher" priority="67" src="file:symbols/s_butcher.svg" symbol-height="16" />
-			<rule e="any" k="*" v="*" zoom-min="18">
-				<caption k="name" symbol-id="s_butcher" position="above" font-style="bold" font-size="10" fill="#333333" stroke="#E5FFFFFF" stroke-width="2" text-wrap-width="120" />
-			</rule>
-		</rule>
-		<rule e="any" k="amenity" v="atm" zoom-min="15">
-			<symbol id="s_atm" priority="67" src="file:symbols/s_atm.svg" symbol-height="16" />
-			<rule e="any" k="*" v="*" zoom-min="18">
-				<caption k="name" symbol-id="s_atm" position="above" font-style="bold" font-size="10" fill="#333333" stroke="#E5FFFFFF" stroke-width="2" text-wrap-width="120" />
-			</rule>
-		</rule>
-		<rule e="any" k="amenity" v="bank" zoom-min="15">
-			<symbol id="s_bank" priority="67" src="file:symbols/bank.svg" symbol-height="16" />
-			<rule e="any" k="*" v="*" zoom-min="18">
-				<caption k="name" symbol-id="s_bank" position="above" font-style="bold" font-size="10" fill="#333333" stroke="#E5FFFFFF" stroke-width="2" text-wrap-width="120" />
-			</rule>
-		</rule>
-		<rule e="any" k="amenity" v="post_office" zoom-min="15">
-			<symbol id="s_postoffice" priority="67" src="file:symbols/s_postoffice.svg" symbol-height="16" />
-			<rule e="any" k="*" v="*" zoom-min="18">
-				<caption k="name" symbol-id="s_postoffice" position="above" font-style="bold" font-size="10" fill="#333333" stroke="#E5FFFFFF" stroke-width="2" text-wrap-width="120" />
-			</rule>
-		</rule>
-		<rule e="any" k="amenity" v="post_box" zoom-min="16">
-			<symbol id="s_postbox" priority="67" src="file:symbols/s_postbox.svg" symbol-height="16" />
-			<rule e="any" k="*" v="*" zoom-min="18">
-				<caption k="name" symbol-id="s_postbox" position="above" font-style="bold" font-size="10" fill="#333333" stroke="#E5FFFFFF" stroke-width="2" text-wrap-width="120" />
-			</rule>
-		</rule>
-		<rule e="any" k="shop" v="sports" zoom-min="16">
-			<symbol id="s_sports_shop" priority="66" src="file:symbols/s_sports_shop.svg" symbol-height="16" />
-			<rule e="any" k="*" v="*" zoom-min="18">
-				<caption k="name" symbol-id="s_sports_shop" position="above" font-style="bold" font-size="10" fill="#333333" stroke="#E5FFFFFF" stroke-width="2" text-wrap-width="120" />
-			</rule>
-		</rule>
-		<rule e="any" k="shop" v="doityourself" zoom-min="16">
-			<symbol id="s_doityourself" priority="66" src="file:symbols/s_doityourself.svg" symbol-height="16" />
-			<rule e="any" k="*" v="*" zoom-min="18">
-				<caption k="name" symbol-id="s_doityourself" position="above" font-style="bold" font-size="10" fill="#333333" stroke="#E5FFFFFF" stroke-width="2" text-wrap-width="120" />
-			</rule>
-		</rule>
-		<rule e="any" k="shop|vending" v="bicycle|bicycle_tube" zoom-min="14">
-			<symbol id="s_bicycle_shop" priority="69" src="file:symbols/s_bicycle_shop.svg" symbol-height="16" />
-			<rule e="any" k="*" v="*" zoom-min="18">
-				<caption k="name" symbol-id="s_bicycle_shop" position="above" font-style="bold" font-size="10" fill="#333333" stroke="#E5FFFFFF" stroke-width="2" text-wrap-width="120" />
-			</rule>
-		</rule>
-		<rule e="any" k="amenity" v="bicycle_rental" zoom-min="14">
-			<symbol id="s_bicycle_rental" priority="69" src="file:symbols/s_bicycle_rental.svg" symbol-height="16" />
-			<rule e="any" k="*" v="*" zoom-min="18">
-				<caption k="name" symbol-id="s_bicycle_rental" position="above" font-style="bold" font-size="10" fill="#333333" stroke="#E5FFFFFF" stroke-width="2" text-wrap-width="120" />
-			</rule>
-		</rule>
-		<rule e="any" k="amenity" v="charging_station" zoom-min="14">
-			<rule e="any" k="bicycle" v="bic_yes">
-				<symbol id="s_bicycle_charging_station" priority="68" src="file:symbols/s_bicycle_charging_station.svg" symbol-height="16" />
-				<rule e="any" k="*" v="*" zoom-min="18">
-					<caption k="name" symbol-id="s_bicycle_charging_station" position="above" font-style="bold" font-size="10" fill="#333333" stroke="#E5FFFFFF" stroke-width="2" text-wrap-width="120" />
-				</rule>
-			</rule>
-		</rule>
-		<rule e="any" k="shop" v="travel_agency" zoom-min="16">
-			<symbol id="s_travel_agency" priority="66" src="file:symbols/s_travel_agency.svg" symbol-height="16" />
-			<rule e="any" k="*" v="*" zoom-min="18">
-				<caption k="name" symbol-id="s_travel_agency" position="above" font-style="bold" font-size="10" fill="#333333" stroke="#E5FFFFFF" stroke-width="2" text-wrap-width="120" />
-			</rule>
-		</rule>
-		<rule e="any" k="shop" v="chemist" zoom-min="17">
-			<symbol id="s_chemist" priority="65" src="file:symbols/s_chemist.svg" symbol-height="16" />
-			<rule e="any" k="*" v="*" zoom-min="18">
-				<caption k="name" symbol-id="s_chemist" position="above" font-style="bold" font-size="10" fill="#333333" stroke="#E5FFFFFF" stroke-width="2" text-wrap-width="120" />
-			</rule>
-		</rule>
-		<rule e="any" k="shop" v="laundry" zoom-min="17">
-			<symbol id="s_laundry" priority="65" src="file:symbols/s_laundry.svg" symbol-height="16" />
-			<rule e="any" k="*" v="*" zoom-min="18">
-				<caption k="name" symbol-id="s_laundry" position="above" font-style="bold" font-size="10" fill="#333333" stroke="#E5FFFFFF" stroke-width="2" text-wrap-width="120" />
-			</rule>
-		</rule>
-		<rule e="any" k="shop" v="beverages" zoom-min="17">
-			<symbol id="s_beverages" priority="65" src="file:symbols/s_beverages.svg" symbol-height="16" />
-			<rule e="any" k="*" v="*" zoom-min="18">
-				<caption k="name" symbol-id="s_beverages" position="above" font-style="bold" font-size="10" fill="#333333" stroke="#E5FFFFFF" stroke-width="2" text-wrap-width="120" />
-			</rule>
-		</rule>
-		<rule e="any" k="shop" v="books" zoom-min="17">
-			<symbol id="s_books" priority="65" src="file:symbols/s_books.svg" symbol-height="16" />
-			<rule e="any" k="*" v="*" zoom-min="18">
-				<caption k="name" symbol-id="s_books" position="above" font-style="bold" font-size="10" fill="#333333" stroke="#E5FFFFFF" stroke-width="2" text-wrap-width="120" />
-			</rule>
-		</rule>
-	</rule>
-	<!-- рестораны -->
-	<rule cat="restaurants" e="any" k="*" v="*" zoom-min="9">
-		<rule e="any" k="tourism" v="alpine_hut" zoom-min="14">
-			<rule e="any" k="access|reservation" v="~">
-				<symbol id="s_restaurant" priority="69" src="file:symbols/s_restaurant.svg" symbol-height="16" />
-				<caption k="name" symbol-id="s_restaurant" position="above" font-size="10" font-style="bold" fill="#333333" stroke="#E5FFFFFF" stroke-width="2" text-wrap-width="120" />
-			</rule>
-		</rule>
-		<rule e="any" k="amenity" v="restaurant" zoom-min="15">
-			<symbol id="s_restaurant" priority="69" src="file:symbols/restaurant.svg" symbol-height="16" />
-			<rule e="any" k="*" v="*" zoom-min="16">
-				<caption k="name" symbol-id="s_restaurant" position="above" font-size="10" font-style="bold" fill="#333333" stroke="#E5FFFFFF" stroke-width="2" text-wrap-width="120" />
-			</rule>
-		</rule>
-		<rule e="any" k="amenity" v="fast_food" zoom-min="15">
-			<symbol id="s_fastfood" priority="68" src="file:symbols/fastfood.svg" symbol-height="16" />
-			<rule e="any" k="*" v="*" zoom-min="17">
-				<caption k="name" symbol-id="s_fastfood" position="above" font-size="10" font-style="bold" fill="#333333" stroke="#E5FFFFFF" stroke-width="2" text-wrap-width="120" />
-			</rule>
-		</rule>
-		<rule e="any" k="amenity" v="biergarten" zoom-min="15">
-			<symbol id="s_biergarten" priority="65" src="file:symbols/s_biergarten.svg" symbol-height="16" />
-			<rule e="any" k="*" v="*" zoom-min="17">
-				<caption k="name" symbol-id="s_biergarten" position="above" font-size="10" font-style="bold" fill="#333333" stroke="#E5FFFFFF" stroke-width="2" text-wrap-width="120" />
-			</rule>
-		</rule>
-		<rule e="any" k="amenity" v="cafe" zoom-min="15">
-			<symbol id="s_cafe" priority="65" src="file:symbols/cafe.svg" symbol-height="16" />
-			<rule e="any" k="*" v="*" zoom-min="17">
-				<caption k="name" priority="-5" symbol-id="s_cafe" position="above" font-size="10" font-style="bold" fill="#333333" stroke="#E5FFFFFF" stroke-width="2" text-wrap-width="120" />
-			</rule>
-		</rule>
-		<rule e="any" k="amenity" v="pub" zoom-min="15">
-			<symbol id="s_pub" priority="64" src="file:symbols/s_pub.svg" symbol-height="16" />
-			<rule e="any" k="*" v="*" zoom-min="18">
-				<caption k="name" symbol-id="s_pub" position="above" font-size="10" font-style="bold" fill="#333333" stroke="#E5FFFFFF" stroke-width="2" text-wrap-width="120" />
-			</rule>
-		</rule>
-		<rule e="any" k="amenity" v="bar" zoom-min="15">
-			<symbol id="s_bar" priority="64" src="file:symbols/s_bar.svg" symbol-height="16" />
-			<rule e="any" k="*" v="*" zoom-min="18">
-				<caption k="name" symbol-id="s_bar" position="above" font-size="10" font-style="bold" fill="#333333" stroke="#E5FFFFFF" stroke-width="2" text-wrap-width="120" />
-			</rule>
-		</rule>
-		<rule e="any" k="amenity" v="ice_cream" zoom-min="15">
-			<symbol id="s_ice_cream" priority="64" src="file:symbols/s_ice_cream.svg" symbol-height="16" />
-			<rule e="any" k="*" v="*" zoom-min="17">
-				<caption k="name" symbol-id="s_ice_cream" position="above" font-size="10" font-style="bold" fill="#333333" stroke="#E5FFFFFF" stroke-width="2" text-wrap-width="120" />
-			</rule>
-		</rule>
-	</rule>
-	<!-- здания -->
-	<rule e="way" k="building" v="construction" zoom-min="15">
-		<area fill="#c7c7c7" stroke="#b0b0b0" stroke-width="0.2" />
-		<line stroke="#C0F8F8F8" stroke-width="0.3" stroke-dasharray="2,2" />
-	</rule>
-	<!-- название зданий -->
-	<rule e="way" k="building" v="*" zoom-min="18">
-		<!-- исключая "amenity|aerialway", у них свои описания -->
-		<rule e="any" k="amenity|aerialway" v="~">
-			<caption k="name" position="below" dy="8" font-style="bold" font-family="sans_serif" font-size="12" fill="#333333" stroke="#ffffff" stroke-width="1.8" text-wrap-width="120" />
-		</rule>
-	</rule>
-	<rule e="any" k="*" v="*" zoom-min="18">
-		<caption k="addr:housenumber" font-style="normal" font-size="10" fill="#424251" priority="10" />
-	</rule>
 	<!-- металлический трос, лестница, скобы и штыри на скалах -->
 	<rule e="any" k="safety_rope|ladder|rungs" v="*" zoom-min="13">
 		<rule e="any" k="safety_rope" v="sr_yes">
@@ -1512,6 +1309,7 @@
 			<line stroke="#000000" stroke-width="0.1" stroke-dasharray="1,10" stroke-linecap="round" />
 		</rule>
 	</rule>
+
 	<!-- дороги -->
 	<rule e="any" k="highway" v="*">
 		<rule e="any" k="area" v="~|no|false">
@@ -1649,7 +1447,7 @@
 			<!-- не тоннель и не мост. то есть по земле -->
 			<rule e="any" k="tunnel" v="~|no|false">
 				<rule e="any" k="bridge" v="~|no|false">
-					<rule e="node" k="highway" v="turning_circle|mini_roundabout" zoom-min="11">
+					<rule e="node" k="highway" v="turning_circle|passing_place|mini_roundabout" zoom-min="11">
 						<circle radius="1.2" scale-radius="true" fill="#575757" />
 					</rule>
 					<!-- ремонт. не уверен что это сделано правильно
@@ -1966,39 +1764,407 @@
 			<!-- дороги по земле - окончание -->
 		</rule>
 	</rule>
-	<!-- жд, трамваи и метро -->
-	<rule e="node" k="railway" v="*" zoom-min="12" cat="pub_transp">
-		<!-- выходы из метро -->
-		<rule e="node" k="railway" v="subway_entrance" zoom-min="14">
-			<rule e="node" k="railway" v="subway_entrance" zoom-min="14" zoom-max="14">
-				<symbol id="id_station_metro" src="file:symbols/metro_logo.svg" symbol-percent="60" display="always" />
+
+	<!-- железные дороги в разных видах (взято из Voluntary V5) -->
+	<!-- Заброшенные жел.дороги -->
+	<rule e="way" k="railway" v="abandoned" zoom-min="13">
+		<rule e="way" k="tunnel" v="~|no">
+			<rule e="way" k="bridge" v="yes|viaduct|movable">
+				<line stroke="#181818" stroke-width="1.05" stroke-linecap="butt" />
+				<line stroke="#f8f8f8" stroke-width="0.7" stroke-linecap="butt" />
 			</rule>
-			<rule e="node" k="railway" v="subway_entrance" zoom-min="15">
-				<symbol id="id_station_metro" src="file:symbols/metro_logo.svg" symbol-percent="70" display="always" />
-			</rule>
-			<rule e="node" k="*" v="*" zoom-min="15">
-				<caption symbol-id="id_station_metro" k="name" dy="-4" font-style="bold" font-family="sans_serif" font-size="10" fill="#333333" stroke="#ffffff" stroke-width="1.5" />
+			<line stroke="#80FFFFFF" stroke-width="0.5" scale="all" stroke-dasharray="2.3,0.1" stroke-linecap="butt" />
+			<line stroke="#40808080" stroke-width="0.5" scale="all" stroke-dasharray="2.3,2.5" stroke-linecap="butt" />
+		</rule>
+	</rule>
+	<rule e="way" k="tunnel" v="yes">
+		<!-- railway tunnel -->
+		<rule e="way" k="railway" v="abandoned" zoom-min="13">
+			<line stroke="#40FFFFFF" stroke-width="0.5" scale="all" stroke-dasharray="4.8,2.3,2.5,0" stroke-linecap="butt" />
+			<line stroke="#30808080" stroke-width="0.5" scale="all" stroke-dasharray="2.3,7.3" stroke-linecap="butt" />
+		</rule>
+		<rule e="way" k="railway" v="miniature" zoom-min="13">
+			<line stroke="#28000000" stroke-width="0.14" scale="all" stroke-dasharray="2.4,1.2" stroke-linecap="butt" />
+			<line stroke="#80FFFFFF" stroke-width="0.14" scale="all" stroke-dasharray="0,2.4,1.2,0" stroke-linecap="butt" />
+		</rule>
+		<rule e="way" k="railway" v="disused" zoom-min="13">
+			<line stroke="#40000000" dy="0.33" stroke-width="0.075" stroke-linecap="butt" />
+			<line stroke="#40000000" dy="-0.33" stroke-width="0.075" stroke-linecap="butt" />
+			<line stroke="#30000000" stroke-width="0.6" scale="all" stroke-dasharray="0.1,2.3" stroke-linecap="butt" />
+			<line stroke="#30FFFFFF" stroke-width="0.6" scale="all" stroke-dasharray="0,0.1,2.3,0" stroke-linecap="butt" />
+		</rule>
+		<rule e="way" k="railway|highway" v="tram|light_rail|bus_guideway" zoom-min="10">
+			<line stroke="#408C4600" stroke-width="0.5" stroke-linecap="butt" />
+			<line stroke="#60ffffff" stroke-width="0.4" scale="all" stroke-dasharray="1.8,1.8" stroke-linecap="butt" />
+		</rule>
+		<rule e="way" k="railway" v="subway" zoom-min="13">
+			<!-- imho подземные линии метро не нужны на карте - поэтому сделано прозрачно -->
+			<line stroke="#00BF8F93" stroke-width="0.5" stroke-dasharray="8,6" stroke-linecap="butt" />
+		</rule>
+		<rule e="way" k="railway" v="narrow_gauge|preserved|funicular" zoom-min="10">
+			<line stroke="#40000000" dy="0.28" stroke-width="0.075" stroke-linecap="butt" />
+			<line stroke="#40000000" dy="-0.28" stroke-width="0.075" stroke-linecap="butt" />
+			<line stroke="#30000000" stroke-width="0.6" scale="all" stroke-dasharray="1.2,2.4" stroke-linecap="butt" />
+			<line stroke="#30FFFFFF" stroke-width="0.6" scale="all" stroke-dasharray="0,1.2,2.4,0" stroke-linecap="butt" />
+		</rule>
+		<rule e="way" k="railway" v="rail" zoom-min="10">
+			<line stroke="#40000000" dy="0.33" stroke-width="0.075" stroke-linecap="butt" />
+			<line stroke="#40000000" dy="-0.33" stroke-width="0.075" stroke-linecap="butt" />
+			<line stroke="#30000000" stroke-width="0.6" scale="all" stroke-dasharray="2.4,2.4" stroke-linecap="butt" />
+			<line stroke="#30FFFFFF" stroke-width="0.6" scale="all" stroke-dasharray="0,2.4,2.4,0" stroke-linecap="butt" />
+		</rule>
+	</rule>
+	<!-- railway (no tunnel) -->
+	<rule e="way" k="tunnel" v="~|no" zoom-min="11">
+		<!-- -->
+		<rule e="way" k="power" v="~">
+			<rule e="way" k="railway|building" v="station|train_station">
+				<area fill="#604C4C0D" stroke="#444444" stroke-width="0.125" />
 			</rule>
 		</rule>
-		<rule e="node" k="railway" v="station" zoom-min="13">
-			<symbol id="id_station" src="file:symbols/railway_station.svg" symbol-percent="60" priority="-10" />
-			<rule e="node" k="*" v="*" zoom-min="15">
-				<caption symbol-id="id_station" k="name" dy="-4" font-style="bold" font-family="sans_serif" font-size="10" fill="#333333" stroke="#ffffff" stroke-width="1.5" />
+		<!-- Платформы -->
+		<rule e="way" k="highway|railway|public_transport" v="platform">
+			<rule e="way" k="*" v="*" closed="yes">
+				<area fill="#CBCBCB" stroke="#b0b0b0" stroke-width="0.1" />
+			</rule>
+			<rule e="way" k="*" v="*" closed="no">
+				<line stroke="#8E8E6F" stroke-width="0.9" stroke-linecap="square" />
+				<line stroke="#CBCBCB" stroke-width="0.7" stroke-linecap="square" />
 			</rule>
 		</rule>
-		<rule e="node" k="railway" v="tram_stop" zoom-min="14">
-			<symbol id="id_tram_stop" src="file:symbols/railway_tram_stop.svg" symbol-percent="50" />
-			<rule e="node" k="*" v="*" zoom-min="15">
-				<caption symbol-id="id_tram_stop" k="name" dy="13" font-style="bold" font-family="sans_serif" font-size="10" fill="#333333" stroke="#ffffff" stroke-width="1.5" />
+		<!-- Мосты -->
+		<rule e="way" k="bridge" v="yes|viaduct" zoom-min="12">
+			<rule e="way" k="railway|highway" v="tram|light_rail|bus_guideway|miniature">
+				<line stroke="#181818" stroke-width="1.3" stroke-linecap="butt" />
+				<line stroke="#ffffff" stroke-width="0.85" stroke-linecap="butt" />
+			</rule>
+			<rule e="way" k="railway" v="subway">
+				<line stroke="#181818" stroke-width="1.5" stroke-linecap="butt" />
+				<line stroke="#ffffff" stroke-width="1.05" stroke-linecap="butt" />
+			</rule>
+			<rule e="way" k="railway" v="narrow_gauge|preserved|funicular">
+				<line stroke="#181818" stroke-width="1.6" stroke-linecap="butt" />
+				<line stroke="#ffffff" stroke-width="1.15" stroke-linecap="butt" />
+			</rule>
+			<rule e="way" k="railway" v="rail|disused">
+				<line stroke="#181818" stroke-width="1.7" stroke-linecap="butt" />
+				<line stroke="#ffffff" stroke-width="1.25" stroke-linecap="butt" />
 			</rule>
 		</rule>
-		<rule e="node" k="railway" v="halt" zoom-min="13">
-			<symbol id="id_halt" src="file:symbols/railway_station.svg" symbol-percent="60" priority="-10" />
-			<rule e="node" k="*" v="*" zoom-min="15">
-				<caption symbol-id="id_halt" k="name" dy="-4" font-style="bold" font-family="sans_serif" font-size="10" fill="#333333" stroke="#ffffff" stroke-width="1.5" />
+
+		<!-- railway casings and cores -->
+		<rule e="way" k="railway" v="miniature" zoom-min="13">
+			<line stroke="#181818" stroke-width="0.14" />
+			<line stroke="#181818" stroke-width="0.6" scale="all" stroke-dasharray="0.1,1.7" stroke-linecap="butt" />
+		</rule>
+		<rule e="way" k="railway|highway" v="tram|light_rail|bus_guideway">
+			<line stroke="#8C6900" stroke-width="0.5" stroke-linecap="butt" />
+			<line stroke="#FFFF73" stroke-width="0.4" scale="all" stroke-dasharray="1.8,1.8" stroke-linecap="butt" />
+		</rule>
+		<!-- #B30000 #b54848 -->
+		<rule e="way" k="railway" v="subway">
+			<line stroke="#B30000" stroke-width="0.6" stroke-linecap="butt" />
+			<line stroke="#FFBFBF" stroke-width="0.45" scale="all" stroke-dasharray="1.8,1.8" stroke-linecap="butt" />
+		</rule>
+		<rule e="way" k="railway" v="disused" zoom-min="13">
+			<line stroke="#505050" stroke-width="0.75" stroke-linecap="butt" />
+			<line stroke="#e6e6e6" stroke-width="0.6" stroke-linecap="butt" />
+			<line stroke="#505050" stroke-width="0.6" scale="all" stroke-dasharray="0.1,2.3" stroke-linecap="butt" />
+		</rule>
+		<rule e="way" k="railway" v="rail|narrow_gauge|preserved|funicular" zoom-max="13">
+			<line stroke="#666666" stroke-width="0.45" stroke-linecap="butt" />
+		</rule>
+		<rule e="way" k="railway" v="narrow_gauge|preserved|funicular" zoom-min="14">
+			<line stroke="#404040" stroke-width="0.65" stroke-linecap="butt" />
+			<line stroke="#e6e6e6" stroke-width="0.5" stroke-linecap="butt" />
+			<line stroke="#404040" stroke-width="0.5" scale="all" stroke-dasharray="1.2,2.4" stroke-linecap="butt" />
+		</rule>
+		<rule e="way" k="railway" v="rail" zoom-min="14">
+			<line stroke="#404040" stroke-width="0.75" stroke-linecap="butt" />
+			<line stroke="#e6e6e6" stroke-width="0.6" stroke-linecap="butt" />
+			<line stroke="#404040" stroke-width="0.6" scale="all" stroke-dasharray="2.4,2.4" stroke-linecap="butt" />
+		</rule>
+
+
+		<!-- жд, трамваи и метро - входы-выходы, станции -->
+		<rule e="node" k="railway" v="*" zoom-min="12" cat="pub_transp">
+			<!-- выходы из метро -->
+			<rule e="node" k="railway" v="subway_entrance" zoom-min="14">
+				<rule e="node" k="railway" v="subway_entrance" zoom-min="14" zoom-max="14">
+					<symbol id="id_station_metro" src="file:symbols/metro_logo.svg" symbol-percent="60" display="always" />
+				</rule>
+				<rule e="node" k="railway" v="subway_entrance" zoom-min="15">
+					<symbol id="id_station_metro" src="file:symbols/metro_logo.svg" symbol-percent="70" display="always" />
+				</rule>
+				<rule e="node" k="*" v="*" zoom-min="15">
+					<caption symbol-id="id_station_metro" k="name" dy="-4" font-style="bold" font-family="sans_serif" font-size="10" fill="#333333" stroke="#ffffff" stroke-width="1.5" />
+				</rule>
+			</rule>
+			<rule e="node" k="railway" v="station" zoom-min="13">
+				<symbol id="id_station" src="file:symbols/railway_station.svg" symbol-percent="80" priority="-10" />
+				<rule e="node" k="*" v="*" zoom-min="15">
+					<caption symbol-id="id_station" k="name" dy="-4" font-style="bold" font-family="sans_serif" font-size="10" fill="#333333" stroke="#ffffff" stroke-width="1.5" />
+				</rule>
+			</rule>
+			<rule e="node" k="railway" v="tram_stop" zoom-min="14">
+				<symbol id="id_tram_stop" src="file:symbols/railway_tram_stop.svg" symbol-percent="50" />
+				<rule e="node" k="*" v="*" zoom-min="15">
+					<caption symbol-id="id_tram_stop" k="name" dy="13" font-style="bold" font-family="sans_serif" font-size="10" fill="#333333" stroke="#ffffff" stroke-width="1.5" />
+				</rule>
+			</rule>
+			<rule e="node" k="railway" v="halt" zoom-min="13">
+				<symbol id="id_halt" src="file:symbols/railway_station.svg" symbol-percent="80" priority="-10" />
+				<rule e="node" k="*" v="*" zoom-min="15">
+					<caption symbol-id="id_halt" k="name" dy="-4" font-style="bold" font-family="sans_serif" font-size="10" fill="#333333" stroke="#ffffff" stroke-width="1.5" />
+				</rule>
 			</rule>
 		</rule>
 	</rule>
+
+	<!-- Для перехода железнодорожных путей пешеходами -->
+	<rule e="any" k="railway" v="crossing" zoom-min="14">
+		<rule e="any" k="*" v="*" zoom-max="16">
+			<symbol src="file:symbols/railway-crossing.svg" symbol-height="15" />
+		</rule>
+		<rule e="any" k="*" v="*" zoom-min="17">
+			<symbol src="file:symbols/railway-crossing.svg" symbol-height="24" />
+		</rule>
+	</rule>
+
+	<!-- Железнодорожный переезд -->
+	<rule e="any" k="railway" v="level_crossing" zoom-min="14">
+	    <rule e="any" k="*" v="*" zoom-max="16">
+		<symbol src="file:symbols/railway-crossing.svg" symbol-height="20" />
+	    </rule>
+	    <rule e="any" k="*" v="*" zoom-min="17">
+	    	<symbol src="file:symbols/railway-crossing.svg" symbol-height="32" />
+	    </rule>
+	</rule>
+
+	<!-- здания "кирпичные" #ffbbbb -->
+	<rule e="way" k="building" v="*" zoom-min="14">
+		<area fill="#ffbbbb" stroke="#444444" stroke-width="0.1" />
+		<rule e="way" k="building" v="*" zoom-min="14" zoom-max="15">
+			<area src="file:patterns/building.svg" symbol-height="5" />
+		</rule>
+		<rule e="way" k="building" v="*" zoom-min="16">
+			<area src="file:patterns/building.svg" symbol-height="7" />
+		</rule>
+	</rule>
+	<!-- здания - стройка -->
+	<rule e="way" k="building" v="construction" zoom-min="15">
+		<area fill="#c7c7c7" stroke="#b0b0b0" stroke-width="0.2" />
+		<line stroke="#C0F8F8F8" stroke-width="0.3" stroke-dasharray="2,2" />
+	</rule>
+	<!-- название зданий -->
+	<rule e="way" k="building" v="*" zoom-min="18">
+		<!-- исключая "amenity|aerialway", у них свои описания -->
+		<rule e="any" k="amenity|aerialway" v="~">
+			<caption k="name" position="below" dy="8" font-style="bold" font-family="sans_serif" font-size="12" fill="#333333" stroke="#ffffff" stroke-width="1.8" text-wrap-width="120" />
+		</rule>
+	</rule>
+	<rule e="any" k="*" v="*" zoom-min="18">
+		<caption k="addr:housenumber" font-style="normal" font-size="10" fill="#424251" priority="10" />
+	</rule>
+	<!-- магазины -->
+	<rule cat="shops" e="any" k="*" v="*" zoom-min="9">
+		<rule e="any" k="shop" v="supermarket" zoom-min="15">
+			<symbol id="s_supermarket" priority="69" src="file:symbols/s_supermarket.svg" symbol-height="15" />
+			<rule e="any" k="*" v="*" zoom-min="18">
+				<caption k="name" symbol-id="s_supermarket" position="above" font-style="bold" font-size="10" fill="#333333" stroke="#E5FFFFFF" stroke-width="2" text-wrap-width="120" />
+			</rule>
+		</rule>
+		<rule e="any" k="shop" v="convenience" zoom-min="15">
+			<symbol id="s_convenience" priority="69" src="file:symbols/s_convenience.svg" symbol-height="15" />
+			<rule e="any" k="*" v="*" zoom-min="18">
+				<caption k="name" symbol-id="s_convenience" position="above" font-style="bold" font-size="10" fill="#333333" stroke="#E5FFFFFF" stroke-width="2" text-wrap-width="120" />
+			</rule>
+		</rule>
+		<!-- торговые центры -->
+		<rule e="way" k="shop" v="mall" zoom-min="14">
+			<area fill="#c7c7ee" stroke="#b0b0b0" stroke-width="0.2" />
+			<rule e="way" k="shop" v="mall" zoom-min="15">
+				<symbol id="s_mall" src="file:symbols/s_mall.svg" symbol-height="15" />
+				<rule e="way" k="shop" v="*" zoom-min="16">
+					<caption k="name" symbol-id="s_mall" position="above" font-style="bold" font-family="sans_serif" font-size="11" fill="#333333" stroke="#E5FFFFFF" stroke-width="1.5" text-wrap-width="120" />
+				</rule>
+			</rule>
+		</rule>
+		<rule e="any" k="amenity" v="marketplace" zoom-min="15">
+			<symbol id="s_marketplace" priority="68" src="file:symbols/s_marketplace.svg" symbol-height="16" />
+			<rule e="any" k="*" v="*" zoom-min="18">
+				<caption k="name" symbol-id="s_marketplace" position="above" font-style="bold" font-size="10" fill="#333333" stroke="#E5FFFFFF" stroke-width="2" text-wrap-width="120" />
+			</rule>
+		</rule>
+		<rule e="any" k="shop" v="bakery" zoom-min="14">
+			<symbol id="s_bakery" priority="68" src="file:symbols/s_bakery.svg" symbol-height="16" />
+			<rule e="any" k="*" v="*" zoom-min="18">
+				<caption k="name" symbol-id="s_bakery" position="above" font-style="bold" font-size="10" fill="#333333" stroke="#E5FFFFFF" stroke-width="2" text-wrap-width="120" />
+			</rule>
+		</rule>
+		<rule e="any" k="amenity" v="fuel" zoom-min="14">
+			<symbol id="s_fuel" priority="68" src="file:symbols/s_fuel.svg" symbol-height="17" />
+			<rule e="any" k="*" v="*" zoom-min="18">
+				<caption k="name" symbol-id="s_fuel" position="below" display="always" priority="80" font-style="bold" font-size="10" fill="#333333" stroke="#E5FFFFFF" stroke-width="2" text-wrap-width="120" />
+			</rule>
+		</rule>
+		<rule e="any" k="shop" v="organic" zoom-min="17">
+			<symbol id="s_organic" priority="67" src="file:symbols/s_organic.svg" symbol-height="16" />
+			<rule e="any" k="*" v="*" zoom-min="18">
+				<caption k="name" symbol-id="s_organic" position="above" font-style="bold" font-size="10" fill="#333333" stroke="#E5FFFFFF" stroke-width="2" text-wrap-width="120" />
+			</rule>
+		</rule>
+		<rule e="any" k="shop" v="shop_farm" zoom-min="17">
+			<symbol id="s_farm_shop" priority="67" src="file:symbols/s_farm_shop.svg" symbol-height="16" />
+			<rule e="any" k="*" v="*" zoom-min="18">
+				<caption k="name" symbol-id="s_farm_shop" position="above" font-style="bold" font-size="10" fill="#333333" stroke="#E5FFFFFF" stroke-width="2" text-wrap-width="120" />
+			</rule>
+		</rule>
+		<rule e="any" k="shop" v="butcher" zoom-min="17">
+			<symbol id="s_butcher" priority="67" src="file:symbols/s_butcher.svg" symbol-height="16" />
+			<rule e="any" k="*" v="*" zoom-min="18">
+				<caption k="name" symbol-id="s_butcher" position="above" font-style="bold" font-size="10" fill="#333333" stroke="#E5FFFFFF" stroke-width="2" text-wrap-width="120" />
+			</rule>
+		</rule>
+		<rule e="any" k="amenity" v="atm" zoom-min="15">
+			<symbol id="s_atm" priority="67" src="file:symbols/s_atm.svg" symbol-height="16" />
+			<rule e="any" k="*" v="*" zoom-min="18">
+				<caption k="name" symbol-id="s_atm" position="above" font-style="bold" font-size="10" fill="#333333" stroke="#E5FFFFFF" stroke-width="2" text-wrap-width="120" />
+			</rule>
+		</rule>
+		<rule e="any" k="amenity" v="bank" zoom-min="15">
+			<symbol id="s_bank" priority="67" src="file:symbols/bank.svg" symbol-height="16" />
+			<rule e="any" k="*" v="*" zoom-min="18">
+				<caption k="name" symbol-id="s_bank" position="above" font-style="bold" font-size="10" fill="#333333" stroke="#E5FFFFFF" stroke-width="2" text-wrap-width="120" />
+			</rule>
+		</rule>
+		<rule e="any" k="amenity" v="post_office" zoom-min="15">
+			<symbol id="s_postoffice" priority="67" src="file:symbols/s_postoffice.svg" symbol-height="16" />
+			<rule e="any" k="*" v="*" zoom-min="18">
+				<caption k="name" symbol-id="s_postoffice" position="above" font-style="bold" font-size="10" fill="#333333" stroke="#E5FFFFFF" stroke-width="2" text-wrap-width="120" />
+			</rule>
+		</rule>
+		<rule e="any" k="amenity" v="post_box" zoom-min="16">
+			<symbol id="s_postbox" priority="67" src="file:symbols/s_postbox.svg" symbol-height="16" />
+			<rule e="any" k="*" v="*" zoom-min="18">
+				<caption k="name" symbol-id="s_postbox" position="above" font-style="bold" font-size="10" fill="#333333" stroke="#E5FFFFFF" stroke-width="2" text-wrap-width="120" />
+			</rule>
+		</rule>
+		<rule e="any" k="shop" v="sports" zoom-min="16">
+			<symbol id="s_sports_shop" priority="66" src="file:symbols/s_sports_shop.svg" symbol-height="16" />
+			<rule e="any" k="*" v="*" zoom-min="18">
+				<caption k="name" symbol-id="s_sports_shop" position="above" font-style="bold" font-size="10" fill="#333333" stroke="#E5FFFFFF" stroke-width="2" text-wrap-width="120" />
+			</rule>
+		</rule>
+		<rule e="any" k="shop" v="doityourself" zoom-min="16">
+			<symbol id="s_doityourself" priority="66" src="file:symbols/s_doityourself.svg" symbol-height="16" />
+			<rule e="any" k="*" v="*" zoom-min="18">
+				<caption k="name" symbol-id="s_doityourself" position="above" font-style="bold" font-size="10" fill="#333333" stroke="#E5FFFFFF" stroke-width="2" text-wrap-width="120" />
+			</rule>
+		</rule>
+		<rule e="any" k="shop|vending" v="bicycle|bicycle_tube" zoom-min="14">
+			<symbol id="s_bicycle_shop" priority="69" src="file:symbols/s_bicycle_shop.svg" symbol-height="16" />
+			<rule e="any" k="*" v="*" zoom-min="18">
+				<caption k="name" symbol-id="s_bicycle_shop" position="above" font-style="bold" font-size="10" fill="#333333" stroke="#E5FFFFFF" stroke-width="2" text-wrap-width="120" />
+			</rule>
+		</rule>
+		<rule e="any" k="amenity" v="bicycle_rental" zoom-min="14">
+			<symbol id="s_bicycle_rental" priority="69" src="file:symbols/s_bicycle_rental.svg" symbol-height="16" />
+			<rule e="any" k="*" v="*" zoom-min="18">
+				<caption k="name" symbol-id="s_bicycle_rental" position="above" font-style="bold" font-size="10" fill="#333333" stroke="#E5FFFFFF" stroke-width="2" text-wrap-width="120" />
+			</rule>
+		</rule>
+		<rule e="any" k="amenity" v="charging_station" zoom-min="14">
+			<rule e="any" k="bicycle" v="bic_yes">
+				<symbol id="s_bicycle_charging_station" priority="68" src="file:symbols/s_bicycle_charging_station.svg" symbol-height="16" />
+				<rule e="any" k="*" v="*" zoom-min="18">
+					<caption k="name" symbol-id="s_bicycle_charging_station" position="above" font-style="bold" font-size="10" fill="#333333" stroke="#E5FFFFFF" stroke-width="2" text-wrap-width="120" />
+				</rule>
+			</rule>
+		</rule>
+		<rule e="any" k="shop" v="travel_agency" zoom-min="16">
+			<symbol id="s_travel_agency" priority="66" src="file:symbols/s_travel_agency.svg" symbol-height="16" />
+			<rule e="any" k="*" v="*" zoom-min="18">
+				<caption k="name" symbol-id="s_travel_agency" position="above" font-style="bold" font-size="10" fill="#333333" stroke="#E5FFFFFF" stroke-width="2" text-wrap-width="120" />
+			</rule>
+		</rule>
+		<rule e="any" k="shop" v="chemist" zoom-min="17">
+			<symbol id="s_chemist" priority="65" src="file:symbols/s_chemist.svg" symbol-height="16" />
+			<rule e="any" k="*" v="*" zoom-min="18">
+				<caption k="name" symbol-id="s_chemist" position="above" font-style="bold" font-size="10" fill="#333333" stroke="#E5FFFFFF" stroke-width="2" text-wrap-width="120" />
+			</rule>
+		</rule>
+		<rule e="any" k="shop" v="laundry" zoom-min="17">
+			<symbol id="s_laundry" priority="65" src="file:symbols/s_laundry.svg" symbol-height="16" />
+			<rule e="any" k="*" v="*" zoom-min="18">
+				<caption k="name" symbol-id="s_laundry" position="above" font-style="bold" font-size="10" fill="#333333" stroke="#E5FFFFFF" stroke-width="2" text-wrap-width="120" />
+			</rule>
+		</rule>
+		<rule e="any" k="shop" v="beverages" zoom-min="17">
+			<symbol id="s_beverages" priority="65" src="file:symbols/s_beverages.svg" symbol-height="16" />
+			<rule e="any" k="*" v="*" zoom-min="18">
+				<caption k="name" symbol-id="s_beverages" position="above" font-style="bold" font-size="10" fill="#333333" stroke="#E5FFFFFF" stroke-width="2" text-wrap-width="120" />
+			</rule>
+		</rule>
+		<rule e="any" k="shop" v="books" zoom-min="17">
+			<symbol id="s_books" priority="65" src="file:symbols/s_books.svg" symbol-height="16" />
+			<rule e="any" k="*" v="*" zoom-min="18">
+				<caption k="name" symbol-id="s_books" position="above" font-style="bold" font-size="10" fill="#333333" stroke="#E5FFFFFF" stroke-width="2" text-wrap-width="120" />
+			</rule>
+		</rule>
+	</rule>
+	<!-- рестораны -->
+	<rule cat="restaurants" e="any" k="*" v="*" zoom-min="9">
+		<rule e="any" k="tourism" v="alpine_hut" zoom-min="14">
+			<rule e="any" k="access|reservation" v="~">
+				<symbol id="s_restaurant" priority="69" src="file:symbols/s_restaurant.svg" symbol-height="16" />
+				<caption k="name" symbol-id="s_restaurant" position="above" font-size="10" font-style="bold" fill="#333333" stroke="#E5FFFFFF" stroke-width="2" text-wrap-width="120" />
+			</rule>
+		</rule>
+		<rule e="any" k="amenity" v="restaurant" zoom-min="15">
+			<symbol id="s_restaurant" priority="69" src="file:symbols/restaurant.svg" symbol-height="16" />
+			<rule e="any" k="*" v="*" zoom-min="16">
+				<caption k="name" symbol-id="s_restaurant" position="above" font-size="10" font-style="bold" fill="#333333" stroke="#E5FFFFFF" stroke-width="2" text-wrap-width="120" />
+			</rule>
+		</rule>
+		<rule e="any" k="amenity" v="fast_food" zoom-min="15">
+			<symbol id="s_fastfood" priority="68" src="file:symbols/fastfood.svg" symbol-height="16" />
+			<rule e="any" k="*" v="*" zoom-min="17">
+				<caption k="name" symbol-id="s_fastfood" position="above" font-size="10" font-style="bold" fill="#333333" stroke="#E5FFFFFF" stroke-width="2" text-wrap-width="120" />
+			</rule>
+		</rule>
+		<rule e="any" k="amenity" v="biergarten" zoom-min="15">
+			<symbol id="s_biergarten" priority="65" src="file:symbols/s_biergarten.svg" symbol-height="16" />
+			<rule e="any" k="*" v="*" zoom-min="17">
+				<caption k="name" symbol-id="s_biergarten" position="above" font-size="10" font-style="bold" fill="#333333" stroke="#E5FFFFFF" stroke-width="2" text-wrap-width="120" />
+			</rule>
+		</rule>
+		<rule e="any" k="amenity" v="cafe" zoom-min="15">
+			<symbol id="s_cafe" priority="65" src="file:symbols/cafe.svg" symbol-height="16" />
+			<rule e="any" k="*" v="*" zoom-min="17">
+				<caption k="name" priority="-5" symbol-id="s_cafe" position="above" font-size="10" font-style="bold" fill="#333333" stroke="#E5FFFFFF" stroke-width="2" text-wrap-width="120" />
+			</rule>
+		</rule>
+		<rule e="any" k="amenity" v="pub" zoom-min="15">
+			<symbol id="s_pub" priority="64" src="file:symbols/s_pub.svg" symbol-height="16" />
+			<rule e="any" k="*" v="*" zoom-min="18">
+				<caption k="name" symbol-id="s_pub" position="above" font-size="10" font-style="bold" fill="#333333" stroke="#E5FFFFFF" stroke-width="2" text-wrap-width="120" />
+			</rule>
+		</rule>
+		<rule e="any" k="amenity" v="bar" zoom-min="15">
+			<symbol id="s_bar" priority="64" src="file:symbols/s_bar.svg" symbol-height="16" />
+			<rule e="any" k="*" v="*" zoom-min="18">
+				<caption k="name" symbol-id="s_bar" position="above" font-size="10" font-style="bold" fill="#333333" stroke="#E5FFFFFF" stroke-width="2" text-wrap-width="120" />
+			</rule>
+		</rule>
+		<rule e="any" k="amenity" v="ice_cream" zoom-min="15">
+			<symbol id="s_ice_cream" priority="64" src="file:symbols/s_ice_cream.svg" symbol-height="16" />
+			<rule e="any" k="*" v="*" zoom-min="17">
+				<caption k="name" symbol-id="s_ice_cream" position="above" font-size="10" font-style="bold" fill="#333333" stroke="#E5FFFFFF" stroke-width="2" text-wrap-width="120" />
+			</rule>
+		</rule>
+	</rule>
+	<!-- -->
 	<rule e="way" k="military" v="*" zoom-min="15">
 		<rule e="way" k="military" v="airfield|naval_base">
 			<area fill="#F0DCD8" />
@@ -2031,12 +2197,12 @@
 		<rule e="way" k="power" v="station|sub_station|substation">
 			<area fill="#C7C7C7" />
 		</rule>
-		<rule e="way" k="power" v="line" zoom-min="12" cat="landscapefeat">
+		<rule e="way" k="power" v="line" zoom-min="12" cat="power_line">
 			<line stroke="#727272" stroke-width="0.2" stroke-linecap="butt" />
 			<line stroke="#727272" stroke-width="1.3" stroke-dasharray="0,20,0.6,50" stroke-linecap="butt" />
 			<line stroke="#727272" stroke-width="0.6" stroke-dasharray="0.3,40,0.3,30" />
 		</rule>
-		<rule e="way" k="power" v="minor_line" zoom-min="13" cat="landscapefeat">
+		<rule e="way" k="power" v="minor_line" zoom-min="13" cat="power_line">
 			<line stroke="#727272" stroke-width="0.2" stroke-linecap="butt" />
 			<line stroke="#727272" stroke-width="0.6" stroke-dasharray="0.3,40,0.3,30" />
 		</rule>
@@ -2149,6 +2315,7 @@
 	<rule e="node" k="place" v="country" zoom-max="4">
 		<caption k="name" font-style="bold" font-size="25" fill="#000000" stroke="#ffffff" stroke-width="2.0" text-wrap-width="120" />
 	</rule>
+
 	<!-- национальные парки и охраняемые территории -->
 	<rule e="way" k="leisure|boundary" v="nature_reserve|protected_area|national_park" zoom-min="8" cat="protected_area" closed="yes">
 		<rule e="any" k="*" v="*" zoom-max="13">
@@ -2181,69 +2348,8 @@
 			<caption k="name" dy="15" priority="99" font-style="bold_italic" font-size="11" fill="#006600" stroke="#FFFFFF" stroke-width="2" text-wrap-width="120" />
 		</rule>
 	</rule>
-	<!-- набережная / укрепление берега и т.п. -->
-	<rule cat="landscapefeat" e="any" k="*" v="*">
-		<rule e="way" k="man_made" v="~">
-			<rule e="way" k="embankment" v="emb_yes" closed="no">
-				<rule e="way" k="highway" v="motorway">
-					<line stroke="#948e88" stroke-width="2.8" stroke-dasharray="1,8" stroke-linecap="butt" />
-				</rule>
-				<rule e="way" k="highway" v="motorway_link|tertiary|tertiary_link|secondary_link|primary_link|trunk_link|secondary|primary|trunk">
-					<line stroke="#948e88" stroke-width="2.4" stroke-dasharray="1,8" stroke-linecap="butt" />
-				</rule>
-				<line stroke="#948e88" stroke-width="2.2" stroke-dasharray="1,8" stroke-linecap="butt" />
-				<line stroke="#948e88" stroke-width="1.2" stroke-linecap="butt" />
-				<line stroke="#F8F8F8" stroke-width="1" stroke-linecap="butt" />
-			</rule>
-		</rule>
-		<rule e="way" k="man_made" v="embankment" closed="no">
-			<line stroke="#948e88" stroke-width="0.6" dy="0.3" stroke-dasharray="1,8" stroke-linecap="butt" />
-			<line stroke="#948e88" stroke-width="0.1" stroke-linecap="butt" />
-		</rule>
-		<rule e="way" k="man_made|embankment" v="embankment|emb_yes" closed="yes">
-			<line stroke="#948e88" stroke-width="0.6" dy="-0.3" stroke-dasharray="1,8" stroke-linecap="butt" />
-			<line stroke="#948e88" stroke-width="0.1" stroke-linecap="butt" />
-		</rule>
-		<rule e="way" k="man_made" v="dyke" zoom-min="15">
-			<line stroke="#948e88" stroke-width="2.2" stroke-dasharray="1,8" stroke-linecap="butt" />
-			<line stroke="#948e88" stroke-width="1.1" stroke-linecap="butt" />
-			<line stroke="#F8F8F8" stroke-width="1" stroke-linecap="butt" />
-		</rule>
-		<rule e="way" k="man_made" v="groyne" closed="no" zoom-min="15">
-			<rule e="way" k="*" v="*" zoom-max="17">
-				<line stroke="#A69D9D" stroke-width="1" stroke-dasharray="1,8" />
-				<line stroke="#E6F0FF" stroke-width="0.8" stroke-dasharray="1,8" />
-			</rule>
-			<rule e="way" k="*" v="*" zoom-min="18">
-				<line stroke="#A69D9D" stroke-width="0.8" stroke-dasharray="1,18" />
-				<line stroke="#E6F0FF" stroke-width="0.6" stroke-dasharray="1,18" />
-			</rule>
-		</rule>
-		<rule e="way" k="man_made" v="breakwater" closed="no" zoom-min="15">
-			<rule e="way" k="*" v="*" zoom-max="17">
-				<line stroke="#A69D9D" stroke-width="1" />
-				<line stroke="#E6F0FF" stroke-width="0.8" />
-			</rule>
-			<rule e="way" k="*" v="*" zoom-min="18">
-				<line stroke="#A69D9D" stroke-width="0.8" />
-				<line stroke="#E6F0FF" stroke-width="0.6" />
-			</rule>
-		</rule>
-		<rule e="way" k="man_made" v="groyne|breakwater" closed="yes" zoom-min="15">
-			<line stroke="#A69D9D" stroke-width="0.1" />
-			<area fill="#E6F0FF" />
-		</rule>
-		<rule e="way" k="barrier" v="ditch" closed="no">
-			<line stroke="#948e88" dy="0.25" stroke-width="0.4" stroke-dasharray="1,8" stroke-linecap="butt" />
-			<line stroke="#948e88" dy="-0.25" stroke-width="0.4" stroke-dasharray="0,4,1,4" stroke-linecap="butt" />
-			<line stroke="#948e88" dy="0.4" stroke-width="0.1" stroke-linecap="butt" />
-			<line stroke="#948e88" dy="-0.4" stroke-width="0.1" stroke-linecap="butt" />
-		</rule>
-		<rule e="way" k="barrier" v="ditch" closed="yes">
-			<line stroke="#948e88" dy="0.2" stroke-width="0.4" stroke-dasharray="0,4,1,4" stroke-linecap="butt" />
-			<line stroke="#948e88" stroke-width="0.1" stroke-linecap="butt" />
-		</rule>
-	</rule>
+
+
 	<!-- вышка связи -->
 	<rule cat="mast_communication" e="node" k="tower" v="communication" zoom-min="15">
 		<rule e="node" k="*" v="*" zoom-min="15" zoom-max="16">
@@ -2347,9 +2453,14 @@
 			<line stroke="#545454" stroke-width="0.05" stroke-linecap="butt" />
 		</rule>
 		<!-- забор -->
-		<rule e="way" k="barrier" v="fence" zoom-min="12">
+		<rule e="way" k="barrier" v="fence" zoom-min="14">
+			<!--
 			<line stroke="#4a1200" stroke-width="0.15" stroke-linecap="butt" />
 			<line stroke="#ba6600" scale="all" stroke-width="0.56" stroke-dasharray="0.2,2" stroke-linecap="butt" />
+		    -->
+			<line stroke="#80ffffff" stroke-width="0.2" stroke-linecap="butt" />
+			<line stroke="#888888" stroke-width="0.1" scale="all" stroke-dasharray="0.01,0.25,0.5,0.25" stroke-linecap="butt" />
+			<line stroke="#888888" stroke-width="0.2" scale="all" stroke-dasharray="0.01,1" />
 		</rule>
 		<!-- забор-стена -->
 		<rule e="way" k="barrier" v="wall">
@@ -2368,82 +2479,81 @@
 	<rule cat="barriers" e="node" k="barrier" v="lift_gate" zoom-min="16">
 		<symbol src="file:symbols/lift_gate.svg" symbol-height="16" />
 	</rule>
-
 	<rule e="node" k="natural" v="*">
 		<!-- вершина горы / вулкана -->
 		<rule e="node" k="natural" v="peak|volcano">
 			<!-- 1 -->
 			<rule e="any" k="peak_dist" v="pd_1" zoom-min="9">
 				<rule e="node" k="*" v="*" zoom-min="9" zoom-max="14">
-				    <!-- иконка вершины -->
-				    <rule e="node" k="natural" v="peak">
-					<symbol id="id_peak" src="file:symbols/s_peak.svg" symbol-percent="70" display="always" />
-				    </rule>
-				    <rule e="node" k="natural" v="volcano">
-					<symbol id="id_peak" src="file:symbols/volcano.svg" symbol-percent="70" display="always" />
-				    </rule>
-				    <!-- название и высота -->
-				    <caption display="always" symbol-id="id_peak" position="above" dy="3" k="name" font-family="sans_serif" font-style="bold_italic" font-size="12" fill="#303030" stroke="#ffffff" stroke-width="3" priority="415" text-transform="capitalize" text-wrap-width="120" />
-				    <caption display="always" symbol-id="id_peak" k="ele" dy="-3" position="below" font-family="sans_serif" font-size="11" fill="#303030" stroke="#ffffff" stroke-width="3" priority="414" />
+					<!-- иконка вершины -->
+					<rule e="node" k="natural" v="peak">
+						<symbol id="id_peak" src="file:symbols/s_peak.svg" symbol-percent="70" display="always" />
+					</rule>
+					<rule e="node" k="natural" v="volcano">
+						<symbol id="id_peak" src="file:symbols/volcano.svg" symbol-percent="70" display="always" />
+					</rule>
+					<!-- название и высота -->
+					<caption display="always" symbol-id="id_peak" position="above" dy="3" k="name" font-family="sans_serif" font-style="bold_italic" font-size="12" fill="#303030" stroke="#ffffff" stroke-width="3" priority="415" text-transform="capitalize" text-wrap-width="120" />
+					<caption display="always" symbol-id="id_peak" k="ele" dy="-3" position="below" font-family="sans_serif" font-size="11" fill="#303030" stroke="#ffffff" stroke-width="3" priority="414" />
 				</rule>
 				<rule e="node" k="*" v="*" zoom-min="15">
-				    <!-- иконка вершины -->
-				    <rule e="node" k="natural" v="peak">
-					<symbol id="id_peak" src="file:symbols/s_peak.svg" symbol-percent="85" display="always" />
-				    </rule>
-				    <rule e="node" k="natural" v="volcano">
-					<symbol id="id_peak" src="file:symbols/volcano.svg" symbol-percent="85" display="always" />
-				    </rule>
-				    <!-- название и высота -->
-				    <caption display="always" symbol-id="id_peak" position="above" dy="3" k="name" font-family="sans_serif" font-style="bold_italic" font-size="13" fill="#303030" stroke="#ffffff" stroke-width="3" priority="415" text-transform="capitalize" text-wrap-width="120" />
-				    <caption display="always" symbol-id="id_peak" k="ele" dy="-3" position="below" font-family="sans_serif" font-size="11" fill="#303030" stroke="#ffffff" stroke-width="3" priority="414" />
+					<!-- иконка вершины -->
+					<rule e="node" k="natural" v="peak">
+						<symbol id="id_peak" src="file:symbols/s_peak.svg" symbol-percent="85" display="always" />
+					</rule>
+					<rule e="node" k="natural" v="volcano">
+						<symbol id="id_peak" src="file:symbols/volcano.svg" symbol-percent="85" display="always" />
+					</rule>
+					<!-- название и высота -->
+					<caption display="always" symbol-id="id_peak" position="above" dy="3" k="name" font-family="sans_serif" font-style="bold_italic" font-size="13" fill="#303030" stroke="#ffffff" stroke-width="3" priority="415" text-transform="capitalize" text-wrap-width="120" />
+					<caption display="always" symbol-id="id_peak" k="ele" dy="-3" position="below" font-family="sans_serif" font-size="11" fill="#303030" stroke="#ffffff" stroke-width="3" priority="414" />
 				</rule>
 			</rule>
 			<!-- 2 -->
 			<rule e="any" k="peak_dist" v="pd_2" zoom-min="10">
 				<rule e="node" k="*" v="*" zoom-min="10" zoom-max="14">
-				    <!-- иконка вершины -->
-				    <rule e="node" k="natural" v="peak">
-					<symbol id="id_peak" src="file:symbols/s_peak.svg" symbol-percent="70" display="always" />
-				    </rule>
-				    <rule e="node" k="natural" v="volcano">
-					<symbol id="id_peak" src="file:symbols/volcano.svg" symbol-percent="70" display="always" />
-				    </rule>
-				    <!-- название и высота -->
-				    <caption display="always" symbol-id="id_peak" position="above" dy="3" k="name" font-family="sans_serif" font-style="bold_italic" font-size="12" fill="#303030" stroke="#ffffff" stroke-width="3" priority="415" text-transform="capitalize" text-wrap-width="120" />
-				    <caption display="always" symbol-id="id_peak" k="ele" dy="-3" position="below" font-family="sans_serif" font-size="11" fill="#303030" stroke="#ffffff" stroke-width="3" priority="414" />
+					<!-- иконка вершины -->
+					<rule e="node" k="natural" v="peak">
+						<symbol id="id_peak" src="file:symbols/s_peak.svg" symbol-percent="70" display="always" />
+					</rule>
+					<rule e="node" k="natural" v="volcano">
+						<symbol id="id_peak" src="file:symbols/volcano.svg" symbol-percent="70" display="always" />
+					</rule>
+					<!-- название и высота -->
+					<caption display="always" symbol-id="id_peak" position="above" dy="3" k="name" font-family="sans_serif" font-style="bold_italic" font-size="12" fill="#303030" stroke="#ffffff" stroke-width="3" priority="415" text-transform="capitalize" text-wrap-width="120" />
+					<caption display="always" symbol-id="id_peak" k="ele" dy="-3" position="below" font-family="sans_serif" font-size="11" fill="#303030" stroke="#ffffff" stroke-width="3" priority="414" />
 				</rule>
 				<rule e="node" k="*" v="*" zoom-min="15">
-				    <!-- иконка вершины -->
-				    <rule e="node" k="natural" v="peak">
-					<symbol id="id_peak" src="file:symbols/s_peak.svg" symbol-percent="85" display="always" />
-				    </rule>
-				    <rule e="node" k="natural" v="volcano">
-					<symbol id="id_peak" src="file:symbols/volcano.svg" symbol-percent="85" display="always" />
-				    </rule>
-				    <!-- название и высота -->
-				    <caption display="always" symbol-id="id_peak" position="above" dy="3" k="name" font-family="sans_serif" font-style="bold_italic" font-size="13" fill="#303030" stroke="#ffffff" stroke-width="3" priority="415" text-transform="capitalize" text-wrap-width="120" />
-				    <caption display="always" symbol-id="id_peak" k="ele" dy="-3" position="below" font-family="sans_serif" font-size="11" fill="#303030" stroke="#ffffff" stroke-width="3" priority="414" />
+					<!-- иконка вершины -->
+					<rule e="node" k="natural" v="peak">
+						<symbol id="id_peak" src="file:symbols/s_peak.svg" symbol-percent="85" display="always" />
+					</rule>
+					<rule e="node" k="natural" v="volcano">
+						<symbol id="id_peak" src="file:symbols/volcano.svg" symbol-percent="85" display="always" />
+					</rule>
+					<!-- название и высота -->
+					<caption display="always" symbol-id="id_peak" position="above" dy="3" k="name" font-family="sans_serif" font-style="bold_italic" font-size="13" fill="#303030" stroke="#ffffff" stroke-width="3" priority="415" text-transform="capitalize" text-wrap-width="120" />
+					<caption display="always" symbol-id="id_peak" k="ele" dy="-3" position="below" font-family="sans_serif" font-size="11" fill="#303030" stroke="#ffffff" stroke-width="3" priority="414" />
 				</rule>
 			</rule>
 			<!-- 3 например "Каменный столб" в Красной Поляне -->
 			<rule e="any" k="peak_dist" v="pd_3|~" zoom-min="11">
 				<!-- иконка вершины -->
 				<rule e="any" k="*" v="*" zoom-min="11" zoom-max="14">
-				    <rule e="node" k="natural" v="peak">
-					<symbol id="id_peak" src="file:symbols/s_peak.svg" symbol-percent="65" display="always" />
-				    </rule>
-				    <rule e="node" k="natural" v="volcano">
-					<symbol id="id_peak" src="file:symbols/volcano.svg" symbol-percent="65" display="always" />
-				    </rule>
+					<rule e="node" k="natural" v="peak">
+						<symbol id="id_peak" src="file:symbols/s_peak.svg" symbol-percent="65" display="always" />
+					</rule>
+					<rule e="node" k="natural" v="volcano">
+						<symbol id="id_peak" src="file:symbols/volcano.svg" symbol-percent="65" display="always" />
+					</rule>
 				</rule>
 				<rule e="any" k="*" v="*" zoom-min="15">
-				    <rule e="node" k="natural" v="peak">
-					<symbol id="id_peak" src="file:symbols/s_peak.svg" symbol-percent="80" display="always" />
-				    </rule>
-				    <rule e="node" k="natural" v="volcano">
-					<symbol id="id_peak" src="file:symbols/volcano.svg" symbol-percent="80" display="always" />
-				    </rule>
+					<rule e="node" k="natural" v="peak">
+						<symbol id="id_peak" src="file:symbols/s_peak.svg" symbol-percent="80" display="always" />
+					</rule>
+					<rule e="node" k="natural" v="volcano">
+						<symbol id="id_peak" src="file:symbols/volcano.svg" symbol-percent="80" display="always" />
+					</rule>
 				</rule>
 				<!-- название и высота -->
 				<rule e="node" k="*" v="*" zoom-min="12" zoom-max="14">
@@ -2459,20 +2569,20 @@
 			<rule e="any" k="peak_dist" v="pd_4|pd_5" zoom-min="12">
 				<!-- иконка вершины -->
 				<rule e="any" k="*" v="*" zoom-min="12" zoom-max="14">
-				    <rule e="node" k="natural" v="peak">
-					<symbol id="id_peak" src="file:symbols/s_peak.svg" symbol-percent="65" display="always" />
-				    </rule>
-				    <rule e="node" k="natural" v="volcano">
-					<symbol id="id_peak" src="file:symbols/volcano.svg" symbol-percent="65" display="always" />
-				    </rule>
+					<rule e="node" k="natural" v="peak">
+						<symbol id="id_peak" src="file:symbols/s_peak.svg" symbol-percent="65" display="always" />
+					</rule>
+					<rule e="node" k="natural" v="volcano">
+						<symbol id="id_peak" src="file:symbols/volcano.svg" symbol-percent="65" display="always" />
+					</rule>
 				</rule>
 				<rule e="any" k="*" v="*" zoom-min="15">
-				    <rule e="node" k="natural" v="peak">
-					<symbol id="id_peak" src="file:symbols/s_peak.svg" symbol-percent="80" display="always" />
-				    </rule>
-				    <rule e="node" k="natural" v="volcano">
-					<symbol id="id_peak" src="file:symbols/volcano.svg" symbol-percent="80" display="always" />
-				    </rule>
+					<rule e="node" k="natural" v="peak">
+						<symbol id="id_peak" src="file:symbols/s_peak.svg" symbol-percent="80" display="always" />
+					</rule>
+					<rule e="node" k="natural" v="volcano">
+						<symbol id="id_peak" src="file:symbols/volcano.svg" symbol-percent="80" display="always" />
+					</rule>
 				</rule>
 				<!-- название и высота -->
 				<rule e="any" k="*" v="*" zoom-min="13" zoom-max="14">
@@ -2487,7 +2597,6 @@
 				</rule>
 			</rule>
 		</rule>
-
 		<!-- пещеры -->
 		<rule e="node" k="natural" v="cave_entrance" zoom-min="12">
 			<symbol id="id_cave_entrance" src="file:symbols/cave_entrance2.svg" symbol-percent="90" priority="-1" display="always" />
@@ -2495,28 +2604,11 @@
 				<caption symbol-id="id_cave_entrance" priority="-1" k="name" position="above" font-style="normal" font-family="sans_serif" font-size="12" fill="#222222" stroke="#ffffff" stroke-width="2" text-wrap-width="120" />
 			</rule>
 		</rule>
-
 		<!-- скала, камень -->
 		<rule e="node" k="natural" v="stone|rock|nat_stone" cat="landscapefeat" zoom-min="15">
 			<symbol id="id_stone" src="file:symbols/s_stone.svg" symbol-percent="80" />
 			<rule e="node" k="natural" v="*" zoom-min="15">
 				<caption symbol-id="id_stone" k="name" font-style="normal" font-family="sans_serif" font-size="11" fill="#222222" stroke="#ffffff" stroke-width="1.5" text-wrap-width="120" />
-			</rule>
-		</rule>
-
-		<!-- родник -->
-		<rule cat="water" e="node" k="amenity|natural" v="spring" zoom-min="16">
-			<rule e="node" k="drinking_water|amenity" v="yes|drinking_water">
-				<symbol display="always" priority="505" id="spring" src="file:/symbols/s_spring_d.svg" symbol-height="13" />
-			</rule>
-			<rule e="node" k="drinking_water" v="no">
-				<symbol display="always" priority="405" id="spring" src="file:/symbols/s_spring_nd.svg" symbol-height="13" />
-			</rule>
-			<rule e="node" k="drinking_water" v="~">
-				<symbol display="always" priority="505" id="spring" src="file:/symbols/s_spring.svg" symbol-height="13" />
-			</rule>
-			<rule e="any" k="*" v="*" zoom-min="17">
-				<caption symbol-id="spring" k="name" font-style="bold_italic" font-size="11" fill="#115DFF" stroke="#E5FFFFFF" stroke-width="2" priority="395" text-wrap-width="110" />
 			</rule>
 		</rule>
 		<!-- отдельное дерево -->
@@ -2525,7 +2617,6 @@
 			<caption symbol-id="s_tree" k="name" font-style="bold" font-size="11" fill="#006600" stroke="#FFFFFF" stroke-width="2.0" text-wrap-width="120" />
 			<caption symbol-id="s_tree" k="ele" position="below" font-style="bold" font-size="11" fill="#006600" stroke="#FFFFFF" stroke-width="2.0" />
 		</rule>
-
 		<!-- седловина (точка максимального понижения) в хребте между двумя возвышенностями (формально это не перевал, может не совпадать) -->
 		<rule cat="landscapefeat" e="any" k="natural" v="saddle" zoom-min="13">
 			<rule e="any" k="*" v="*" zoom-min="13" zoom-max="14">
@@ -2543,7 +2634,6 @@
 			</rule>
 		</rule>
 	</rule>
-
 	<!-- перевал -->
 	<rule cat="landscapefeat" e="any" k="mountain_pass" v="yes" zoom-min="13">
 		<!-- исключая natural=saddle/peak и может что то еще -->
@@ -2563,8 +2653,6 @@
 			</rule>
 		</rule>
 	</rule>
-
-
 	<!-- аптеки/больницы/врачи -->
 	<rule cat="pharmacies" e="any" k="*" v="*" zoom-min="9">
 		<!-- аптека -->
@@ -2589,7 +2677,7 @@
 			</rule>
 		</rule>
 	</rule>
-	<!-- полиция/пожарные/посольство и т.д. -->
+	<!-- полиция/пожарные и т.д. -->
 	<rule cat="emergency" e="any" k="*" v="*" zoom-min="9">
 		<rule e="any" k="amenity" v="police" zoom-min="16">
 			<symbol id="s_police" priority="81" src="file:symbols/s_police.svg" symbol-height="16" />
@@ -2601,6 +2689,14 @@
 			<symbol id="s_firebrigade" priority="80" src="file:symbols/s_firebrigade.svg" symbol-height="16" />
 			<rule e="any" k="*" v="*" zoom-min="17">
 				<caption k="name" symbol-id="s_firebrigade" font-style="bold" font-family="sans_serif" font-size="12" fill="#333333" stroke="#ffffff" stroke-width="1.5" />
+			</rule>
+		</rule>
+		<rule e="any" k="emergency" v="defibrillator" zoom-min="16">
+			<rule e="any" k="*" v="*" zoom-max="16">
+				<symbol src="file:symbols/defibrillator.svg" symbol-height="15" display="always" priority="99" />
+			</rule>
+			<rule e="any" k="*" v="*" zoom-min="17">
+				<symbol src="file:symbols/defibrillator.svg" symbol-height="19" display="always" priority="99" />
 			</rule>
 		</rule>
 		<rule e="any" k="amenity|building" v="embassy" zoom-min="16">
@@ -3113,6 +3209,7 @@
 			<pathText k="ref" font-style="bold" font-size="11" dy="1.4" fill="#B11BB9" stroke="#ffffff" stroke-width="2" />
 		</rule>
 	</rule>
+
 	<!-- MTB -->
 	<rule cat="c_mtb_routes" e="any" k="*" v="*" zoom-min="13">
 		<rule e="any" k="mtbnetwork" v="imn|nmn|rmn|lmn|omn">
@@ -3148,6 +3245,7 @@
 			<pathText priority="10" k="ref_cycle" font-style="bold" font-size="10" fill="#b266ff" stroke="#ffffff" stroke-width="2.5" dy="0" repeat-start="30" repeat-gap="300" />
 		</rule>
 	</rule>
+
 	<!-- hiking network -->
 	<rule e="way" k="hknetwork" v="*" cat="hikingtrails" zoom-min="8">
 		<!--
@@ -3171,11 +3269,6 @@
 			<pathText dy="-1" priority="11" k="name" font-style="bold" font-size="11" fill="#ee7700" stroke="#ffffff" stroke-width="2.0" repeat-start="60" repeat-gap="300" />
 			<pathText dy="-1" priority="11" k="ref" font-style="bold" font-size="11" fill="#631f1f" stroke="#ffffff" stroke-width="2.0" repeat-start="30" repeat-gap="300" />
 		</rule>
-	</rule>
-	<!-- -->
-	<rule e="node" k="hike_node" v="*" zoom-min="13" cat="hikingnodes">
-		<circle radius="7.5" scale-radius="false" fill="#ffffff" stroke="#009900" stroke-width="1.5" />
-		<caption k="addr:housenumber" priority="3" position="center" font-style="bold" font-size="12" fill="#009900" stroke="#E5FFFFFF" stroke-width="2.0" />
 	</rule>
 	<!-- Горнолыжные трассы, беговые лыжи, санки // Целиком скопировано из темы TOTM -->
 	<rule cat="winter_sports" e="way" k="piste:type" v="*" zoom-min="13">
@@ -3515,512 +3608,811 @@
 			<pathText k="name" dy="-1.9" font-style="bold" font-size="10" fill="#575757" stroke="#E5FFFFFF" stroke-width="1.0" priority="50" repeat-gap="500" />
 		</rule>
 	</rule>
+
 	<!-- -->
-	<rule e="any" k="osmc" v="osmc_yes" zoom-min="14" cat="trail_markings">
-		<rule e="any" k="osmc_background" v="wmbg_black">
-			<symbol src="file:/osmc/bcg_black.svg" display="always" priority="2" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_background" v="wmbg_black_circle">
-			<symbol src="file:/osmc/bcg_black_circle.svg" display="always" priority="2" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_background" v="wmbg_blue">
-			<symbol src="file:/osmc/bcg_blue.svg" display="always" priority="2" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_background" v="wmbg_blue_circle">
-			<symbol src="file:/osmc/bcg_blue_circle.svg" display="always" priority="2" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_background" v="wmbg_blue_frame">
-			<symbol src="file:/osmc/bcg_blue_frame.svg" display="always" priority="2" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_background" v="wmbg_blue_round">
-			<symbol src="file:/osmc/bcg_blue_round.svg" display="always" priority="2" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_background" v="wmbg_brown">
-			<symbol src="file:/osmc/bcg_brown.svg" display="always" priority="2" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_background" v="wmbg_green">
-			<symbol src="file:/osmc/bcg_green.svg" display="always" priority="2" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_background" v="wmbg_green_circle">
-			<symbol src="file:/osmc/bcg_green_circle.svg" display="always" priority="2" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_background" v="wmbg_green_frame">
-			<symbol src="file:/osmc/bcg_green_frame.svg" display="always" priority="2" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_background" v="wmbg_green_round">
-			<symbol src="file:/osmc/bcg_green_round.svg" display="always" priority="2" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_background" v="wmbg_orange">
-			<symbol src="file:/osmc/bcg_orange.svg" display="always" priority="2" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_background" v="wmbg_purple">
-			<symbol src="file:/osmc/bcg_purple.svg" display="always" priority="2" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_background" v="wmbg_red">
-			<symbol src="file:/osmc/bcg_red.svg" display="always" priority="2" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_background" v="wmbg_red_circle">
-			<symbol src="file:/osmc/bcg_red_circle.svg" display="always" priority="2" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_background" v="wmbg_red_frame">
-			<symbol src="file:/osmc/bcg_red_frame.svg" display="always" priority="2" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_background" v="wmbg_red_round">
-			<symbol src="file:/osmc/bcg_red_round.svg" display="always" priority="2" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_background" v="wmbg_white">
-			<symbol src="file:/osmc/bcg_white.svg" display="always" priority="2" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_background" v="wmbg_white_circle">
-			<symbol src="file:/osmc/bcg_white_circle.svg" display="always" priority="2" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_background" v="wmbg_white_round">
-			<symbol src="file:/osmc/bcg_white_round.svg" display="always" priority="2" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_background" v="wmbg_yellow">
-			<symbol src="file:/osmc/bcg_yellow.svg" display="always" priority="2" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_background" v="wmbg_yellow_circle">
-			<symbol src="file:/osmc/bcg_yellow_circle.svg" display="always" priority="2" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_background" v="wmbg_yellow_frame">
-			<symbol src="file:/osmc/bcg_yellow_frame.svg" display="always" priority="2" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_blue_arch">
-			<symbol src="file:/osmc/frg_blue_arch.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_blue_l">
-			<symbol src="file:/osmc/frg_blue_L.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_blue_bar">
-			<symbol src="file:/osmc/frg_blue_bar.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_blue_bowl">
-			<symbol src="file:/osmc/frg_blue_bowl.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_blue_circle">
-			<symbol src="file:/osmc/frg_blue_circle.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_blue_corner">
-			<symbol src="file:/osmc/frg_blue_corner.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_blue_cross">
-			<symbol src="file:/osmc/frg_blue_cross.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_blue_diamond">
-			<symbol src="file:/osmc/frg_blue_diamond.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_blue_dot">
-			<symbol src="file:/osmc/frg_blue_dot.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_blue_fork">
-			<symbol src="file:/osmc/frg_blue_fork.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_blue_lower">
-			<symbol src="file:/osmc/frg_blue_lower.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_blue_pointer">
-			<symbol src="file:/osmc/frg_blue_pointer.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_blue_rectangle">
-			<symbol src="file:/osmc/frg_blue_rectangle.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_blue_right">
-			<symbol src="file:/osmc/frg_blue_right.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_blue_slash">
-			<symbol src="file:/osmc/frg_blue_slash.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_blue_stripe">
-			<symbol src="file:/osmc/frg_blue_stripe.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_blue_triangle">
-			<symbol src="file:/osmc/frg_blue_triangle.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_blue_triangle_turned">
-			<symbol src="file:/osmc/frg_blue_triangle_turned.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_blue_turned_t">
-			<symbol src="file:/osmc/frg_blue_turned_T.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_blue_x">
-			<symbol src="file:/osmc/frg_blue_x.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_red_arch">
-			<symbol src="file:/osmc/frg_red_arch.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_red_backslash">
-			<symbol src="file:/osmc/frg_red_backslash.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_red_bar">
-			<symbol src="file:/osmc/frg_red_bar.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_red_circle">
-			<symbol src="file:/osmc/frg_red_circle.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_red_corner">
-			<symbol src="file:/osmc/frg_red_corner.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_red_crest">
-			<symbol src="file:/osmc/frg_red_crest.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_red_cross">
-			<symbol src="file:/osmc/frg_red_cross.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_red_diamond">
-			<symbol src="file:/osmc/frg_red_diamond.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_red_dot">
-			<symbol src="file:/osmc/frg_red_dot.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_red_drop">
-			<symbol src="file:/osmc/frg_red_drop.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_red_drop_line">
-			<symbol src="file:/osmc/frg_red_drop_line.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_red_hiker">
-			<symbol src="file:/osmc/frg_red_hiker.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_red_fork">
-			<symbol src="file:/osmc/frg_red_fork.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_red_l">
-			<symbol src="file:/osmc/frg_red_L.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_red_lower">
-			<symbol src="file:/osmc/frg_red_lower.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_red_pointer">
-			<symbol src="file:/osmc/frg_red_pointer.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_red_rectangle">
-			<symbol src="file:/osmc/frg_red_rectangle.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_red_right">
-			<symbol src="file:/osmc/frg_red_right.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_red_slash">
-			<symbol src="file:/osmc/frg_red_slash.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_red_stripe">
-			<symbol src="file:/osmc/frg_red_stripe.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_red_triangle">
-			<symbol src="file:/osmc/frg_red_triangle.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_red_triangle_turned">
-			<symbol src="file:/osmc/frg_red_triangle_turned.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_red_turned_t">
-			<symbol src="file:/osmc/frg_red_turned_T.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_red_x">
-			<symbol src="file:/osmc/frg_red_x.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_yellow_arch">
-			<symbol src="file:/osmc/frg_yellow_arch.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_yellow_backslash">
-			<symbol src="file:/osmc/frg_yellow_backslash.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_yellow_bar">
-			<symbol src="file:/osmc/frg_yellow_bar.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_yellow_bowl">
-			<symbol src="file:/osmc/frg_yellow_bowl.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_yellow_circle">
-			<symbol src="file:/osmc/frg_yellow_circle.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_yellow_corner">
-			<symbol src="file:/osmc/frg_yellow_corner.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_yellow_cross">
-			<symbol src="file:/osmc/frg_yellow_cross.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_yellow_diamond">
-			<symbol src="file:/osmc/frg_yellow_diamond.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_yellow_dot">
-			<symbol src="file:/osmc/frg_yellow_dot.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_yellow_hiker">
-			<symbol src="file:/osmc/frg_yellow_hiker.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_yellow_fork">
-			<symbol src="file:/osmc/frg_yellow_fork.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_yellow_l">
-			<symbol src="file:/osmc/frg_yellow_L.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_yellow_lower">
-			<symbol src="file:/osmc/frg_yellow_lower.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_yellow_pointer">
-			<symbol src="file:/osmc/frg_yellow_pointer.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_yellow_rectangle">
-			<symbol src="file:/osmc/frg_yellow_rectangle.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_yellow_rectangle_line">
-			<symbol src="file:/osmc/frg_yellow_rectangle_line.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_yellow_right">
-			<symbol src="file:/osmc/frg_yellow_right.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_yellow_slash">
-			<symbol src="file:/osmc/frg_yellow_slash.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_yellow_stripe">
-			<symbol src="file:/osmc/frg_yellow_stripe.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_yellow_triangle">
-			<symbol src="file:/osmc/frg_yellow_triangle.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_yellow_turned_t">
-			<symbol src="file:/osmc/frg_yellow_turned_T.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_yellow_x">
-			<symbol src="file:/osmc/frg_yellow_x.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_black_arch">
-			<symbol src="file:/osmc/frg_black_arch.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_black_bar">
-			<symbol src="file:/osmc/frg_black_bar.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_black_circle">
-			<symbol src="file:/osmc/frg_black_circle.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_black_crest">
-			<symbol src="file:/osmc/frg_black_crest.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_black_cross">
-			<symbol src="file:/osmc/frg_black_cross.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_black_diamond">
-			<symbol src="file:/osmc/frg_black_diamond.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_black_dot">
-			<symbol src="file:/osmc/frg_black_dot.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_black_fork">
-			<symbol src="file:/osmc/frg_black_fork.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_black_horse">
-			<symbol src="file:/osmc/frg_black_horse.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_black_pointer">
-			<symbol src="file:/osmc/frg_black_pointer.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_black_rectangle">
-			<symbol src="file:/osmc/frg_black_rectangle.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_black_rectangle_line">
-			<symbol src="file:/osmc/frg_black_rectangle_line.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_black_red_diamond">
-			<symbol src="file:/osmc/frg_black_red_diamond.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_black_right">
-			<symbol src="file:/osmc/frg_black_right.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_black_triangle">
-			<symbol src="file:/osmc/frg_black_triangle.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_black_triangle_line">
-			<symbol src="file:/osmc/frg_black_triangle_line.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_black_x">
-			<symbol src="file:/osmc/frg_black_x.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_green_arch">
-			<symbol src="file:/osmc/frg_green_arch.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_green_backslash">
-			<symbol src="file:/osmc/frg_green_backslash.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_green_bar">
-			<symbol src="file:/osmc/frg_green_bar.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_green_bowl">
-			<symbol src="file:/osmc/frg_green_bowl.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_green_circle">
-			<symbol src="file:/osmc/frg_green_circle.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_green_corner">
-			<symbol src="file:/osmc/frg_green_corner.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_green_cross">
-			<symbol src="file:/osmc/frg_green_cross.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_green_diamond">
-			<symbol src="file:/osmc/frg_green_diamond.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_green_dot">
-			<symbol src="file:/osmc/frg_green_dot.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_green_drop_line">
-			<symbol src="file:/osmc/frg_green_drop_line.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_green_hiker">
-			<symbol src="file:/osmc/frg_green_hiker.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_green_fork">
-			<symbol src="file:/osmc/frg_green_fork.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_green_horse">
-			<symbol src="file:/osmc/frg_green_horse.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_green_l">
-			<symbol src="file:/osmc/frg_green_L.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_green_lower">
-			<symbol src="file:/osmc/frg_green_lower.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_green_pointer">
-			<symbol src="file:/osmc/frg_green_pointer.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_green_rectangle">
-			<symbol src="file:/osmc/frg_green_rectangle.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_green_right">
-			<symbol src="file:/osmc/frg_green_right.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_green_slash">
-			<symbol src="file:/osmc/frg_green_slash.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_green_stripe">
-			<symbol src="file:/osmc/frg_green_stripe.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_green_triangle">
-			<symbol src="file:/osmc/frg_green_triangle.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_green_triangle_line">
-			<symbol src="file:/osmc/frg_green_triangle_line.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_green_triangle_turned">
-			<symbol src="file:/osmc/frg_green_triangle_turned.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_green_turned_t">
-			<symbol src="file:/osmc/frg_green_turned_T.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_green_x">
-			<symbol src="file:/osmc/frg_green_x.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_white_arch">
-			<symbol src="file:/osmc/frg_white_arch.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_white_bar">
-			<symbol src="file:/osmc/frg_white_bar.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_white_circle">
-			<symbol src="file:/osmc/frg_white_circle.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_white_cross">
-			<symbol src="file:/osmc/frg_white_cross.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_white_diamond">
-			<symbol src="file:/osmc/frg_white_diamond.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_white_diamond_line">
-			<symbol src="file:/osmc/frg_white_diamond_line.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_white_dot">
-			<symbol src="file:/osmc/frg_white_dot.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_white_hiker">
-			<symbol src="file:/osmc/frg_white_hiker.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_white_lower">
-			<symbol src="file:/osmc/frg_white_lower.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_white_pointer">
-			<symbol src="file:/osmc/frg_white_pointer.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_white_rectangle">
-			<symbol src="file:/osmc/frg_white_rectangle.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_white_rectangle_line">
-			<symbol src="file:/osmc/frg_white_rectangle_line.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_white_red_diamond">
-			<symbol src="file:/osmc/frg_white_red_diamond.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_white_right">
-			<symbol src="file:/osmc/frg_white_right.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_white_stripe">
-			<symbol src="file:/osmc/frg_white_stripe.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_white_triangle">
-			<symbol src="file:/osmc/frg_white_triangle.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_white_triangle_line">
-			<symbol src="file:/osmc/frg_white_triangle_line.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_white_turned_t">
-			<symbol src="file:/osmc/frg_white_turned_T.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_white_x">
-			<symbol src="file:/osmc/frg_white_x.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_ammonit">
-			<symbol src="file:/osmc/frg_ammonit.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_bridleway">
-			<symbol src="file:/osmc/frg_bridleway.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_heart">
-			<symbol src="file:/osmc/frg_heart.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_hiker">
-			<symbol src="file:/osmc/frg_hiker.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_mine">
-			<symbol src="file:/osmc/frg_mine.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_orange_bar">
-			<symbol src="file:/osmc/frg_orange_bar.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_orange_diamond_line">
-			<symbol src="file:/osmc/frg_orange_diamond_line.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_orange_dot">
-			<symbol src="file:/osmc/frg_orange_dot.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_orange_right">
-			<symbol src="file:/osmc/frg_orange_right.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_shell">
-			<symbol src="file:/osmc/frg_shell.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_shell_modern">
-			<symbol src="file:/osmc/frg_shell_modern.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_tower">
-			<symbol src="file:/osmc/frg_tower.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_foreground" v="wmfg_wolfshook">
-			<symbol src="file:/osmc/frg_wolfshook.svg" display="always" priority="3" symbol-percent="55" />
-		</rule>
-		<rule e="any" k="osmc_textcolor" v="~|wmtc_black|wmtc_brown|wmtc_purple|wmtc_red|wmtc_green|wmtc_blue|wmtc_orange">
-			<rule e="any" k="osmc_text_len" v="wmtl_1|wmtl_2">
-				<caption k="name" priority="4" display="always" font-size="10" position="center" font-style="bold" fill="#000000" stroke="#E5FFFFFF" stroke-width="1.0" text-wrap-width="120" />
-			</rule>
-			<rule e="any" k="osmc_text_len" v="wmtl_3|wmtl_4">
-				<caption k="name" priority="4" display="always" font-size="10" position="center" font-style="bold" fill="#000000" stroke="#E5FFFFFF" stroke-width="1.0" text-wrap-width="120" />
-			</rule>
-		</rule>
-		<rule e="any" k="osmc_textcolor" v="wmtc_grey|wmtc_white|wmtc_yellow">
-			<rule e="any" k="osmc_text_len" v="wmtl_1|wmtl_2">
-				<caption k="name" priority="4" display="always" font-size="10" position="center" font-style="bold" fill="#FFFFFF" stroke="#E5000000" stroke-width="1.0" text-wrap-width="120" />
-			</rule>
-			<rule e="any" k="osmc_text_len" v="wmtl_3|wmtl_4">
-				<caption k="name" priority="4" display="always" font-size="10" position="center" font-style="bold" fill="#FFFFFF" stroke="#E5000000" stroke-width="1.0" text-wrap-width="120" />
-			</rule>
-		</rule>
+	<rule e="node" k="hike_node" v="*" zoom-min="13" cat="hikingnodes">
+		<circle radius="7.5" scale-radius="false" fill="#ffffff" stroke="#009900" stroke-width="1.5" />
+		<caption k="addr:housenumber" priority="3" position="center" font-style="bold" font-size="12" fill="#009900" stroke="#E5FFFFFF" stroke-width="2.0" />
 	</rule>
+
+  <!-- terra incognita - тут я никогда ничего не менял. из "active RT5" -->
+  <rule e="any" k="osmc" v="osmc_yes" zoom-min="14" cat="trail_markings">
+    <rule e="any" k="osmc_background" v="~|no|false">
+      <symbol src="file:/osmc/bcg_white.svg" display="always" priority="2" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_background" v="wmbg_black">
+      <symbol src="file:/osmc/bcg_black.svg" display="always" priority="2" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_background" v="wmbg_black_circle">
+      <symbol src="file:/osmc/bcg_black_circle.svg" display="always" priority="2" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_background" v="wmbg_black_frame">
+      <symbol src="file:/osmc/bcg_black_frame.svg" display="always" priority="2" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_background" v="wmbg_black_round">
+      <symbol src="file:/osmc/bcg_black_round.svg" display="always" priority="2" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_background" v="wmbg_blue">
+      <symbol src="file:/osmc/bcg_blue.svg" display="always" priority="2" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_background" v="wmbg_blue_circle">
+      <symbol src="file:/osmc/bcg_blue_circle.svg" display="always" priority="2" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_background" v="wmbg_blue_frame">
+      <symbol src="file:/osmc/bcg_blue_frame.svg" display="always" priority="2" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_background" v="wmbg_blue_round">
+      <symbol src="file:/osmc/bcg_blue_round.svg" display="always" priority="2" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_background" v="wmbg_brown">
+      <symbol src="file:/osmc/bcg_brown.svg" display="always" priority="2" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_background" v="wmbg_brown_circle">
+      <symbol src="file:/osmc/bcg_brown_circle.svg" display="always" priority="2" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_background" v="wmbg_brown_frame">
+      <symbol src="file:/osmc/bcg_brown_frame.svg" display="always" priority="2" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_background" v="wmbg_brown_round">
+      <symbol src="file:/osmc/bcg_brown_round.svg" display="always" priority="2" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_background" v="wmbg_green">
+      <symbol src="file:/osmc/bcg_green.svg" display="always" priority="2" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_background" v="wmbg_green_circle">
+      <symbol src="file:/osmc/bcg_green_circle.svg" display="always" priority="2" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_background" v="wmbg_green_frame">
+      <symbol src="file:/osmc/bcg_green_frame.svg" display="always" priority="2" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_background" v="wmbg_green_round">
+      <symbol src="file:/osmc/bcg_green_round.svg" display="always" priority="2" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_background" v="wmbg_orange">
+      <symbol src="file:/osmc/bcg_orange.svg" display="always" priority="2" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_background" v="wmbg_orange_circle">
+      <symbol src="file:/osmc/bcg_orange_circle.svg" display="always" priority="2" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_background" v="wmbg_orange_frame">
+      <symbol src="file:/osmc/bcg_orange_frame.svg" display="always" priority="2" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_background" v="wmbg_orange_round">
+      <symbol src="file:/osmc/bcg_orange_round.svg" display="always" priority="2" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_background" v="wmbg_purple">
+      <symbol src="file:/osmc/bcg_purple.svg" display="always" priority="2" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_background" v="wmbg_purple_circle">
+      <symbol src="file:/osmc/bcg_purple_circle.svg" display="always" priority="2" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_background" v="wmbg_purple_frame">
+      <symbol src="file:/osmc/bcg_purple_frame.svg" display="always" priority="2" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_background" v="wmbg_purple_round">
+      <symbol src="file:/osmc/bcg_purple_round.svg" display="always" priority="2" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_background" v="wmbg_red">
+      <symbol src="file:/osmc/bcg_red.svg" display="always" priority="2" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_background" v="wmbg_red_circle">
+      <symbol src="file:/osmc/bcg_red_circle.svg" display="always" priority="2" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_background" v="wmbg_red_frame">
+      <symbol src="file:/osmc/bcg_red_frame.svg" display="always" priority="2" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_background" v="wmbg_red_round">
+      <symbol src="file:/osmc/bcg_red_round.svg" display="always" priority="2" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_background" v="wmbg_white">
+      <symbol src="file:/osmc/bcg_white.svg" display="always" priority="2" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_background" v="wmbg_white_circle">
+      <symbol src="file:/osmc/bcg_white_circle.svg" display="always" priority="2" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_background" v="wmbg_white_frame">
+      <symbol src="file:/osmc/bcg_white_frame.svg" display="always" priority="2" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_background" v="wmbg_white_round">
+      <symbol src="file:/osmc/bcg_white_round.svg" display="always" priority="2" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_background" v="wmbg_yellow">
+      <symbol src="file:/osmc/bcg_yellow.svg" display="always" priority="2" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_background" v="wmbg_yellow_circle">
+      <symbol src="file:/osmc/bcg_yellow_circle.svg" display="always" priority="2" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_background" v="wmbg_yellow_frame">
+      <symbol src="file:/osmc/bcg_yellow_frame.svg" display="always" priority="2" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_background" v="wmbg_yellow_round">
+      <symbol src="file:/osmc/bcg_yellow_round.svg" display="always" priority="2" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_background" v="wmbg_grey">
+      <symbol src="file:/osmc/bcg_grey.svg" display="always" priority="2" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_background" v="wmbg_grey_circle">
+      <symbol src="file:/osmc/bcg_grey_circle.svg" display="always" priority="2" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_background" v="wmbg_grey_frame">
+      <symbol src="file:/osmc/bcg_grey_frame.svg" display="always" priority="2" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_background" v="wmbg_grey_round">
+      <symbol src="file:/osmc/bcg_grey_round.svg" display="always" priority="2" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_blue_arch">
+      <symbol src="file:/osmc/frg_blue_arch.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_blue_backslash">
+      <symbol src="file:/osmc/frg_blue_backslash.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_blue_bar">
+      <symbol src="file:/osmc/frg_blue_bar.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_blue_bowl">
+      <symbol src="file:/osmc/frg_blue_bowl.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_blue_circle">
+      <symbol src="file:/osmc/frg_blue_circle.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_blue_corner">
+      <symbol src="file:/osmc/frg_blue_corner.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_blue_cross">
+      <symbol src="file:/osmc/frg_blue_cross.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_blue_diamond">
+      <symbol src="file:/osmc/frg_blue_diamond.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_blue_dot">
+      <symbol src="file:/osmc/frg_blue_dot.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_blue_fork">
+      <symbol src="file:/osmc/frg_blue_fork.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_blue_hiker">
+      <symbol src="file:/osmc/frg_blue_hiker.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_blue_l">
+      <symbol src="file:/osmc/frg_blue_L.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_blue_lower">
+      <symbol src="file:/osmc/frg_blue_lower.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_blue_pointer">
+      <symbol src="file:/osmc/frg_blue_pointer.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_blue_rectangle">
+      <symbol src="file:/osmc/frg_blue_rectangle.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_blue_right">
+      <symbol src="file:/osmc/frg_blue_right.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_blue_slash">
+      <symbol src="file:/osmc/frg_blue_slash.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_blue_stripe">
+      <symbol src="file:/osmc/frg_blue_stripe.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_blue_triangle">
+      <symbol src="file:/osmc/frg_blue_triangle.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_blue_triangle_line">
+      <symbol src="file:/osmc/frg_blue_triangle_line.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_blue_triangle_turned">
+      <symbol src="file:/osmc/frg_blue_triangle_turned.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_blue_turned_t">
+      <symbol src="file:/osmc/frg_blue_turned_T.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_blue_x">
+      <symbol src="file:/osmc/frg_blue_x.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_red_arch">
+      <symbol src="file:/osmc/frg_red_arch.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_red_backslash">
+      <symbol src="file:/osmc/frg_red_backslash.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_red_bar">
+      <symbol src="file:/osmc/frg_red_bar.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_red_circle">
+      <symbol src="file:/osmc/frg_red_circle.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_red_corner">
+      <symbol src="file:/osmc/frg_red_corner.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_red_crest">
+      <symbol src="file:/osmc/frg_red_crest.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_red_cross">
+      <symbol src="file:/osmc/frg_red_cross.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_red_diamond">
+      <symbol src="file:/osmc/frg_red_diamond.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_red_diamond_line">
+      <symbol src="file:/osmc/frg_red_diamond_line.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_red_dot">
+      <symbol src="file:/osmc/frg_red_dot.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_red_drop">
+      <symbol src="file:/osmc/frg_red_drop.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_red_drop_line">
+      <symbol src="file:/osmc/frg_red_drop_line.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_red_fork">
+      <symbol src="file:/osmc/frg_red_fork.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_red_hiker">
+      <symbol src="file:/osmc/frg_red_hiker.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_red_l">
+      <symbol src="file:/osmc/frg_red_L.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_red_lower">
+      <symbol src="file:/osmc/frg_red_lower.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_red_pointer">
+      <symbol src="file:/osmc/frg_red_pointer.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_red_rectangle">
+      <symbol src="file:/osmc/frg_red_rectangle.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_red_right">
+      <symbol src="file:/osmc/frg_red_right.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_red_shell">
+      <symbol src="file:/osmc/frg_red_shell.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_red_slash">
+      <symbol src="file:/osmc/frg_red_slash.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_red_stripe">
+      <symbol src="file:/osmc/frg_red_stripe.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_red_triangle">
+      <symbol src="file:/osmc/frg_red_triangle.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_red_triangle_line">
+      <symbol src="file:/osmc/frg_red_triangle_line.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_red_triangle_turned">
+      <symbol src="file:/osmc/frg_red_triangle_turned.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_red_turned_t">
+      <symbol src="file:/osmc/frg_red_turned_T.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_red_wheel">
+      <symbol src="file:/osmc/frg_red_wheel.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_red_x">
+      <symbol src="file:/osmc/frg_red_x.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_yellow_arch">
+      <symbol src="file:/osmc/frg_yellow_arch.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_yellow_backslash">
+      <symbol src="file:/osmc/frg_yellow_backslash.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_yellow_bar">
+      <symbol src="file:/osmc/frg_yellow_bar.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_yellow_bowl">
+      <symbol src="file:/osmc/frg_yellow_bowl.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_yellow_circle">
+      <symbol src="file:/osmc/frg_yellow_circle.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_yellow_corner">
+      <symbol src="file:/osmc/frg_yellow_corner.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_yellow_cross">
+      <symbol src="file:/osmc/frg_yellow_cross.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_yellow_diamond">
+      <symbol src="file:/osmc/frg_yellow_diamond.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_yellow_diamond_line">
+      <symbol src="file:/osmc/frg_yellow_diamond_line.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_yellow_dot">
+      <symbol src="file:/osmc/frg_yellow_dot.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_yellow_fork">
+      <symbol src="file:/osmc/frg_yellow_fork.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_yellow_hexagon">
+      <symbol src="file:/osmc/frg_yellow_hexagon.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_yellow_hiker">
+      <symbol src="file:/osmc/frg_yellow_hiker.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_yellow_l">
+      <symbol src="file:/osmc/frg_yellow_L.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_yellow_lower">
+      <symbol src="file:/osmc/frg_yellow_lower.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_yellow_pointer">
+      <symbol src="file:/osmc/frg_yellow_pointer.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_yellow_rectangle">
+      <symbol src="file:/osmc/frg_yellow_rectangle.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_yellow_rectangle_line">
+      <symbol src="file:/osmc/frg_yellow_rectangle_line.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_yellow_right">
+      <symbol src="file:/osmc/frg_yellow_right.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_yellow_shell">
+      <symbol src="file:/osmc/frg_yellow_shell.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_yellow_slash">
+      <symbol src="file:/osmc/frg_yellow_slash.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_yellow_stripe">
+      <symbol src="file:/osmc/frg_yellow_stripe.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_yellow_triangle">
+      <symbol src="file:/osmc/frg_yellow_triangle.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_yellow_triangle_line">
+      <symbol src="file:/osmc/frg_yellow_triangle_line.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_yellow_triangle_turned">
+      <symbol src="file:/osmc/frg_yellow_triangle_turned.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_yellow_turned_t">
+      <symbol src="file:/osmc/frg_yellow_turned_T.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_yellow_x">
+      <symbol src="file:/osmc/frg_yellow_x.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_black_arch">
+      <symbol src="file:/osmc/frg_black_arch.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_black_backslash">
+      <symbol src="file:/osmc/frg_black_backslash.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_black_bar">
+      <symbol src="file:/osmc/frg_black_bar.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_black_circle">
+      <symbol src="file:/osmc/frg_black_circle.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_black_corner">
+      <symbol src="file:/osmc/frg_black_corner.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_black_crest">
+      <symbol src="file:/osmc/frg_black_crest.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_black_cross">
+      <symbol src="file:/osmc/frg_black_cross.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_black_diamond">
+      <symbol src="file:/osmc/frg_black_diamond.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_black_diamond_line">
+      <symbol src="file:/osmc/frg_black_diamond_line.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_black_dot">
+      <symbol src="file:/osmc/frg_black_dot.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_black_fork">
+      <symbol src="file:/osmc/frg_black_fork.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_black_hiker">
+      <symbol src="file:/osmc/frg_black_hiker.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_black_horse">
+      <symbol src="file:/osmc/frg_black_horse.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_black_lower">
+      <symbol src="file:/osmc/frg_black_lower.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_black_pointer">
+      <symbol src="file:/osmc/frg_black_pointer.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_black_rectangle">
+      <symbol src="file:/osmc/frg_black_rectangle.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_black_rectangle_line">
+      <symbol src="file:/osmc/frg_black_rectangle_line.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_black_red_diamond">
+      <symbol src="file:/osmc/frg_black_red_diamond.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_black_right">
+      <symbol src="file:/osmc/frg_black_right.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_black_stripe">
+      <symbol src="file:/osmc/frg_black_stripe.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_black_triangle">
+      <symbol src="file:/osmc/frg_black_triangle.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_black_triangle_line">
+      <symbol src="file:/osmc/frg_black_triangle_line.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_black_turned_t">
+      <symbol src="file:/osmc/frg_black_turned_T.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_black_x">
+      <symbol src="file:/osmc/frg_black_x.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_green_arch">
+      <symbol src="file:/osmc/frg_green_arch.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_green_backslash">
+      <symbol src="file:/osmc/frg_green_backslash.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_green_bar">
+      <symbol src="file:/osmc/frg_green_bar.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_green_bowl">
+      <symbol src="file:/osmc/frg_green_bowl.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_green_circle">
+      <symbol src="file:/osmc/frg_green_circle.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_green_corner">
+      <symbol src="file:/osmc/frg_green_corner.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_green_cross">
+      <symbol src="file:/osmc/frg_green_cross.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_green_diamond">
+      <symbol src="file:/osmc/frg_green_diamond.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_green_diamond_line">
+      <symbol src="file:/osmc/frg_green_diamond_line.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_green_dot">
+      <symbol src="file:/osmc/frg_green_dot.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_green_drop_line">
+      <symbol src="file:/osmc/frg_green_drop_line.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_green_fork">
+      <symbol src="file:/osmc/frg_green_fork.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_green_hiker">
+      <symbol src="file:/osmc/frg_green_hiker.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_green_horse">
+      <symbol src="file:/osmc/frg_green_horse.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_green_l">
+      <symbol src="file:/osmc/frg_green_L.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_green_lower">
+      <symbol src="file:/osmc/frg_green_lower.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_green_pointer">
+      <symbol src="file:/osmc/frg_green_pointer.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_green_rectangle">
+      <symbol src="file:/osmc/frg_green_rectangle.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_green_right">
+      <symbol src="file:/osmc/frg_green_right.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_green_slash">
+      <symbol src="file:/osmc/frg_green_slash.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_green_stripe">
+      <symbol src="file:/osmc/frg_green_stripe.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_green_triangle">
+      <symbol src="file:/osmc/frg_green_triangle.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_green_triangle_line">
+      <symbol src="file:/osmc/frg_green_triangle_line.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_green_triangle_turned">
+      <symbol src="file:/osmc/frg_green_triangle_turned.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_green_turned_t">
+      <symbol src="file:/osmc/frg_green_turned_T.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_green_wheel">
+      <symbol src="file:/osmc/frg_green_wheel.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_green_x">
+      <symbol src="file:/osmc/frg_green_x.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_white_arch">
+      <symbol src="file:/osmc/frg_white_arch.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_white_backslash">
+      <symbol src="file:/osmc/frg_white_backslash.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_white_bar">
+      <symbol src="file:/osmc/frg_white_bar.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_white_circle">
+      <symbol src="file:/osmc/frg_white_circle.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_white_corner">
+      <symbol src="file:/osmc/frg_white_corner.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_white_cross">
+      <symbol src="file:/osmc/frg_white_cross.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_white_diamond">
+      <symbol src="file:/osmc/frg_white_diamond.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_white_diamond_line">
+      <symbol src="file:/osmc/frg_white_diamond_line.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_white_dot">
+      <symbol src="file:/osmc/frg_white_dot.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_white_hiker">
+      <symbol src="file:/osmc/frg_white_hiker.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_white_lower">
+      <symbol src="file:/osmc/frg_white_lower.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_white_pointer">
+      <symbol src="file:/osmc/frg_white_pointer.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_white_rectangle">
+      <symbol src="file:/osmc/frg_white_rectangle.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_white_rectangle_line">
+      <symbol src="file:/osmc/frg_white_rectangle_line.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_white_red_diamond">
+      <symbol src="file:/osmc/frg_white_red_diamond.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_white_right">
+      <symbol src="file:/osmc/frg_white_right.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_white_slash">
+      <symbol src="file:/osmc/frg_white_slash.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_white_stripe">
+      <symbol src="file:/osmc/frg_white_stripe.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_white_triangle">
+      <symbol src="file:/osmc/frg_white_triangle.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_white_triangle_line">
+      <symbol src="file:/osmc/frg_white_triangle_line.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_white_triangle_turned">
+      <symbol src="file:/osmc/frg_white_triangle_turned.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_white_turned_t">
+      <symbol src="file:/osmc/frg_white_turned_T.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_white_x">
+      <symbol src="file:/osmc/frg_white_x.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_brown_bar">
+      <symbol src="file:/osmc/frg_brown_bar.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_brown_diamond">
+      <symbol src="file:/osmc/frg_brown_diamond.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_brown_dot">
+      <symbol src="file:/osmc/frg_brown_dot.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_brown_hiker">
+      <symbol src="file:/osmc/frg_brown_hiker.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_brown_lower">
+      <symbol src="file:/osmc/frg_brown_lower.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_brown_pointer">
+      <symbol src="file:/osmc/frg_brown_pointer.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_brown_rectangle">
+      <symbol src="file:/osmc/frg_brown_rectangle.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_brown_stripe">
+      <symbol src="file:/osmc/frg_brown_stripe.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_brown_x">
+      <symbol src="file:/osmc/frg_brown_x.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_grey_bar">
+      <symbol src="file:/osmc/frg_grey_bar.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_grey_pointer">
+      <symbol src="file:/osmc/frg_grey_pointer.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_grey_triangle">
+      <symbol src="file:/osmc/frg_grey_triangle.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_orange_bar">
+      <symbol src="file:/osmc/frg_orange_bar.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_orange_circle">
+      <symbol src="file:/osmc/frg_orange_circle.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_orange_cross">
+      <symbol src="file:/osmc/frg_orange_cross.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_orange_diamond">
+      <symbol src="file:/osmc/frg_orange_diamond.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_orange_diamond_line">
+      <symbol src="file:/osmc/frg_orange_diamond_line.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_orange_dot">
+      <symbol src="file:/osmc/frg_orange_dot.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_orange_hexagon">
+      <symbol src="file:/osmc/frg_orange_hexagon.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_orange_hiker">
+      <symbol src="file:/osmc/frg_orange_hiker.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_orange_lower">
+      <symbol src="file:/osmc/frg_orange_lower.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_orange_pointer">
+      <symbol src="file:/osmc/frg_orange_pointer.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_orange_rectangle">
+      <symbol src="file:/osmc/frg_orange_rectangle.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_orange_right">
+      <symbol src="file:/osmc/frg_orange_right.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_orange_stripe">
+      <symbol src="file:/osmc/frg_orange_stripe.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_orange_triangle">
+      <symbol src="file:/osmc/frg_orange_triangle.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_purple_bar">
+      <symbol src="file:/osmc/frg_purple_bar.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_purple_circle">
+      <symbol src="file:/osmc/frg_purple_circle.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_purple_diamond">
+      <symbol src="file:/osmc/frg_purple_diamond.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_purple_dot">
+      <symbol src="file:/osmc/frg_purple_dot.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_purple_lower">
+      <symbol src="file:/osmc/frg_purple_lower.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_purple_pointer">
+      <symbol src="file:/osmc/frg_purple_pointer.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_purple_rectangle">
+      <symbol src="file:/osmc/frg_purple_rectangle.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_purple_stripe">
+      <symbol src="file:/osmc/frg_purple_stripe.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_purple_triangle">
+      <symbol src="file:/osmc/frg_purple_triangle.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_ammonit">
+      <symbol src="file:/osmc/frg_ammonit.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_bridleway">
+      <symbol src="file:/osmc/frg_bridleway.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_heart">
+      <symbol src="file:/osmc/frg_heart.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_hiker">
+      <symbol src="file:/osmc/frg_hiker.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_mine">
+      <symbol src="file:/osmc/frg_mine.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_shell">
+      <symbol src="file:/osmc/frg_shell.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_shell_modern">
+      <symbol src="file:/osmc/frg_shell_modern.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_tower">
+      <symbol src="file:/osmc/frg_tower.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="wmfg_wolfshook">
+      <symbol src="file:/osmc/frg_wolfshook.svg" display="always" priority="3" symbol-percent="80"/>
+    </rule>
+    <rule e="any" k="osmc_foreground" v="~|no|false">
+      <rule e="any" k="osmc_textcolor" v="~|wmtc_black">
+        <rule e="any" k="osmc_text_len" v="wmtl_1|wmtl_2">
+          <caption k="name" priority="4" display="always" font-size="10" position="center" font-style="bold" fill="#000000" stroke="#E5FFFFFF" stroke-width="1.0"/>
+        </rule>
+        <rule e="any" k="osmc_text_len" v="wmtl_3|wmtl_4|wmtl_5">
+          <caption k="name" priority="4" display="always" font-size="9" position="center" font-style="bold" fill="#000000" stroke="#E5FFFFFF" stroke-width="1.0"/>
+        </rule>
+      </rule>
+      <rule e="any" k="osmc_textcolor" v="wmtc_red">
+        <rule e="any" k="osmc_text_len" v="wmtl_1|wmtl_2">
+          <caption k="name" priority="4" display="always" font-size="10" position="center" font-style="bold" fill="#FF3333" stroke="#E5FFFFFF" stroke-width="1.0"/>
+        </rule>
+        <rule e="any" k="osmc_text_len" v="wmtl_3|wmtl_4|wmtl_5">
+          <caption k="name" priority="4" display="always" font-size="9" position="center" font-style="bold" fill="#FF3333" stroke="#E5FFFFFF" stroke-width="1.0"/>
+        </rule>
+      </rule>
+      <rule e="any" k="osmc_textcolor" v="wmtc_green">
+        <rule e="any" k="osmc_text_len" v="wmtl_1|wmtl_2">
+          <caption k="name" priority="4" display="always" font-size="10" position="center" font-style="bold" fill="#267F00" stroke="#E5FFFFFF" stroke-width="1.0"/>
+        </rule>
+        <rule e="any" k="osmc_text_len" v="wmtl_3|wmtl_4|wmtl_5">
+          <caption k="name" priority="4" display="always" font-size="9" position="center" font-style="bold" fill="#267F00" stroke="#E5FFFFFF" stroke-width="1.0"/>
+        </rule>
+      </rule>
+      <rule e="any" k="osmc_textcolor" v="wmtc_blue">
+        <rule e="any" k="osmc_text_len" v="wmtl_1|wmtl_2">
+          <caption k="name" priority="4" display="always" font-size="10" position="center" font-style="bold" fill="#0242C1" stroke="#E5FFFFFF" stroke-width="1.0"/>
+        </rule>
+        <rule e="any" k="osmc_text_len" v="wmtl_3|wmtl_4|wmtl_5">
+          <caption k="name" priority="4" display="always" font-size="9" position="center" font-style="bold" fill="#0242C1" stroke="#E5FFFFFF" stroke-width="1.0"/>
+        </rule>
+      </rule>
+      <rule e="any" k="osmc_textcolor" v="wmtc_brown">
+        <rule e="any" k="osmc_text_len" v="wmtl_1|wmtl_2">
+          <caption k="name" priority="4" display="always" font-size="10" position="center" font-style="bold" fill="#BC6823" stroke="#E5FFFFFF" stroke-width="1.0"/>
+        </rule>
+        <rule e="any" k="osmc_text_len" v="wmtl_3|wmtl_4|wmtl_5">
+          <caption k="name" priority="4" display="always" font-size="9" position="center" font-style="bold" fill="#BC6823" stroke="#E5FFFFFF" stroke-width="1.0"/>
+        </rule>
+      </rule>
+      <rule e="any" k="osmc_textcolor" v="wmtc_orange">
+        <rule e="any" k="osmc_text_len" v="wmtl_1|wmtl_2">
+          <caption k="name" priority="4" display="always" font-size="10" position="center" font-style="bold" fill="#EB8D00" stroke="#E5FFFFFF" stroke-width="1.0"/>
+        </rule>
+        <rule e="any" k="osmc_text_len" v="wmtl_3|wmtl_4|wmtl_5">
+          <caption k="name" priority="4" display="always" font-size="9" position="center" font-style="bold" fill="#EB8D00" stroke="#E5FFFFFF" stroke-width="1.0"/>
+        </rule>
+      </rule>
+      <rule e="any" k="osmc_textcolor" v="wmtc_purple">
+        <rule e="any" k="osmc_text_len" v="wmtl_1|wmtl_2">
+          <caption k="name" priority="4" display="always" font-size="10" position="center" font-style="bold" fill="#C17FFF" stroke="#E5FFFFFF" stroke-width="1.0"/>
+        </rule>
+        <rule e="any" k="osmc_text_len" v="wmtl_3|wmtl_4|wmtl_5">
+          <caption k="name" priority="4" display="always" font-size="9" position="center" font-style="bold" fill="#C17FFF" stroke="#E5FFFFFF" stroke-width="1.0"/>
+        </rule>
+      </rule>
+      <rule e="any" k="osmc_textcolor" v="wmtc_white">
+        <rule e="any" k="osmc_text_len" v="wmtl_1|wmtl_2">
+          <caption k="name" priority="10" display="always" font-size="10" position="center" font-style="bold" fill="#FFFFFF" stroke="#E5000000" stroke-width="1.0"/>
+        </rule>
+        <rule e="any" k="osmc_text_len" v="wmtl_3|wmtl_4|wmtl_5">
+          <caption k="name" priority="10" display="always" font-size="9" position="center" font-style="bold" fill="#FFFFFF" stroke="#E5000000" stroke-width="1.0"/>
+        </rule>
+      </rule>
+      <rule e="any" k="osmc_textcolor" v="wmtc_yellow">
+        <rule e="any" k="osmc_text_len" v="wmtl_1|wmtl_2">
+          <caption k="name" priority="4" display="always" font-size="10" position="center" font-style="bold" fill="#F2DB0A" stroke="#E5000000" stroke-width="1.0"/>
+        </rule>
+        <rule e="any" k="osmc_text_len" v="wmtl_3|wmtl_4|wmtl_5">
+          <caption k="name" priority="4" display="always" font-size="9" position="center" font-style="bold" fill="#F2DB0A" stroke="#E5000000" stroke-width="1.0"/>
+        </rule>
+      </rule>
+      <rule e="any" k="osmc_textcolor" v="wmtc_grey">
+        <rule e="any" k="osmc_text_len" v="wmtl_1|wmtl_2">
+          <caption k="name" priority="4" display="always" font-size="10" position="center" font-style="bold" fill="#CCCCCC" stroke="#E5000000" stroke-width="1.0"/>
+        </rule>
+        <rule e="any" k="osmc_text_len" v="wmtl_3|wmtl_4|wmtl_5">
+          <caption k="name" priority="4" display="always" font-size="9" position="center" font-style="bold" fill="#CCCCCC" stroke="#E5000000" stroke-width="1.0"/>
+        </rule>
+      </rule>
+    </rule>
+  </rule>
+
+##
+
+
 </rendertheme>
