@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rendertheme xmlns="http://mapsforge.org/renderTheme" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://mapsforge.org/renderTheme https://raw.githubusercontent.com/mapsforge/mapsforge/dev/resources/renderTheme.xsd" version="4" base-stroke-width="0.9" map-background="#ebeade">
-
+<rendertheme xmlns="http://mapsforge.org/renderTheme" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://mapsforge.org/renderTheme https://raw.githubusercontent.com/mapsforge/mapsforge/master/resources/renderTheme.xsd" version="5" base-stroke-width="0.9" map-background="#ebeade">
 <!--
     Mapsforge Rendertheme for Apps with Mapsforge support and Openandromaps
 	
@@ -8,7 +7,7 @@
     Contact: andrey.nekrasov@gmail.com		
 
     2023.apr.12
-    v2.0.1
+    v2.0.2
 
     ###
     Когда то давно это была тема "active RT5 (active RenderTheme Version 5)" https://github.com/FrankSchoeneck/active_RT5
@@ -19,7 +18,6 @@
     https://github.com/IgorMagellan/TOTM
     https://github.com/asamm/lomaps-mapsforge/tree/main/theme
 -->
-
 	<stylemenu id="menu" defaultvalue="OSM_Summer" defaultlang="en">
 		<layer id="L_hikingtrails" enabled="false" visible="false">
 			<name lang="ru" value="Пешеходные маршруты" />
@@ -246,9 +244,9 @@
 			<cat id="contourlines" />
 		</layer>
 		<layer id="OSM_Summer" visible="true">
-			<name lang="ru" value="V4+ 2.0.0" />
-			<name lang="de" value="V4+ 2.0.0" />
-			<name lang="en" value="V4+ 2.0.0" />
+			<name lang="ru" value="V4+ 2.0.2" />
+			<name lang="de" value="V4+ 2.0.2" />
+			<name lang="en" value="V4+ 2.0.2" />
 			<overlay id="L_hikingtrails" />
 			<overlay id="L_trail_markings" />
 			<overlay id="L_hikingnodes" />
@@ -416,7 +414,7 @@
 		<rule e="way" k="landuse" v="retail|garages|greenfield">
 			<area fill="#FFFEFE" stroke="#e4e4e4" stroke-width="0.2" />
 		</rule>
-		<!-- #99D6C7B8 -->
+		<!-- -->
 		<rule e="way" k="landuse" v="railway">
 			<area fill="#77c9c9c9" stroke="#A8A08C" stroke-width="0.125" />
 		</rule>
@@ -1065,7 +1063,6 @@
 			<area fill="#EBE3E1" stroke="#DBBDBA" stroke-width="0.1" />
 		</rule>
 	</rule>
-
 	<!-- площадка для парковки -->
 	<rule e="any" k="amenity" v="parking" cat="parking" zoom-min="14">
 		<area fill="#F3F3F3" stroke="#888888" stroke-width="0.1" />
@@ -1078,15 +1075,14 @@
 			<symbol src="file:symbols/parking_private.svg" symbol-percent="50" />
 		</rule>
 		<rule e="any" k="access" v="~|yes|public">
-		 	<rule e="any" k="parking" v="~|surface">
+			<rule e="any" k="parking" v="~|surface">
 				<symbol src="file:symbols/parking.svg" symbol-percent="50" />
 			</rule>
 			<rule e="any" k="parking" v="multi-storey">
 				<symbol src="file:symbols/parking_multi-storey.svg" symbol-percent="50" />
-		 	</rule>
+			</rule>
 		</rule>
 	</rule>
-
 	<!-- TODO все эти "границы" нужно проверить нормально и подогнать по цветам -->
 	<rule e="way" k="admin_level" v="*" cat="boundaries_areas">
 		<!-- страны, государства -->
@@ -1303,141 +1299,8 @@
 			<line stroke="#000000" stroke-width="0.1" stroke-dasharray="1,10" stroke-linecap="round" />
 		</rule>
 	</rule>
-	<!-- железные дороги в разных видах (взято из Voluntary V5) -->
-	<!-- Заброшенные жел.дороги -->
-	<rule e="way" k="railway" v="abandoned" zoom-min="13">
-		<rule e="way" k="tunnel" v="~|no">
-			<rule e="way" k="bridge" v="yes|viaduct|movable">
-				<line stroke="#181818" stroke-width="1.05" stroke-linecap="butt" />
-				<line stroke="#f8f8f8" stroke-width="0.7" stroke-linecap="butt" />
-			</rule>
-			<line stroke="#80FFFFFF" stroke-width="0.5" scale="all" stroke-dasharray="2.3,0.1" stroke-linecap="butt" />
-			<line stroke="#40808080" stroke-width="0.5" scale="all" stroke-dasharray="2.3,2.5" stroke-linecap="butt" />
-		</rule>
-	</rule>
-	<rule e="any" k="tunnel" v="yes">
-		<!-- railway tunnel -->
-		<rule e="way" k="railway" v="abandoned" zoom-min="13">
-			<line stroke="#40FFFFFF" stroke-width="0.5" scale="all" stroke-dasharray="4.8,2.3,2.5,0" stroke-linecap="butt" />
-			<line stroke="#30808080" stroke-width="0.5" scale="all" stroke-dasharray="2.3,7.3" stroke-linecap="butt" />
-		</rule>
-		<rule e="way" k="railway" v="miniature" zoom-min="13">
-			<line stroke="#28000000" stroke-width="0.14" scale="all" stroke-dasharray="2.4,1.2" stroke-linecap="butt" />
-			<line stroke="#80FFFFFF" stroke-width="0.14" scale="all" stroke-dasharray="0,2.4,1.2,0" stroke-linecap="butt" />
-		</rule>
-		<rule e="way" k="railway" v="disused" zoom-min="13">
-			<line stroke="#40000000" dy="0.33" stroke-width="0.075" stroke-linecap="butt" />
-			<line stroke="#40000000" dy="-0.33" stroke-width="0.075" stroke-linecap="butt" />
-			<line stroke="#30000000" stroke-width="0.6" scale="all" stroke-dasharray="0.1,2.3" stroke-linecap="butt" />
-			<line stroke="#30FFFFFF" stroke-width="0.6" scale="all" stroke-dasharray="0,0.1,2.3,0" stroke-linecap="butt" />
-		</rule>
-		<rule e="way" k="railway|highway" v="tram|light_rail|bus_guideway" zoom-min="10">
-			<line stroke="#408C4600" stroke-width="0.5" stroke-linecap="butt" />
-			<line stroke="#60ffffff" stroke-width="0.4" scale="all" stroke-dasharray="1.8,1.8" stroke-linecap="butt" />
-		</rule>
-		<rule e="way" k="railway" v="subway" zoom-min="13">
-			<!-- imho подземные линии метро не нужны на карте - поэтому сделано прозрачно -->
-			<line stroke="#00BF8F93" stroke-width="0.5" stroke-dasharray="8,6" stroke-linecap="butt" />
-		</rule>
-		<rule e="way" k="railway" v="narrow_gauge|preserved|funicular" zoom-min="10">
-			<line stroke="#40000000" dy="0.28" stroke-width="0.075" stroke-linecap="butt" />
-			<line stroke="#40000000" dy="-0.28" stroke-width="0.075" stroke-linecap="butt" />
-			<line stroke="#30000000" stroke-width="0.6" scale="all" stroke-dasharray="1.2,2.4" stroke-linecap="butt" />
-			<line stroke="#30FFFFFF" stroke-width="0.6" scale="all" stroke-dasharray="0,1.2,2.4,0" stroke-linecap="butt" />
-		</rule>
-		<rule e="way" k="railway" v="rail" zoom-min="10">
-			<line stroke="#40000000" dy="0.33" stroke-width="0.075" stroke-linecap="butt" />
-			<line stroke="#40000000" dy="-0.33" stroke-width="0.075" stroke-linecap="butt" />
-			<line stroke="#30000000" stroke-width="0.6" scale="all" stroke-dasharray="2.4,2.4" stroke-linecap="butt" />
-			<line stroke="#30FFFFFF" stroke-width="0.6" scale="all" stroke-dasharray="0,2.4,2.4,0" stroke-linecap="butt" />
-		</rule>
-	</rule>
-	<!-- railway (no tunnel) -->
-	<rule e="any" k="tunnel" v="~|no" zoom-min="11">
-		<!-- -->
-		<rule e="way" k="power" v="~">
-			<rule e="way" k="railway|building" v="station|train_station">
-				<area fill="#604C4C0D" stroke="#444444" stroke-width="0.125" />
-			</rule>
-		</rule>
-		<!-- Платформы -->
-		<rule e="way" k="highway|railway|public_transport" v="platform">
-			<rule e="way" k="*" v="*" closed="yes">
-				<area fill="#CBCBCB" stroke="#b0b0b0" stroke-width="0.1" />
-			</rule>
-			<rule e="way" k="*" v="*" closed="no">
-				<line stroke="#8E8E6F" stroke-width="0.9" stroke-linecap="square" />
-				<line stroke="#CBCBCB" stroke-width="0.7" stroke-linecap="square" />
-			</rule>
-		</rule>
-		<!-- railway casings and cores -->
-		<rule e="way" k="railway" v="miniature" zoom-min="13">
-			<line stroke="#181818" stroke-width="0.14" />
-			<line stroke="#181818" stroke-width="0.6" scale="all" stroke-dasharray="0.1,1.7" stroke-linecap="butt" />
-		</rule>
-		<rule e="way" k="railway|highway" v="tram|light_rail|bus_guideway">
-			<line stroke="#8C6900" stroke-width="0.5" stroke-linecap="butt" />
-			<line stroke="#FFFF73" stroke-width="0.4" scale="all" stroke-dasharray="1.8,1.8" stroke-linecap="butt" />
-		</rule>
-		<!-- #B30000 #b54848 -->
-		<rule e="way" k="railway" v="subway">
-			<line stroke="#B30000" stroke-width="0.6" stroke-linecap="butt" />
-			<line stroke="#FFBFBF" stroke-width="0.45" scale="all" stroke-dasharray="1.8,1.8" stroke-linecap="butt" />
-		</rule>
-		<rule e="way" k="railway" v="disused" zoom-min="13">
-			<line stroke="#505050" stroke-width="0.75" stroke-linecap="butt" />
-			<line stroke="#e6e6e6" stroke-width="0.6" stroke-linecap="butt" />
-			<line stroke="#505050" stroke-width="0.6" scale="all" stroke-dasharray="0.1,2.3" stroke-linecap="butt" />
-		</rule>
-		<rule e="way" k="railway" v="rail|narrow_gauge|preserved|funicular" zoom-max="13">
-			<line stroke="#666666" stroke-width="0.45" stroke-linecap="butt" />
-		</rule>
-		<rule e="way" k="railway" v="narrow_gauge|preserved|funicular" zoom-min="14">
-			<line stroke="#404040" stroke-width="0.65" stroke-linecap="butt" />
-			<line stroke="#e6e6e6" stroke-width="0.5" stroke-linecap="butt" />
-			<line stroke="#404040" stroke-width="0.5" scale="all" stroke-dasharray="1.2,2.4" stroke-linecap="butt" />
-		</rule>
-		<rule e="way" k="railway" v="rail" zoom-min="14">
-			<line stroke="#404040" stroke-width="0.75" stroke-linecap="butt" />
-			<line stroke="#e6e6e6" stroke-width="0.6" stroke-linecap="butt" />
-			<line stroke="#404040" stroke-width="0.6" scale="all" stroke-dasharray="2.4,2.4" stroke-linecap="butt" />
-		</rule>
-	</rule>
-	<!-- жд, трамваи и метро - входы-выходы, станции -->
-	<rule e="node" k="railway" v="*" zoom-min="12" cat="pub_transp">
-		<!-- выходы из метро -->
-		<rule e="node" k="railway" v="subway_entrance" zoom-min="14">
-			<rule e="node" k="railway" v="subway_entrance" zoom-min="14" zoom-max="14">
-				<symbol id="id_station_metro" src="file:symbols/metro_logo.svg" symbol-percent="60" display="always" />
-			</rule>
-			<rule e="node" k="railway" v="subway_entrance" zoom-min="15">
-				<symbol id="id_station_metro" src="file:symbols/metro_logo.svg" symbol-percent="70" display="always" />
-			</rule>
-			<rule e="node" k="*" v="*" zoom-min="15">
-				<caption symbol-id="id_station_metro" k="name" dy="-4" font-style="bold" font-family="sans_serif" font-size="10" fill="#333333" stroke="#ffffff" stroke-width="1.5" />
-			</rule>
-		</rule>
-		<rule e="node" k="railway" v="station" zoom-min="13">
-			<symbol id="id_station" src="file:symbols/railway_station.svg" symbol-percent="80" priority="-10" />
-			<rule e="node" k="*" v="*" zoom-min="15">
-				<caption symbol-id="id_station" k="name" dy="-4" font-style="bold" font-family="sans_serif" font-size="10" fill="#333333" stroke="#ffffff" stroke-width="1.5" />
-			</rule>
-		</rule>
-		<rule e="node" k="railway" v="tram_stop" zoom-min="14">
-			<symbol id="id_tram_stop" src="file:symbols/railway_tram_stop.svg" symbol-percent="50" />
-			<rule e="node" k="*" v="*" zoom-min="15">
-				<caption symbol-id="id_tram_stop" k="name" dy="13" font-style="bold" font-family="sans_serif" font-size="10" fill="#333333" stroke="#ffffff" stroke-width="1.5" />
-			</rule>
-		</rule>
-		<rule e="node" k="railway" v="halt" zoom-min="13">
-			<symbol id="id_halt" src="file:symbols/railway_station.svg" symbol-percent="80" priority="-10" />
-			<rule e="node" k="*" v="*" zoom-min="15">
-				<caption symbol-id="id_halt" k="name" dy="-4" font-style="bold" font-family="sans_serif" font-size="10" fill="#333333" stroke="#ffffff" stroke-width="1.5" />
-			</rule>
-		</rule>
-	</rule>
 	<!-- дороги -->
-	<rule e="any" k="highway" v="*">
+	<rule e="any" k="highway|railway" v="*">
 		<rule e="any" k="area" v="~|no|false">
 			<!-- это дощатая тропа, обычно называется "экотропа". В OAM нет, может в Lomaps будет -->
 			<rule e="way" k="bridge" v="boardwalk">
@@ -1503,6 +1366,41 @@
 			</rule>
 			<!-- в тоннелях -->
 			<rule e="way" k="tunnel" v="yes">
+				<!-- railway tunnel -->
+				<rule e="way" k="railway" v="abandoned" zoom-min="13">
+					<line stroke="#40FFFFFF" stroke-width="0.5" scale="all" stroke-dasharray="4.8,2.3,2.5,0" stroke-linecap="butt" />
+					<line stroke="#30808080" stroke-width="0.5" scale="all" stroke-dasharray="2.3,7.3" stroke-linecap="butt" />
+				</rule>
+				<rule e="way" k="railway" v="miniature" zoom-min="13">
+					<line stroke="#28000000" stroke-width="0.14" scale="all" stroke-dasharray="2.4,1.2" stroke-linecap="butt" />
+					<line stroke="#80FFFFFF" stroke-width="0.14" scale="all" stroke-dasharray="0,2.4,1.2,0" stroke-linecap="butt" />
+				</rule>
+				<rule e="way" k="railway" v="disused" zoom-min="13">
+					<line stroke="#40000000" dy="0.33" stroke-width="0.075" stroke-linecap="butt" />
+					<line stroke="#40000000" dy="-0.33" stroke-width="0.075" stroke-linecap="butt" />
+					<line stroke="#30000000" stroke-width="0.6" scale="all" stroke-dasharray="0.1,2.3" stroke-linecap="butt" />
+					<line stroke="#30FFFFFF" stroke-width="0.6" scale="all" stroke-dasharray="0,0.1,2.3,0" stroke-linecap="butt" />
+				</rule>
+				<rule e="way" k="railway|highway" v="tram|light_rail|bus_guideway" zoom-min="10">
+					<line stroke="#408C4600" stroke-width="0.5" stroke-linecap="butt" />
+					<line stroke="#60ffffff" stroke-width="0.4" scale="all" stroke-dasharray="1.8,1.8" stroke-linecap="butt" />
+				</rule>
+				<rule e="way" k="railway" v="subway" zoom-min="13">
+					<!-- imho подземные линии метро не нужны на карте - поэтому сделано прозрачно -->
+					<line stroke="#00BF8F93" stroke-width="0.5" stroke-dasharray="8,6" stroke-linecap="butt" />
+				</rule>
+				<rule e="way" k="railway" v="narrow_gauge|preserved|funicular" zoom-min="10">
+					<line stroke="#40000000" dy="0.28" stroke-width="0.075" stroke-linecap="butt" />
+					<line stroke="#40000000" dy="-0.28" stroke-width="0.075" stroke-linecap="butt" />
+					<line stroke="#30000000" stroke-width="0.6" scale="all" stroke-dasharray="1.2,2.4" stroke-linecap="butt" />
+					<line stroke="#30FFFFFF" stroke-width="0.6" scale="all" stroke-dasharray="0,1.2,2.4,0" stroke-linecap="butt" />
+				</rule>
+				<rule e="way" k="railway" v="rail" zoom-min="10">
+					<line stroke="#40000000" dy="0.33" stroke-width="0.075" stroke-linecap="butt" />
+					<line stroke="#40000000" dy="-0.33" stroke-width="0.075" stroke-linecap="butt" />
+					<line stroke="#30000000" stroke-width="0.6" scale="all" stroke-dasharray="2.4,2.4" stroke-linecap="butt" />
+					<line stroke="#30FFFFFF" stroke-width="0.6" scale="all" stroke-dasharray="0,2.4,2.4,0" stroke-linecap="butt" />
+				</rule>
 				<rule e="way" k="highway" v="motorway" zoom-min="6">
 					<line stroke="#50FFD466" stroke-width="2.6" stroke-linecap="butt" />
 					<line stroke="#707070" dy="1.3" stroke-width="0.1" stroke-dasharray="3,3" stroke-linecap="butt" />
@@ -1573,14 +1471,49 @@
 			<!-- не тоннель и не мост. то есть по земле -->
 			<rule e="any" k="tunnel" v="~|no|false">
 				<rule e="any" k="bridge" v="~|no|false">
-					<rule e="node" k="highway" v="turning_circle|passing_place|mini_roundabout" zoom-min="11">
-						<circle radius="1.2" scale-radius="true" fill="#575757" />
-					</rule>
-					<!-- ремонт. не уверен что это сделано правильно
+					<!-- ремонт
 					<rule e="way" k="highway" v="construction" zoom-min="11">
 						<line stroke="#ad8200" stroke-width="0.3" stroke-linecap="round" />
 					</rule>
 					-->
+					<!-- Заброшенные жел.дороги -->
+					<rule e="way" k="railway" v="abandoned" zoom-min="13">
+						<rule e="way" k="tunnel" v="~|no">
+							<rule e="way" k="bridge" v="yes|viaduct|movable">
+								<line stroke="#181818" stroke-width="1.05" stroke-linecap="butt" />
+								<line stroke="#f8f8f8" stroke-width="0.7" stroke-linecap="butt" />
+							</rule>
+							<line stroke="#80FFFFFF" stroke-width="0.5" scale="all" stroke-dasharray="2.3,0.1" stroke-linecap="butt" />
+							<line stroke="#40808080" stroke-width="0.5" scale="all" stroke-dasharray="2.3,2.5" stroke-linecap="butt" />
+						</rule>
+					</rule>
+					<!-- Разные жел.дороги -->
+					<rule e="way" k="railway" v="miniature" zoom-min="13">
+						<line stroke="#181818" stroke-width="0.14" />
+						<line stroke="#181818" stroke-width="0.6" scale="all" stroke-dasharray="0.1,1.7" stroke-linecap="butt" />
+					</rule>
+					<rule e="way" k="railway" v="subway">
+						<line stroke="#B30000" stroke-width="0.6" stroke-linecap="butt" />
+						<line stroke="#FFBFBF" stroke-width="0.45" scale="all" stroke-dasharray="1.8,1.8" stroke-linecap="butt" />
+					</rule>
+					<rule e="way" k="railway" v="disused" zoom-min="13">
+						<line stroke="#404040" stroke-width="0.75" stroke-linecap="butt" />
+						<line stroke="#e6e6e6" stroke-width="0.6" stroke-linecap="butt" />
+						<line stroke="#404040" stroke-width="0.6" scale="all" stroke-dasharray="0.1,2.3" stroke-linecap="butt" />
+					</rule>
+					<rule e="way" k="railway" v="rail|narrow_gauge|preserved|funicular" zoom-max="13">
+						<line stroke="#666666" stroke-width="0.45" stroke-linecap="butt" />
+					</rule>
+					<rule e="way" k="railway" v="narrow_gauge|preserved|funicular" zoom-min="14">
+						<line stroke="#181818" stroke-width="0.65" stroke-linecap="butt" />
+						<line stroke="#e6e6e6" stroke-width="0.5" stroke-linecap="butt" />
+						<line stroke="#181818" stroke-width="0.5" scale="all" stroke-dasharray="1.2,2.4" stroke-linecap="butt" />
+					</rule>
+					<rule e="way" k="railway" v="rail" zoom-min="14">
+						<line stroke="#404040" stroke-width="0.75" stroke-linecap="butt" />
+						<line stroke="#e6e6e6" stroke-width="0.6" stroke-linecap="butt" />
+						<line stroke="#404040" stroke-width="0.6" scale="all" stroke-dasharray="2.4,2.4" stroke-linecap="butt" />
+					</rule>
 					<rule e="way" k="highway" v="construction" zoom-min="11">
 						<line stroke="#575757" stroke-width="1.2" stroke-linecap="round" />
 					</rule>
@@ -1628,8 +1561,8 @@
 						<line stroke="#575757" stroke-width="2.4" stroke-linecap="butt" />
 					</rule>
 				</rule>
-				<rule e="node" k="highway" v="turning_circle|mini_roundabout" zoom-min="11">
-					<circle radius="1.0" scale-radius="true" fill="#ffffff" />
+				<rule e="node" k="highway" v="turning_circle|passing_place|mini_roundabout" zoom-min="11">
+					<circle radius="1.2" scale-radius="true" fill="#575757" />
 				</rule>
 				<rule e="way" k="highway" v="construction" zoom-min="11">
 					<line stroke="#d0d0d0" stroke-width="0.2" stroke-linecap="butt" stroke-dasharray="12,12" />
@@ -1886,6 +1819,10 @@
 				<rule e="way" k="oneway" v="yes|1" zoom-min="16">
 					<lineSymbol src="file:symbols/oneway_arrow.svg" symbol-percent="35" align-center="true" repeat="true" repeat-gap="100" repeat-start="2" />
 				</rule>
+				<rule e="way" k="railway|highway" v="tram|light_rail|bus_guideway">
+					<line stroke="#8C6900" stroke-width="0.5" stroke-linecap="butt" />
+					<line stroke="#FFFF73" stroke-width="0.4" scale="all" stroke-dasharray="1.8,1.8" stroke-linecap="butt" />
+				</rule>
 			</rule>
 			<!-- дороги по земле - окончание -->
 		</rule>
@@ -1909,7 +1846,7 @@
 		</rule>
 	</rule>
 	<!-- ЖД платформы надземные (например на мостах) -->
-	<rule e="way" k="railway" v="platform">
+	<rule e="way" k="highway|railway|public_transport" v="platform">
 		<!-- не в метро и не тоннель -->
 		<rule e="way" k="subway|tunnel" v="~|no">
 			<rule e="way" k="*" v="*" closed="yes">
@@ -1918,6 +1855,39 @@
 			<rule e="way" k="*" v="*" closed="no">
 				<line stroke="#8E8E6F" stroke-width="0.9" stroke-linecap="square" />
 				<line stroke="#C7C7B3" stroke-width="0.7" stroke-linecap="square" />
+			</rule>
+		</rule>
+	</rule>
+	<!-- жд, трамваи и метро - входы-выходы, станции -->
+	<rule e="node" k="railway" v="*" zoom-min="12" cat="pub_transp">
+		<!-- выходы из метро -->
+		<rule e="node" k="railway" v="subway_entrance" zoom-min="14">
+			<rule e="node" k="railway" v="subway_entrance" zoom-min="14" zoom-max="14">
+				<symbol id="id_station_metro" src="file:symbols/metro_logo.svg" symbol-percent="60" display="always" />
+			</rule>
+			<rule e="node" k="railway" v="subway_entrance" zoom-min="15">
+				<symbol id="id_station_metro" src="file:symbols/metro_logo.svg" symbol-percent="70" display="always" />
+			</rule>
+			<rule e="node" k="*" v="*" zoom-min="15">
+				<caption symbol-id="id_station_metro" k="name" dy="-4" font-style="bold" font-family="sans_serif" font-size="10" fill="#333333" stroke="#ffffff" stroke-width="1.5" />
+			</rule>
+		</rule>
+		<rule e="node" k="railway" v="station" zoom-min="13">
+			<symbol id="id_station" src="file:symbols/railway_station.svg" symbol-percent="80" priority="-10" />
+			<rule e="node" k="*" v="*" zoom-min="15">
+				<caption symbol-id="id_station" k="name" dy="-4" font-style="bold" font-family="sans_serif" font-size="10" fill="#333333" stroke="#ffffff" stroke-width="1.5" />
+			</rule>
+		</rule>
+		<rule e="node" k="railway" v="tram_stop" zoom-min="14">
+			<symbol id="id_tram_stop" src="file:symbols/railway_tram_stop.svg" symbol-percent="50" />
+			<rule e="node" k="*" v="*" zoom-min="15">
+				<caption symbol-id="id_tram_stop" k="name" dy="13" font-style="bold" font-family="sans_serif" font-size="10" fill="#333333" stroke="#ffffff" stroke-width="1.5" />
+			</rule>
+		</rule>
+		<rule e="node" k="railway" v="halt" zoom-min="13">
+			<symbol id="id_halt" src="file:symbols/railway_station.svg" symbol-percent="80" priority="-10" />
+			<rule e="node" k="*" v="*" zoom-min="15">
+				<caption symbol-id="id_halt" k="name" dy="-4" font-style="bold" font-family="sans_serif" font-size="10" fill="#333333" stroke="#ffffff" stroke-width="1.5" />
 			</rule>
 		</rule>
 	</rule>
@@ -1954,7 +1924,8 @@
 			<line stroke="#404040" stroke-width="0.6" scale="all" stroke-dasharray="2.4,2.4" stroke-linecap="butt" />
 		</rule>
 	</rule>
-	<!-- здания "кирпичные" #ffbbbb -->
+
+	<!-- здания "кирпичные". Почему железная дорога в тоннеле рисуется на здании? -->
 	<rule e="way" k="building" v="*" zoom-min="14">
 		<area fill="#ffbbbb" stroke="#444444" stroke-width="0.1" />
 		<rule e="way" k="building" v="*" zoom-min="14" zoom-max="15">
@@ -1963,7 +1934,18 @@
 		<rule e="way" k="building" v="*" zoom-min="16">
 			<area src="file:patterns/building.svg" symbol-height="7" />
 		</rule>
-	</rule>
+	</rule> 
+
+	<!-- железные дороги (no tunnel) - это разобраться -->
+	<rule e="any" k="tunnel" v="~|no" zoom-min="11">
+		<rule e="way" k="power" v="~">
+			<rule e="way" k="railway|building" v="station|train_station">
+				<area fill="#604C4C0D" stroke="#444444" stroke-width="0.125" />
+			</rule>
+		</rule>
+	</rule> 
+
+
 	<!-- здания - стройка -->
 	<rule e="way" k="building" v="construction" zoom-min="15">
 		<area fill="#c7c7c7" stroke="#b0b0b0" stroke-width="0.2" />
