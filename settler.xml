@@ -1,23 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rendertheme xmlns="http://mapsforge.org/renderTheme" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://mapsforge.org/renderTheme https://raw.githubusercontent.com/mapsforge/mapsforge/master/resources/renderTheme.xsd" version="5" base-stroke-width="0.9" map-background="#ebeade">
+<rendertheme xmlns="http://mapsforge.org/renderTheme" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://mapsforge.org/renderTheme https://raw.githubusercontent.com/mapsforge/mapsforge/master/resources/renderTheme.xsd" version="5" base-stroke-width="0.9" map-background="#F8F8F8" map-background-outside="#EEEEEE" >
+
 <!--
     Mapsforge Rendertheme for Apps with Mapsforge support and Openandromaps
 	
     Andrey Nekrasov
     Contact: andrey.nekrasov@gmail.com		
 
-    2023.apr.12
-    v2.0.2
+    2023.apr.14
+    v2.0.6
 
     ###
-    Когда то давно это была тема "active RT5 (active RenderTheme Version 5)" https://github.com/FrankSchoeneck/active_RT5
+    Когда то давно это была тема "active RT5 (active RenderTheme Version 5)"
+    https://github.com/FrankSchoeneck/active_RT5
 
     Многое подсмотрено в темах Elevate, TOTM и внутренней теме LocusMap.
 
     https://www.openandromaps.org/en/legend/elevate-mountain-hike-theme
     https://github.com/IgorMagellan/TOTM
     https://github.com/asamm/lomaps-mapsforge/tree/main/theme
+
 -->
+
 	<stylemenu id="menu" defaultvalue="OSM_Summer" defaultlang="en">
 		<layer id="L_hikingtrails" enabled="false" visible="false">
 			<name lang="ru" value="Пешеходные маршруты" />
@@ -225,17 +229,11 @@
 			<name lang="en" value="Show place=locality" />
 			<cat id="locality" />
 		</layer>
-		<layer id="L_underground_footway" enabled="false" visible="false">
+		<layer id="L_underground_footway" enabled="true" visible="false">
 			<name lang="ru" value="Подземные пешеходные переходы" />
 			<name lang="de" value="Unterirdische Fußgängerüberwege" />
 			<name lang="en" value="Underground pedestrian crossings" />
 			<cat id="underground_footway" />
-		</layer>
-		<layer id="L_highway_track_new_style" enabled="true" visible="false">
-			<name lang="ru" value="Грунтовые дороги отображаются 'как дороги, а не тропинки'" />
-			<name lang="de" value="Feldwege werden 'als Straßen, nicht als Wege' angezeigt." />
-			<name lang="en" value="Dirt roads are displayed 'as roads, not paths'" />
-			<cat id="highway_track_new_style" />
 		</layer>
 		<layer id="L_contourlines" enabled="true" visible="false">
 			<name lang="ru" value="Изолинии" />
@@ -243,10 +241,17 @@
 			<name lang="en" value="Contour lines" />
 			<cat id="contourlines" />
 		</layer>
+		<layer id="L_building_type" enabled="false" visible="false">
+			<name lang="ru" value="Выделять разные типы зданий цветом (школы, больницы и т.п.)" />
+			<name lang="de" value="Gebäudetypen (Schulen, Krankenhäuser etc.)" />
+			<name lang="en" value="Building types (schools, hospitals, etc.)" />
+			<cat id="building_type" />
+		</layer>
+
 		<layer id="OSM_Summer" visible="true">
-			<name lang="ru" value="V4+ 2.0.2" />
-			<name lang="de" value="V4+ 2.0.2" />
-			<name lang="en" value="V4+ 2.0.2" />
+			<name lang="ru" value="V4+ 2.0.6" />
+			<name lang="de" value="V4+ 2.0.6" />
+			<name lang="en" value="V4+ 2.0.6" />
 			<overlay id="L_hikingtrails" />
 			<overlay id="L_trail_markings" />
 			<overlay id="L_hikingnodes" />
@@ -283,18 +288,28 @@
 			<overlay id="L_power_line" />
 			<overlay id="L_locality" />
 			<overlay id="L_underground_footway" />
-			<overlay id="L_highway_track_new_style" />
 			<overlay id="L_contourlines" />
+			<overlay id="L_building_type" />
 		</layer>
 	</stylemenu>
 	<!-- море -->
 	<rule e="way" k="natural" v="sea">
 		<area fill="#A2CBED" />
 	</rule>
-	<!-- суша -->
+
+	<!-- суша (раньше было #FFFEFE) -->
 	<rule e="way" k="natural" v="nosea">
-		<area fill="#FFFEFE" />
+		<area fill="#f8f8f8" />
 	</rule>
+
+	<!-- 
+	На будущее - в картах уже зашит и учитывается уровень объекта через тег layer="*"
+	И если где то кто то поставил зданию "-1" (вероятно подразумевая подвал)
+	то рисоваться оно целиком будет ниже уровня фона для некоторой области, которая задается например через тег amenity="*"
+
+	Конкретный баг был - зданиям госпиталя кто то поставил тег layer="-1" и всё, прощай домики на карте
+	-->
+
 	<!-- береговая линия -->
 	<rule e="way" k="natural" v="coastline">
 		<rule e="way" k="*" v="*" closed="no" zoom-max="12">
@@ -304,6 +319,20 @@
 			<line stroke="#699FC4" stroke-width="0.3" />
 		</rule>
 	</rule>
+
+	<!-- территория детских садиков и учебных заведений -->
+	<rule e="way" k="amenity" v="kindergarten|school|college|university" zoom-min="12">
+		<area fill="#50EBE3E1" />
+		<rule e="way" k="*" v="*" zoom-min="17">
+			<caption k="name" font-style="bold" font-family="sans_serif" font-size="12" fill="#333333" stroke="#ffffff" stroke-width="1.0" text-wrap-width="120" />
+		</rule>
+	</rule>
+
+	<!-- территория больниц (было #60EBE3E1) #5cb885 -->
+	<rule e="way" k="amenity" v="hospital" zoom-min="12">
+		<area fill="#805cb885" stroke="#DBBDBA" stroke-width="0.1" />
+	</rule>
+
 	<!-- парк -->
 	<!-- <rule e="way" k="boundary" v="~"> -->
 	<rule e="way" k="leisure" v="park" closed="yes" zoom-min="11">
@@ -311,6 +340,7 @@
 		<area fill="#4090d67e" />
 	</rule>
 	<!-- </rule> -->
+
 	<!-- лес - фон рисуется всегда -->
 	<rule e="way" k="natural|landuse" v="forest|wood">
 		<rule e="way" k="natural|landuse" v="forest|wood" zoom-min="9" zoom-max="13">
@@ -335,7 +365,8 @@
 		<rule e="way" k="*" v="*" zoom-min="19">
 			<line stroke="#401C9E1F" stroke-width="0.14" stroke-dasharray="0.3, 5.0" />
 		</rule>
-		<!-- подробная раскраска. до 14 уровня в OAM бага, из за которой рисуется сетка, которую никто не рисовал, проявляется на цвете/текстурах с прозрачностью -->
+		<!-- подробная раскраска. до 14 уровня в OAM бага, из за которой рисуется сетка, которую
+		никто не рисовал, проявляется на цвете/текстурах с прозрачностью -->
 		<!-- поэтому заливка без прозрачности -->
 		<rule e="way" k="*" v="*" zoom-min="12" zoom-max="13">
 			<!-- лиственные -->
@@ -366,20 +397,23 @@
 				<area fill="#99b4db7f" />
 				<area src="file:patterns/wood_mixed.svg" symbol-width="40" />
 			</rule>
-			<!-- ёлки #b9e381 -->
+			<!-- ёлки -->
 			<rule e="any" k="wood|leaf_type" v="coniferous|needleleaved">
 				<area fill="#99a3cf69" />
 				<area src="file:patterns/wood_coniferous.svg" symbol-width="40" />
 			</rule>
 		</rule>
 	</rule>
+
 	<!-- название леса. включая острова, целиком нарисованные как лес -->
 	<rule e="any" k="place" v="*">
 		<rule e="node" k="natural|landuse" v="forest|wood" zoom-min="14">
 			<caption k="name" font-style="italic" font-size="14" fill="#047a14" stroke="#FFFFFF" stroke-width="2" text-wrap-width="120" />
 		</rule>
 	</rule>
-	<!-- просека - до тропинок/дорог через лес, иначе даже с прозрачностью дороги рисуются не очень понятно -->
+
+	<!-- просека - до тропинок/дорог через лес, иначе даже с прозрачностью дороги рисуются не очень
+	понятно -->
 	<rule e="way" k="man_made" v="cutline" zoom-min="14">
 		<rule e="way" k="*" v="*" closed="no">
 			<line stroke="#A6DDFFDD" stroke-width="1.8" />
@@ -388,6 +422,7 @@
 			<area fill="#A6DDFFDD" />
 		</rule>
 	</rule>
+
 	<rule e="way" k="landuse" v="*" zoom-min="8">
 		<!-- жилая зона -->
 		<rule e="way" k="landuse" v="residential|farmyard" zoom-min="10">
@@ -401,13 +436,7 @@
 				<area fill="#26aaaaaa" />
 			</rule>
 		</rule>
-		<!-- строительство -->
-		<rule e="way" k="landuse" v="construction">
-			<area fill="#80C9DDDD" />
-			<rule e="way" k="landuse" v="construction" zoom-min="16">
-				<symbol id="construction" src="file:symbols/construction-excavator.svg" symbol-height="18" />
-			</rule>
-		</rule>
+
 		<rule e="way" k="landuse" v="commercial">
 			<area fill="#DBDBDB" stroke="#c6c6c6" stroke-width="0.2" />
 		</rule>
@@ -418,9 +447,7 @@
 		<rule e="way" k="landuse" v="railway">
 			<area fill="#77c9c9c9" stroke="#A8A08C" stroke-width="0.125" />
 		</rule>
-		<rule e="way" k="landuse" v="brownfield">
-			<area fill="#FFFEFE" stroke="#e4e4e4" stroke-width="0.2" />
-		</rule>
+
 		<!-- поле -->
 		<rule e="way" k="landuse" v="village_green">
 			<rule e="way" k="*" v="*" zoom-min="10" zoom-max="13">
@@ -434,13 +461,18 @@
 		<rule e="way" k="landuse" v="allotments">
 			<area fill="#80E2ECC5" stroke="#80556b2f" stroke-width="0.15" />
 		</rule>
+
 		<!-- промзона -->
 		<rule e="way" k="landuse" v="industrial">
+		    <rule e="way" k="power" v="~">
 			<area fill="#D9DBDBDB" stroke="#e4e4e4" stroke-width="0.2" />
 			<rule e="way" k="*" v="*" zoom-min="16" zoom-max="19">
 				<caption k="name" font-style="italic" font-size="12" fill="#5A5A5A" stroke="#FFFFFF" stroke-width="2.8" text-wrap-width="120" />
 			</rule>
+		    </rule>
 		</rule>
+
+
 		<!-- свалка -->
 		<rule e="way" k="landuse" v="landfill">
 			<area fill="#EFF5E1" stroke="#556b2f" stroke-width="0.2" />
@@ -456,21 +488,33 @@
 			</rule>
 		</rule>
 	</rule>
-	<!-- территория детских садиков и учебных заведений -->
-	<rule e="way" k="amenity" v="kindergarten|school|college|university" zoom-min="11">
-		<area fill="#EBE3E1" />
-		<rule e="way" k="*" v="*" zoom-min="17">
-			<caption k="name" font-style="bold" font-family="sans_serif" font-size="12" fill="#333333" stroke="#ffffff" stroke-width="1.0" text-wrap-width="120" />
+
+	<!-- электростанции -->
+	<rule e="way" k="power" v="station|generator|plant">
+		<rule e="way" k="*" v="*" closed="yes">
+			<area fill="#307F7F02" stroke="#7F7F02" stroke-width="0.125"/>
+		</rule>
+		<rule e="way" k="*" v="*" closed="no">
+			<line stroke="#7F7F02" stroke-width="0.25"/>
 		</rule>
 	</rule>
-	<rule e="way" k="amenity" v="hospital" zoom-min="12">
-		<area fill="#EBE3E1" stroke="#DBBDBA" stroke-width="0.1" />
+
+	<!-- может и дальше стройки удвинуть? -->
+	<rule e="way" k="landuse" v="construction|brownfield" zoom-min="13">
+	    <rule e="any" k="*" v="*" zoom-min="13" zoom-max="13">
+		<area symbol-height="16" src="file:patterns/fill.svg" />
+	    </rule>
+	    <rule e="way" k="*" v="*" zoom-min="14" zoom-max="17">
+	    	<area symbol-height="32" src="file:patterns/fill.svg" />
+	    </rule>
+	    <rule e="way" k="*" v="*" zoom-min="18">
+		<area symbol-height="64" src="file:patterns/fill.svg" />
+	    </rule>
+	    <rule e="way" k="landuse" v="construction" zoom-min="16">
+		<symbol id="construction" src="file:symbols/construction-excavator.svg" symbol-height="18" />
+	    </rule>
 	</rule>
-	<!-- если так делать, рисуется заполнение например просто по линии скалолазного трека
-	<rule e="any" k="sport" v="*" zoom-min="12">
-		<area fill="#F0F7D2" />
-	</rule>
-	-->
+
 	<!-- пляж и песок -->
 	<rule e="way" k="natural" v="beach|sand" zoom-min="10">
 		<area fill="#BFFAEBB9" />
@@ -518,7 +562,8 @@
 		<caption k="name" font-style="italic" font-size="11" fill="#047a14" stroke="#FFFFFF" stroke-width="2" text-wrap-width="120" />
 	</rule>
 	<!-- </rule> -->
-	<!-- Площадь сельскохозяйственных угодий, используемых в основном для обработки почвы (однолетние культуры) -->
+	<!-- Площадь сельскохозяйственных угодий, используемых в основном для обработки почвы
+	(однолетние культуры) -->
 	<rule e="way" k="landuse" v="farmland|farm" zoom-min="12">
 		<area stroke="#C3C3C3" stroke-width="0.2" />
 		<area fill="#ffffef" />
@@ -541,8 +586,9 @@
 			<area src="file:patterns/vineyard.svg" symbol-width="14" />
 		</rule>
 	</rule>
-	<!-- не здание. территория мест поклонения / церкви / монастыри -->
-	<rule e="way" k="building" v="~" zoom-min="14">
+	<!-- территория мест поклонения / церкви / монастыри (но не здание) -->
+	<rule e="way" k="amenity" v="place_of_worship" zoom-min="14">
+	    <rule e="way" k="building" v="~" zoom-min="14">
 		<rule e="way" k="amenity" v="place_of_worship" zoom-max="17">
 			<area fill="#50c7c7c7" stroke="#b0b0b0" stroke-width="0.2" />
 		</rule>
@@ -550,7 +596,9 @@
 			<area fill="#50c7c7c7" stroke="#b0b0b0" stroke-width="0.2" />
 			<caption k="name" position="below" dy="8" font-style="bold" font-family="sans_serif" font-size="12" fill="#333333" stroke="#ffffff" stroke-width="1.0" text-wrap-width="120" />
 		</rule>
+	    </rule>
 	</rule>
+
 	<!-- кладбище -->
 	<rule e="way" k="landuse" v="cemetery" zoom-min="11" closed="yes">
 		<area fill="#CDD9CA" />
@@ -570,6 +618,7 @@
 			<caption k="name" font-style="normal" font-family="sans_serif" font-size="12" fill="#333333" stroke="#ffffff" stroke-width="1.5" text-wrap-width="120" />
 		</rule>
 	</rule>
+
 	<!-- -->
 	<rule e="way" k="leisure" v="*" zoom-min="10">
 		<rule e="way" k="leisure" v="sports_centre">
@@ -595,9 +644,31 @@
 		<rule e="way" k="leisure" v="playground|playing_fields|dog_park" zoom-min="12">
 			<area fill="#C0DDB9" stroke="#B7C7B9" stroke-width="0.1" />
 		</rule>
-		<rule e="way" k="leisure" v="track|byway|ls_track" zoom-min="12">
-			<area fill="#F0F7D2" />
+
+		<!-- -->
+		<rule e="way" k="leisure" v="ls_track" closed="yes" zoom-min="13">
+            	    <rule e="way" k="area" v="yes">
+                        <area fill="#ddbde3cb" stroke="#5fb12d" stroke-width="0.125"/>
+		    </rule>
+                </rule>
+		<rule e="way" k="leisure" v="ls_track" closed="no" zoom-min="12">
+			<line stroke="#5fb12d" stroke-width="0.95"/>
 		</rule>
+		<rule e="way" k="leisure" v="ls_track" closed="yes" zoom-min="13">
+			<rule e="way" k="area" v="no|~">
+				<line stroke="#5fb12d" stroke-width="0.95"/>
+			</rule>
+		</rule>
+		<rule e="way" k="leisure" v="ls_track" closed="no" zoom-min="12">
+			<line stroke="#bde3cb" stroke-width="0.65"/>
+		</rule>
+		<rule e="way" k="leisure" v="ls_track" closed="yes" zoom-min="13">
+			<rule e="way" k="area" v="no|~">
+				<line stroke="#bde3cb" stroke-width="0.65"/>
+			</rule>
+		</rule>
+		<!-- -->
+
 		<!-- бассейн -->
 		<rule e="way" k="leisure" v="swimming_pool" zoom-min="11">
 			<area fill="#A2CBED" />
@@ -645,7 +716,8 @@
 			</rule>
 		</rule>
 		<rule e="way" k="natural" v="*" zoom-min="11">
-			<!-- пустошь — участок открытой, незащищённой от ветра земли. Трава, кустарники, низкая растительность. -->
+			<!-- пустошь — участок открытой, незащищённой от ветра земли. Трава, кустарники, низкая
+			растительность. -->
 			<rule e="way" k="natural" v="heath" closed="yes">
 				<area fill="#DCE0DA" />
 				<area src="file:patterns/heath.svg" symbol-width="40" />
@@ -733,9 +805,20 @@
 			<caption k="name" font-style="normal" font-family="sans_serif" font-size="12" fill="#333333" stroke="#FFFFFF" stroke-width="0.8" text-wrap-width="120" />
 		</rule>
 	</rule>
+
+
+
 	<!-- Изолинии / линии высот. Не рисуются поверх воды и зданий -->
 	<rule cat="contourlines" e="way" k="contour_ext" v="*">
-		<!-- contour lines level 13 -->
+
+		<!-- contour lines level 8 -->
+		<rule e="way" k="contour_ext" v="*" zoom-min="8" zoom-max="11">
+			<rule e="way" k="contour_ext" v="elevation_medium|elevation_major">
+				<line stroke="#A07F5F" stroke-width="0.2" curve="cubic" />
+			</rule>
+		</rule>
+
+		<!-- contour lines level 12 -->
 		<rule e="way" k="contour_ext" v="*" zoom-min="12" zoom-max="12">
 			<rule e="way" k="contour_ext" v="elevation_minor">
 				<line stroke="#A07F5F" stroke-width="0.09" curve="cubic" />
@@ -744,7 +827,7 @@
 				<line stroke="#A07F5F" stroke-width="0.25" curve="cubic" />
 			</rule>
 		</rule>
-		<!-- contour lines level 14-->
+		<!-- contour lines level 13 -->
 		<rule e="way" k="contour_ext" v="*" zoom-min="13" zoom-max="13">
 			<rule e="way" k="contour_ext" v="elevation_minor">
 				<line stroke="#A07F5F" stroke-width="0.09" curve="cubic" />
@@ -753,7 +836,7 @@
 				<line stroke="#A07F5F" stroke-width="0.18" curve="cubic" />
 			</rule>
 		</rule>
-		<!-- contour lines level 15-->
+		<!-- contour lines level 14 -->
 		<rule e="way" k="contour_ext" v="*" zoom-min="14" zoom-max="15">
 			<rule e="way" k="contour_ext" v="elevation_minor">
 				<line stroke="#A07F5F" stroke-width="0.08" curve="cubic" />
@@ -778,6 +861,7 @@
 			</rule>
 		</rule>
 	</rule>
+
 	<!-- Хребты -->
 	<rule cat="landscapefeat" e="way" k="*" v="ridge|arete" zoom-min="8">
 		<rule e="way" k="*" v="*" zoom-max="15">
@@ -829,24 +913,12 @@
 		</rule>
 		<rule e="way" k="waterway" v="canal|river">
 			<line stroke="#80A2CBED" stroke-width="0.9" stroke-dasharray="20,2" stroke-linecap="butt" />
-			<!-- направление (стрелочки) - как бы это сделать более прозрачным? инонку делать отдельную?
+			<!-- направление (стрелочки) - как бы это сделать более прозрачным? инонку делать
+			отдельную?
 			<rule cat="water_flow_direction" e="way" k="*" v="*" zoom-min="13">
 			    <lineSymbol src="file:symbols/bluearrow.svg" dy="0" symbol-orientation="left" symbol-percent="100" position="center" repeat-gap="300" repeat="true" repeat-start="30" priority="389"/>
 			</rule>
 		    -->
-		</rule>
-	</rule>
-	<!-- -->
-	<rule e="way" k="tunnel" v="~|no">
-		<!-- надземный -->
-		<rule e="way" k="location" v="~|overground">
-			<!-- трубопровод -->
-			<rule e="way" k="man_made" v="pipeline">
-				<line stroke="#CCCCCC" stroke-width="0.6" stroke-linecap="butt" />
-				<line stroke="#9CA6BA" stroke-width="0.6" scale="all" stroke-dasharray="1.8,0.6" stroke-linecap="butt" />
-				<line stroke="#FFFFFF" stroke-width="0.1" stroke-linecap="butt" />
-				<pathText k="name" font-style="normal" font-size="9" fill="#9CA6BA" stroke="#FFFFFF" stroke-width="1" />
-			</rule>
 		</rule>
 	</rule>
 	<!-- Вода на поверхности -->
@@ -898,6 +970,7 @@
 						<line stroke="#60A4D9" stroke-width="1.3" stroke-dasharray="3,6" />
 						<line stroke="#A2CBED" stroke-width="1.1" />
 					</rule>
+					<!-- название -->
 					<rule e="way" k="*" v="*" zoom-min="11" zoom-max="12">
 						<pathText k="name" font-style="italic" font-size="10" fill="#035FBC" stroke="#ffffff" stroke-width="1.2" repeat-start="30" repeat-gap="150" />
 					</rule>
@@ -909,7 +982,7 @@
 					</rule>
 					<!-- направление (стрелочки) -->
 					<rule cat="water_flow_direction" e="way" k="*" v="*" zoom-min="13">
-						<lineSymbol src="file:symbols/bluearrow.svg" dy="0" symbol-orientation="left" symbol-percent="100" position="center" repeat-gap="300" repeat="true" repeat-start="30" priority="389" />
+						<lineSymbol src="file:symbols/bluearrow.svg" dy="0" symbol-orientation="left" symbol-percent="100" position="center" repeat-gap="300" repeat="true" repeat-start="30" />
 					</rule>
 				</rule>
 				<!-- канал -->
@@ -931,7 +1004,8 @@
 				<rule e="way" k="waterway" v="dock">
 					<area fill="#A2CBED" />
 				</rule>
-				<!-- TODO / по идее тут должны рисоваться шлюзы, но я не уверен что это сейчас работает -->
+				<!-- TODO / по идее тут должны рисоваться шлюзы, но я не уверен что это сейчас
+				работает -->
 				<rule e="way" k="lock" v="yes" zoom-min="12">
 					<rule e="way" k="waterway" v="river">
 						<line stroke="#000044" stroke-width="2.0" stroke-linecap="square" />
@@ -1083,6 +1157,7 @@
 			</rule>
 		</rule>
 	</rule>
+
 	<!-- TODO все эти "границы" нужно проверить нормально и подогнать по цветам -->
 	<rule e="way" k="admin_level" v="*" cat="boundaries_areas">
 		<!-- страны, государства -->
@@ -1131,6 +1206,7 @@
 			<caption k="name" font-style="bold_italic" font-family="sans_serif" font-size="12" fill="#a85813" stroke="#FFFFFF" stroke-width="4.0" text-wrap-width="120" />
 		</rule>
 	</rule>
+
 	<!-- всякое летающее -->
 	<rule e="way" k="aeroway" v="*" zoom-min="8">
 		<rule e="way" k="aeroway" v="aerodrome" closed="yes" zoom-min="11">
@@ -1167,7 +1243,8 @@
 			<caption k="name" font-style="bold" font-family="sans_serif" font-size="10" fill="#333333" stroke="#ffffff" stroke-width="0.5" text-wrap-width="120" />
 		</rule>
 	</rule>
-	<!-- стена при перепадах уровня земли (на карте это укрепления берегов, пешеходных переходов). должно рисоваться до дорог/дорожек -->
+	<!-- стена при перепадах уровня земли (на карте это укрепления берегов, пешеходных переходов).
+	должно рисоваться до дорог/дорожек -->
 	<rule e="way" k="barrier" v="retaining_wall">
 		<line stroke="#A69D9D" stroke-width="0.4" dy="0.2" stroke-dasharray="1,15" stroke-linecap="round" />
 		<line stroke="#A69D9D" stroke-width="0.4" stroke-linecap="square" />
@@ -1299,72 +1376,71 @@
 			<line stroke="#000000" stroke-width="0.1" stroke-dasharray="1,10" stroke-linecap="round" />
 		</rule>
 	</rule>
-	<!-- дороги -->
+
+	<!-- интересно, это вообще работает в Cruiser/Locus ? -->
+	<hillshading zoom-min="9" zoom-max="17" />
+
+	<!-- ЖД платформы на поверхности (не мост и не тоннель) -->
+	<rule e="way" k="highway|railway|public_transport" v="platform">
+		<rule e="way" k="location" v="~|underground">
+			<rule e="way" k="subway|tunnel|bridge" v="~|no|false">
+				<rule e="way" k="*" v="*" closed="yes">
+					<area fill="#C7C7B3" stroke="#8E8E6F" stroke-width="0.1" />
+				</rule>
+				<rule e="way" k="*" v="*" closed="no">
+					<line stroke="#8E8E6F" stroke-width="0.9" stroke-linecap="square" />
+					<line stroke="#C7C7B3" stroke-width="0.7" stroke-linecap="square" />
+				</rule>
+			</rule>
+		</rule>
+	</rule>
+
+	<!-- здания (#ffbbbb - красно-кирпичный)  -->
+	<rule e="way" k="building" v="*" zoom-min="14"> 
+		<!-- все типы -->
+		<area fill="#ffbbbb" stroke="#444444" stroke-width="0.1" />
+		<!-- детализация по цвету для зданий -->
+		<rule cat="building_type" e="way" k="building" v="*">
+		    <!-- больницы -->
+		    <rule e="way" k="building" v="hospital">
+			<area fill="#5cb885" stroke="#d4d4d4" stroke-width="0.1"/>
+		    </rule>
+		    <!-- детские садики, школы и т.д. -->
+		    <rule e="way" k="building" v="university|school|college|kindergarten|gymnasium">
+			<area fill="#78a3c4" stroke="#d4d4d4" stroke-width="0.1"/>
+		    </rule>
+		</rule>
+
+		<rule e="way" k="building" v="*" zoom-min="14" zoom-max="15">
+			<area src="file:patterns/building.svg" symbol-height="5" />
+		</rule>
+		<rule e="way" k="building" v="*" zoom-min="16">
+			<area src="file:patterns/building.svg" symbol-height="7" />
+		</rule>
+	</rule>
+
+	<!-- здания - стройка -->
+	<rule e="way" k="building" v="construction" zoom-min="15">
+		<area fill="#c7c7c7" stroke="#b0b0b0" stroke-width="0.2" />
+		<line stroke="#C0F8F8F8" stroke-width="0.3" stroke-dasharray="2,2" />
+	</rule>
+
+	<!-- название зданий -->
+	<rule e="way" k="building" v="*" zoom-min="18">
+		<!-- исключая "amenity|aerialway", у них свои описания -->
+		<rule e="any" k="amenity|aerialway" v="~">
+			<caption k="name" position="below" dy="8" font-style="bold" font-family="sans_serif" font-size="12" fill="#333333" stroke="#ffffff" stroke-width="1.8" text-wrap-width="120" />
+		</rule>
+	</rule>
+
+	<rule e="any" k="*" v="*" zoom-min="18">
+		<caption k="addr:housenumber" font-style="normal" font-size="10" fill="#424251" priority="10" />
+	</rule> 
+
+	<!-- дороги. NOTE тут бардак с мостиками-тоннелями и их комбинациями. хорошо бы разобраться как нибудь -->
 	<rule e="any" k="highway|railway" v="*">
 		<rule e="any" k="area" v="~|no|false">
-			<!-- это дощатая тропа, обычно называется "экотропа". В OAM нет, может в Lomaps будет -->
-			<rule e="way" k="bridge" v="boardwalk">
-				<rule e="way" k="highway" v="steps|footway|path" zoom-min="14">
-					<line stroke="#8f540d" stroke-width="1.00" stroke-linecap="butt" />
-					<line stroke="#EEEEEE" stroke-width="0.6" stroke-linecap="butt" />
-				</rule>
-			</rule>
-			<!-- тропинки и прочее пешеходное через мосты и мостики -->
-			<rule e="way" k="bridge" v="yes|movable|true">
-				<rule e="way" k="highway" v="steps|footway|path" zoom-min="14">
-					<line stroke="#666666" stroke-width="1.0" stroke-linecap="butt" />
-					<line stroke="#EEEEEE" stroke-width="0.6" stroke-linecap="butt" />
-				</rule>
-				<!-- vie ferrata мостики -->
-				<rule e="way" k="highway" v="via_ferrata" zoom-min="15">
-					<line stroke="#111111" stroke-width="1.0" stroke-linecap="butt" />
-					<line stroke="#ffffff" stroke-width="0.7" stroke-linecap="butt" />
-				</rule>
-				<rule e="way" k="highway" v="construction" zoom-min="11">
-					<line stroke="#666666" stroke-width="2.1" stroke-linecap="butt" />
-				</rule>
-				<rule e="way" k="highway" v="motorway" zoom-min="6">
-					<line stroke="#575757" stroke-width="2.4" stroke-linecap="butt" />
-				</rule>
-				<rule e="way" k="highway" v="motorway_link" zoom-min="11">
-					<line stroke="#575757" stroke-width="2.0" stroke-linecap="butt" />
-				</rule>
-				<rule e="way" k="highway" v="trunk" zoom-min="6">
-					<line stroke="#575757" stroke-width="2.2" stroke-linecap="butt" />
-				</rule>
-				<rule e="way" k="highway" v="trunk_link" zoom-min="11">
-					<line stroke="#575757" stroke-width="2.0" stroke-linecap="butt" />
-				</rule>
-				<rule e="way" k="highway" v="primary|primary_link" zoom-min="9">
-					<line stroke="#575757" stroke-width="2.0" stroke-linecap="butt" />
-				</rule>
-				<rule e="way" k="highway" v="secondary|secondary_link" zoom-min="9">
-					<line stroke="#575757" stroke-width="2.0" stroke-linecap="butt" />
-				</rule>
-				<rule e="way" k="highway" v="tertiary|tertiary_link" zoom-min="11">
-					<line stroke="#575757" stroke-width="1.8" stroke-linecap="butt" />
-				</rule>
-				<rule e="way" k="highway" v="residential|unclassified" zoom-min="11">
-					<line stroke="#575757" stroke-width="1.2" stroke-linecap="butt" />
-				</rule>
-				<rule e="way" k="highway" v="living_street" zoom-min="11">
-					<line stroke="#575757" stroke-width="1.2" stroke-linecap="butt" />
-				</rule>
-				<rule e="way" k="highway" v="service" zoom-min="11">
-					<line stroke="#575757" stroke-width="1.2" stroke-linecap="butt" />
-				</rule>
-				<!-- старый вариант по умолчанию -->
-				<rule e="way" k="highway" v="track|byway" zoom-min="13">
-					<line stroke="#53534e" stroke-width="1.1" stroke-linecap="butt" />
-					<line stroke="#FFFFFF" stroke-width="0.8" stroke-linecap="butt" />
-				</rule>
-				<!-- если включено - то новый вариант перерисовывается поверх старого -->
-				<rule cat="highway_track_new_style" e="way" k="highway" v="track|byway" zoom-min="13">
-					<line stroke="#53534e" stroke-width="1.4" stroke-linecap="butt" />
-					<line stroke="#FFFFFF" stroke-width="1.15" stroke-linecap="butt" />
-				</rule>
-			</rule>
-			<!-- в тоннелях -->
+			<!-- тоннели -->
 			<rule e="way" k="tunnel" v="yes">
 				<!-- railway tunnel -->
 				<rule e="way" k="railway" v="abandoned" zoom-min="13">
@@ -1468,25 +1544,19 @@
 					<line stroke="#707070" dy="-0.35" stroke-width="0.1" stroke-dasharray="3,3" stroke-linecap="butt" />
 				</rule>
 			</rule>
-			<!-- не тоннель и не мост. то есть по земле -->
+			<!-- не тоннель  -->
 			<rule e="any" k="tunnel" v="~|no|false">
+				<!-- Заброшенные жел.дороги (мост + поверхность)-->
+				<rule e="way" k="railway" v="abandoned" zoom-min="13">
+					<rule e="way" k="bridge" v="yes|viaduct|movable">
+						<line stroke="#181818" stroke-width="1.05" stroke-linecap="butt" />
+						<line stroke="#f8f8f8" stroke-width="0.7" stroke-linecap="butt" />
+					</rule>
+					<line stroke="#80FFFFFF" stroke-width="0.5" scale="all" stroke-dasharray="2.3,0.1" stroke-linecap="butt" />
+					<line stroke="#40808080" stroke-width="0.5" scale="all" stroke-dasharray="2.3,2.5" stroke-linecap="butt" />
+				</rule>
+				<!-- не мост (то есть - по земле) -->
 				<rule e="any" k="bridge" v="~|no|false">
-					<!-- ремонт
-					<rule e="way" k="highway" v="construction" zoom-min="11">
-						<line stroke="#ad8200" stroke-width="0.3" stroke-linecap="round" />
-					</rule>
-					-->
-					<!-- Заброшенные жел.дороги -->
-					<rule e="way" k="railway" v="abandoned" zoom-min="13">
-						<rule e="way" k="tunnel" v="~|no">
-							<rule e="way" k="bridge" v="yes|viaduct|movable">
-								<line stroke="#181818" stroke-width="1.05" stroke-linecap="butt" />
-								<line stroke="#f8f8f8" stroke-width="0.7" stroke-linecap="butt" />
-							</rule>
-							<line stroke="#80FFFFFF" stroke-width="0.5" scale="all" stroke-dasharray="2.3,0.1" stroke-linecap="butt" />
-							<line stroke="#40808080" stroke-width="0.5" scale="all" stroke-dasharray="2.3,2.5" stroke-linecap="butt" />
-						</rule>
-					</rule>
 					<!-- Разные жел.дороги -->
 					<rule e="way" k="railway" v="miniature" zoom-min="13">
 						<line stroke="#181818" stroke-width="0.14" />
@@ -1514,6 +1584,72 @@
 						<line stroke="#e6e6e6" stroke-width="0.6" stroke-linecap="butt" />
 						<line stroke="#404040" stroke-width="0.6" scale="all" stroke-dasharray="2.4,2.4" stroke-linecap="butt" />
 					</rule>
+				</rule>
+			</rule>
+			<!-- тропинки и прочее пешеходное через мосты и мостики -->
+			<rule e="way" k="bridge" v="yes|movable|true">
+				<rule e="way" k="highway" v="steps|footway|path" zoom-min="14">
+					<line stroke="#666666" stroke-width="1.0" stroke-linecap="butt" />
+					<line stroke="#EEEEEE" stroke-width="0.6" stroke-linecap="butt" />
+				</rule>
+				<!-- vie ferrata мостики -->
+				<rule e="way" k="highway" v="via_ferrata" zoom-min="15">
+					<line stroke="#111111" stroke-width="1.0" stroke-linecap="butt" />
+					<line stroke="#ffffff" stroke-width="0.7" stroke-linecap="butt" />
+				</rule>
+				<rule e="way" k="highway" v="construction" zoom-min="11">
+					<line stroke="#666666" stroke-width="2.1" stroke-linecap="butt" />
+				</rule>
+				<rule e="way" k="highway" v="motorway" zoom-min="6">
+					<line stroke="#575757" stroke-width="2.4" stroke-linecap="butt" />
+				</rule>
+				<rule e="way" k="highway" v="motorway_link" zoom-min="11">
+					<line stroke="#575757" stroke-width="2.0" stroke-linecap="butt" />
+				</rule>
+				<rule e="way" k="highway" v="trunk" zoom-min="6">
+					<line stroke="#575757" stroke-width="2.2" stroke-linecap="butt" />
+				</rule>
+				<rule e="way" k="highway" v="trunk_link" zoom-min="11">
+					<line stroke="#575757" stroke-width="2.0" stroke-linecap="butt" />
+				</rule>
+				<rule e="way" k="highway" v="primary|primary_link" zoom-min="9">
+					<line stroke="#575757" stroke-width="2.0" stroke-linecap="butt" />
+				</rule>
+				<rule e="way" k="highway" v="secondary|secondary_link" zoom-min="9">
+					<line stroke="#575757" stroke-width="2.0" stroke-linecap="butt" />
+				</rule>
+				<rule e="way" k="highway" v="tertiary|tertiary_link" zoom-min="11">
+					<line stroke="#575757" stroke-width="1.8" stroke-linecap="butt" />
+				</rule>
+				<rule e="way" k="highway" v="residential|unclassified" zoom-min="11">
+					<line stroke="#575757" stroke-width="1.2" stroke-linecap="butt" />
+				</rule>
+				<rule e="way" k="highway" v="living_street" zoom-min="11">
+					<line stroke="#575757" stroke-width="1.2" stroke-linecap="butt" />
+				</rule>
+				<rule e="way" k="highway" v="service" zoom-min="11">
+					<line stroke="#575757" stroke-width="1.2" stroke-linecap="butt" />
+				</rule>
+				<rule e="way" k="highway" v="track|byway" zoom-min="13">
+					<line stroke="#53534e" stroke-width="1.4" stroke-linecap="butt" />
+					<line stroke="#FFFFFF" stroke-width="1.15" stroke-linecap="butt" />
+				</rule>
+			</rule>
+			<!-- дощатая тропа, обычно называется "экотропа". В OAM нет, может в Lomaps будет -->
+			<rule e="way" k="bridge" v="boardwalk">
+				<rule e="way" k="highway" v="steps|footway|path" zoom-min="14">
+					<line stroke="#8f540d" stroke-width="1.00" stroke-linecap="butt" />
+					<line stroke="#EEEEEE" stroke-width="0.6" stroke-linecap="butt" />
+				</rule>
+			</rule>
+			<!-- не тоннель и не мост. то есть по земле -->
+			<rule e="any" k="tunnel" v="~|no|false">
+				<rule e="any" k="bridge" v="~|no|false">
+
+					<rule e="node" k="highway" v="turning_circle|passing_place|mini_roundabout" zoom-min="11">
+					        <circle radius="1.2" scale-radius="true" fill="#575757" />
+                                        </rule>
+
 					<rule e="way" k="highway" v="construction" zoom-min="11">
 						<line stroke="#575757" stroke-width="1.2" stroke-linecap="round" />
 					</rule>
@@ -1561,9 +1697,11 @@
 						<line stroke="#575757" stroke-width="2.4" stroke-linecap="butt" />
 					</rule>
 				</rule>
-				<rule e="node" k="highway" v="turning_circle|passing_place|mini_roundabout" zoom-min="11">
-					<circle radius="1.2" scale-radius="true" fill="#575757" />
-				</rule>
+
+                                <rule e="node" k="highway" v="turning_circle|passing_place|mini_roundabout" zoom-min="11">
+                                        <circle radius="1.0" scale-radius="true" fill="#ffffff" />
+                                </rule>
+
 				<rule e="way" k="highway" v="construction" zoom-min="11">
 					<line stroke="#d0d0d0" stroke-width="0.2" stroke-linecap="butt" stroke-dasharray="12,12" />
 				</rule>
@@ -1628,51 +1766,28 @@
 						</rule>
 					</rule>
 				</rule>
-				<!-- лесные дороги, неофициальные грунтовки, "козьи тропы" - старый вариант -->
-				<rule e="way" k="highway" v="track|byway" zoom-min="13">
+				<!-- лесные дороги, неофициальные грунтовки, "козьи тропы" - NOTE - проверить -->
+				<rule e="way" k="highway" v="track|byway" zoom-min="11">
 					<rule e="way" k="tracktype" v="grade4|grade5" zoom-min="12">
-						<line stroke="#53534e" stroke-width="0.4" stroke-dasharray="14,6" stroke-linecap="butt" scale="stroke" />
+						<line stroke="#53534e" stroke-width="1.1" stroke-dasharray="12,3" stroke-linecap="butt" />
+						<line stroke="#dddddd" stroke-width="0.8" />
 					</rule>
 					<rule e="way" k="tracktype" v="grade3" zoom-min="12">
-						<line stroke="#53534e" stroke-width="0.4" />
+						<line stroke="#53534e" stroke-width="1.1" stroke-dasharray="8,4" stroke-linecap="butt" />
+						<line stroke="#eeeeee" stroke-width="0.8" />
 					</rule>
-					<rule e="way" k="highway" v="track|byway" zoom-min="13">
-						<rule e="way" k="tracktype" v="grade2">
-							<line stroke="#53534e" stroke-width="1.1" stroke-dasharray="8,4" stroke-linecap="butt" />
-						</rule>
-						<rule e="way" k="tracktype" v="grade1">
-							<line stroke="#53534e" stroke-width="1.1" stroke-linecap="butt" />
-						</rule>
+					<rule e="way" k="tracktype" v="grade2" zoom-min="11">
+						<line stroke="#53534e" stroke-width="1.1" stroke-dasharray="8,4" stroke-linecap="butt" />
+						<line stroke="#eeeeee" stroke-width="0.8" />
 					</rule>
-					<rule e="way" k="tracktype" v="grade1|grade2" zoom-min="11">
-						<line stroke="#ffffff" stroke-width="0.8" />
+					<rule e="way" k="tracktype" v="grade1">
+						<line stroke="#53534e" stroke-width="1.1" stroke-linecap="butt" />
+						<line stroke="#eeeeee" stroke-width="0.8" />
 					</rule>
 					<rule e="way" k="tracktype" v="~|no|false" zoom-min="11">
-						<line stroke="#606060" stroke-width="0.4" stroke-dasharray="20,5" stroke-linecap="butt" scale="stroke" />
+						<line stroke="#53534e" stroke-width="1.1" stroke-dasharray="12,3" stroke-linecap="butt" />
+						<line stroke="#dddddd" stroke-width="0.8" />
 					</rule>
-					<rule e="way" k="foot" v="ft_no">
-						<line stroke="#FF4000" stroke-width="0.4" stroke-dasharray="3,5" stroke-linecap="butt" scale="stroke" />
-					</rule>
-					<rule e="way" k="*" v="*" zoom-min="15">
-						<pathText k="name" font-family="sans_serif" font-style="normal" font-size="13" fill="#393935" stroke="#FFFFFF" stroke-width="3" />
-					</rule>
-				</rule>
-				<!-- лесные дороги, неофициальные грунтовки, "козьи тропы" - новый вариант. Идея в том, что-бы дороги ТОЧНО отличались от тропинок -->
-				<rule cat="highway_track_new_style" e="way" k="highway" v="track|byway" zoom-min="13">
-					<!-- 1. едва видимые по полю. или не задано значение grade -->
-					<rule e="way" k="tracktype" v="~|no|false|grade5" zoom-min="11">
-						<line stroke="#53534e" stroke-width="0.8" stroke-dasharray="20,5" stroke-linecap="butt" />
-						<line stroke="#dddddd" stroke-width="0.5" />
-					</rule>
-					<!-- 2. хорошо видимые грунтовые дороги -->
-					<rule e="way" k="tracktype" v="grade3|grade4" zoom-min="12">
-						<line stroke="#53534e" stroke-width="0.8" stroke-dasharray="8,4" stroke-linecap="butt" />
-						<line stroke="#eeeeee" stroke-width="0.5" />
-					</rule>
-					<rule e="way" k="tracktype" v="grade1|grade2" zoom-min="11">
-						<line stroke="#ffffff" stroke-width="0.8" />
-					</rule>
-					<!-- -->
 					<rule e="way" k="foot" v="ft_no">
 						<line stroke="#FF4000" stroke-width="0.4" stroke-dasharray="3,5" stroke-linecap="butt" scale="stroke" />
 					</rule>
@@ -1819,14 +1934,66 @@
 				<rule e="way" k="oneway" v="yes|1" zoom-min="16">
 					<lineSymbol src="file:symbols/oneway_arrow.svg" symbol-percent="35" align-center="true" repeat="true" repeat-gap="100" repeat-start="2" />
 				</rule>
+				<!-- трамваи поверх дорог -->
 				<rule e="way" k="railway|highway" v="tram|light_rail|bus_guideway">
 					<line stroke="#8C6900" stroke-width="0.5" stroke-linecap="butt" />
 					<line stroke="#FFFF73" stroke-width="0.4" scale="all" stroke-dasharray="1.8,1.8" stroke-linecap="butt" />
 				</rule>
 			</rule>
-			<!-- дороги по земле - окончание -->
 		</rule>
 	</rule>
+
+	<!-- Здания жд станций -->
+	<rule e="way" k="tunnel" v="~|no" zoom-min="11">
+    	    <rule e="way" k="power" v="~">
+                <rule e="way" k="railway|building" v="train_station|station|transportation">
+                    <area fill="#a3a360" stroke="#444444" stroke-width="0.125" />
+		    <rule e="way" k="building" v="*" zoom-min="14" zoom-max="15">
+			<area src="file:patterns/building.svg" symbol-height="5" />
+		    </rule>
+		    <rule e="way" k="building" v="*" zoom-min="16">
+			<area src="file:patterns/building.svg" symbol-height="7" />
+		    </rule>
+                </rule>
+            </rule>
+        </rule>
+
+	<!-- ЖД мосты - рисовать после всего потому что должно быть "сверху". Поэтому рисуется мост +
+	линии на нем -->
+	<rule e="way" k="bridge" v="yes|viaduct" zoom-min="12">
+		<rule e="way" k="railway|highway" v="tram|light_rail|bus_guideway|miniature">
+			<line stroke="#181818" stroke-width="1.3" stroke-linecap="butt" />
+			<line stroke="#ffffff" stroke-width="0.85" stroke-linecap="butt" />
+			<!-- -->
+			<line stroke="#8C6900" stroke-width="0.5" stroke-linecap="butt" />
+			<line stroke="#FFFF73" stroke-width="0.4" scale="all" stroke-dasharray="1.8,1.8" stroke-linecap="butt" />
+		</rule>
+		<rule e="way" k="railway" v="subway">
+			<line stroke="#181818" stroke-width="1.5" stroke-linecap="butt" />
+			<line stroke="#ffffff" stroke-width="1.05" stroke-linecap="butt" />
+			<!-- -->
+			<line stroke="#B30000" stroke-width="0.6" stroke-linecap="butt" />
+			<line stroke="#FFBFBF" stroke-width="0.45" scale="all" stroke-dasharray="1.8,1.8" stroke-linecap="butt" />
+		</rule>
+		<rule e="way" k="railway" v="narrow_gauge|preserved|funicular">
+			<line stroke="#181818" stroke-width="1.6" stroke-linecap="butt" />
+			<line stroke="#ffffff" stroke-width="1.15" stroke-linecap="butt" />
+			<!-- -->
+			<line stroke="#404040" stroke-width="0.65" stroke-linecap="butt" />
+			<line stroke="#e6e6e6" stroke-width="0.5" stroke-linecap="butt" />
+			<line stroke="#404040" stroke-width="0.5" scale="all" stroke-dasharray="1.2,2.4" stroke-linecap="butt" />
+		</rule>
+		<rule e="way" k="railway" v="rail|disused">
+			<line stroke="#181818" stroke-width="1.7" stroke-linecap="butt" />
+			<line stroke="#ffffff" stroke-width="1.25" stroke-linecap="butt" />
+			<!-- проверил - ок -->
+			<line stroke="#404040" stroke-width="0.75" stroke-linecap="butt" />
+			<line stroke="#e6e6e6" stroke-width="0.6" stroke-linecap="butt" />
+			<line stroke="#404040" stroke-width="0.6" scale="all" stroke-dasharray="2.4,2.4" stroke-linecap="butt" />
+		</rule>
+	</rule>
+
+
 	<!-- Для перехода железнодорожных путей пешеходами -->
 	<rule e="any" k="railway" v="crossing" zoom-min="14">
 		<rule e="any" k="*" v="*" zoom-max="16">
@@ -1843,19 +2010,6 @@
 		</rule>
 		<rule e="any" k="*" v="*" zoom-min="17">
 			<symbol src="file:symbols/railway-crossing.svg" symbol-height="32" />
-		</rule>
-	</rule>
-	<!-- ЖД платформы надземные (например на мостах) -->
-	<rule e="way" k="highway|railway|public_transport" v="platform">
-		<!-- не в метро и не тоннель -->
-		<rule e="way" k="subway|tunnel" v="~|no">
-			<rule e="way" k="*" v="*" closed="yes">
-				<area fill="#C7C7B3" stroke="#8E8E6F" stroke-width="0.1" />
-			</rule>
-			<rule e="way" k="*" v="*" closed="no">
-				<line stroke="#8E8E6F" stroke-width="0.9" stroke-linecap="square" />
-				<line stroke="#C7C7B3" stroke-width="0.7" stroke-linecap="square" />
-			</rule>
 		</rule>
 	</rule>
 	<!-- жд, трамваи и метро - входы-выходы, станции -->
@@ -1891,76 +2045,9 @@
 			</rule>
 		</rule>
 	</rule>
-	<!-- ЖД мосты - рисовать после всего потому что должно быть "сверху". Поэтому рисуется мост + линии на нем -->
-	<rule e="way" k="bridge" v="yes|viaduct" zoom-min="12">
-		<rule e="way" k="railway|highway" v="tram|light_rail|bus_guideway|miniature">
-			<line stroke="#181818" stroke-width="1.3" stroke-linecap="butt" />
-			<line stroke="#ffffff" stroke-width="0.85" stroke-linecap="butt" />
-			<!-- -->
-			<line stroke="#8C6900" stroke-width="0.5" stroke-linecap="butt" />
-			<line stroke="#FFFF73" stroke-width="0.4" scale="all" stroke-dasharray="1.8,1.8" stroke-linecap="butt" />
-		</rule>
-		<rule e="way" k="railway" v="subway">
-			<line stroke="#181818" stroke-width="1.5" stroke-linecap="butt" />
-			<line stroke="#ffffff" stroke-width="1.05" stroke-linecap="butt" />
-			<!-- -->
-			<line stroke="#B30000" stroke-width="0.6" stroke-linecap="butt" />
-			<line stroke="#FFBFBF" stroke-width="0.45" scale="all" stroke-dasharray="1.8,1.8" stroke-linecap="butt" />
-		</rule>
-		<rule e="way" k="railway" v="narrow_gauge|preserved|funicular">
-			<line stroke="#181818" stroke-width="1.6" stroke-linecap="butt" />
-			<line stroke="#ffffff" stroke-width="1.15" stroke-linecap="butt" />
-			<!-- -->
-			<line stroke="#404040" stroke-width="0.65" stroke-linecap="butt" />
-			<line stroke="#e6e6e6" stroke-width="0.5" stroke-linecap="butt" />
-			<line stroke="#404040" stroke-width="0.5" scale="all" stroke-dasharray="1.2,2.4" stroke-linecap="butt" />
-		</rule>
-		<rule e="way" k="railway" v="rail|disused">
-			<line stroke="#181818" stroke-width="1.7" stroke-linecap="butt" />
-			<line stroke="#ffffff" stroke-width="1.25" stroke-linecap="butt" />
-			<!-- проверил - ок -->
-			<line stroke="#404040" stroke-width="0.75" stroke-linecap="butt" />
-			<line stroke="#e6e6e6" stroke-width="0.6" stroke-linecap="butt" />
-			<line stroke="#404040" stroke-width="0.6" scale="all" stroke-dasharray="2.4,2.4" stroke-linecap="butt" />
-		</rule>
-	</rule>
-
-	<!-- здания "кирпичные". Почему железная дорога в тоннеле рисуется на здании? -->
-	<rule e="way" k="building" v="*" zoom-min="14">
-		<area fill="#ffbbbb" stroke="#444444" stroke-width="0.1" />
-		<rule e="way" k="building" v="*" zoom-min="14" zoom-max="15">
-			<area src="file:patterns/building.svg" symbol-height="5" />
-		</rule>
-		<rule e="way" k="building" v="*" zoom-min="16">
-			<area src="file:patterns/building.svg" symbol-height="7" />
-		</rule>
-	</rule> 
-
-	<!-- железные дороги (no tunnel) - это разобраться -->
-	<rule e="any" k="tunnel" v="~|no" zoom-min="11">
-		<rule e="way" k="power" v="~">
-			<rule e="way" k="railway|building" v="station|train_station">
-				<area fill="#604C4C0D" stroke="#444444" stroke-width="0.125" />
-			</rule>
-		</rule>
-	</rule> 
 
 
-	<!-- здания - стройка -->
-	<rule e="way" k="building" v="construction" zoom-min="15">
-		<area fill="#c7c7c7" stroke="#b0b0b0" stroke-width="0.2" />
-		<line stroke="#C0F8F8F8" stroke-width="0.3" stroke-dasharray="2,2" />
-	</rule>
-	<!-- название зданий -->
-	<rule e="way" k="building" v="*" zoom-min="18">
-		<!-- исключая "amenity|aerialway", у них свои описания -->
-		<rule e="any" k="amenity|aerialway" v="~">
-			<caption k="name" position="below" dy="8" font-style="bold" font-family="sans_serif" font-size="12" fill="#333333" stroke="#ffffff" stroke-width="1.8" text-wrap-width="120" />
-		</rule>
-	</rule>
-	<rule e="any" k="*" v="*" zoom-min="18">
-		<caption k="addr:housenumber" font-style="normal" font-size="10" fill="#424251" priority="10" />
-	</rule>
+
 	<!-- магазины -->
 	<rule cat="shops" e="any" k="*" v="*" zoom-min="9">
 		<rule e="any" k="shop" v="supermarket" zoom-min="15">
@@ -2184,14 +2271,14 @@
 		<line stroke="#1E71C6" stroke-width="0.2" stroke-dasharray="6,5" stroke-linecap="butt" />
 		<pathText k="name" font-style="italic" font-size="10" dy="-1" fill="#1E71C6" stroke="#ffffff" stroke-width="0.5" />
 	</rule>
-	<!-- что то про электростанции -->
+
+	<!-- электростанции и источники эл.энергии -->
 	<rule e="way" k="power" v="*" zoom-min="11">
 		<rule e="way" k="power" v="generator">
 			<area fill="#DBDCDC" />
 		</rule>
-		<rule e="way" k="power" v="station|sub_station|substation">
-			<area fill="#C7C7C7" />
-		</rule>
+
+
 		<rule e="way" k="power" v="line" zoom-min="12" cat="power_line">
 			<line stroke="#727272" stroke-width="0.2" stroke-linecap="butt" />
 			<line stroke="#727272" stroke-width="1.3" stroke-dasharray="0,20,0.6,50" stroke-linecap="butt" />
@@ -2202,6 +2289,7 @@
 			<line stroke="#727272" stroke-width="0.6" stroke-dasharray="0.3,40,0.3,30" />
 		</rule>
 	</rule>
+
 	<rule e="node" k="power" v="generator" zoom-min="13">
 		<rule e="node" k="generator:source" v="wind">
 			<symbol id="power_generator_wind" src="file:symbols/power_generator_wind.svg" symbol-percent="100" />
@@ -2210,106 +2298,112 @@
 			</rule>
 		</rule>
 	</rule>
-	<!-- небольшой город -->
-	<rule e="node" k="place" v="town" zoom-min="8" zoom-max="8">
-		<circle radius="2" fill="#f4f3e9" stroke="#9B9B9B" stroke-width="1.0" />
-	</rule>
-	<rule e="node" k="place" v="town" zoom-min="9" zoom-max="9">
-		<circle radius="3" fill="#f4f3e9" stroke="#9B9B9B" stroke-width="1.0" />
-		<circle radius="1.1" stroke="#9B9B9B" stroke-width="1.0" />
-	</rule>
-	<rule e="node" k="place" v="town" zoom-min="8" zoom-max="9">
-		<caption k="name" dy="12" font-family="sans_serif" font-style="normal" font-size="12" fill="#000000" stroke="#ffffff" stroke-width="2.0" text-wrap-width="145" />
-	</rule>
-	<rule e="node" k="place" v="town" zoom-min="10" zoom-max="13">
-		<caption k="name" font-family="sans_serif" font-style="bold" font-size="14" fill="#000000" stroke="#ffffff" stroke-width="2.0" text-wrap-width="145" />
-	</rule>
-	<!-- город -->
-	<rule e="node" k="place" v="city" zoom-min="4" zoom-max="7">
-		<circle radius="2" fill="#D3D3D3" stroke="#8E8E8E" stroke-width="1.0" />
-	</rule>
-	<rule e="node" k="place" v="city" zoom-min="8" zoom-max="8">
-		<circle radius="2" fill="#f4f3e9" stroke="#8E8E8E" stroke-width="1.0" />
-	</rule>
-	<rule e="node" k="place" v="city" zoom-min="9" zoom-max="9">
-		<circle radius="4" fill="#f4f3e9" stroke="#8E8E8E" stroke-width="1.0" />
-		<circle radius="1.8" fill="#8E8E8E" />
-	</rule>
-	<rule e="node" k="place" v="city" zoom-min="7" zoom-max="9">
-		<caption k="name" dy="15" font-family="sans_serif" font-style="bold" font-size="14" fill="#000000" stroke="#FFFFFF" stroke-width="2.0" text-wrap-width="170" />
-	</rule>
-	<rule e="node" k="place" v="city" zoom-min="10" zoom-max="12">
-		<caption k="name" dy="15" font-family="sans_serif" font-style="bold" font-size="20" fill="#000000" stroke="#FFFFFF" stroke-width="2.0" text-wrap-width="170" />
-	</rule>
-	<!-- деревня -->
-	<rule e="node" k="place" v="village" zoom-min="10" zoom-max="11">
-		<caption k="name" font-family="default" font-size="12" fill="#000000" stroke="#ffffff" stroke-width="1.2" text-transform="capitalize" text-wrap-width="130" />
-	</rule>
-	<rule e="node" k="place" v="village" zoom-min="12" zoom-max="15">
-		<caption k="name" font-family="default" font-style="bold" font-size="12" fill="#000000" stroke="#ffffff" stroke-width="1.2" text-transform="capitalize" text-wrap-width="130" />
-	</rule>
-	<!-- маленькая деревня или хутор на несколько семей -->
-	<rule e="node" k="place" v="hamlet" zoom-min="13" zoom-max="15">
-		<caption k="name" font-style="normal" font-size="12" fill="#000000" stroke="#ffffff" stroke-width="1.2" text-transform="capitalize" text-wrap-width="120" />
-	</rule>
-	<!-- хутор -->
-	<rule e="node" k="place" v="isolated_dwelling" zoom-min="13" zoom-max="17">
-		<caption k="name" font-style="normal" font-size="12" fill="#000000" stroke="#ffffff" stroke-width="1.2" text-transform="capitalize" text-wrap-width="120" />
-	</rule>
-	<!-- район или отдельная часть города, имеющая своё название (не административное) -->
-	<rule e="node" k="place" v="suburb" zoom-min="12" zoom-max="14">
-		<caption k="name" font-family="default" font-size="10" fill="#000000" stroke="#ffffff" stroke-width="2.0" text-transform="capitalize" text-wrap-width="120" />
-	</rule>
-	<!-- местное название -->
-	<rule cat="locality" e="any" k="place" v="locality">
-		<rule e="any" k="landuse" v="~">
-			<area fill="#55a0a0a0" />
-			<rule e="any" k="place" v="locality" zoom-min="16" zoom-max="18">
-				<rule e="any" k="mountain_pass|natural|tourism|landuse" v="~">
-					<caption display="always" k="name" font-style="normal" font-family="sans_serif" font-size="12" fill="#000000" stroke="#ffffff" stroke-width="1.8" text-transform="capitalize" text-wrap-width="120" />
+
+	<!-- -->
+	<rule e="any" k="place" v="*">
+		<!-- небольшой город -->
+		<rule e="node" k="place" v="town" zoom-min="8" zoom-max="8">
+			<circle radius="2" fill="#f4f3e9" stroke="#9B9B9B" stroke-width="1.0" />
+		</rule>
+		<rule e="node" k="place" v="town" zoom-min="9" zoom-max="9">
+			<circle radius="3" fill="#f4f3e9" stroke="#9B9B9B" stroke-width="1.0" />
+			<circle radius="1.1" stroke="#9B9B9B" stroke-width="1.0" />
+		</rule>
+		<rule e="node" k="place" v="town" zoom-min="8" zoom-max="9">
+			<caption k="name" dy="12" font-family="sans_serif" font-style="normal" font-size="12" fill="#000000" stroke="#ffffff" stroke-width="2.0" text-wrap-width="145" />
+		</rule>
+		<rule e="node" k="place" v="town" zoom-min="10" zoom-max="13">
+			<caption k="name" font-family="sans_serif" font-style="bold" font-size="14" fill="#000000" stroke="#ffffff" stroke-width="2.0" text-wrap-width="145" />
+		</rule>
+		<!-- город -->
+		<rule e="node" k="place" v="city" zoom-min="4" zoom-max="7">
+			<circle radius="2" fill="#D3D3D3" stroke="#8E8E8E" stroke-width="1.0" />
+		</rule>
+		<rule e="node" k="place" v="city" zoom-min="8" zoom-max="8">
+			<circle radius="2" fill="#f4f3e9" stroke="#8E8E8E" stroke-width="1.0" />
+		</rule>
+		<rule e="node" k="place" v="city" zoom-min="9" zoom-max="9">
+			<circle radius="4" fill="#f4f3e9" stroke="#8E8E8E" stroke-width="1.0" />
+			<circle radius="1.8" fill="#8E8E8E" />
+		</rule>
+		<rule e="node" k="place" v="city" zoom-min="7" zoom-max="9">
+			<caption k="name" dy="15" font-family="sans_serif" font-style="bold" font-size="14" fill="#000000" stroke="#FFFFFF" stroke-width="2.0" text-wrap-width="170" />
+		</rule>
+		<rule e="node" k="place" v="city" zoom-min="10" zoom-max="12">
+			<caption k="name" dy="15" font-family="sans_serif" font-style="bold" font-size="20" fill="#000000" stroke="#FFFFFF" stroke-width="2.0" text-wrap-width="170" />
+		</rule>
+		<!-- деревня -->
+		<rule e="node" k="place" v="village" zoom-min="10" zoom-max="11">
+			<caption k="name" font-family="default" font-size="12" fill="#000000" stroke="#ffffff" stroke-width="1.2" text-transform="capitalize" text-wrap-width="130" />
+		</rule>
+		<rule e="node" k="place" v="village" zoom-min="12" zoom-max="15">
+			<caption k="name" font-family="default" font-style="bold" font-size="12" fill="#000000" stroke="#ffffff" stroke-width="1.2" text-transform="capitalize" text-wrap-width="130" />
+		</rule>
+		<!-- маленькая деревня или хутор на несколько семей -->
+		<rule e="node" k="place" v="hamlet" zoom-min="13" zoom-max="15">
+			<caption k="name" font-style="normal" font-size="12" fill="#000000" stroke="#ffffff" stroke-width="1.2" text-transform="capitalize" text-wrap-width="120" />
+		</rule>
+		<!-- хутор -->
+		<rule e="node" k="place" v="isolated_dwelling" zoom-min="13" zoom-max="17">
+			<caption k="name" font-style="normal" font-size="12" fill="#000000" stroke="#ffffff" stroke-width="1.2" text-transform="capitalize" text-wrap-width="120" />
+		</rule>
+		<!-- район или отдельная часть города, имеющая своё название (не административное) -->
+		<rule e="node" k="place" v="suburb" zoom-min="12" zoom-max="14">
+			<caption k="name" font-family="default" font-size="10" fill="#000000" stroke="#ffffff" stroke-width="2.0" text-transform="capitalize" text-wrap-width="120" />
+		</rule>
+		<!-- местное название -->
+		<rule cat="locality" e="any" k="place" v="locality">
+			<rule e="any" k="landuse" v="~">
+				<area fill="#55a0a0a0" />
+				<rule e="any" k="place" v="locality" zoom-min="16" zoom-max="18">
+					<rule e="any" k="mountain_pass|natural|tourism|landuse" v="~">
+						<caption display="always" k="name" font-style="normal" font-family="sans_serif" font-size="12" fill="#000000" stroke="#ffffff" stroke-width="1.8" text-transform="capitalize" text-wrap-width="120" />
+					</rule>
 				</rule>
 			</rule>
 		</rule>
-	</rule>
-	<!-- маленький остров -->
-	<rule e="node" k="place" v="islet" zoom-min="13">
-		<rule e="any" k="landuse" v="*">
-			<caption k="name" font-style="italic" font-size="22" fill="#000000" stroke="#ffffff" stroke-width="1.5" text-wrap-width="120" />
+		<!-- маленький остров -->
+		<rule e="node" k="place" v="islet" zoom-min="13">
+			<rule e="any" k="landuse" v="*">
+				<caption k="name" font-style="italic" font-size="22" fill="#000000" stroke="#ffffff" stroke-width="1.5" text-wrap-width="120" />
+			</rule>
+		</rule>
+		<!-- остров -->
+		<rule e="any" k="place" v="island">
+			<rule e="any" k="bBoxWeight" v="xxxlarge|xxlarge|xlarge|large" zoom-min="10">
+				<caption priority="95" k="name" font-style="italic" font-size="14" fill="#111111" stroke="#ffffff" stroke-width="1.5" text-wrap-width="120" />
+			</rule>
+			<rule e="any" k="bBoxWeight" v="mid|small|~" zoom-min="11">
+				<caption priority="95" k="name" font-style="italic" font-size="14" fill="#111111" stroke="#ffffff" stroke-width="1.5" text-wrap-width="120" />
+			</rule>
+			<rule e="any" k="bBoxWeight" v="xsmall|tiny" zoom-min="13">
+				<caption priority="95" k="name" font-style="italic" font-size="14" fill="#111111" stroke="#ffffff" stroke-width="1.5" text-wrap-width="120" />
+			</rule>
+			<rule e="any" k="*" v="*" zoom-min="16">
+				<caption k="ele" priority="-5" dy="25" font-style="italic" font-size="12" fill="#111111" stroke="#ffffff" stroke-width="1.5" text-wrap-width="120" />
+			</rule>
+		</rule>
+		<!-- архипелаг -->
+		<rule e="any" k="place" v="archipelago" zoom-min="10">
+			<rule e="any" k="bBoxWeight" v="xxxlarge|xxlarge|xlarge|large" zoom-min="10">
+				<caption priority="96" k="name" font-style="italic" font-size="14" fill="#111111" stroke="#ffffff" stroke-width="2.0" text-wrap-width="120" />
+			</rule>
+			<rule e="any" k="bBoxWeight" v="mid|small|~" zoom-min="13">
+				<caption priority="96" k="name" font-style="italic" font-size="14" fill="#111111" stroke="#ffffff" stroke-width="2.0" text-wrap-width="120" />
+			</rule>
+			<rule e="any" k="bBoxWeight" v="xsmall|tiny" zoom-min="15">
+				<caption priority="96" k="name" font-style="italic" font-size="14" fill="#111111" stroke="#ffffff" stroke-width="2.0" text-wrap-width="120" />
+			</rule>
+			<rule e="any" k="*" v="*" zoom-min="16">
+				<caption k="ele" priority="-5" dy="25" font-style="italic" font-size="14" fill="#111111" stroke="#ffffff" stroke-width="2.0" text-wrap-width="120" />
+			</rule>
+		</rule>
+		<!-- страна -->
+		<rule e="node" k="place" v="country" zoom-max="4">
+			<caption k="name" font-style="bold" font-size="25" fill="#000000" stroke="#ffffff" stroke-width="2.0" text-wrap-width="120" />
 		</rule>
 	</rule>
-	<!-- остров -->
-	<rule e="any" k="place" v="island">
-		<rule e="any" k="bBoxWeight" v="xxxlarge|xxlarge|xlarge|large" zoom-min="10">
-			<caption priority="95" k="name" font-style="italic" font-size="14" fill="#111111" stroke="#ffffff" stroke-width="1.5" text-wrap-width="120" />
-		</rule>
-		<rule e="any" k="bBoxWeight" v="mid|small|~" zoom-min="11">
-			<caption priority="95" k="name" font-style="italic" font-size="14" fill="#111111" stroke="#ffffff" stroke-width="1.5" text-wrap-width="120" />
-		</rule>
-		<rule e="any" k="bBoxWeight" v="xsmall|tiny" zoom-min="13">
-			<caption priority="95" k="name" font-style="italic" font-size="14" fill="#111111" stroke="#ffffff" stroke-width="1.5" text-wrap-width="120" />
-		</rule>
-		<rule e="any" k="*" v="*" zoom-min="16">
-			<caption k="ele" priority="-5" dy="25" font-style="italic" font-size="12" fill="#111111" stroke="#ffffff" stroke-width="1.5" text-wrap-width="120" />
-		</rule>
-	</rule>
-	<!-- архипелаг -->
-	<rule e="any" k="place" v="archipelago" zoom-min="10">
-		<rule e="any" k="bBoxWeight" v="xxxlarge|xxlarge|xlarge|large" zoom-min="10">
-			<caption priority="96" k="name" font-style="italic" font-size="14" fill="#111111" stroke="#ffffff" stroke-width="2.0" text-wrap-width="120" />
-		</rule>
-		<rule e="any" k="bBoxWeight" v="mid|small|~" zoom-min="13">
-			<caption priority="96" k="name" font-style="italic" font-size="14" fill="#111111" stroke="#ffffff" stroke-width="2.0" text-wrap-width="120" />
-		</rule>
-		<rule e="any" k="bBoxWeight" v="xsmall|tiny" zoom-min="15">
-			<caption priority="96" k="name" font-style="italic" font-size="14" fill="#111111" stroke="#ffffff" stroke-width="2.0" text-wrap-width="120" />
-		</rule>
-		<rule e="any" k="*" v="*" zoom-min="16">
-			<caption k="ele" priority="-5" dy="25" font-style="italic" font-size="14" fill="#111111" stroke="#ffffff" stroke-width="2.0" text-wrap-width="120" />
-		</rule>
-	</rule>
-	<rule e="node" k="place" v="country" zoom-max="4">
-		<caption k="name" font-style="bold" font-size="25" fill="#000000" stroke="#ffffff" stroke-width="2.0" text-wrap-width="120" />
-	</rule>
+
 	<!-- национальные парки и охраняемые территории -->
 	<rule e="way" k="leisure|boundary" v="nature_reserve|protected_area|national_park" zoom-min="8" cat="protected_area" closed="yes">
 		<rule e="any" k="*" v="*" zoom-max="13">
@@ -2408,6 +2502,17 @@
 			<caption k="name" symbol-id="s_water_works" font-style="bold" font-size="10" fill="#256f25" stroke="#E5FFFFFF" stroke-width="2" />
 		</rule>
 	</rule>
+	<!-- трубопровод над землей -->
+	<rule e="way" k="man_made" v="pipeline">
+		<rule e="way" k="tunnel" v="~|no">
+			<rule e="way" k="location" v="~|overground">
+				<line stroke="#CCCCCC" stroke-width="0.6" stroke-linecap="butt" />
+				<line stroke="#9CA6BA" stroke-width="0.6" scale="all" stroke-dasharray="1.8,0.6" stroke-linecap="butt" />
+				<line stroke="#FFFFFF" stroke-width="0.1" stroke-linecap="butt" />
+				<pathText k="name" font-style="normal" font-size="9" fill="#9CA6BA" stroke="#FFFFFF" stroke-width="1" />
+			</rule>
+		</rule>
+	</rule>
 	<!-- крест (например на вершине горы) -->
 	<rule e="node" k="man_made" v="cross" zoom-min="12">
 		<symbol src="file:symbols/cross.svg" symbol-percent="70" />
@@ -2467,11 +2572,12 @@
 	<rule cat="barriers" e="node" k="barrier" v="lift_gate" zoom-min="16">
 		<symbol src="file:symbols/lift_gate.svg" symbol-height="16" />
 	</rule>
+
 	<rule e="node" k="natural" v="*">
 		<!-- вершина горы / вулкана -->
 		<rule e="node" k="natural" v="peak|volcano">
 			<!-- 1 -->
-			<rule e="any" k="peak_dist" v="pd_1" zoom-min="9">
+			<rule e="node" k="peak_dist" v="pd_1" zoom-min="9">
 				<rule e="node" k="*" v="*" zoom-min="9" zoom-max="14">
 					<!-- иконка вершины -->
 					<rule e="node" k="natural" v="peak">
@@ -2481,8 +2587,8 @@
 						<symbol id="id_peak" src="file:symbols/volcano.svg" symbol-percent="70" display="always" />
 					</rule>
 					<!-- название и высота -->
-					<caption display="always" symbol-id="id_peak" position="above" dy="3" k="name" font-family="sans_serif" font-style="bold_italic" font-size="12" fill="#303030" stroke="#ffffff" stroke-width="3" priority="415" text-transform="capitalize" text-wrap-width="120" />
-					<caption display="always" symbol-id="id_peak" k="ele" dy="-3" position="below" font-family="sans_serif" font-size="11" fill="#303030" stroke="#ffffff" stroke-width="3" priority="414" />
+					<caption symbol-id="id_peak" position="above" dy="3" k="name" font-family="sans_serif" font-style="bold_italic" font-size="12" fill="#303030" stroke="#ffffff" stroke-width="3" priority="415" text-transform="capitalize" text-wrap-width="120" />
+					<caption symbol-id="id_peak" k="ele" dy="-3" position="below" font-family="sans_serif" font-size="11" fill="#303030" stroke="#ffffff" stroke-width="3" priority="414" />
 				</rule>
 				<rule e="node" k="*" v="*" zoom-min="15">
 					<!-- иконка вершины -->
@@ -2493,12 +2599,12 @@
 						<symbol id="id_peak" src="file:symbols/volcano.svg" symbol-percent="85" display="always" />
 					</rule>
 					<!-- название и высота -->
-					<caption display="always" symbol-id="id_peak" position="above" dy="3" k="name" font-family="sans_serif" font-style="bold_italic" font-size="13" fill="#303030" stroke="#ffffff" stroke-width="3" priority="415" text-transform="capitalize" text-wrap-width="120" />
-					<caption display="always" symbol-id="id_peak" k="ele" dy="-3" position="below" font-family="sans_serif" font-size="11" fill="#303030" stroke="#ffffff" stroke-width="3" priority="414" />
+					<caption symbol-id="id_peak" position="above" dy="3" k="name" font-family="sans_serif" font-style="bold_italic" font-size="13" fill="#303030" stroke="#ffffff" stroke-width="3" priority="415" text-transform="capitalize" text-wrap-width="120" />
+					<caption symbol-id="id_peak" k="ele" dy="-3" position="below" font-family="sans_serif" font-size="11" fill="#303030" stroke="#ffffff" stroke-width="3" priority="414" />
 				</rule>
 			</rule>
 			<!-- 2 -->
-			<rule e="any" k="peak_dist" v="pd_2" zoom-min="10">
+			<rule e="node" k="peak_dist" v="pd_2" zoom-min="10">
 				<rule e="node" k="*" v="*" zoom-min="10" zoom-max="14">
 					<!-- иконка вершины -->
 					<rule e="node" k="natural" v="peak">
@@ -2508,8 +2614,8 @@
 						<symbol id="id_peak" src="file:symbols/volcano.svg" symbol-percent="70" display="always" />
 					</rule>
 					<!-- название и высота -->
-					<caption display="always" symbol-id="id_peak" position="above" dy="3" k="name" font-family="sans_serif" font-style="bold_italic" font-size="12" fill="#303030" stroke="#ffffff" stroke-width="3" priority="415" text-transform="capitalize" text-wrap-width="120" />
-					<caption display="always" symbol-id="id_peak" k="ele" dy="-3" position="below" font-family="sans_serif" font-size="11" fill="#303030" stroke="#ffffff" stroke-width="3" priority="414" />
+					<caption symbol-id="id_peak" position="above" dy="3" k="name" font-family="sans_serif" font-style="bold_italic" font-size="12" fill="#303030" stroke="#ffffff" stroke-width="3" priority="415" text-transform="capitalize" text-wrap-width="120" />
+					<caption symbol-id="id_peak" k="ele" dy="-3" position="below" font-family="sans_serif" font-size="11" fill="#303030" stroke="#ffffff" stroke-width="3" priority="414" />
 				</rule>
 				<rule e="node" k="*" v="*" zoom-min="15">
 					<!-- иконка вершины -->
@@ -2520,14 +2626,14 @@
 						<symbol id="id_peak" src="file:symbols/volcano.svg" symbol-percent="85" display="always" />
 					</rule>
 					<!-- название и высота -->
-					<caption display="always" symbol-id="id_peak" position="above" dy="3" k="name" font-family="sans_serif" font-style="bold_italic" font-size="13" fill="#303030" stroke="#ffffff" stroke-width="3" priority="415" text-transform="capitalize" text-wrap-width="120" />
-					<caption display="always" symbol-id="id_peak" k="ele" dy="-3" position="below" font-family="sans_serif" font-size="11" fill="#303030" stroke="#ffffff" stroke-width="3" priority="414" />
+					<caption symbol-id="id_peak" position="above" dy="3" k="name" font-family="sans_serif" font-style="bold_italic" font-size="13" fill="#303030" stroke="#ffffff" stroke-width="3" priority="415" text-transform="capitalize" text-wrap-width="120" />
+					<caption symbol-id="id_peak" k="ele" dy="-3" position="below" font-family="sans_serif" font-size="11" fill="#303030" stroke="#ffffff" stroke-width="3" priority="414" />
 				</rule>
 			</rule>
 			<!-- 3 например "Каменный столб" в Красной Поляне -->
-			<rule e="any" k="peak_dist" v="pd_3|~" zoom-min="11">
+			<rule e="node" k="peak_dist" v="pd_3|~" zoom-min="11">
 				<!-- иконка вершины -->
-				<rule e="any" k="*" v="*" zoom-min="11" zoom-max="14">
+				<rule e="node" k="*" v="*" zoom-min="11" zoom-max="14">
 					<rule e="node" k="natural" v="peak">
 						<symbol id="id_peak" src="file:symbols/s_peak.svg" symbol-percent="65" display="always" />
 					</rule>
@@ -2535,7 +2641,7 @@
 						<symbol id="id_peak" src="file:symbols/volcano.svg" symbol-percent="65" display="always" />
 					</rule>
 				</rule>
-				<rule e="any" k="*" v="*" zoom-min="15">
+				<rule e="node" k="*" v="*" zoom-min="15">
 					<rule e="node" k="natural" v="peak">
 						<symbol id="id_peak" src="file:symbols/s_peak.svg" symbol-percent="80" display="always" />
 					</rule>
@@ -2545,18 +2651,18 @@
 				</rule>
 				<!-- название и высота -->
 				<rule e="node" k="*" v="*" zoom-min="12" zoom-max="14">
-					<caption display="always" symbol-id="id_peak" position="above" dy="3" k="name" font-family="sans_serif" font-style="bold_italic" font-size="12" fill="#303030" stroke="#ffffff" stroke-width="3" priority="415" text-transform="capitalize" text-wrap-width="120" />
-					<caption display="always" symbol-id="id_peak" k="ele" dy="-3" position="below" font-family="sans_serif" font-size="11" fill="#303030" stroke="#ffffff" stroke-width="3" priority="414" />
+					<caption symbol-id="id_peak" position="above" dy="3" k="name" font-family="sans_serif" font-style="bold_italic" font-size="12" fill="#303030" stroke="#ffffff" stroke-width="3" priority="415" text-transform="capitalize" text-wrap-width="120" />
+					<caption symbol-id="id_peak" k="ele" dy="-3" position="below" font-family="sans_serif" font-size="11" fill="#303030" stroke="#ffffff" stroke-width="3" priority="414" />
 				</rule>
 				<rule e="node" k="*" v="*" zoom-min="15">
-					<caption display="always" symbol-id="id_peak" position="above" dy="3" k="name" font-family="sans_serif" font-style="bold_italic" font-size="13" fill="#303030" stroke="#ffffff" stroke-width="3" priority="415" text-transform="capitalize" text-wrap-width="120" />
-					<caption display="always" symbol-id="id_peak" k="ele" dy="-3" position="below" font-family="sans_serif" font-size="11" fill="#303030" stroke="#ffffff" stroke-width="3" priority="414" />
+					<caption symbol-id="id_peak" position="above" dy="3" k="name" font-family="sans_serif" font-style="bold_italic" font-size="13" fill="#303030" stroke="#ffffff" stroke-width="3" priority="415" text-transform="capitalize" text-wrap-width="120" />
+					<caption symbol-id="id_peak" k="ele" dy="-3" position="below" font-family="sans_serif" font-size="11" fill="#303030" stroke="#ffffff" stroke-width="3" priority="414" />
 				</rule>
 			</rule>
 			<!-- 4+5 например Чегет -->
-			<rule e="any" k="peak_dist" v="pd_4|pd_5" zoom-min="12">
+			<rule e="node" k="peak_dist" v="pd_4|pd_5" zoom-min="12">
 				<!-- иконка вершины -->
-				<rule e="any" k="*" v="*" zoom-min="12" zoom-max="14">
+				<rule e="node" k="*" v="*" zoom-min="12" zoom-max="14">
 					<rule e="node" k="natural" v="peak">
 						<symbol id="id_peak" src="file:symbols/s_peak.svg" symbol-percent="65" display="always" />
 					</rule>
@@ -2564,7 +2670,7 @@
 						<symbol id="id_peak" src="file:symbols/volcano.svg" symbol-percent="65" display="always" />
 					</rule>
 				</rule>
-				<rule e="any" k="*" v="*" zoom-min="15">
+				<rule e="node" k="*" v="*" zoom-min="15">
 					<rule e="node" k="natural" v="peak">
 						<symbol id="id_peak" src="file:symbols/s_peak.svg" symbol-percent="80" display="always" />
 					</rule>
@@ -2573,15 +2679,16 @@
 					</rule>
 				</rule>
 				<!-- название и высота -->
-				<rule e="any" k="*" v="*" zoom-min="13" zoom-max="14">
+				<rule e="node" k="*" v="*" zoom-min="13" zoom-max="14">
 					<!-- На Кавказе перевалы начинают показываться всегда при display="always" - проверить это на LoMaps v4, когда они появятся
-					Может это связано с тегом rtsa_scale=* который применяется только в России, потому что в Альпах такого глюка вроде нет -->
-					<caption display="ifspace" symbol-id="id_peak" position="above" dy="3" k="name" font-family="sans_serif" font-style="bold_italic" font-size="12" fill="#303030" stroke="#ffffff" stroke-width="3" priority="415" text-transform="capitalize" text-wrap-width="120" />
-					<caption display="always" symbol-id="id_peak" k="ele" dy="-3" position="below" font-family="sans_serif" font-size="11" fill="#303030" stroke="#ffffff" stroke-width="3" priority="414" />
+					Может это связано с тегом rtsa_scale=* который применяется только в России, потому что в Альпах
+					такого глюка вроде нет -->
+					<caption symbol-id="id_peak" position="above" dy="3" k="name" font-family="sans_serif" font-style="bold_italic" font-size="12" fill="#303030" stroke="#ffffff" stroke-width="3" priority="415" text-transform="capitalize" text-wrap-width="120" />
+					<caption symbol-id="id_peak" k="ele" dy="-3" position="below" font-family="sans_serif" font-size="11" fill="#303030" stroke="#ffffff" stroke-width="3" priority="414" />
 				</rule>
-				<rule e="any" k="*" v="*" zoom-min="15">
-					<caption display="always" symbol-id="id_peak" position="above" dy="3" k="name" font-family="sans_serif" font-style="bold_italic" font-size="13" fill="#303030" stroke="#ffffff" stroke-width="3" priority="415" text-transform="capitalize" text-wrap-width="120" />
-					<caption display="always" symbol-id="id_peak" k="ele" dy="-3" position="below" font-family="sans_serif" font-size="11" fill="#303030" stroke="#ffffff" stroke-width="3" priority="414" />
+				<rule e="node" k="*" v="*" zoom-min="15">
+					<caption symbol-id="id_peak" position="above" dy="3" k="name" font-family="sans_serif" font-style="bold_italic" font-size="13" fill="#303030" stroke="#ffffff" stroke-width="3" priority="415" text-transform="capitalize" text-wrap-width="120" />
+					<caption symbol-id="id_peak" k="ele" dy="-3" position="below" font-family="sans_serif" font-size="11" fill="#303030" stroke="#ffffff" stroke-width="3" priority="414" />
 				</rule>
 			</rule>
 		</rule>
@@ -2605,23 +2712,25 @@
 			<caption symbol-id="s_tree" k="name" font-style="bold" font-size="11" fill="#006600" stroke="#FFFFFF" stroke-width="2.0" text-wrap-width="120" />
 			<caption symbol-id="s_tree" k="ele" position="below" font-style="bold" font-size="11" fill="#006600" stroke="#FFFFFF" stroke-width="2.0" />
 		</rule>
-		<!-- седловина (точка максимального понижения) в хребте между двумя возвышенностями (формально это не перевал, может не совпадать) -->
-		<rule cat="landscapefeat" e="any" k="natural" v="saddle" zoom-min="13">
-			<rule e="any" k="*" v="*" zoom-min="13" zoom-max="14">
-				<symbol id="id_ds" src="file:symbols/mountain_pass.svg" symbol-percent="50" priority="40" />
-			</rule>
-			<rule e="any" k="*" v="*" zoom-min="15" zoom-max="16">
-				<symbol id="id_ds" src="file:symbols/mountain_pass.svg" symbol-percent="60" priority="40" />
-				<caption symbol-id="id_ds" k="name" priority="60" display="always" position="above" font-style="italic" font-size="11" fill="#000000" stroke="#ffffff" stroke-width="2.8" text-wrap-width="120" />
-				<caption k="ele" symbol-id="id_ds" priority="-1" position="below" font-style="bold" font-size="10" fill="#797979" stroke="#ffffff" stroke-width="2.0" />
-			</rule>
-			<rule e="any" k="*" v="*" zoom-min="17">
-				<symbol id="id_ds" src="file:symbols/mountain_pass.svg" symbol-percent="80" priority="40" display="always" />
-				<caption symbol-id="id_ds" k="name" priority="60" display="always" position="above" font-style="italic" font-size="12" fill="#000000" stroke="#ffffff" stroke-width="2.8" text-wrap-width="120" />
-				<caption k="ele" symbol-id="id_ds" priority="-1" position="below" font-style="bold" font-size="11" fill="#797979" stroke="#ffffff" stroke-width="2.0" />
-			</rule>
-		</rule>
 	</rule>
+
+	<!-- седловина (точка максимального понижения) в хребте между двумя возвышенностями (формально это не перевал, может не совпадать) -->
+	<rule cat="landscapefeat" e="any" k="natural" v="saddle" zoom-min="13">
+	    <rule e="any" k="*" v="*" zoom-min="13" zoom-max="14">
+		<symbol id="id_ds" src="file:symbols/mountain_pass.svg" symbol-percent="50" priority="40" />
+	    </rule>
+	    <rule e="any" k="*" v="*" zoom-min="15" zoom-max="16">
+		<symbol id="id_ds" src="file:symbols/mountain_pass.svg" symbol-percent="60" priority="40" />
+		<caption symbol-id="id_ds" k="name" priority="60" display="always" position="above" font-style="italic" font-size="11" fill="#000000" stroke="#ffffff" stroke-width="2.8" text-wrap-width="120" />
+		<caption k="ele" symbol-id="id_ds" priority="-1" position="below" font-style="bold" font-size="10" fill="#797979" stroke="#ffffff" stroke-width="2.0" />
+	    </rule>
+	    <rule e="any" k="*" v="*" zoom-min="17">
+		<symbol id="id_ds" src="file:symbols/mountain_pass.svg" symbol-percent="80" priority="40" display="always" />
+		<caption symbol-id="id_ds" k="name" priority="60" display="always" position="above" font-style="italic" font-size="12" fill="#000000" stroke="#ffffff" stroke-width="2.8" text-wrap-width="120" />
+		<caption k="ele" symbol-id="id_ds" priority="-1" position="below" font-style="bold" font-size="11" fill="#797979" stroke="#ffffff" stroke-width="2.0" />
+	    </rule>
+	</rule>
+
 	<!-- перевал -->
 	<rule cat="landscapefeat" e="any" k="mountain_pass" v="yes" zoom-min="13">
 		<!-- исключая natural=saddle/peak и может что то еще -->
@@ -2641,6 +2750,7 @@
 			</rule>
 		</rule>
 	</rule>
+
 	<!-- аптеки/больницы/врачи -->
 	<rule cat="pharmacies" e="any" k="*" v="*" zoom-min="9">
 		<!-- аптека -->
@@ -2654,9 +2764,9 @@
 		<rule e="any" k="amenity" v="hospital" zoom-min="14">
 			<symbol id="id_hospital" src="file:symbols/hospital.svg" symbol-percent="60" />
 			<rule e="any" k="amenity" v="*" zoom-min="16">
-				<caption symbol-id="id_hospital" text-wrap-width="110" display="always" priority="10" k="name" font-style="normal" font-family="sans_serif" font-size="12" fill="#333333" stroke="#ffffff" stroke-width="1.5" />
+				<caption symbol-id="id_hospital" text-wrap-width="110" display="always" priority="100" k="name" font-style="normal" font-family="sans_serif" font-size="12" fill="#333333" stroke="#ffffff" stroke-width="1.5" />
 			</rule>
-		</rule>
+		</rule> 
 		<!-- поликлиника -->
 		<rule e="any" k="amenity" v="clinic|doctors" zoom-min="14">
 			<symbol id="s_doctors" src="file:symbols/hospital.svg" symbol-percent="70" />
@@ -2665,6 +2775,7 @@
 			</rule>
 		</rule>
 	</rule>
+
 	<!-- полиция/пожарные и т.д. -->
 	<rule cat="emergency" e="any" k="*" v="*" zoom-min="9">
 		<rule e="any" k="amenity" v="police" zoom-min="16">
@@ -2700,6 +2811,7 @@
 			</rule>
 		</rule>
 	</rule>
+
 	<!-- собрать сюда POI "спорт" -->
 	<rule cat="sports" e="any" k="*" v="*" zoom-min="12">
 		<!-- бассейн -->
@@ -3087,13 +3199,15 @@
 			</rule>
 			<!-- гостиница/апартаменты -->
 			<rule e="any" k="tourism" v="hotel|apartment" cat="accommodation">
-				<rule e="any" k="tourism" v="*" zoom-min="16" zoom-max="17">
-					<symbol id="id_hotel" src="file:symbols/hotel.svg" symbol-percent="75" />
-					<caption symbol-id="id_hotel" k="name" font-style="bold" font-family="sans_serif" font-size="11" fill="#333333" stroke="#ffffff" stroke-width="1.5" text-wrap-width="120" />
-				</rule>
-				<rule e="any" k="tourism" v="*" zoom-min="18">
-					<symbol id="id_hotel" src="file:symbols/hotel.svg" symbol-percent="120" display="always" priority="0" />
-					<caption symbol-id="id_hotel" k="name" font-style="bold" font-family="sans_serif" font-size="11" fill="#333333" stroke="#ffffff" stroke-width="1.5" text-wrap-width="120" />
+				<rule e="node" k="construction" v="~">
+					<rule e="any" k="tourism" v="*" zoom-min="16" zoom-max="17">
+						<symbol id="id_hotel" src="file:symbols/hotel.svg" symbol-percent="75" />
+						<caption symbol-id="id_hotel" k="name" font-style="bold" font-family="sans_serif" font-size="11" fill="#333333" stroke="#ffffff" stroke-width="1.5" text-wrap-width="120" />
+					</rule>
+					<rule e="any" k="tourism" v="*" zoom-min="18">
+						<symbol id="id_hotel" src="file:symbols/hotel.svg" symbol-percent="120" display="always" priority="0" />
+						<caption symbol-id="id_hotel" k="name" font-style="bold" font-family="sans_serif" font-size="11" fill="#333333" stroke="#ffffff" stroke-width="1.5" text-wrap-width="120" />
+					</rule>
 				</rule>
 			</rule>
 			<!-- хостел -->
@@ -3124,7 +3238,8 @@
 				<caption symbol-id="id_picnic_table" k="name" font-style="normal" font-size="11" fill="#333333" stroke="#ffffff" stroke-width="0.5" text-wrap-width="120" />
 			</rule>
 		</rule>
-		<!-- TODO тут рисуется просто "звездочка", с этих хорошо что-то сделать и разделить на понятные объекты -->
+		<!-- TODO тут рисуется просто "звездочка", с этих хорошо что-то сделать и разделить на
+		понятные объекты -->
 		<rule e="any" k="tourism" v="attraction" zoom-min="13">
 			<!-- это исключения! то есть для historic="*" тут названия не пишутся -->
 			<rule e="any" k="historic|amenity|natural|leisure|boundary|man_made" v="~">
@@ -3450,13 +3565,16 @@
 			<caption symbol-id="s_ford" k="name" priority="60" display="always" position="below" font-style="italic" font-size="12" fill="#000000" stroke="#ffffff" stroke-width="2.8" text-wrap-width="120" />
 		</rule>
 	</rule>
-	<!-- фуникулеры/станции - название не будет писаться, если в тегах одновременно есть building+aerialway. подписываются только просто "aerialway" -->
+
+	<!-- фуникулеры/станции - название не будет писаться, если в тегах одновременно есть
+	building+aerialway. подписываются только просто "aerialway" -->
 	<rule e="any" k="aerialway" v="station" zoom-min="14">
 		<!-- исключая "building", у них свои описания выше -->
 		<rule e="any" k="building" v="~">
 			<caption k="name" dy="10" priority="10" font-style="bold_italic" font-size="11" fill="#BF500000" stroke="#ffffff" stroke-width="2.0" text-wrap-width="120" />
 		</rule>
 	</rule>
+
 	<!-- фуникулеры -->
 	<rule e="way" k="aerialway" v="cable_car|gondola|mixed_lift|chair_lift|drag_lift|t-bar|j-bar|platter|rope_tow|magic_carpet|zip_line|goods" zoom-min="12">
 		<rule e="way" k="*" v="*" zoom-min="12" zoom-max="14">
@@ -3599,7 +3717,7 @@
 		<circle radius="7.5" scale-radius="false" fill="#ffffff" stroke="#009900" stroke-width="1.5" />
 		<caption k="addr:housenumber" priority="3" position="center" font-style="bold" font-size="12" fill="#009900" stroke="#E5FFFFFF" stroke-width="2.0" />
 	</rule>
-	<!-- terra incognita - тут я никогда ничего не менял. из "active RT5" -->
+	<!-- значки и текст для маркировки маршрутов -->
 	<rule e="any" k="osmc" v="osmc_yes" zoom-min="14" cat="trail_markings">
 		<rule e="any" k="osmc_background" v="~|no|false">
 			<symbol src="file:/osmc/bcg_white.svg" display="always" priority="2" symbol-percent="80" />
@@ -4395,5 +4513,4 @@
 			</rule>
 		</rule>
 	</rule>
-	##
 </rendertheme>
