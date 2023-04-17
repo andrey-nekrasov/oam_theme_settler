@@ -7,8 +7,8 @@
     Andrey Nekrasov
     Contact: andrey.nekrasov@gmail.com		
 
-    2023.apr.16
-    v2.0.8
+    2023.apr.17
+    v2.0.9
 
     ###
     Когда то давно это была тема "active RT5 (active RenderTheme Version 5)"
@@ -250,9 +250,9 @@
 		</layer>
 
 		<layer id="OSM_Summer" visible="true">
-			<name lang="ru" value="V4+ 2.0.8" />
-			<name lang="de" value="V4+ 2.0.8" />
-			<name lang="en" value="V4+ 2.0.8" />
+<!--			<name lang="ru" value="V4+ 2.0.9" />
+			<name lang="de" value="V4+ 2.0.9" />
+			<name lang="en" value="V4+ 2.0.9" /> -->
 			<overlay id="L_hikingtrails" />
 			<overlay id="L_trail_markings" />
 			<overlay id="L_hikingnodes" />
@@ -436,6 +436,9 @@
 			<rule e="way" k="landuse|amenity" v="residential|farmyard" zoom-min="15">
 				<area fill="#26aaaaaa" />
 			</rule>
+			<rule e="way" k="*" v="*" zoom-min="15" zoom-max="19">
+				<caption k="name" font-family="sans_serif" font-style="italic" font-size="12" fill="#000000" stroke="#ffffff" stroke-width="2.0" text-wrap-width="145" />
+			</rule>
 		</rule>
 
 		<rule e="way" k="landuse" v="commercial">
@@ -461,6 +464,9 @@
 		<!-- садовые участки -->
 		<rule e="way" k="landuse" v="allotments">
 			<area fill="#80E2ECC5" stroke="#80556b2f" stroke-width="0.15" />
+			<rule e="way" k="*" v="*" zoom-min="15" zoom-max="19">
+				<caption k="name" font-family="sans_serif" font-style="italic" font-size="12" fill="#000000" stroke="#ffffff" stroke-width="2.0" text-wrap-width="145" />
+			</rule>
 		</rule>
 
 		<!-- промзона -->
@@ -468,7 +474,7 @@
 		    <rule e="way" k="power" v="~">
 			<area fill="#D9DBDBDB" stroke="#e4e4e4" stroke-width="0.2" />
 			<rule e="way" k="*" v="*" zoom-min="16" zoom-max="19">
-				<caption k="name" font-style="italic" font-size="12" fill="#5A5A5A" stroke="#FFFFFF" stroke-width="2.8" text-wrap-width="120" />
+				<caption k="name" font-family="sans_serif" font-style="italic" font-size="12" fill="#5A5A5A" stroke="#FFFFFF" stroke-width="2.8" text-wrap-width="120" />
 			</rule>
 		    </rule>
 		</rule>
@@ -477,7 +483,7 @@
 		<rule e="way" k="landuse" v="landfill">
 			<area fill="#EFF5E1" stroke="#556b2f" stroke-width="0.2" />
 			<rule e="way" k="*" v="*" zoom-min="14" zoom-max="16">
-				<caption k="name" font-style="italic" font-size="12" fill="#333333" stroke="#FFFFFF" stroke-width="2.8" text-wrap-width="120" />
+				<caption k="name" font-family="sans_serif" font-style="italic" font-size="12" fill="#333333" stroke="#FFFFFF" stroke-width="2.8" text-wrap-width="120" />
 			</rule>
 		</rule>
 		<!-- карьер -->
@@ -1434,8 +1440,12 @@
 		</rule>
 	</rule>
 
+	<!-- -->
 	<rule e="any" k="*" v="*" zoom-min="18">
+	    <!-- добавил для того, что бы убрать лишний текст для highway=emergency_access_point -->
+	    <rule e="any" k="highway" v="~">
 		<caption k="addr:housenumber" font-style="normal" font-size="10" fill="#424251" priority="10" />
+	    </rule>
 	</rule> 
 
 	<!-- дороги. NOTE тут бардак с мостиками-тоннелями и их комбинациями. хорошо бы разобраться как нибудь -->
@@ -2043,20 +2053,23 @@
 			<symbol src="file:symbols/railway-crossing.svg" symbol-height="32" />
 		</rule>
 	</rule>
+
 	<!-- жд, трамваи и метро - входы-выходы, станции -->
 	<rule e="node" k="railway" v="*" zoom-min="12" cat="pub_transp">
+
 		<!-- выходы из метро -->
 		<rule e="node" k="railway" v="subway_entrance" zoom-min="14">
 			<rule e="node" k="railway" v="subway_entrance" zoom-min="14" zoom-max="14">
-				<symbol id="id_station_metro" src="file:symbols/metro_logo.svg" symbol-percent="60" display="always" />
+				<symbol id="id_station_metro" src="file:symbols/metro_logo.svg" symbol-percent="55" priority="50" />
 			</rule>
 			<rule e="node" k="railway" v="subway_entrance" zoom-min="15">
-				<symbol id="id_station_metro" src="file:symbols/metro_logo.svg" symbol-percent="70" display="always" />
+				<symbol id="id_station_metro" src="file:symbols/metro_logo.svg" symbol-percent="70" display="always" priority="50" />
 			</rule>
 			<rule e="node" k="*" v="*" zoom-min="15">
 				<caption symbol-id="id_station_metro" k="name" dy="-4" font-style="bold" font-family="sans_serif" font-size="10" fill="#333333" stroke="#ffffff" stroke-width="1.5" />
 			</rule>
 		</rule>
+
 		<rule e="node" k="railway" v="station" zoom-min="13">
 			<symbol id="id_station" src="file:symbols/railway_station.svg" symbol-percent="80" priority="-10" />
 			<rule e="node" k="*" v="*" zoom-min="15">
@@ -2076,8 +2089,6 @@
 			</rule>
 		</rule>
 	</rule>
-
-
 
 	<!-- магазины -->
 	<rule cat="shops" e="any" k="*" v="*" zoom-min="9">
@@ -2330,56 +2341,112 @@
 
 	<!-- Населенные пункты -->
 	<rule e="any" k="place" v="*">
-		<!-- небольшой город -->
-		<rule e="node" k="place" v="town" zoom-min="8" zoom-max="8">
-			<circle radius="2" fill="#f4f3e9" stroke="#9B9B9B" stroke-width="1.0" />
-		</rule>
-		<rule e="node" k="place" v="town" zoom-min="9" zoom-max="9">
-			<circle radius="3" fill="#f4f3e9" stroke="#9B9B9B" stroke-width="1.0" />
-			<circle radius="1.1" stroke="#9B9B9B" stroke-width="1.0" />
-		</rule>
-		<rule e="node" k="place" v="town" zoom-min="8" zoom-max="9">
-			<caption k="name" dy="12" font-family="sans_serif" font-style="normal" font-size="12" fill="#000000" stroke="#ffffff" stroke-width="2.0" text-wrap-width="145" />
-		</rule>
-		<rule e="node" k="place" v="town" zoom-min="10" zoom-max="13">
-			<caption k="name" font-family="sans_serif" font-style="bold" font-size="14" fill="#000000" stroke="#ffffff" stroke-width="2.0" text-wrap-width="145" />
-		</rule>
-		<!-- город -->
-		<rule e="node" k="place" v="city" zoom-min="4" zoom-max="7">
-			<circle radius="2" fill="#D3D3D3" stroke="#8E8E8E" stroke-width="1.0" />
-		</rule>
-		<rule e="node" k="place" v="city" zoom-min="8" zoom-max="8">
-			<circle radius="2" fill="#f4f3e9" stroke="#8E8E8E" stroke-width="1.0" />
-		</rule>
-		<rule e="node" k="place" v="city" zoom-min="9" zoom-max="9">
-			<circle radius="4" fill="#f4f3e9" stroke="#8E8E8E" stroke-width="1.0" />
-			<circle radius="1.8" fill="#8E8E8E" />
-		</rule>
-		<rule e="node" k="place" v="city" zoom-min="7" zoom-max="9">
-			<caption k="name" dy="15" font-family="sans_serif" font-style="bold" font-size="14" fill="#000000" stroke="#FFFFFF" stroke-width="2.0" text-wrap-width="170" />
-		</rule>
-		<rule e="node" k="place" v="city" zoom-min="10" zoom-max="12">
-			<caption k="name" dy="15" font-family="sans_serif" font-style="bold" font-size="20" fill="#000000" stroke="#FFFFFF" stroke-width="2.0" text-wrap-width="170" />
-		</rule>
-		<!-- деревня -->
-		<rule e="node" k="place" v="village" zoom-min="10" zoom-max="11">
-			<caption k="name" font-family="default" font-size="12" fill="#000000" stroke="#ffffff" stroke-width="1.2" text-transform="capitalize" text-wrap-width="130" />
-		</rule>
-		<rule e="node" k="place" v="village" zoom-min="12" zoom-max="15">
-			<caption k="name" font-family="default" font-style="bold" font-size="12" fill="#000000" stroke="#ffffff" stroke-width="1.2" text-transform="capitalize" text-wrap-width="130" />
-		</rule>
-		<!-- маленькая деревня или хутор на несколько семей -->
-		<rule e="node" k="place" v="hamlet" zoom-min="13" zoom-max="15">
-			<caption k="name" font-style="normal" font-size="12" fill="#000000" stroke="#ffffff" stroke-width="1.2" text-transform="capitalize" text-wrap-width="120" />
-		</rule>
+
 		<!-- хутор -->
 		<rule e="node" k="place" v="isolated_dwelling" zoom-min="13" zoom-max="17">
 			<caption k="name" font-style="normal" font-size="12" fill="#000000" stroke="#ffffff" stroke-width="1.2" text-transform="capitalize" text-wrap-width="120" />
 		</rule>
+
+		<!-- маленькая деревня или хутор на несколько семей -->
+		<rule e="node" k="place" v="hamlet" zoom-min="13" zoom-max="15">
+			<caption k="name" font-style="normal" font-size="12" fill="#000000" stroke="#ffffff" stroke-width="1.2" text-transform="capitalize" text-wrap-width="120" />
+		</rule>
+
+		<!-- деревня -->
+		<rule e="node" k="place" v="village" zoom-min="8">
+			<rule cat="nocity" e="node" k="popcat" v="pc_5000|pc_10000|pc_20000|pc_30000|pc_50000|pc_100000|pc_200000|pc_500000|pc_1000000" zoom-max="8">
+				<caption k="name" font-style="normal" font-size="11" fill="#000000" stroke="#C0FFFFFF" stroke-width="2" priority="102" text-transform="capitalize" text-wrap-width="130"/>
+			</rule>
+			<rule cat="nocity" e="node" k="popcat" v="pc_0|pc_1|~" zoom-min="9" zoom-max="9">
+				<caption k="name" font-style="normal" font-size="11" fill="#000000" stroke="#C0FFFFFF" stroke-width="2" priority="102" text-transform="capitalize" text-wrap-width="130"/>
+			</rule>
+			<rule e="node" k="popcat" v="pc_1000|pc_5000|pc_10000|pc_20000|pc_30000|pc_50000|pc_100000|pc_200000|pc_500000|pc_1000000" zoom-min="9" zoom-max="9">
+				<caption k="name" font-style="normal" font-size="11" fill="#000000" stroke="#C0FFFFFF" stroke-width="2" priority="102" text-transform="capitalize" text-wrap-width="130"/>
+			</rule>
+			<rule e="node" k="*" v="*" zoom-min="10" zoom-max="11">
+				<caption k="name" font-style="normal" font-size="12" fill="#000000" stroke="#C0FFFFFF" stroke-width="2" priority="102" text-transform="capitalize" text-wrap-width="130"/>
+			</rule>
+			<rule e="node" k="*" v="*" zoom-min="12" zoom-max="12">
+				<caption k="name" font-style="bold" font-size="12" fill="#000000" stroke="#C0FFFFFF" stroke-width="2" priority="102" text-transform="capitalize" text-wrap-width="130"/>
+			</rule>
+			<rule e="node" k="*" v="*" zoom-min="13" zoom-max="14">
+				<caption k="name" font-style="bold" font-size="14" fill="#000000" stroke="#C0FFFFFF" stroke-width="2" priority="102" text-transform="capitalize" text-wrap-width="140" />
+			</rule>
+			<rule e="node" k="*" v="*" zoom-min="15" zoom-max="16">
+				<caption k="name" font-style="bold" font-size="14" fill="#000000" stroke="#C0FFFFFF" stroke-width="2" priority="102" text-transform="capitalize" />
+			</rule>
+
+
+		</rule>
+
+		<!-- небольшой город -->
+		<rule e="node" k="place" v="town" zoom-min="6">
+			<rule cat="nocity" e="node" k="popcat" v="pc_20000|pc_30000|pc_50000|pc_100000|pc_200000|pc_500000|pc_1000000" zoom-max="6">
+				<caption k="name" font-style="normal" font-size="10" fill="#000000" stroke="#C0FFFFFF" stroke-width="2" priority="104" text-transform="capitalize" text-wrap-width="130"/>
+			</rule>
+			<rule cat="nocity" e="node" k="popcat" v="pc_0|pc_1|pc_1000|pc_5000|pc_10000|~" zoom-min="7" zoom-max="7">
+				<caption k="name" font-style="normal" font-size="12" fill="#000000" stroke="#C0FFFFFF" stroke-width="2" priority="104" text-transform="capitalize" text-wrap-width="130"/>
+			</rule>
+			<rule e="node" k="popcat" v="pc_20000|pc_30000|pc_50000|pc_100000|pc_200000|pc_500000|pc_1000000" zoom-min="7" zoom-max="7">
+				<caption k="name" font-style="normal" font-size="12" fill="#000000" stroke="#C0FFFFFF" stroke-width="2" priority="104" text-transform="capitalize" text-wrap-width="130"/>
+			</rule>
+			<rule e="node" k="*" v="*" zoom-min="8" zoom-max="8">
+				<caption k="name" font-style="normal" font-size="12" fill="#000000" stroke="#C0FFFFFF" stroke-width="2" priority="104" text-transform="capitalize" text-wrap-width="130"/>
+			</rule>
+			<rule e="node" k="*" v="*" zoom-min="9" zoom-max="11">
+				<caption k="name" font-style="bold" font-size="14" fill="#000000" stroke="#C0FFFFFF" stroke-width="2" priority="104" text-transform="capitalize" text-wrap-width="130"/>
+			</rule>
+			<rule e="node" k="*" v="*" zoom-min="12" zoom-max="12">
+				<caption k="name" font-style="bold" font-size="14" fill="#000000" stroke="#C0FFFFFF" stroke-width="2" priority="104" text-transform="uppercase" text-wrap-width="130"/>
+			</rule>
+			<rule e="node" k="*" v="*" zoom-min="13" zoom-max="16">
+				<caption k="name" font-style="bold" font-size="18" fill="#000000" stroke="#C0FFFFFF" stroke-width="2" priority="104" text-transform="uppercase" text-wrap-width="250"/>
+			</rule>
+		</rule>
+
+		<!-- город -->
+		<rule e="node" k="place" v="city" zoom-min="5">
+			<rule e="any" k="capital" v="~">
+				<rule e="node" k="*" v="*" zoom-max="8">
+					<caption k="name" font-style="bold" font-size="12" fill="#000000" stroke="#C0FFFFFF" stroke-width="2" priority="105"/>
+				</rule>
+				<rule e="node" k="*" v="*" zoom-min="9" zoom-max="12">
+					<caption k="name" font-style="bold" text-transform="uppercase" font-size="16" fill="#000000" stroke="#C0FFFFFF" stroke-width="2" priority="105"/>
+				</rule>
+				<rule e="node" k="*" v="*" zoom-min="13" zoom-max="16">
+					<caption k="name" font-style="bold" text-transform="uppercase" font-size="20" fill="#000000" stroke="#C0FFFFFF" stroke-width="2" priority="105"/>
+				</rule>
+			</rule>
+			<rule e="any" k="capital" v="4">
+				<rule e="node" k="*" v="*" zoom-min="4" zoom-max="8">
+					<caption k="name" font-style="bold" font-size="14" fill="#000000" stroke="#C0FFFFFF" stroke-width="2" priority="106"/>
+				</rule>
+				<rule e="node" k="*" v="*" zoom-min="9" zoom-max="12">
+					<caption k="name" font-style="bold" text-transform="uppercase" font-size="18" fill="#000000" stroke="#C0FFFFFF" stroke-width="2" priority="106"/>
+				</rule>
+				<rule e="node" k="*" v="*" zoom-min="13" zoom-max="16">
+					<caption k="name" font-style="bold" text-transform="uppercase" font-size="22" fill="#000000" stroke="#C0FFFFFF" stroke-width="2" priority="106"/>
+				</rule>
+			</rule>
+			<rule e="any" k="capital" v="2">
+				<rule e="node" k="*" v="*" zoom-min="4" zoom-max="8">
+					<caption k="name" font-style="bold" font-size="16" fill="#000000" stroke="#C0FFFFFF" stroke-width="2" priority="108"/>
+				</rule>
+				<rule e="node" k="*" v="*" zoom-min="9" zoom-max="12">
+					<caption k="name" font-style="bold" text-transform="uppercase" font-size="20" fill="#000000" stroke="#C0FFFFFF" stroke-width="2" priority="108"/>
+				</rule>
+				<rule e="node" k="*" v="*" zoom-min="13" zoom-max="16">
+					<caption k="name" font-style="bold" text-transform="uppercase" font-size="24" fill="#000000" stroke="#C0FFFFFF" stroke-width="2" priority="108"/>
+				</rule>
+			</rule>
+		</rule>
+
+
 		<!-- район или отдельная часть города, имеющая своё название (не административное) -->
 		<rule e="node" k="place" v="suburb" zoom-min="12" zoom-max="14">
 			<caption k="name" font-family="default" font-size="10" fill="#000000" stroke="#ffffff" stroke-width="2.0" text-transform="capitalize" text-wrap-width="120" />
 		</rule>
+
 		<!-- местное название -->
 		<rule cat="locality" e="any" k="place" v="locality">
 			<rule e="any" k="landuse" v="~">
@@ -2391,6 +2458,7 @@
 				</rule>
 			</rule>
 		</rule>
+
 		<!-- маленький остров -->
 		<rule e="node" k="place" v="islet" zoom-min="13">
 			<rule e="any" k="landuse" v="*">
@@ -2831,14 +2899,19 @@
 			<symbol id="s_embassy" priority="81" src="file:symbols/s_embassy.svg" symbol-height="17" />
 			<caption k="name" symbol-id="s_embassy" font-style="bold" font-family="sans_serif" font-size="12" fill="#333333" stroke="#ffffff" stroke-width="1.5" />
 		</rule>
-		<!-- карман безопасности на шоссе, с телефоном для вызова помощи -->
-		<rule e="any" k="highway" v="emergency_access_point" zoom-min="14">
-			<symbol id="id_emergency_access_point" src="file:symbols/emergency_access_point.svg" symbol-percent="50" display="always" />
-			<rule e="any" k="*" v="*" zoom-min="16">
-				<caption symbol-id="id_emergency_access_point" k="name" position="below" font-style="bold" font-family="sans_serif" font-size="10" fill="#DA0092" stroke="#FFFFFF" stroke-width="1.5" />
-				<caption symbol-id="id_emergency_access_point" k="addr:housenumber" position="above" font-style="bold" font-family="sans_serif" font-size="10" fill="#DA0092" stroke="#FFFFFF" stroke-width="1.5" />
-			</rule>
+
+		<rule e="any" k="highway" v="emergency_access_point">
+		    <rule e="any" k="*" v="*" zoom-min="15" zoom-max="16">
+			<symbol id="id_emergency_access_point" src="file:symbols/emergency_access_point.svg" symbol-height="15" display="always" priority="102"/>
+   			<!--caption symbol-id="id_emergency_access_point" position="above" k="addr:housenumber"  font-style="bold" font-size="10" fill="#CA1212" stroke="#C0FFFFFF" stroke-width="2" /-->
+		    </rule>
+		    <rule e="any" k="*" v="*" zoom-min="17">
+			<symbol id="id_emergency_access_point" src="file:symbols/emergency_access_point.svg" symbol-height="24" display="always" priority="102"/>
+			<caption symbol-id="id_emergency_access_point" position="above" k="addr:housenumber" font-style="bold" font-size="12" fill="#CA1212" stroke="#C0FFFFFF" stroke-width="2" />
+			<caption symbol-id="id_emergency_access_point" position="below" k="name" font-style="bold" font-size="10" fill="#CA1212" stroke="#C0FFFFFF" stroke-width="2"/>
+		    </rule>
 		</rule>
+
 	</rule>
 
 	<!-- собрать сюда POI "спорт" -->
@@ -3015,16 +3088,19 @@
 				<caption priority="118" k="name" symbol-id="id_ferry" position="below" font-style="bold" font-size="11" fill="#0080c0" stroke="#E5FFFFFF" stroke-width="2" />
 			</rule>
 		</rule>
+
 		<!-- укрытие/приют -->
 		<rule cat="refuge" e="any" k="amenity" v="shelter" zoom-min="14">
-			<symbol id="id_shelter" src="file:symbols/shelter.svg" symbol-percent="85" display="always" />
+			<symbol id="id_shelter" src="file:symbols/shelter.svg" symbol-percent="85" />
 			<rule e="any" k="*" v="*" zoom-min="16">
 				<caption symbol-id="id_shelter" k="name" priority="10" font-style="normal" font-family="sans_serif" font-size="12" fill="#000000" stroke="#ffffff" stroke-width="1.8" />
 			</rule>
 		</rule>
+		<!-- охотничья вышка -->
 		<rule e="any" k="amenity" v="hunting_stand" zoom-min="14">
 			<symbol src="file:symbols/hunting_stand.svg" symbol-percent="60" />
 		</rule>
+
 		<rule e="node" k="amenity" v="theatre" zoom-min="14">
 			<symbol id="id_theatre" src="file:symbols/theatre.svg" symbol-percent="70" />
 			<rule e="node" k="amenity" v="*" zoom-min="17">
@@ -3746,7 +3822,8 @@
 		<circle radius="7.5" scale-radius="false" fill="#ffffff" stroke="#009900" stroke-width="1.5" />
 		<caption k="addr:housenumber" priority="3" position="center" font-style="bold" font-size="12" fill="#009900" stroke="#E5FFFFFF" stroke-width="2.0" />
 	</rule>
-	<!-- значки и текст для маркировки маршрутов -->
+
+	<!-- Значки и текст для маркированных маршрутов OAM -->
 	<rule e="any" k="osmc" v="osmc_yes" zoom-min="14" cat="trail_markings">
 		<rule e="any" k="osmc_background" v="~|no|false">
 			<symbol src="file:/osmc/bcg_white.svg" display="always" priority="2" symbol-percent="80" />
@@ -4459,87 +4536,88 @@
 		<rule e="any" k="osmc_foreground" v="wmfg_wolfshook">
 			<symbol src="file:/osmc/frg_wolfshook.svg" display="always" priority="3" symbol-percent="80" />
 		</rule>
-		<rule e="any" k="osmc_foreground" v="~|no|false">
-			<rule e="any" k="osmc_textcolor" v="~|wmtc_black">
+
+		<!-- Текст -->
+		<rule e="any" k="osmc_textcolor" v="~|wmtc_black">
 				<rule e="any" k="osmc_text_len" v="wmtl_1|wmtl_2">
-					<caption k="name" priority="4" display="always" font-size="10" position="center" font-style="bold" fill="#000000" stroke="#E5FFFFFF" stroke-width="1.0" />
+					<caption k="name" priority="100" display="always" font-size="8" position="center" font-style="bold" fill="#000000" stroke="#E5FFFFFF" stroke-width="1.0" />
 				</rule>
 				<rule e="any" k="osmc_text_len" v="wmtl_3|wmtl_4|wmtl_5">
-					<caption k="name" priority="4" display="always" font-size="9" position="center" font-style="bold" fill="#000000" stroke="#E5FFFFFF" stroke-width="1.0" />
+					<caption k="name" priority="100" display="always" font-size="8" position="center" font-style="bold" fill="#000000" stroke="#E5FFFFFF" stroke-width="1.0" />
 				</rule>
-			</rule>
-			<rule e="any" k="osmc_textcolor" v="wmtc_red">
+		</rule>
+		<rule e="any" k="osmc_textcolor" v="wmtc_red">
 				<rule e="any" k="osmc_text_len" v="wmtl_1|wmtl_2">
-					<caption k="name" priority="4" display="always" font-size="10" position="center" font-style="bold" fill="#FF3333" stroke="#E5FFFFFF" stroke-width="1.0" />
+					<caption k="name" priority="4" display="always" font-size="8" position="center" font-style="bold" fill="#FF3333" stroke="#E5FFFFFF" stroke-width="1.0" />
 				</rule>
 				<rule e="any" k="osmc_text_len" v="wmtl_3|wmtl_4|wmtl_5">
-					<caption k="name" priority="4" display="always" font-size="9" position="center" font-style="bold" fill="#FF3333" stroke="#E5FFFFFF" stroke-width="1.0" />
+					<caption k="name" priority="4" display="always" font-size="8" position="center" font-style="bold" fill="#FF3333" stroke="#E5FFFFFF" stroke-width="1.0" />
 				</rule>
-			</rule>
-			<rule e="any" k="osmc_textcolor" v="wmtc_green">
+		</rule>
+		<rule e="any" k="osmc_textcolor" v="wmtc_green">
 				<rule e="any" k="osmc_text_len" v="wmtl_1|wmtl_2">
-					<caption k="name" priority="4" display="always" font-size="10" position="center" font-style="bold" fill="#267F00" stroke="#E5FFFFFF" stroke-width="1.0" />
+					<caption k="name" priority="4" display="always" font-size="8" position="center" font-style="bold" fill="#267F00" stroke="#E5FFFFFF" stroke-width="1.0" />
 				</rule>
 				<rule e="any" k="osmc_text_len" v="wmtl_3|wmtl_4|wmtl_5">
-					<caption k="name" priority="4" display="always" font-size="9" position="center" font-style="bold" fill="#267F00" stroke="#E5FFFFFF" stroke-width="1.0" />
+					<caption k="name" priority="4" display="always" font-size="8" position="center" font-style="bold" fill="#267F00" stroke="#E5FFFFFF" stroke-width="1.0" />
 				</rule>
 			</rule>
 			<rule e="any" k="osmc_textcolor" v="wmtc_blue">
 				<rule e="any" k="osmc_text_len" v="wmtl_1|wmtl_2">
-					<caption k="name" priority="4" display="always" font-size="10" position="center" font-style="bold" fill="#0242C1" stroke="#E5FFFFFF" stroke-width="1.0" />
+					<caption k="name" priority="4" display="always" font-size="8" position="center" font-style="bold" fill="#0242C1" stroke="#E5FFFFFF" stroke-width="1.0" />
 				</rule>
 				<rule e="any" k="osmc_text_len" v="wmtl_3|wmtl_4|wmtl_5">
-					<caption k="name" priority="4" display="always" font-size="9" position="center" font-style="bold" fill="#0242C1" stroke="#E5FFFFFF" stroke-width="1.0" />
+					<caption k="name" priority="4" display="always" font-size="8" position="center" font-style="bold" fill="#0242C1" stroke="#E5FFFFFF" stroke-width="1.0" />
 				</rule>
 			</rule>
 			<rule e="any" k="osmc_textcolor" v="wmtc_brown">
 				<rule e="any" k="osmc_text_len" v="wmtl_1|wmtl_2">
-					<caption k="name" priority="4" display="always" font-size="10" position="center" font-style="bold" fill="#BC6823" stroke="#E5FFFFFF" stroke-width="1.0" />
+					<caption k="name" priority="4" display="always" font-size="8" position="center" font-style="bold" fill="#BC6823" stroke="#E5FFFFFF" stroke-width="1.0" />
 				</rule>
 				<rule e="any" k="osmc_text_len" v="wmtl_3|wmtl_4|wmtl_5">
-					<caption k="name" priority="4" display="always" font-size="9" position="center" font-style="bold" fill="#BC6823" stroke="#E5FFFFFF" stroke-width="1.0" />
+					<caption k="name" priority="4" display="always" font-size="8" position="center" font-style="bold" fill="#BC6823" stroke="#E5FFFFFF" stroke-width="1.0" />
 				</rule>
 			</rule>
 			<rule e="any" k="osmc_textcolor" v="wmtc_orange">
 				<rule e="any" k="osmc_text_len" v="wmtl_1|wmtl_2">
-					<caption k="name" priority="4" display="always" font-size="10" position="center" font-style="bold" fill="#EB8D00" stroke="#E5FFFFFF" stroke-width="1.0" />
+					<caption k="name" priority="4" display="always" font-size="8" position="center" font-style="bold" fill="#EB8D00" stroke="#E5FFFFFF" stroke-width="1.0" />
 				</rule>
 				<rule e="any" k="osmc_text_len" v="wmtl_3|wmtl_4|wmtl_5">
-					<caption k="name" priority="4" display="always" font-size="9" position="center" font-style="bold" fill="#EB8D00" stroke="#E5FFFFFF" stroke-width="1.0" />
+					<caption k="name" priority="4" display="always" font-size="8" position="center" font-style="bold" fill="#EB8D00" stroke="#E5FFFFFF" stroke-width="1.0" />
 				</rule>
 			</rule>
 			<rule e="any" k="osmc_textcolor" v="wmtc_purple">
 				<rule e="any" k="osmc_text_len" v="wmtl_1|wmtl_2">
-					<caption k="name" priority="4" display="always" font-size="10" position="center" font-style="bold" fill="#C17FFF" stroke="#E5FFFFFF" stroke-width="1.0" />
+					<caption k="name" priority="4" display="always" font-size="8" position="center" font-style="bold" fill="#C17FFF" stroke="#E5FFFFFF" stroke-width="1.0" />
 				</rule>
 				<rule e="any" k="osmc_text_len" v="wmtl_3|wmtl_4|wmtl_5">
-					<caption k="name" priority="4" display="always" font-size="9" position="center" font-style="bold" fill="#C17FFF" stroke="#E5FFFFFF" stroke-width="1.0" />
+					<caption k="name" priority="4" display="always" font-size="8" position="center" font-style="bold" fill="#C17FFF" stroke="#E5FFFFFF" stroke-width="1.0" />
 				</rule>
 			</rule>
 			<rule e="any" k="osmc_textcolor" v="wmtc_white">
 				<rule e="any" k="osmc_text_len" v="wmtl_1|wmtl_2">
-					<caption k="name" priority="10" display="always" font-size="10" position="center" font-style="bold" fill="#FFFFFF" stroke="#E5000000" stroke-width="1.0" />
+					<caption k="name" priority="10" display="always" font-size="8" position="center" font-style="bold" fill="#FFFFFF" stroke="#E5000000" stroke-width="1.0" />
 				</rule>
 				<rule e="any" k="osmc_text_len" v="wmtl_3|wmtl_4|wmtl_5">
-					<caption k="name" priority="10" display="always" font-size="9" position="center" font-style="bold" fill="#FFFFFF" stroke="#E5000000" stroke-width="1.0" />
+					<caption k="name" priority="10" display="always" font-size="8" position="center" font-style="bold" fill="#FFFFFF" stroke="#E5000000" stroke-width="1.0" />
 				</rule>
 			</rule>
 			<rule e="any" k="osmc_textcolor" v="wmtc_yellow">
 				<rule e="any" k="osmc_text_len" v="wmtl_1|wmtl_2">
-					<caption k="name" priority="4" display="always" font-size="10" position="center" font-style="bold" fill="#F2DB0A" stroke="#E5000000" stroke-width="1.0" />
+					<caption k="name" priority="4" display="always" font-size="8" position="center" font-style="bold" fill="#F2DB0A" stroke="#E5000000" stroke-width="1.0" />
 				</rule>
 				<rule e="any" k="osmc_text_len" v="wmtl_3|wmtl_4|wmtl_5">
-					<caption k="name" priority="4" display="always" font-size="9" position="center" font-style="bold" fill="#F2DB0A" stroke="#E5000000" stroke-width="1.0" />
+					<caption k="name" priority="4" display="always" font-size="8" position="center" font-style="bold" fill="#F2DB0A" stroke="#E5000000" stroke-width="1.0" />
 				</rule>
 			</rule>
 			<rule e="any" k="osmc_textcolor" v="wmtc_grey">
 				<rule e="any" k="osmc_text_len" v="wmtl_1|wmtl_2">
-					<caption k="name" priority="4" display="always" font-size="10" position="center" font-style="bold" fill="#CCCCCC" stroke="#E5000000" stroke-width="1.0" />
+					<caption k="name" priority="4" display="always" font-size="8" position="center" font-style="bold" fill="#CCCCCC" stroke="#E5000000" stroke-width="1.0" />
 				</rule>
 				<rule e="any" k="osmc_text_len" v="wmtl_3|wmtl_4|wmtl_5">
-					<caption k="name" priority="4" display="always" font-size="9" position="center" font-style="bold" fill="#CCCCCC" stroke="#E5000000" stroke-width="1.0" />
+					<caption k="name" priority="4" display="always" font-size="8" position="center" font-style="bold" fill="#CCCCCC" stroke="#E5000000" stroke-width="1.0" />
 				</rule>
 			</rule>
-		</rule>
+		<!-- </rule> -->
 	</rule>
 </rendertheme>
