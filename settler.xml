@@ -7,8 +7,8 @@
     Andrey Nekrasov
     Contact: andrey.nekrasov@gmail.com		
 
-    2023.apr.18
-    v2.0.12
+    2023.apr.19
+    v2.0.13
 
     ###
     Когда то давно это была тема "active RT5 (active RenderTheme Version 5)"
@@ -236,7 +236,7 @@
 			<name lang="en" value="Contour lines" />
 			<cat id="contourlines" />
 		</layer>
-		<layer id="L_building_type" enabled="false" visible="false">
+		<layer id="L_building_type" enabled="true" visible="false">
 			<name lang="ru" value="Выделять разные типы зданий цветом (школы, больницы и т.п.)" />
 			<name lang="de" value="Gebäudetypen (Schulen, Krankenhäuser etc.)" />
 			<name lang="en" value="Building types (schools, hospitals, etc.)" />
@@ -701,16 +701,36 @@
 				<area fill="#707070dd" />
 				<area src="file:patterns/fell.svg" symbol-width="24" />
 			</rule>
-			<!-- скалы -->
-			<rule e="way" k="natural" v="rock|bare_rock" closed="yes">
-				<area fill="#faf5f5" />
-				<area src="file:patterns/rock.svg" symbol-width="32" />
+
+		<!-- каменистая осыпь -->
+		<rule e="way" k="natural" v="scree|shingle" closed="yes" zoom-min="12">
+			<rule e="any" k="*" v="*" zoom-max="11">
+				<area fill="#E0E0E0"/>
 			</rule>
-			<!-- осыпь -->
-			<rule e="way" k="natural" v="scree|shingle" closed="yes">
-				<area fill="#faf5f5" />
-				<area src="file:patterns/scree.svg" symbol-width="32" />
+			<rule e="any" k="*" v="*" zoom-min="12" zoom-max="13">
+				<area symbol-height="16" src="file:patterns/scree.svg"/>
 			</rule>
+			<rule e="any" k="*" v="*" zoom-min="14"  zoom-max="17">
+				<area symbol-height="32" src="file:patterns/scree.svg"/>
+			</rule>
+			<rule e="any" k="*" v="*" zoom-min="18">
+				<area symbol-height="64" src="file:patterns/scree.svg"/>
+			</rule>
+		</rule>
+
+		<!-- Голые скалы -->
+		<rule e="way" k="natural" v="rock|bare_rock" closed="yes" zoom-min="12">
+			<rule e="way" k="*" v="*" zoom-max="13">
+				<area symbol-height="16" src="file:patterns/rock.svg"/>
+			</rule>
+			<rule e="way" k="*" v="*" zoom-min="14" zoom-max="17">
+				<area symbol-height="32" src="file:patterns/rock.svg"/>
+			</rule>
+			<rule e="way" k="*" v="*" zoom-min="18">
+				<area symbol-height="64" src="file:patterns/rock.svg"/>
+			</rule>
+		</rule>
+
 			<!-- ледники -->
 			<rule e="way" k="natural" v="glacier" closed="yes">
 				<area fill="#BFd0f8ff" />
@@ -815,7 +835,7 @@
 		<rule e="way" k="natural" v="beach" zoom-min="15">
 			<caption k="name" font-style="normal" font-family="sans_serif" font-size="12" fill="#333333" stroke="#FFFFFF" stroke-width="0.8" text-wrap-width="120" />
 		</rule>
-		<rule e="way" k="natural" v="heath|marsh|wetland|scrub" zoom-min="15">
+		<rule e="way" k="natural" v="heath|marsh|wetland|scrub|mud" zoom-min="15">
 			<caption k="name" font-style="normal" font-family="sans_serif" font-size="12" fill="#333333" stroke="#FFFFFF" stroke-width="0.8" text-wrap-width="120" />
 		</rule>
 	</rule>
@@ -1066,12 +1086,32 @@
 			<rule e="way" k="waterway" v="riverbank">
 				<area fill="#A2CBED" />
 			</rule>
+
 			<!-- болото -->
 			<rule e="way" k="natural" v="marsh|wetland" closed="yes">
-				<area fill="#65adcfcc" />
-				<area src="file:patterns/marsh.svg" symbol-width="40" />
+			    <rule e="way" k="*" v="*">
+				<area fill="#60E6FFDB"/> 
+			    </rule>
+			    <rule e="way" k="*" v="*" zoom-max="13">
+				<area symbol-height="16" src="file:patterns/marsh.svg"/>
+			    </rule>
+			    <rule e="way" k="*" v="*" zoom-min="14" zoom-max="17">
+				<area symbol-height="32" src="file:patterns/marsh.svg"/>
+			    </rule>
+			    <rule e="way" k="*" v="*" zoom-min="18">
+				<area symbol-height="64" src="file:patterns/marsh.svg"/>
+			    </rule>
 			</rule>
-		</rule>
+
+			<!-- "просто грязь" NOTE не проверял, не знаю где такое -->
+			<rule e="way" k="natural" v="mud" closed="yes">
+			    <rule e="way" k="tidal" v="yes">
+				<rule cat="background" e="way" k="*" v="*">
+				    <area fill="#60E6FFDB"/> 
+				</rule>
+			    </rule>
+			</rule>
+    		</rule>
 	</rule>
 	<!-- название озер и т.п. -->
 	<rule e="node" k="landuse|natural" v="reservoir|basin|water" zoom-min="12">
@@ -1437,7 +1477,7 @@
 	</rule>
 
 	<!-- здания (#ffbbbb - красно-кирпичный)  -->
-	<rule e="way" k="building" v="*" zoom-min="14"> 
+	<rule e="any" k="building" v="*" zoom-min="14"> 
 		<!-- все типы -->
 		<area fill="#ffbbbb" stroke="#444444" stroke-width="0.1" />
 		<!-- детализация по цвету для зданий -->
@@ -2140,7 +2180,7 @@
 		</rule>
 		<!-- торговые центры -->
 		<rule e="way" k="shop" v="mall" zoom-min="14">
-			<area fill="#c7c7ee" stroke="#b0b0b0" stroke-width="0.2" />
+			<area fill="#c7c7ee" stroke="#b0b0b0" stroke-width="0.1" />
 			<rule e="way" k="shop" v="mall" zoom-min="15">
 				<symbol id="s_mall" src="file:symbols/s_mall.svg" symbol-height="15" />
 				<rule e="way" k="shop" v="*" zoom-min="16">
@@ -2388,10 +2428,10 @@
 
 		<!-- деревня -->
 		<rule e="node" k="place" v="village" zoom-min="8">
-			<rule cat="nocity" e="node" k="popcat" v="pc_5000|pc_10000|pc_20000|pc_30000|pc_50000|pc_100000|pc_200000|pc_500000|pc_1000000" zoom-max="8">
+			<rule e="node" k="popcat" v="pc_5000|pc_10000|pc_20000|pc_30000|pc_50000|pc_100000|pc_200000|pc_500000|pc_1000000" zoom-max="8">
 				<caption k="name" font-style="normal" font-size="11" fill="#000000" stroke="#C0FFFFFF" stroke-width="2" priority="102" text-transform="capitalize" text-wrap-width="130"/>
 			</rule>
-			<rule cat="nocity" e="node" k="popcat" v="pc_0|pc_1|~" zoom-min="9" zoom-max="9">
+			<rule e="node" k="popcat" v="pc_0|pc_1|~" zoom-min="9" zoom-max="9">
 				<caption k="name" font-style="normal" font-size="11" fill="#000000" stroke="#C0FFFFFF" stroke-width="2" priority="102" text-transform="capitalize" text-wrap-width="130"/>
 			</rule>
 			<rule e="node" k="popcat" v="pc_1000|pc_5000|pc_10000|pc_20000|pc_30000|pc_50000|pc_100000|pc_200000|pc_500000|pc_1000000" zoom-min="9" zoom-max="9">
@@ -2415,10 +2455,10 @@
 
 		<!-- небольшой город -->
 		<rule e="node" k="place" v="town" zoom-min="6">
-			<rule cat="nocity" e="node" k="popcat" v="pc_20000|pc_30000|pc_50000|pc_100000|pc_200000|pc_500000|pc_1000000" zoom-max="6">
+			<rule e="node" k="popcat" v="pc_20000|pc_30000|pc_50000|pc_100000|pc_200000|pc_500000|pc_1000000" zoom-max="6">
 				<caption k="name" font-style="normal" font-size="10" fill="#000000" stroke="#C0FFFFFF" stroke-width="2" priority="104" text-transform="capitalize" text-wrap-width="130"/>
 			</rule>
-			<rule cat="nocity" e="node" k="popcat" v="pc_0|pc_1|pc_1000|pc_5000|pc_10000|~" zoom-min="7" zoom-max="7">
+			<rule e="node" k="popcat" v="pc_0|pc_1|pc_1000|pc_5000|pc_10000|~" zoom-min="7" zoom-max="7">
 				<caption k="name" font-style="normal" font-size="12" fill="#000000" stroke="#C0FFFFFF" stroke-width="2" priority="104" text-transform="capitalize" text-wrap-width="130"/>
 			</rule>
 			<rule e="node" k="popcat" v="pc_20000|pc_30000|pc_50000|pc_100000|pc_200000|pc_500000|pc_1000000" zoom-min="7" zoom-max="7">
@@ -2487,19 +2527,19 @@
 
 		<!-- район или отдельная часть города, имеющая своё название (не административное) -->
 		<rule e="node" k="place" v="suburb|neighbourhood|quarter" zoom-min="12" zoom-max="12">
-			<caption k="name" font-style="bold_italic" font-family="serif" font-size="11" fill="#90000000" stroke="#50ffffff" stroke-width="3" priority="103"/>
+			<caption k="name" font-style="bold_italic" font-family="serif" font-size="11" fill="#90000000" stroke="#c0ffffff" stroke-width="3" priority="103" text-wrap-width="120"/>
 		</rule>
 		<rule e="node" k="place" v="suburb|neighbourhood|quarter" zoom-min="13" zoom-max="16">
-			<caption k="name" font-style="bold_italic" font-family="serif" font-size="13" fill="#90000000" stroke="#50ffffff" stroke-width="3" priority="103"/>
+			<caption k="name" font-style="bold_italic" font-family="serif" font-size="13" fill="#90000000" stroke="#c0ffffff" stroke-width="3" priority="103" text-wrap-width="120" />
 		</rule>
 
 		<!-- местное название -->
 		<rule e="any" k="place" v="locality" zoom-min="12">
 		    <rule e="any" k="mountain_pass|natural|tourism" v="~" zoom-max="16">
-			<caption k="name" font-style="italic" font-family="serif" font-size="10" fill="#80000000" stroke="#C0ffffff" stroke-width="3" priority="97"/>
+			<caption k="name" font-style="italic" font-family="serif" font-size="12" fill="#90000000" stroke="#c0ffffff" stroke-width="3" priority="97" text-wrap-width="120" />
 		    </rule>
 		    <rule e="any" k="mountain_pass|natural|tourism" v="~" zoom-min="17">
-			<caption k="name" font-style="italic" font-family="serif" font-size="14" fill="#80000000" stroke="#C0ffffff" stroke-width="3" priority="97"/>
+			<caption k="name" font-style="italic" font-family="serif" font-size="15" fill="#90000000" stroke="#c0ffffff" stroke-width="3" priority="97" text-wrap-width="120" />
 		    </rule>
 		</rule>
 
