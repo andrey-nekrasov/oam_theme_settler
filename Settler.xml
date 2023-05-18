@@ -7,7 +7,7 @@
     Contact: andrey.nekrasov@gmail.com		
 
     2023.may.18
-    v2.0.27
+    v2.0.28
 
     ###
     Когда то давно это была тема "active RT5 (active RenderTheme Version 5)"
@@ -3405,13 +3405,21 @@
 	<rule cat="c_mtb_routes" e="any" k="*" v="*" zoom-min="13">
 
 	    <!-- MTB маршруты -->
-	    <rule e="any" k="mtbnetwork" v="imn|nmn|rmn|lmn|omn|umn">
+	    <rule e="any" k="mtbnetwork|network" v="imn|nmn|rmn|lmn|omn|umn">
     		<line dy="-0.9" stroke="#cc00cc" stroke-width="0.45" stroke-dasharray="15,6" stroke-linecap="butt" scale="stroke" />
 		<rule e="any" k="*" v="*" zoom-min="14">
 	    	    <lineSymbol src="file:symbols/bicycle.svg" position="above" symbol-percent="120" dy="-1" repeat="true" repeat-start="10" repeat-gap="250" />
 	    	    <pathText priority="10" k="ref_mtb" font-style="bold" font-size="10" fill="#cc00cc" stroke="#ffffff" stroke-width="2.5" dy="0" repeat-start="50" repeat-gap="300" />
 		</rule>
 	    </rule>
+
+	    <!-- MTB треки в байпарках - OAM -->
+	    <rule e="any" k="mtb_scale_imba" v="mtba_0|mtba_1|mtba_2|mtba_3|mtba_4" zoom-min="12">
+		<lineSymbol src="file:symbols/bicycle.svg" position="above" symbol-percent="120" dy="-1" repeat="true" repeat-start="10" repeat-gap="250" />
+		<line dy="-0.9" stroke="#cc00cc" stroke-width="0.45" stroke-dasharray="18,5" stroke-linecap="butt" scale="stroke" />
+	    </rule>
+
+	    <!-- дальше не "маршруты" а просто всё подряд с тегами про mtb -->
 
 	    <!-- "естественные" mtb треки - OAM -->
 	    <rule e="any" k="mtb_scale|mtb_scale_uphill" v="mtbs_0|mtbs_1|mtbs_2|mtbs_3|mtbs_4|mtbs_5|mtbs_6|mtbu_0|mtbu_1|mtbu_2|mtbu_3|mtbu_4|mtbu_5">
@@ -3424,12 +3432,6 @@
 	    	<line dy="-0.9" stroke="#cc00cc" stroke-width="0.45" stroke-dasharray="15,6" stroke-linecap="butt" scale="stroke" />
 	    </rule>
 
-	    <!-- MTB треки в байпарках - OAM -->
-	    <rule e="any" k="mtb_scale_imba" v="mtba_0|mtba_1|mtba_2|mtba_3|mtba_4" zoom-min="12">
-		<lineSymbol src="file:symbols/bicycle.svg" position="above" symbol-percent="120" dy="-1" repeat="true" repeat-start="10" repeat-gap="250" />
-		<line dy="-0.9" stroke="#cc00cc" stroke-width="0.45" stroke-dasharray="18,5" stroke-linecap="butt" scale="stroke" />
-	    </rule>
-
 	    <!-- MTB Routes without mtb:scale values - Lomaps -->
 	    <rule e="way" k="route|bicycle" v="mtb|yes|designated" zoom-min="13">
 		<rule e="way" k="mtb:scale" v="~">
@@ -3438,8 +3440,10 @@
 		    <pathText k="ref" font-style="bold" font-size="11" dy="1.4" fill="#B11BB9" stroke="#ffffff" stroke-width="2" />
 		</rule>
 	    </rule>
+
 	</rule> 
 
+	<!-- ########################################################################################################################################################################### -->
 
 	<!-- OSM Веломаршруты -->
 	<rule cat="c_routes" e="any" k="*" v="*" zoom-min="13">
@@ -3453,14 +3457,10 @@
 	    </rule>
 	</rule>
 
-
-
-
 	<!-- ########################################################################################################################################################################### -->
 
-
-	<!-- Пешеходные маршруты -->
-	<rule e="way" k="hknetwork|network" v="*" cat="hikingtrails" zoom-min="8">
+	<!-- Пешеходные маршруты | *wn - walking network -->
+	<rule e="way" k="hknetwork|network" v="iwn|nwn|rwn|lwn|own|pwn" cat="hikingtrails" zoom-min="8">
 		<rule e="way" k="hknetwork|network" v="iwn|nwn" zoom-min="10" zoom-max="11">
 			<line stroke="#95F2221E" stroke-width="2.0" />
 			<line stroke="#95E7B3B3" stroke-width="1.8" />
@@ -3480,6 +3480,8 @@
 			<pathText dy="-1" priority="11" k="ref" font-style="bold" font-size="11" fill="#631f1f" stroke="#ffffff" stroke-width="2.0" repeat-start="30" repeat-gap="300" />
 		</rule>
 	</rule>
+
+	<!-- ########################################################################################################################################################################### -->
 
 	<!-- Горнолыжные трассы, беговые лыжи, санки // Целиком скопировано из темы TOTM -->
 	<rule cat="winter_sports" e="way" k="piste:type" v="*" zoom-min="13">
