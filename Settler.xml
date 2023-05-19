@@ -6,8 +6,8 @@
     Andrey Nekrasov
     Contact: andrey.nekrasov@gmail.com		
 
-    2023.may.18
-    v2.0.28
+    2023.may.19
+    v2.0.29
 
     ###
     Когда то давно это была тема "active RT5 (active RenderTheme Version 5)"
@@ -1801,7 +1801,8 @@
 								<line stroke="#53534e" stroke-width="0.4" stroke-dasharray="8,6" stroke-linecap="butt" scale="stroke" />
 							</rule>
 						</rule>
-						<rule e="way" k="foot" v="ft_no">
+						<!-- выделяются цветом в том MTB трейлы -->
+						<rule e="way" k="foot" v="ft_no|no">
 							<line stroke="#FF4000" stroke-width="0.4" stroke-dasharray="3,5" stroke-linecap="butt" scale="stroke" />
 						</rule>
 						<!-- название дорожек -->
@@ -1996,14 +1997,10 @@
 				</rule>
 
 				<!-- стрелочка - дорога в одну сторону -->
-				<rule e="way" k="oneway" v="yes|1" zoom-min="15" zoom-max="16">
-					<lineSymbol src="file:symbols/oneway_arrow.svg" symbol-percent="40" dy="0.07" position="center" align-center="true" repeat="true" repeat-gap="100" repeat-start="2" />
-				</rule>
-				<rule e="way" k="oneway" v="yes|1" zoom-min="17" zoom-max="17">
-					<lineSymbol src="file:symbols/oneway_arrow.svg" symbol-percent="60" dy="0.07" position="center" align-center="true" repeat="true" repeat-gap="100" repeat-start="2" />
-				</rule>
-				<rule e="way" k="oneway" v="yes|1" zoom-min="18">
-					<lineSymbol src="file:symbols/oneway_arrow.svg" symbol-percent="80" dy="0.07" position="center" align-center="true" repeat="true" repeat-gap="100" repeat-start="2" />
+				<rule e="way" k="oneway" v="yes|1" zoom-min="16">
+				    <rule e="way" k="bicycle|mtb" v="~">
+					<lineSymbol src="file:symbols/oneway_arrow.svg" symbol-percent="35" align-center="true" repeat="true" repeat-gap="100" repeat-start="2" />
+				    </rule>
 				</rule>
 
 				<!-- трамваи поверх дорог -->
@@ -3403,7 +3400,6 @@
 
 	<!-- MTB -->
 	<rule cat="c_mtb_routes" e="any" k="*" v="*" zoom-min="13">
-
 	    <!-- MTB маршруты -->
 	    <rule e="any" k="mtbnetwork|network" v="imn|nmn|rmn|lmn|omn|umn">
     		<line dy="-0.9" stroke="#cc00cc" stroke-width="0.45" stroke-dasharray="15,6" stroke-linecap="butt" scale="stroke" />
@@ -3442,6 +3438,21 @@
 	    </rule>
 
 	</rule> 
+
+	<!-- стрелочки | тут добавить и проверить - условия когда рисовать - для всех mtb -->
+	<rule e="way" k="oneway" v="yes|1" zoom-min="15">
+	    <rule e="way" k="bicycle|mtb" v="*" zoom-min="13">
+		<rule e="way" k="*" v="*" zoom-min="15" zoom-max="16">
+		    <lineSymbol src="file:symbols/oneway_arrow.svg" symbol-percent="40" dy="0.07" position="center" align-center="true" repeat="true" repeat-gap="100" repeat-start="2" />
+		</rule>
+		<rule e="way" k="*" v="*" zoom-min="17" zoom-max="17">
+	    	    <lineSymbol src="file:symbols/oneway_arrow.svg" symbol-percent="60" dy="0.07" position="center" align-center="true" repeat="true" repeat-gap="100" repeat-start="2" />
+		</rule>
+		<rule e="way" k="*" v="*" zoom-min="18">
+	    	    <lineSymbol src="file:symbols/oneway_arrow.svg" symbol-percent="80" dy="0.07" position="center" align-center="true" repeat="true" repeat-gap="100" repeat-start="2" />
+		</rule>
+	    </rule>
+	</rule>
 
 	<!-- ########################################################################################################################################################################### -->
 
