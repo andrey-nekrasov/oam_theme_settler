@@ -6,8 +6,8 @@
     Andrey Nekrasov
     Contact: andrey.nekrasov@gmail.com		
 
-    2023.jun.02
-    v2.0.45
+    2023.jun.22
+    v2.0.47
 
     ###
     Когда то давно это была тема "active RT5 (active RenderTheme Version 5)"
@@ -213,12 +213,6 @@
 			<name lang="en" value="Power line" />
 			<cat id="power_line" />
 		</layer>
-		<layer id="L_underground_footway" enabled="true" visible="false">
-			<name lang="ru" value="Подземные пешеходные переходы" />
-			<name lang="de" value="Unterirdische Fußgängerüberwege" />
-			<name lang="en" value="Underground pedestrian crossings" />
-			<cat id="underground_footway" />
-		</layer>
 		<layer id="L_contourlines" enabled="true" visible="false">
 			<name lang="ru" value="Изолинии" />
 			<name lang="de" value="Höhenlinien" />
@@ -230,6 +224,18 @@
 			<name lang="de" value="Gebäudetypen (Schulen, Krankenhäuser etc.)" />
 			<name lang="en" value="Building types (schools, hospitals, etc.)" />
 			<cat id="building_type" />
+		</layer>
+		<layer id="L_underground_footway" enabled="true" visible="false">
+			<name lang="ru" value="Подземные пешеходные переходы" />
+			<name lang="de" value="Unterirdische Fußgängerüberwege" />
+			<name lang="en" value="Underground pedestrian crossings" />
+			<cat id="underground_footway" />
+		</layer>
+		<layer id="L_underground_water" enabled="false" visible="false">
+			<name lang="ru" value="Подземные трубопроводы с водой (каналы, реки, ручьи)" />
+			<name lang="de" value="Unterirdische Rohrleitungen mit Wasser (Kanäle, Flüsse, Bäche)" />
+			<name lang="en" value="Underground pipelines with water (canals, rivers, streams)" />
+			<cat id="underground_water" />
 		</layer>
 		<layer id="hiking" visible="true">
 			<name lang="ru" value="Hiking and trekking" />
@@ -267,9 +273,10 @@
 			<overlay id="L_landscapefeat" />
 			<overlay id="L_mast_communication" />
 			<overlay id="L_power_line" />
-			<overlay id="L_underground_footway" />
 			<overlay id="L_contourlines" />
 			<overlay id="L_building_type" />
+			<overlay id="L_underground_footway" />
+			<overlay id="L_underground_water" />
 		</layer>
 	</stylemenu>
 	<!-- море -->
@@ -907,7 +914,7 @@
 		</rule>
 	</rule>
 	<!-- Вода в тоннеле/под землей (реки, ручьи, каналы) -->
-	<rule e="way" k="tunnel|location" v="yes|underground|culvert" zoom-min="13">
+	<rule cat="underground_water" e="way" k="tunnel|location" v="yes|underground|culvert" zoom-min="13">
 		<rule e="way" k="waterway" v="ditch|stream">
 			<line stroke="#90A2CBED" stroke-width="0.4" stroke-dasharray="20,2" stroke-linecap="butt" />
 		</rule>
@@ -2438,12 +2445,14 @@
 	</rule>
 	<!-- местное название -->
 	<rule e="any" k="place" v="locality" zoom-min="12">
-		<rule e="any" k="mountain_pass|natural|tourism" v="~" zoom-max="16">
-			<caption k="name" font-style="italic" font-family="serif" font-size="12" fill="#90000000" stroke="#c0ffffff" stroke-width="3" priority="97" text-wrap-width="135" />
+	    <rule e="any" k="mountain_pass|natural|tourism" v="~">
+		<rule e="any" k="*" v="*" zoom-max="16">
+			<caption k="name" font-style="italic" font-family="serif" font-size="16" fill="#90000000" stroke="#c0ffffff" stroke-width="3" priority="97" text-wrap-width="135" />
 		</rule>
-		<rule e="any" k="mountain_pass|natural|tourism" v="~" zoom-min="17">
-			<caption k="name" font-style="italic" font-family="serif" font-size="15" fill="#90000000" stroke="#c0ffffff" stroke-width="3" priority="97" text-wrap-width="135" />
+		<rule e="any" k="*" v="*" zoom-min="17">
+			<caption k="name" font-style="italic" font-family="serif" font-size="17" fill="#90000000" stroke="#c0ffffff" stroke-width="3" priority="97" text-wrap-width="135" />
 		</rule>
+	    </rule>
 	</rule>
 	<!-- Населенные пункты -->
 	<rule e="node" k="place" v="*">
@@ -3456,6 +3465,8 @@
 				<caption symbol-id="id_zoo" k="name" font-style="italic" font-size="12" fill="#000000" stroke="#ffffff" stroke-width="1.5" text-wrap-width="120" />
 			</rule>
 		</rule>
+
+
 	</rule>
 	<!-- автобусная остановка -->
 	<rule e="node" k="highway" v="bus_stop" zoom-min="14" cat="pub_transp">
