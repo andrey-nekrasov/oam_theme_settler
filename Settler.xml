@@ -6,8 +6,8 @@
     Andrey Nekrasov
     Contact: andrey.nekrasov@gmail.com		
 
-    2023.jun.22
-    v2.0.47
+    2023.jul.31
+    v2.0.51
 
     ###
     Когда то давно это была тема "active RT5 (active RenderTheme Version 5)"
@@ -19,6 +19,10 @@
     https://github.com/IgorMagellan/TOTM
     https://github.com/asamm/lomaps-mapsforge/tree/main/theme
     https://voluntary.nichesite.org/
+
+
+    Использовать "TODO" для проверок кода.
+
 -->
 	<stylemenu id="menu" defaultvalue="hiking" defaultlang="en">
 		<layer id="L_hikingtrails" enabled="false" visible="false">
@@ -598,6 +602,7 @@
 			<caption k="name" font-style="normal" font-family="sans_serif" font-size="12" fill="#333333" stroke="#ffffff" stroke-width="1.5" text-wrap-width="120" />
 		</rule>
 	</rule>
+
 	<!-- -->
 	<rule e="way" k="leisure" v="*" zoom-min="10">
 		<rule e="way" k="leisure" v="sports_centre">
@@ -606,13 +611,12 @@
 		<rule e="way" k="leisure" v="stadium">
 			<area fill="#E1EED8" stroke="#A3BAA5" stroke-width="0.2" />
 		</rule>
-		<rule e="way" k="leisure" v="pitch">
-			<area fill="#EBF3E2" stroke="#B7C7B9" stroke-width="0.2" />
-		</rule>
-		<!-- спортивная площадка / тренажеры - пока на картах OAM это не работает -->
+
+		<!-- спортивная площадка / тренажеры NOTE только на Lomaps, хорошо бы проверить -->
 		<rule e="way" k="leisure" v="fitness_station">
 			<area fill="#EBF3E2" stroke="#B7C7B9" stroke-width="0.2" />
 		</rule>
+
 		<!-- аквапарк -->
 		<rule e="way" k="leisure" v="water_park">
 			<area fill="#DAE4BD" />
@@ -656,6 +660,7 @@
 			<caption k="name" font-style="normal" font-family="sans_serif" font-size="10" fill="#333333" stroke="#ffffff" stroke-width="1.5" text-wrap-width="120" />
 		</rule>
 	</rule>
+
 	<rule e="any" k="natural" v="*">
 		<rule e="way" k="natural" v="*" zoom-min="5">
 			<!-- пастбища, горные луга -->
@@ -808,6 +813,9 @@
 			<caption k="name" font-style="normal" font-family="sans_serif" font-size="12" fill="#333333" stroke="#FFFFFF" stroke-width="0.8" text-wrap-width="120" />
 		</rule>
 	</rule>
+
+
+
 	<!-- Изолинии / линии высот. Не рисуются поверх воды и зданий -->
 	<rule cat="contourlines" e="way" k="contour_ext" v="*">
 		<!-- contour lines level 8 -->
@@ -1018,7 +1026,7 @@
 				<rule e="way" k="waterway" v="dock">
 					<area fill="#A2CBED" />
 				</rule>
-				<!-- TODO / по идее тут должны рисоваться шлюзы, но я не уверен что это сейчас работает -->
+				<!-- TODO по идее тут должны рисоваться шлюзы, но я не уверен что это сейчас работает -->
 				<rule e="way" k="lock" v="yes" zoom-min="12">
 					<rule e="way" k="waterway" v="river">
 						<line stroke="#000044" stroke-width="2.0" stroke-linecap="square" />
@@ -1178,6 +1186,8 @@
 			</rule>
 		</rule>
 	</rule>
+
+
 	<!-- церкви и монастыри -->
 	<rule e="way" k="amenity" v="church|monastery" zoom-min="12">
 		<rule e="way" k="area" v="yes|true">
@@ -1485,6 +1495,12 @@
 			</rule>
 		</rule>
 	</rule>
+
+	<rule e="way" k="leisure" v="pitch" zoom-min="10">
+		<area fill="#cdeca7" stroke="#9ccf5e" stroke-width="0.1"/>
+		<caption k="name" dy="11" font-family="sans_serif" font-size="11" fill="#303030" stroke="#ffffff" stroke-width="2.5" text-wrap-width="110"/>
+	</rule>
+
 	<!-- здания (#ffbbbb - красно-кирпичный)  -->
 	<rule e="any" k="building" v="*" zoom-min="14">
 		<!-- все типы -->
@@ -1519,6 +1535,8 @@
 			<caption k="name" position="below" dy="8" font-style="bold" font-family="sans_serif" font-size="12" fill="#333333" stroke="#ffffff" stroke-width="1.8" text-wrap-width="120" />
 		</rule>
 	</rule>
+
+
 	<!-- -->
 	<rule e="any" k="*" v="*" zoom-min="18">
 		<!-- добавил для того, что бы убрать лишний текст для highway=emergency_access_point -->
@@ -2420,6 +2438,8 @@
 		<pathText k="name" font-style="italic" font-size="13" dy="0.07" fill="#1E71C6" stroke="#ffffff" stroke-width="4" />
 	</rule>
 
+
+
 	<!-- электростанции и источники эл.энергии -->
 	<rule e="way" k="power" v="*" zoom-min="11">
 		<rule e="way" k="power" v="generator">
@@ -2615,6 +2635,8 @@
 			</rule>
 		</rule>
 	</rule>
+
+
 	<!-- национальные парки и охраняемые территории -->
 	<rule e="way" k="leisure|boundary" v="nature_reserve|protected_area|national_park" zoom-min="8" cat="protected_area" closed="yes">
 		<rule e="any" k="*" v="*" zoom-max="13">
@@ -2701,17 +2723,20 @@
 			<caption k="name" symbol-id="s_water_works" font-style="bold" font-size="10" fill="#256f25" stroke="#E5FFFFFF" stroke-width="2" />
 		</rule>
 	</rule>
-	<!-- трубопровод над землей -->
+
+	<!-- трубопровод на земле/над землей | NOTE - oam не поддерживает теги "overhead|overground", а LoMaps - не поддерживает тег "underground" -->
 	<rule e="way" k="man_made" v="pipeline">
 		<rule e="way" k="tunnel" v="~|no">
-			<rule e="way" k="location" v="~|overground">
-				<line stroke="#CCCCCC" stroke-width="0.6" stroke-linecap="butt" />
-				<line stroke="#9CA6BA" stroke-width="0.6" scale="all" stroke-dasharray="1.8,0.6" stroke-linecap="butt" />
-				<line stroke="#FFFFFF" stroke-width="0.1" stroke-linecap="butt" />
-				<pathText k="name" font-style="normal" font-size="9" fill="#9CA6BA" stroke="#FFFFFF" stroke-width="1" />
+			<rule e="way" k="location" v="~|overhead|overground">
+			    <line stroke="#5E8BAD" stroke-width="0.8" stroke-linecap="butt" />
+			    <line stroke="#b5d6f1" stroke-width="0.6" scale="all" stroke-dasharray="2,0.4" stroke-linecap="butt"/>
+			    <line stroke="#ffffff" stroke-width="0.2" stroke-linecap="butt"/>
+			    <pathText k="name" font-style="normal" font-size="9" fill="#9CA6BA" stroke="#FFFFFF" stroke-width="1" />
 			</rule>
+			<!-- location=underground просто не рисуется -->
 		</rule>
 	</rule>
+
 	<!-- крест (например на вершине горы) -->
 	<rule e="node" k="man_made" v="cross" zoom-min="12">
 		<symbol src="file:symbols/cross.svg" symbol-percent="70" />
@@ -2742,6 +2767,33 @@
 			</rule>
 		</rule>
 	</rule>
+
+	<!-- фонтан -->
+	<rule e="any" k="amenity" v="fountain" zoom-min="15">
+		<rule e="any" k="*" v="*" zoom-min="15" zoom-max="17">
+			<symbol src="file:symbols/fountain.svg" symbol-percent="70" />
+		</rule>
+		<rule e="any" k="*" v="*" zoom-min="18">
+			<symbol src="file:symbols/fountain.svg" symbol-percent="90" />
+		</rule>
+	</rule>
+
+	<!-- водопой -->
+	<rule e="any" k="amenity" v="watering_place" zoom-min="11">
+	    <!-- область -->
+	    <rule e="way" k="amenity" v="watering_place">
+		<line stroke="#D960A4D9" stroke-width="0.3" />
+		<area fill="#A2CBED"/>
+	    </rule>
+	    <!-- точка -->
+	    <rule e="node" k="amenity" v="watering_place">
+		<symbol src="file:symbols/watering_place.svg" symbol-percent="100" />
+	    </rule>
+	    <rule e="any" k="*" v="*" zoom-min="20">
+	        <caption k="name" font-style="bold_italic" position="below" font-size="14" fill="#035FBC" stroke="#ffffff" stroke-width="2.5"/>
+	    </rule>
+	</rule>
+
 	<!-- -->
 	<rule e="way" k="barrier" v="*" zoom-min="14">
 		<!-- историческое - городская стена -->
@@ -3203,14 +3255,6 @@
 				<caption symbol-id="id_theatre" k="name" font-style="bold" font-family="sans_serif" font-size="12" fill="#333333" stroke="#ffffff" stroke-width="1.5" />
 			</rule>
 		</rule>
-		<rule e="any" k="amenity" v="fountain" zoom-min="15">
-			<rule e="any" k="amenity" v="fountain" zoom-min="15" zoom-max="17">
-				<symbol src="file:symbols/fountain.svg" symbol-percent="70" />
-			</rule>
-			<rule e="any" k="amenity" v="fountain" zoom-min="18">
-				<symbol src="file:symbols/fountain.svg" symbol-percent="90" />
-			</rule>
-		</rule>
 		<!-- лавочки -->
 		<rule cat="benches" e="any" k="amenity" v="bench" zoom-min="15">
 			<symbol src="file:symbols/bench.svg" symbol-percent="80" display="always" />
@@ -3522,6 +3566,8 @@
 		<rule e="any" k="mtb:scale" v="0|1|2|3|4|5|6">
 			<lineSymbol src="file:symbols/bicycle.svg" position="above" symbol-percent="120" dy="-1" repeat="true" repeat-start="10" repeat-gap="250" />
 			<line dy="-0.9" stroke="#cc00cc" stroke-width="0.45" stroke-dasharray="15,6" stroke-linecap="butt" scale="stroke" />
+			<!-- TODO проверить NOTE пишутся названия трейлов? -->
+			<pathText priority="10" k="mtb:name" font-style="bold" font-size="10" fill="#cc00cc" stroke="#ffffff" stroke-width="2.5" dy="0" repeat-start="50" repeat-gap="300" />
 		</rule>
 
 		<!-- MTB Routes without mtb:scale values - Lomaps -->
@@ -3805,9 +3851,10 @@
 	<rule e="any" k="aerialway" v="station" zoom-min="14">
 		<!-- исключая "building", у них свои описания выше -->
 		<rule e="any" k="building" v="~">
-			<caption k="name" dy="10" priority="10" font-style="bold_italic" font-size="11" fill="#BF500000" stroke="#ffffff" stroke-width="2.0" text-wrap-width="120" />
+		    <caption k="name" dy="10" priority="10" font-style="bold_italic" font-size="11" fill="#BF500000" stroke="#ffffff" stroke-width="2.0" text-wrap-width="120" />
 		</rule>
 	</rule>
+
 	<!-- фуникулеры -->
 	<rule e="way" k="aerialway" v="cable_car|gondola|mixed_lift|chair_lift|drag_lift|t-bar|j-bar|platter|rope_tow|magic_carpet|zip_line|goods" zoom-min="12">
 		<rule e="way" k="*" v="*" zoom-min="12" zoom-max="14">
@@ -3992,6 +4039,7 @@
 			<pathText k="name" dy="-1.9" font-style="bold" font-size="10" fill="#575757" stroke="#E5FFFFFF" stroke-width="1.0" priority="50" repeat-gap="500" />
 		</rule>
 	</rule>
+
 
 
 	<!-- кусок из Voluntary V5 LE - маркировка маршрутов в Европе -->
