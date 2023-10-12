@@ -6,8 +6,8 @@
     Andrey Nekrasov
     Contact: andrey.nekrasov@gmail.com		
 
-    2023.jul.31
-    v2.0.51
+    2023.oct.04
+    v2.0.57
 
     ###
     Когда то давно это была тема "active RT5 (active RenderTheme Version 5)"
@@ -26,45 +26,45 @@
 -->
 	<stylemenu id="menu" defaultvalue="hiking" defaultlang="en">
 		<layer id="L_hikingtrails" enabled="false" visible="false">
-			<name lang="ru" value="Пешеходные маршруты" />
-			<name lang="de" value="Wanderwege" />
-			<name lang="en" value="Waymarked Trails" />
+			<name lang="ru" value="🥾 Пешеходные маршруты" />
+			<name lang="de" value="🥾 Wanderwege" />
+			<name lang="en" value="🥾 Hiking network" />
 			<cat id="hikingtrails" />
 		</layer>
 		<layer id="L_waymarks" enabled="true" visible="false">
-			<name lang="ru" value="Разметка на маршрутах" />
-			<name lang="de" value="Wegzeichen" />
-			<name lang="en" value="Waymarks" />
+			<name lang="ru" value="◾ Разметка на маршрутах" />
+			<name lang="de" value="◾ Wegzeichen" />
+			<name lang="en" value="◾ Waymarks" />
 			<cat id="waymarks" />
 		</layer>
 		<layer id="L_mtb_trails" enabled="false" visible="false">
-			<name lang="ru" value="Трассы для горного велосипеда" />
-			<name lang="de" value="MTB trails" />
-			<name lang="en" value="MTB trails" />
+			<name lang="ru" value="🚵️Трассы для горного велосипеда" />
+			<name lang="en" value="🚵️MTB trails" />
+			<name lang="de" value="🚵 MTB-Trails" />
 			<cat id="c_mtb_routes" />
 		</layer>
 		<layer id="L_cycling_routes" enabled="false" visible="false">
-			<name lang="ru" value="Веломаршруты" />
-			<name lang="de" value="Cycling routes" />
-			<name lang="en" value="Cycling routes" />
+			<name lang="ru" value="🚴 Веломаршруты" />
+			<name lang="de" value="🚴 Cycling routes" />
+			<name lang="en" value="🚴 Cycling routes" />
 			<cat id="c_routes" />
 		</layer>
 		<layer id="L_cycleway" enabled="false" visible="false">
-			<name lang="ru" value="Велосипедная дорожка" />
-			<name lang="de" value="Cycle way" />
-			<name lang="en" value="Cycle way" />
+			<name lang="ru" value="🚴 Велосипедная дорожка" />
+			<name lang="de" value="🚴 Cycle way" />
+			<name lang="en" value="🚴 Cycle way" />
 			<cat id="cycleway" />
 		</layer>
 		<layer id="L_sports" enabled="true" visible="false">
-			<name lang="ru" value="Спорт" />
-			<name lang="de" value="Sport" />
-			<name lang="en" value="Sports" />
+			<name lang="ru" value="⚽ Спорт" />
+			<name lang="de" value="⚽ Sport" />
+			<name lang="en" value="⚽ Sports" />
 			<cat id="sports" />
 		</layer>
 		<layer id="L_winter_sports" enabled="false" visible="false">
-			<name lang="ru" value="Зимний спорт (лыжи/санки)" />
-			<name lang="de" value="Wintersport" />
-			<name lang="en" value="Winter sport" />
+			<name lang="ru" value="🎿️Зимний спорт (лыжи/санки)" />
+			<name lang="de" value="🎿 Wintersport" />
+			<name lang="en" value="🎿 Winter sport" />
 			<cat id="winter_sports" />
 		</layer>
 		<layer id="L_protected_area" enabled="false" visible="false">
@@ -80,51 +80,51 @@
 			<cat id="boundaries_areas" />
 		</layer>
 		<layer id="L_parking" enabled="true" visible="false">
-			<name lang="ru" value="Парковки" />
-			<name lang="de" value="Parkplätze" />
-			<name lang="en" value="Parking" />
+			<name lang="ru" value="🅿  Парковки" />
+			<name lang="de" value="🅿  Parkplätze" />
+			<name lang="en" value="🅿 ️Parking" />
 			<cat id="parking" />
 		</layer>
 		<layer id="L_barriers" enabled="true" visible="false">
-			<name lang="ru" value="Шлагбаумы и ворота" />
-			<name lang="de" value="Schranken und Tore" />
-			<name lang="en" value="Barriers and gates" />
+			<name lang="ru" value="⛔ Шлагбаумы и ворота" />
+			<name lang="de" value="⛔ Schranken und Tore" />
+			<name lang="en" value="⛔ Barriers and gates" />
 			<cat id="barriers" />
 		</layer>
 		<layer id="L_publictransport" enabled="true" visible="false">
-			<name lang="ru" value="Общественный транспорт" />
-			<name lang="de" value="Öffentlicher Verkehr" />
-			<name lang="en" value="Public transport" />
+			<name lang="ru" value="🚌 Общественный транспорт" />
+			<name lang="de" value="🚌 Öffentlicher Verkehr" />
+			<name lang="en" value="🚌 Public transport" />
 			<cat id="pub_transp" />
 		</layer>
 		<layer id="L_restaurants" enabled="true" visible="false">
-			<name lang="ru" value="Рестораны и кафе" />
-			<name lang="de" value="Restaurants + Cafés" />
-			<name lang="en" value="Restaurants + Cafés" />
+			<name lang="ru" value="🍴 Рестораны и кафе" />
+			<name lang="de" value="🍴 Restaurants + Cafés" />
+			<name lang="en" value="🍴 Restaurants + Cafés" />
 			<cat id="restaurants" />
 		</layer>
 		<layer id="L_shops" enabled="true" visible="false">
-			<name lang="ru" value="Магазины + услуги " />
-			<name lang="de" value="Geschäfte + Dienstleistungen" />
-			<name lang="en" value="Shops + services" />
+			<name lang="ru" value="🛒 Магазины + услуги " />
+			<name lang="de" value="🛒 Geschäfte + Dienstleistungen" />
+			<name lang="en" value="🛒 Shops + services" />
 			<cat id="shops" />
 		</layer>
 		<layer id="L_accommodation" enabled="true" visible="false">
-			<name lang="ru" value="Отели и другое размещение" />
-			<name lang="de" value="Hotels + Unterkünfte" />
-			<name lang="en" value="Hotels + Accommodation" />
+			<name lang="ru" value="🏨 Отели и другое размещение" />
+			<name lang="de" value="🏨 Hotels + Unterkünfte" />
+			<name lang="en" value="🏨 Hotels + Accommodation" />
 			<cat id="accommodation" />
 		</layer>
 		<layer id="L_pharmacies" enabled="true" visible="false">
-			<name lang="ru" value="Аптеки и больницы" />
-			<name lang="de" value="Apotheken und Krankenhäuser" />
-			<name lang="en" value="Pharmacies and hospitals" />
+			<name lang="ru" value="🚑 Аптеки и больницы" />
+			<name lang="de" value="🚑 Apotheken und Krankenhäuser" />
+			<name lang="en" value="🚑 Pharmacies and hospitals" />
 			<cat id="pharmacies" />
 		</layer>
 		<layer id="L_emergency" enabled="true" visible="false">
-			<name lang="ru" value="Службы спасения (полиция/пожарные/дефибриллятор и т.п.)" />
-			<name lang="de" value="Notfall (polizei, feuerwehr, ...)" />
-			<name lang="en" value="Emergency (police, firemen, ...)" />
+			<name lang="ru" value="🆘 Службы спасения (полиция/пожарные/дефибриллятор и т.п.)" />
+			<name lang="de" value="🆘 Notfall (Polizei, Feuerwehr, ...)" />
+			<name lang="en" value="🆘 Emergency (police, firemen, ...)" />
 			<cat id="emergency" />
 		</layer>
 		<layer id="L_monuments" enabled="true" visible="false">
@@ -152,39 +152,39 @@
 			<cat id="ruins" />
 		</layer>
 		<layer id="L_churches" enabled="true" visible="false">
-			<name lang="ru" value="Церкви, монастыри" />
-			<name lang="de" value="Kirchen" />
-			<name lang="en" value="Churches" />
+			<name lang="ru" value="⛪ Церкви, монастыри" />
+			<name lang="de" value="⛪ Kirchen" />
+			<name lang="en" value="⛪ Churches" />
 			<cat id="churches" />
 		</layer>
 		<layer id="L_playground" enabled="true" visible="false">
-			<name lang="ru" value="Детские игровые площадки" />
-			<name lang="de" value="Spielplatz" />
-			<name lang="en" value="Playground" />
+			<name lang="ru" value="🧸 Детские игровые площадки" />
+			<name lang="de" value="🧸 Spielplatz" />
+			<name lang="en" value="🧸 Playground" />
 			<cat id="playground" />
 		</layer>
 		<layer id="L_benches" enabled="true" visible="false">
-			<name lang="ru" value="Лавки, столы" />
-			<name lang="de" value="Bänke und Tische" />
-			<name lang="en" value="Benches and tables" />
+			<name lang="ru" value="🪑 Лавки, столы" />
+			<name lang="de" value="🪑 Bänke und Tische" />
+			<name lang="en" value="🪑 Benches and tables" />
 			<cat id="benches" />
 		</layer>
 		<layer id="L_toilets" enabled="true" visible="false">
-			<name lang="ru" value="Туалеты" />
-			<name lang="de" value="Toilette" />
-			<name lang="en" value="Toilet" />
+			<name lang="ru" value="🚾 Туалеты" />
+			<name lang="de" value="🚾 Toiletten" />
+			<name lang="en" value="🚾 Toilets" />
 			<cat id="toilets" />
 		</layer>
 		<layer id="L_refuge" enabled="true" visible="false">
-			<name lang="ru" value="Укрытие (домики/навесы/беседки)" />
-			<name lang="de" value="Zuflucht" />
-			<name lang="en" value="Refuge" />
+			<name lang="ru" value="🏚  Укрытие (домики/навесы/беседки)" />
+			<name lang="de" value="🏚  Unterstände" />
+			<name lang="en" value="🏚  Refuge" />
 			<cat id="refuge" />
 		</layer>
 		<layer id="L_water" enabled="true" visible="false">
-			<name lang="ru" value="Родники, питьевая вода, колодцы" />
-			<name lang="de" value="Frühling, trinkwasserstellen" />
-			<name lang="en" value="Spring, drinking water" />
+			<name lang="ru" value="💧 Родники, питьевая вода, колодцы" />
+			<name lang="de" value="💧 Frühling, trinkwasserstellen" />
+			<name lang="en" value="💧 Spring, drinking water" />
 			<cat id="water" />
 		</layer>
 		<layer id="L_water_flow_direction" enabled="true" visible="false">
@@ -194,39 +194,39 @@
 			<cat id="water_flow_direction" />
 		</layer>
 		<layer id="L_forest" enabled="true" visible="false">
-			<name lang="ru" value="Лес" />
-			<name lang="de" value="Wald" />
-			<name lang="en" value="Forest" />
+			<name lang="ru" value="🌲 Лес" />
+			<name lang="de" value="🌲 Wald" />
+			<name lang="en" value="🌲 Forest" />
 			<cat id="forest" />
 		</layer>
 		<layer id="L_landscapefeat" enabled="true" visible="false">
-			<name lang="ru" value="Особенности ландшафта (овраги, обрывы, воронки, хребты, " />
-			<name lang="de" value="Landschaftsmerkmale" />
-			<name lang="en" value="landscape features" />
+			<name lang="ru" value="🏞 ️ Особенности ландшафта (овраги, обрывы, воронки, хребты, " />
+			<name lang="de" value="🏞 ️ Gipfel, Landschaftsmerkmale" />
+			<name lang="en" value="🏞 ️ Landscape features" />
 			<cat id="landscapefeat" />
 		</layer>
 		<layer id="L_mast_communication" enabled="true" visible="false">
-			<name lang="ru" value="Мачта сотовой связи" />
-			<name lang="de" value="Mobilfunkmast" />
-			<name lang="en" value="Cellular tower" />
+			<name lang="ru" value="📶 Мачта сотовой связи" />
+			<name lang="de" value="📶 Mobilfunkmast" />
+			<name lang="en" value="📶 Cellular tower" />
 			<cat id="mast_communication" />
 		</layer>
 		<layer id="L_power_line" enabled="true" visible="false">
-			<name lang="ru" value="Линии электропередач" />
-			<name lang="de" value="Energieleitung" />
-			<name lang="en" value="Power line" />
+			<name lang="ru" value="⚡ Линии электропередач" />
+			<name lang="de" value="⚡ Energieleitung" />
+			<name lang="en" value="⚡ Power line" />
 			<cat id="power_line" />
 		</layer>
 		<layer id="L_contourlines" enabled="true" visible="false">
-			<name lang="ru" value="Изолинии" />
-			<name lang="de" value="Höhenlinien" />
-			<name lang="en" value="Contour lines" />
+			<name lang="ru" value="📈 Изолинии" />
+			<name lang="de" value="📈 Höhenlinien" />
+			<name lang="en" value="📈 Contour lines" />
 			<cat id="contourlines" />
 		</layer>
 		<layer id="L_building_type" enabled="true" visible="false">
-			<name lang="ru" value="Выделять разные типы зданий цветом (школы, больницы и т.п.)" />
-			<name lang="de" value="Gebäudetypen (Schulen, Krankenhäuser etc.)" />
-			<name lang="en" value="Building types (schools, hospitals, etc.)" />
+			<name lang="ru" value="🏫 Выделять разные типы зданий цветом (школы, больницы и т.п.)" />
+			<name lang="de" value="🏫 Gebäudetypen (Schulen, Krankenhäuser etc.)" />
+			<name lang="en" value="🏫 Building types (schools, hospitals, etc.)" />
 			<cat id="building_type" />
 		</layer>
 		<layer id="L_underground_footway" enabled="true" visible="false">
@@ -318,13 +318,15 @@
 	<rule e="way" k="amenity" v="hospital" zoom-min="12">
 		<area fill="#805cb885" stroke="#DBBDBA" stroke-width="0.1" />
 	</rule>
+
 	<!-- парк -->
-	<!-- <rule e="way" k="boundary" v="~"> -->
+        <!-- <rule e="way" k="boundary" v="~"> -->
 	<rule e="way" k="leisure" v="park" closed="yes" zoom-min="11">
 		<line stroke="#4000661A" stroke-width="0.18" stroke-dasharray="0.3, 2" />
 		<area fill="#4090d67e" />
 	</rule>
-	<!-- </rule> -->
+        <!-- </rule> -->
+
 	<!-- лес - фон рисуется всегда -->
 	<rule e="way" k="natural|landuse" v="forest|wood">
 		<rule e="way" k="natural|landuse" v="forest|wood" zoom-min="9" zoom-max="13">
@@ -334,6 +336,7 @@
 			<area fill="#99a3cf69" />
 		</rule>
 	</rule>
+
 	<!-- лес - детали, можно отключать -->
 	<rule cat="forest" e="way" k="natural|landuse" v="forest|wood" zoom-min="9">
 		<!-- обводка -->
@@ -543,12 +546,14 @@
 	<rule e="way" k="tourism" v="camp_site|hotel" zoom-min="12">
 		<area fill="#4086ad50" stroke="#8886ad50" stroke-width="0.2" />
 	</rule>
+
 	<!-- название - парк -->
 	<!-- <rule e="way" k="boundary" v="~"> -->
 	<rule e="way" k="leisure" v="park" zoom-min="15">
 		<caption k="name" font-style="italic" font-size="11" fill="#047a14" stroke="#FFFFFF" stroke-width="2" text-wrap-width="120" />
 	</rule>
 	<!-- </rule> -->
+
 	<!-- Площадь сельскохозяйственных угодий, используемых в основном для обработки почвы (однолетние культуры) -->
 	<rule e="way" k="landuse" v="farmland|farm" zoom-min="12">
 		<area fill="#ffffef" stroke="#C3C3C3" stroke-width="0.2" />
@@ -1770,13 +1775,24 @@
 					<line stroke="#FFFFFF" stroke-width="1.3" stroke-linecap="butt" />
 				</rule>
 			</rule>
-			<!-- дощатая тропа, обычно называется "экотропа". В OAM нет, может в Lomaps будет -->
+
+			<!-- дощатая тропа, обычно называется "экотропа". В OAM нет, в Lomaps есть -->
+			<rule e="way" k="bridge" v="boardwalk">
+				<rule e="way" k="highway" v="steps|footway|path" zoom-min="14">
+					<line stroke="#474641" stroke-width="1.0" stroke-dasharray="2.4,2.4" stroke-linecap="butt" />
+					<line stroke="#DDDDDD" stroke-width="0.5" stroke-linecap="butt" />
+				</rule>
+			</rule>
+
+<!--
 			<rule e="way" k="bridge" v="boardwalk">
 				<rule e="way" k="highway" v="steps|footway|path" zoom-min="14">
 					<line stroke="#8f540d" stroke-width="1.00" stroke-linecap="butt" />
 					<line stroke="#EEEEEE" stroke-width="0.6" stroke-linecap="butt" />
 				</rule>
 			</rule>
+-->
+
 			<!-- не тоннель и не мост. то есть по земле -->
 			<rule e="any" k="tunnel" v="~|no|false">
 				<rule e="any" k="bridge" v="~|no|false">
@@ -2778,8 +2794,8 @@
 		</rule>
 	</rule>
 
-	<!-- водопой -->
-	<rule e="any" k="amenity" v="watering_place" zoom-min="11">
+	<!-- водопой для скота -->
+	<rule e="any" k="amenity" v="watering_place" zoom-min="16">
 	    <!-- область -->
 	    <rule e="way" k="amenity" v="watering_place">
 		<line stroke="#D960A4D9" stroke-width="0.3" />
@@ -2787,7 +2803,7 @@
 	    </rule>
 	    <!-- точка -->
 	    <rule e="node" k="amenity" v="watering_place">
-		<symbol src="file:symbols/watering_place.svg" symbol-percent="100" />
+		<symbol src="file:symbols/watering_place.svg" symbol-percent="90" />
 	    </rule>
 	    <rule e="any" k="*" v="*" zoom-min="20">
 	        <caption k="name" font-style="bold_italic" position="below" font-size="14" fill="#035FBC" stroke="#ffffff" stroke-width="2.5"/>
@@ -3108,13 +3124,15 @@
 				<caption k="name" symbol-id="s_climbing" priority="5" font-style="bold" font-size="12" fill="#39AC39" stroke="#E5FFFFFF" stroke-width="2" text-wrap-width="110" />
 			</rule>
 		</rule>
+
 		<!-- веревочный/панда парк -->
 		<rule e="any" k="sport" v="climbing_adventure" zoom-min="15">
-			<symbol id="s_climbing_adventure" src="file:symbols/s_climbing_adventure.svg" symbol-height="16" />
+			<symbol id="s_climbing_adventure" src="file:symbols/s_climbing_adventure.svg" symbol-height="22" />
 			<rule e="any" k="*" v="*" zoom-min="16">
 				<caption k="name" symbol-id="s_climbing_adventure" font-style="bold" font-size="10" fill="#39AC39" stroke="#E5FFFFFF" stroke-width="2" />
 			</rule>
 		</rule>
+
 		<rule e="any" k="sport" v="soccer" zoom-min="16">
 			<symbol id="s_soccer" src="file:symbols/s_soccer.svg" symbol-height="16" />
 			<rule e="any" k="*" v="*" zoom-min="17">
@@ -3146,12 +3164,17 @@
 				<caption k="name" symbol-id="s_shooting" font-style="bold" font-size="10" fill="#39AC39" stroke="#E5FFFFFF" stroke-width="2" />
 			</rule>
 		</rule>
-		<rule e="any" k="sport" v="skateboard" zoom-min="16">
-			<symbol id="s_skateboard" src="file:symbols/s_skateboard.svg" symbol-height="16" />
+
+		<rule e="any" k="sport" v="skateboard" zoom-min="14">
+                    	<area fill="#bfbfbf" stroke="#9e9e9e" stroke-width="0.1"/>
+			<rule e="any" k="*" v="*" zoom-min="16">
+                       	    <symbol id="s_skateboard" src="file:symbols/s_skateboard.svg" symbol-height="22" />
+			</rule>
 			<rule e="any" k="*" v="*" zoom-min="17">
-				<caption k="name" symbol-id="s_skateboard" font-style="bold" font-size="10" fill="#39AC39" stroke="#E5FFFFFF" stroke-width="2" />
+			    <caption k="name" symbol-id="s_skateboard" font-style="bold" font-size="10" fill="#39AC39" stroke="#E5FFFFFF" stroke-width="2" />
 			</rule>
 		</rule>
+
 		<rule e="any" k="sport" v="roller_skating" zoom-min="16">
 			<symbol id="s_roller_skating" src="file:symbols/s_roller_skating.svg" symbol-height="16" />
 			<rule e="any" k="*" v="*" zoom-min="17">
@@ -3348,7 +3371,7 @@
 		</rule>
 		<!-- археологические памятники -->
 		<rule e="any" k="historic" v="archaeological_site" zoom-min="15">
-			<area fill="#DBDBDB" stroke="#C3C3C3" stroke-width="0.1" />
+			<area fill="#45DBDBDB" stroke="#50C3C3C3" stroke-width="0.1" />
 			<rule e="way" k="building" v="~" zoom-min="12">
 				<line stroke="#70606060" stroke-width="0.2" stroke-dasharray="4,4" stroke-linecap="butt" />
 			</rule>
